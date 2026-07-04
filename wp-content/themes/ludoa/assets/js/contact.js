@@ -1,135 +1,93 @@
 /* ============================================================
-   Contact modal flow: 入力 → 確認 → 完了 (single modal, AJAX submit)
+   Contact form — AJAX submit to WordPress (admin-ajax.php).
+   Backend: ludoa_contact_submit (see functions.php).
+   Field names are prefixed `ludoa_` to avoid WP query-var clashes.
    ============================================================ */
-(function () {
+(function ($) {
   "use strict";
 
-  function ready(fn) {
-    if (document.readyState !== "loading") {
-      fn();
-    } else {
-      document.addEventListener("DOMContentLoaded", fn);
+  if (typeof window.ludoaContact === "undefined") return;
+
+  /* Localized status messages keyed by <html lang>. */
+  var MSG = {
+    ja: {
+      ok: "送信いたしました。ありがとうございます。",
+      err: "送信に失敗しました。時間をおいて再度お試しください。"
+    },
+    en: {
+      ok: "Thank you. Your message has been sent.",
+      err: "Sending failed. Please try again in a moment."
+    },
+    "zh-Hant": {
+      ok: "已成功送出，感謝您的來信。",
+      err: "送出失敗，請稍後再試。"
+    },
+    zh: {
+      ok: "已成功送出，感謝您的來信。",
+      err: "送出失敗，請稍後再試。"
+    },
+    ko: {
+      ok: "전송이 완료되었습니다. 감사합니다.",
+      err: "전송에 실패했습니다. 잠시 후 다시 시도해 주세요."
     }
+  };
+
+  function msg(kind) {
+    var lang = document.documentElement.lang || "ja";
+    var set = MSG[lang] || MSG.ja;
+    return set[kind];
   }
 
-  ready(function () {
-    var modal = document.getElementById("modal-contact");
-    if (!modal) return;
+  $(function () {
+    var $form = $(".cform");
+    if (!$form.length) return;
 
-    var flow = modal.querySelector("[data-contact-flow]");
-    var form = modal.querySelector(".js-contact-form");
-    if (!flow || !form) return;
-
-    var steps = flow.querySelectorAll(".contact-step");
-    var fields = ["name", "email", "tel", "subject_type", "message"];
-    var cfg = window.ludoaContact || {};
-
-    function showStep(name) {
-      steps.forEach(function (s) {
-        s.classList.toggle("is-active", s.getAttribute("data-step") === name);
-      });
-      flow.scrollTop = 0;
-    }
-
-    function fieldValue(key) {
-      var el = form.elements["ludoa_" + key];
-      return el ? el.value.trim() : "";
-    }
-
-    function resetFlow() {
-      form.reset();
-      showStep("input");
-    }
-
-    // STEP 1 → STEP 2 (validate natively, then fill confirm)
-    form.addEventListener("submit", function (e) {
+    $form.on("submit", function (e) {
       e.preventDefault();
-      if (typeof form.reportValidity === "function" && !form.reportValidity()) {
+
+      var form = this;
+      if (!form.checkValidity()) {
+        form.reportValidity();
         return;
       }
-      fields.forEach(function (key) {
-        var val = fieldValue(key);
-        var dd = flow.querySelector('[data-confirm="' + key + '"]');
-        if (!dd) return;
-        if (val !== "") {
-          dd.textContent = val;
-          dd.classList.remove("is-empty");
-        } else {
-          dd.textContent = "（未入力）";
-          dd.classList.add("is-empty");
-        }
-      });
-      showStep("confirm");
-    });
 
-    // STEP 2 → STEP 1
-    var backBtn = flow.querySelector(".js-contact-back");
-    if (backBtn) {
-      backBtn.addEventListener("click", function () {
-        showStep("input");
-      });
-    }
+      var $submit = $form.find(".cform__submit");
+      $submit.prop("disabled", true);
 
-    // STEP 2 → submit (AJAX) → STEP 3
-    var sendBtn = flow.querySelector(".js-contact-send");
-    var errBox = flow.querySelector(".js-contact-error");
-    if (sendBtn) {
-      sendBtn.addEventListener("click", function () {
-        if (!cfg.ajaxUrl) return;
-        var original = sendBtn.textContent;
-        sendBtn.disabled = true;
-        sendBtn.textContent = "送信中…";
-        if (errBox) errBox.hidden = true;
+      var data = {
+        action: "ludoa_contact_submit",
+        nonce: window.ludoaContact.nonce,
+        ludoa_name: $form.find('[name="ludoa_name"]').val() || "",
+        ludoa_email: $form.find('[name="ludoa_email"]').val() || "",
+        ludoa_tel: $form.find('[name="ludoa_tel"]').val() || "",
+        ludoa_subject_type: $form.find('[name="ludoa_subject_type"]').val() || "",
+        ludoa_message: $form.find('[name="ludoa_message"]').val() || "",
+        ludoa_agree: $form.find('[name="ludoa_agree"]').is(":checked") ? "1" : ""
+      };
 
-        var data = new FormData();
-        data.append("action", "ludoa_contact_submit");
-        data.append("nonce", cfg.nonce || "");
-        fields.forEach(function (key) {
-          data.append("ludoa_" + key, fieldValue(key));
-        });
-        var agree = form.elements["ludoa_agree"];
-        data.append("ludoa_agree", agree && agree.checked ? "1" : "");
-
-        fetch(cfg.ajaxUrl, {
-          method: "POST",
-          body: data,
-          credentials: "same-origin"
+      $.ajax({
+        url: window.ludoaContact.ajaxUrl,
+        method: "POST",
+        data: data,
+        dataType: "json"
+      })
+        .done(function (res) {
+          if (res && res.success) {
+            alert(msg("ok"));
+            form.reset();
+            if (typeof window.ludoaCloseModal === "function") {
+              window.ludoaCloseModal();
+            }
+          } else {
+            alert(msg("err"));
+          }
         })
-          .then(function (r) {
-            return r.json();
-          })
-          .then(function (res) {
-            if (res && res.success) {
-              showStep("thankyou");
-            } else {
-              throw new Error("submit_failed");
-            }
-          })
-          .catch(function () {
-            if (errBox) {
-              errBox.textContent =
-                "送信に失敗しました。お手数ですが時間をおいて再度お試しください。";
-              errBox.hidden = false;
-            }
-          })
-          .then(function () {
-            sendBtn.disabled = false;
-            sendBtn.textContent = original;
-          });
-      });
-    }
-
-    // Reset back to step 1 after the modal is closed (main.js handles closing).
-    modal.querySelectorAll(".js-modal-close").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        setTimeout(resetFlow, 300);
-      });
+        .fail(function () {
+          alert(msg("err"));
+        })
+        .always(function () {
+          $submit.prop("disabled", false);
+        });
     });
-    var overlay = modal.querySelector(".modal__overlay");
-    if (overlay) {
-      overlay.addEventListener("click", function () {
-        setTimeout(resetFlow, 300);
-      });
-    }
   });
-})();
+})(jQuery);

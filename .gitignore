@@ -20,6 +20,7 @@ wp-content/themes/twenty*/
 # wp-content/object-cache.php
 
 # === Xserver specific ===
+html_asset
 .htaccess
 php.ini
 .user.ini

@@ -1,0 +1,171 @@
+/* ===========================================================
+   体験 (learn) — 心身を整える体験 + slider (slick)
+   Mobile-first → PC ở cuối file.
+   =========================================================== */
+.learn {
+  position: relative;
+  background: var(--color-bg);
+  padding: 80px 0 80px;
+  overflow: hidden;
+}
+.learn__inner {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---- headline ---- */
+.learn__headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 48px;
+}
+.learn__eyebrow { display: flex; align-items: center; gap: 10px; }
+.learn__eyebrow::before,
+.learn__eyebrow::after {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--color-gray);
+}
+.learn__eyebrow span {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  color: var(--color-white);
+}
+.learn__title {
+  display: flex;
+  flex-direction: row-reverse;      /* 心身を (phải) / 整える体験 (trái) */
+  justify-content: center;
+  gap: 4px;
+}
+.learn__title span {
+  writing-mode: vertical-rl;
+  font-family: var(--font-brush);
+  font-weight: 400;
+  font-size: 38px;
+  letter-spacing: 0.06em;
+  line-height: 1.12;
+  color: var(--color-white);
+}
+
+/* ---- lead: label + desc ---- */
+.learn__lead { margin-bottom: 30px; }
+.learn__label {
+  font-family: var(--font-serif);
+  font-size: 25px;                    /* Figma SP: 25px */
+  letter-spacing: 0.04em;
+  color: var(--color-white);
+  padding-left: 16px;
+  border-left: 1px solid var(--color-white);
+  margin-bottom: 20px;
+}
+.learn__desc {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  line-height: 2.2;                 /* Figma SP: lh 2.2 */
+  letter-spacing: 0.03em;
+  color: var(--color-gray);
+}
+
+/* ---- slider ---- */
+.learn__slider { margin-bottom: 30px; }
+.learn__slide { margin-right: 20px; }
+.learn__slide figure { margin: 0; }
+.learn__slide img {
+  display: block;
+  height: 200px;
+  width: auto;
+  object-fit: cover;
+  border-radius: 2px;
+}
+.learn__slide figcaption {
+  margin-top: 18px;
+  padding-left: 16px;
+  border-left: 1px solid var(--color-white);
+}
+.learn__slide figcaption span {
+  font-family: var(--font-serif);
+  font-size: 16px;                  /* Figma SP: ~16px (PC 20px) */
+  letter-spacing: 0.04em;
+  color: var(--color-white);
+}
+
+/* ẩn slider tới khi slick khởi tạo (tránh nhảy layout) */
+.learn__slider:not(.slick-initialized) { display: flex; overflow: hidden; }
+.learn__slider:not(.slick-initialized) .learn__slide { flex: 0 0 auto; }
+
+/* ---- nav ---- */
+.learn__nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.learn__arrow {
+  width: 40px; height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  background: none;
+  color: var(--color-white);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.learn__arrow:hover { background: rgba(255, 255, 255, 0.12); }
+.learn__count {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: "Playfair Display SC", serif;
+  font-size: 18px;
+  color: var(--color-white);
+}
+.learn__count-line {
+  width: 1px;
+  height: 26px;
+  background: #636363;
+}
+
+/* ===========================================================
+   PC (≥1024px)
+   =========================================================== */
+@media (min-width: 1024px) {
+  .learn { padding: 120px 0 120px; }
+  .learn__inner { max-width: 1240px; padding: 0; }
+
+  .learn__headline { gap: 30px; margin-bottom: 70px; }
+  .learn__eyebrow { gap: 14px; }
+  .learn__eyebrow::before,
+  .learn__eyebrow::after { width: 26px; }
+  .learn__eyebrow span { font-size: 20px; letter-spacing: 0.18em; }
+  .learn__title { gap: 8px; }
+  .learn__title span { font-size: 52px; }
+
+  .learn__lower {
+    display: flex;
+    align-items: flex-start;
+    gap: 56px;
+  }
+  .learn__lead {
+    flex: 0 0 300px;
+    margin-bottom: 0;
+    padding-top: 0;
+  }
+  .learn__label { font-size: 25px; margin-bottom: 24px; padding-left: 20px; }
+  .learn__desc { font-size: 18px; line-height: 2.2; }
+
+  .learn__main { flex: 1; min-width: 0; }   /* min-width:0 để slick không tràn */
+  .learn__slider { margin-bottom: 40px; }
+  .learn__slide { margin-right: 39px; }
+  .learn__slide img { height: 285px; }
+  .learn__slide figcaption { margin-top: 25px; padding-left: 20px; }
+  .learn__slide figcaption span { font-size: 20px; }
+}

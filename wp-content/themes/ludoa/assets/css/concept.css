@@ -1,0 +1,225 @@
+/* ===========================================================
+   Concept (general) — resort + tiêu đề brush dọc + ảnh + bản đồ
+   Mobile-first → PC ở cuối file.
+   =========================================================== */
+.concept {
+  position: relative;
+  z-index: 1;                 /* dưới hero → mây đè lên phần trên banner */
+  margin-top: -140px;         /* trượt lên cho mây đè general-banner */
+  overflow: hidden;
+  background: var(--color-bg);
+  padding: 0 0 90px;
+}
+
+/* nền resort — giữ đúng tỉ lệ ảnh, neo ở đỉnh section */
+.concept__bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  aspect-ratio: 390 / 1302;   /* tỉ lệ banner SP (Figma) */
+  z-index: 0;
+}
+.concept__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom; /* ưu tiên khoe núi + lều, cắt bớt trời */
+}
+.concept__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* trong suốt ở trên (nối liền mây hero) → tối dần xuống */
+  background: linear-gradient(180deg,
+    rgba(18, 19, 18, 0) 0%,
+    rgba(18, 19, 18, 0.55) 55%,
+    rgba(18, 19, 18, 1) 92%);
+}
+
+.concept__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 200px 20px 0;      /* chừa vùng mây đè + đỉnh banner */
+}
+
+/* ---- Hero composition: tiêu đề brush dọc + 3 ảnh ---- */
+.concept__hero {
+  position: relative;
+  height: 600px;
+}
+.concept__headline {
+  position: absolute;
+  top: 40px;
+  right: 6px;
+  z-index: 2;
+  display: flex;
+  flex-direction: row-reverse;      /* main bên phải, sub bên trái */
+  align-items: flex-start;
+  gap: 14px;
+  color: var(--color-white);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
+}
+.concept__headline-main,
+.concept__headline-sub {
+  display: flex;
+  flex-direction: row-reverse;      /* cột đầu (世界初 / 心と体…) nằm phải */
+  align-items: flex-start;
+  font-family: var(--font-brush);
+  font-weight: 400;
+}
+.concept__headline-main { gap: 6px; }
+.concept__headline-sub  { gap: 5px; margin-top: 40px; }
+
+.concept__headline-main span,
+.concept__headline-sub span {
+  writing-mode: vertical-rl;
+  line-height: 1.05;
+}
+.concept__headline-main span { font-size: 30px; letter-spacing: 0.06em; }
+.concept__headline-sub  span { font-size: 14px; letter-spacing: 0.05em; }
+
+/* so le các cột (nhỉnh lên / nhỉnh xuống) */
+.concept__headline-main span:nth-child(1) { margin-top: 0; } /* 世界初 総合的な */
+.concept__headline-main span:nth-child(2) { margin-top: 0; } /* 癒しのリゾート — 2 cột ngang nhau */
+.concept__headline-sub  span:nth-child(1) { margin-top: 0; }    /* 心と体を… (cao hơn) */
+.concept__headline-sub  span:nth-child(2) { margin-top: 30px; } /* 五感で… (thấp hơn) */
+
+.concept__photo {
+  position: absolute;
+  height: auto;
+  object-fit: cover;
+  border-radius: 1px;
+  box-shadow: -10px 14px 44px rgba(0, 0, 0, 0.6);
+}
+.concept__photo--1 { width: 41%; aspect-ratio: 143 / 218; top: 0;    right: 0; }
+.concept__photo--2 { width: 47%; aspect-ratio: 173 / 122; top: 40%;  left: 0; z-index: 1; }
+.concept__photo--3 { width: 72%; aspect-ratio: 268 / 151; top: 52%;  left: 24%; z-index: 1; }
+
+/* ---- Lead: tiêu đề + body ---- */
+.concept__lead { margin-top: 40px; }
+.concept__title {
+  font-family: var(--font-serif);
+  font-weight: 200;
+  font-size: 25.47px;                 /* Figma SP: ExtraLight 25.47px */
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+  padding: 8px 0 8px 20px;
+  border-left: 0.5px solid var(--color-white);
+  margin-bottom: 28px;
+}
+.concept__body p {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 14px;                    /* Figma SP: 14px / 2.3em */
+  line-height: 2.3;
+  color: var(--color-white);
+}
+.concept__body p + p { margin-top: 1.6em; }
+
+/* ---- Bản đồ Nhật (kích thước thực 543×619) ---- */
+.concept__map {
+  position: relative;
+  width: 262px;               /* SP: theo Figma */
+  max-width: 100%;
+  margin: 64px auto 0;
+}
+.concept__map img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+/* đường kẻ nối nhãn → marker (co giãn theo bản đồ) */
+.concept__map-line {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* marker tam giác đỏ tại Aso (Kyushu) */
+.concept__map-pin {
+  position: absolute;
+  left: 21%;
+  top: 77%;
+  width: 0; height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 7px solid #F08585;
+  transform: translate(-50%, -50%);
+}
+/* nhãn dọc (trái Kyushu), nối vào marker */
+.concept__map-label {
+  position: absolute;
+  left: -8%;
+  top: 60%;
+  display: flex;
+  flex-direction: row-reverse;      /* 大自然阿蘇 (phải) / 健康の森 (trái) */
+  align-items: flex-start;
+  gap: 4px;
+  font-family: var(--font-brush);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.6;
+  letter-spacing: 0.06em;
+  color: var(--color-white);
+}
+.concept__map-label span { writing-mode: vertical-rl; }
+/* cột trái (健康の森) lệch xuống → so le */
+.concept__map-label span:nth-child(2) { margin-top: 14px; }
+
+/* ===========================================================
+   PC (≥1024px)
+   =========================================================== */
+@media (min-width: 1024px) {
+  /* trồi lên lấp vùng đáy hero đang tan dần → cross-fade mượt giữa 2 ảnh */
+  .concept { margin-top: -38vh; padding: 0 0 140px; }
+  .concept__bg { aspect-ratio: 1441 / 1040; }   /* tỉ lệ banner PC (Figma) */
+  .concept__inner {
+    max-width: 1240px;
+    padding: calc(38vh + 240px) 40px 0;  /* chừa vùng hero đè + đỉnh banner */
+  }
+
+  .concept__hero { height: 760px; }
+  .concept__headline {
+    top: -60px;
+    right: 45%;
+    gap: 22px;
+  }
+  .concept__headline-main { gap: 10px; }
+  .concept__headline-sub  { gap: 8px; margin-top: 64px; }
+  .concept__headline-main span { font-size: 44px; }
+  .concept__headline-sub  span { font-size: 18px; }
+  .concept__headline-main span:nth-child(1) { margin-top: 0; } /* 世界初 総合的な */
+  .concept__headline-main span:nth-child(2) { margin-top: 0; } /* 癒しのリゾート — 2 cột ngang nhau */
+
+  .concept__photo--1 { width: 277px; aspect-ratio: 277 / 156; top: 6%; left: 4%;  right: auto; }
+  .concept__photo--2 { width: 300px; aspect-ratio: 302 / 247; top: -15%;  right: 0%;  left: auto; }
+  .concept__photo--3 { width: 398px; aspect-ratio: 398 / 224; top: 41%; left: 60%;  right: auto; }
+
+  /* lead: khối trái */
+  .concept__lead {
+    position: relative;
+    max-width: 520px;
+    margin-top: -200px;
+  }
+  .concept__title {
+    font-size: 30px;                  /* Figma PC: ExtraLight 30px */
+    padding: 10px 0 10px 24px;
+    margin-bottom: 34px;
+  }
+  .concept__body p { font-size: 18px; line-height: 2.3; }
+
+  /* bản đồ: góc phải-dưới, kích thước thực 543px */
+  .concept__map {
+    width: 543px;
+    margin: -220px 0 0 auto;
+  }
+  .concept__map-label { font-size: 20px; }
+  .concept__map-label span:nth-child(2) { margin-top: 20px; }
+}

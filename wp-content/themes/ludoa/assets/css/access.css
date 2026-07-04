@@ -1,375 +1,190 @@
-/* ============================================================
-   SECTION: ACCESS (アクセス)
-   ============================================================ */
-
+/* ===========================================================
+   アクセス (access)
+   Mobile-first → PC ở cuối file.
+   =========================================================== */
 .access {
   position: relative;
-  background-color: var(--color-navy-deep); /* Nền xanh tối của trang chủ */
-  padding: 80px 0;
-  overflow: clip;
-  z-index: 1;
+  background: var(--color-bg);
+  padding: 60px 0 90px;
+  overflow: hidden;
 }
 
-@media (min-width: 1024px) {
-  .access {
-    padding: 120px 0;
-  }
-}
-
-/* Background vertical decorative text "ACCESS" */
-.access__deco {
+/* nền mây mờ ở trên */
+.access__bg {
   position: absolute;
-  left: 0;
-  top: 0;
-  height: 396px;
-  width: auto;
-  pointer-events: none;
-  user-select: none;
+  top: 0; left: 0;
+  width: 100%;
+  aspect-ratio: 1434 / 956;
   z-index: 0;
-  opacity: 0;
-  transition: opacity 1.2s ease;
+}
+.access__bg img { width: 100%; height: 100%; object-fit: cover; }
+.access__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(18, 19, 18, 1) 0%,
+    rgba(18, 19, 18, 0.7) 46%,
+    rgba(18, 19, 18, 0.7) 70%,
+    rgba(18, 19, 18, 1) 100%);
 }
 
-.access.is-active .access__deco {
-  opacity: 0.8;
-}
-
-@media (min-width: 1024px) {
-  .access__deco {
-    height: 648px;
-  }
-}
-
-/* Inner Container */
 .access__inner {
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
 }
 
-/* Header & Intro */
-.access__header {
-  text-align: left;
-  margin-bottom: 24px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+/* eyebrow */
+.access__eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 44px;
 }
-
-.access.is-active .access__header {
-  opacity: 1;
-  transform: translateY(0);
+.access__eyebrow::before,
+.access__eyebrow::after {
+  content: "";
+  width: 16px;
+  height: 1px;
+  background: var(--color-white);
 }
-
-.access__title {
-  font-family: var(--font-serif);
-  font-weight: 600;
-  font-size: 26px;
+.access__eyebrow span {
+  font-family: var(--font-brush);
+  font-size: 24px;
+  letter-spacing: 0.1em;
   color: var(--color-white);
-  line-height: 1.4;
-  margin: 0 0 16px;
-  letter-spacing: 0.03em;
 }
 
-.access__divider {
-  display: block;
-  width: 60px;
-  height: 2px;
-  background-color: var(--color-orange);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.4s;
-}
-
-.access.is-active .access__divider {
-  transform: scaleX(1);
-}
-
-.access__intro {
+/* heading có gạch dưới (dùng chung) */
+.access__loc-head,
+.access__transit-head {
+  display: inline-block;
   font-family: var(--font-serif);
-  font-size: 16px;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.85);
-  margin: 0 0 40px 0;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  font-size: 18px;                    /* Figma SP: 18px (PC 20px) */
+  letter-spacing: 0.04em;
+  color: var(--color-white);
+  padding: 8px 10px;
+  border-bottom: 0.5px solid var(--color-white);
 }
 
-.access.is-active .access__intro {
-  opacity: 1;
-  transform: translateY(0);
+/* 所在地 */
+.access__loc { margin-bottom: 24px; }
+.access__loc-head { margin-bottom: 20px; }
+.access__addr {
+  font-family: var(--font-serif);
+  font-size: 18px;                    /* Figma SP: 18px */
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: var(--color-white);
 }
 
-@media (min-width: 1024px) {
-  .access__header {
-    margin-bottom: 32px;
-  }
-  .access__title {
-    font-size: 38px;
-  }
-  .access__intro {
-    font-size: 20px;
-    margin-bottom: 56px;
-  }
+/* map */
+.access__map {
+  width: 100%;
+  max-width: 588px;
+  margin: 0 auto;
+}
+.access__map img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 588 / 408;
+  object-fit: cover;
+  border-radius: 2px;
 }
 
-/* Card Wrapper */
-.access__card {
-  background-color: var(--color-white);
-  border-radius: var(--radius-md);
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
-  padding: 32px 20px;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1.0s cubic-bezier(0.25, 1, 0.5, 1) 0.3s, transform 1.0s cubic-bezier(0.25, 1, 0.5, 1) 0.3s;
+/* buttons */
+.access__btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  margin: 34px 0 70px;
 }
+.access__btns .btn-bracket span { font-size: 18px; font-weight: 400; } /* Figma SP: 18px (PC 20px) */
 
-.access.is-active .access__card {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (min-width: 1024px) {
-  .access__card {
-    padding: 80px 100px;
-  }
-}
-
-/* Grid Layout */
-.access__grid {
+/* 主要な交通機関 */
+.access__transit-head { margin-bottom: 40px; }
+.access__groups {
   display: flex;
   flex-direction: column;
   gap: 40px;
 }
-
-@media (min-width: 1024px) {
-  .access__grid {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 50px;
-    align-items: start;
-  }
-}
-
-/* Left Column: Info Block */
-.access__info {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-@media (min-width: 1024px) {
-  .access__info {
-    gap: 48px;
-  }
-}
-
-.access__block-title {
+.access__group-title {
   font-family: var(--font-serif);
-  font-weight: 700;
-  font-size: 18px;
-  color: var(--color-navy);
-  margin: 0 0 16px 0;
-  padding-left: 12px;
-  border-left: 3px solid var(--color-navy);
-  line-height: 1.2;
-  letter-spacing: 0.03em;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  color: var(--color-white);
+  margin-bottom: 13px;
 }
-
-@media (min-width: 1024px) {
-  .access__block-title {
-    font-size: 20px;
-    margin-bottom: 24px;
-  }
-}
-
-.access__address-details {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--color-text);
-  padding-left: 15px;
-}
-
-.access__zip {
-  font-size: 16px;
-  margin: 0 0 4px 0;
-}
-
-.access__address {
-  margin: 0;
-}
-
-@media (min-width: 1024px) {
-  .access__zip {
-    font-size: 18px;
-  }
-  .access__address {
-    font-size: 18px;
-    line-height: 1.5;
-  }
-}
-
-/* Transit List */
-.access__transit-list {
-  padding-left: 15px;
-  display: flex;
-  flex-direction: column;
-}
-
-.access__transit-item {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-}
-
-.access__transit-item:not(:last-child) {
-  border-bottom: 1.5px solid #edf2f7;
-  padding-bottom: 16px;
-  margin-bottom: 16px;
-}
-
-.access__transit-icon {
-  width: 28px;
-  height: 28px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2px;
-}
-
-.access__transit-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.access__transit-content {
-  flex-grow: 1;
-}
-
-.access__transit-title {
+.access__item {
   font-family: var(--font-serif);
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--color-navy);
-  margin: 0 0 8px 0;
-  line-height: 1.4;
-  letter-spacing: 0.02em;
-}
-
-.access__transit-desc {
-  font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: 14px;                    /* Figma SP: 14px (PC 18px) */
   line-height: 1.6;
-  color: var(--color-text);
-  margin: 0 0 4px 0;
+  letter-spacing: 0.04em;
+  color: var(--color-white);
 }
+.access__item + .access__item { margin-top: 8px; }
 
-.access__transit-desc:last-child {
-  margin-bottom: 0;
-}
-
-@media (min-width: 1024px) {
-  .access__transit-title {
-    font-size: 18px;
-  }
-
-  .access__transit-desc {
-    font-size: 18px;  
-  }
-}
-
-/* Right Column: Map & Buttons */
-.access__map-col {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-}
-
-.access__map-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4/3;
-  border-radius: 8px;
+/* dải ảnh tự chạy (marquee) */
+.access__strip {
+  margin-top: 70px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 80, 0.06);
 }
-
-.access__map-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.access__map-wrap:hover .access__map-img {
-  transform: scale(1.04);
-}
-
-.access__buttons {
+.access__strip-track {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  width: max-content;
+  animation: stripLoop 45s linear infinite;
+}
+.access__strip-track:hover { animation-play-state: paused; }
+.access__strip img {
+  height: 190px;
+  width: auto;
+  object-fit: cover;
+  margin-right: 20px;
+  border-radius: 2px;
+}
+@keyframes stripLoop {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .access__strip-track { animation: none; }
 }
 
-@media (min-width: 640px) {
-  .access__buttons {
-    flex-direction: row;
-    gap: 16px;
-    justify-content: center;
-  }
-}
-
-.btn-access {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 50px;
-  flex: 1;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-serif);
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-  line-height: 1.2;
-}
-
-.btn-access--primary {
-  background-color: var(--color-navy-deep-2);
-  color: var(--color-white);
-  border: none;
-  box-shadow: 0 6px 20px rgba(9, 0, 84, 0.2);
-}
-
-.btn-access--primary:hover {
-  background-color: #102a7e;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(16, 42, 126, 0.3);
-}
-
-.btn-access--outline {
-  background-color: transparent;
-  color: var(--color-navy-deep-2);
-  border: 1.5px solid var(--color-navy-deep-2);
-}
-
-.btn-access--outline:hover {
-  background-color: var(--color-navy-deep-2);
-  color: var(--color-white);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(9, 0, 84, 0.15);
-}
-
+/* ===========================================================
+   PC (≥1024px)
+   =========================================================== */
 @media (min-width: 1024px) {
-  .btn-access {
-    font-size: 16px;
-    min-height: 46px;
-    max-width: 212px;
+  .access { padding: 90px 0 0; }
+  .access__strip { margin-top: 120px; }
+  .access__strip img { height: 302px; margin-right: 40px; }
+  .access__bg { aspect-ratio: 1440 / 956; }
+  .access__inner { max-width: 1000px; }
+
+  .access__eyebrow { margin-bottom: 70px; }
+  .access__eyebrow span { font-size: 28px; }
+
+  .access__loc { display: flex; flex-direction: column; align-items: center; gap: 20px; margin-bottom: 30px; }
+  .access__loc-head { margin-bottom: 0; font-size: 20px; }   /* Figma PC: 20px */
+  .access__addr { font-size: 18px; }
+
+  .access__btns {
+    flex-direction: row;
+    justify-content: center;
+    gap: 90px;
+    margin: 40px 0 140px;
   }
+  .access__btns .btn-bracket span { font-size: 20px; }       /* Figma PC: 20px */
+
+  .access__transit-head { margin-bottom: 60px; font-size: 20px; } /* Figma PC: 20px */
+  .access__item { font-size: 18px; }               /* Figma PC: 18px */
+  .access__groups { gap: 40px; max-width: 520px; margin: 0 auto; }
 }

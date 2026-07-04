@@ -1,0 +1,600 @@
+/* ===========================================================
+   Design Tokens (từ Figma — file "NGUYEN VAN's team library")
+   =========================================================== */
+:root {
+  --color-bg: #121312;
+  --color-white: #FFFFFF;
+  --color-gray: #C7C7C7;
+  --color-gray-dark: #4C4C4C;
+  --color-card: #282828;
+  --color-green: #8FCF11; /* accent 阿蘇 (logo) */
+
+  --font-serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --font-brush: "Yuji Syuku", "Noto Serif JP", serif; /* logo 健康の森 (brush) */
+
+  /* mobile-first: thiết kế gốc SP = 390px, PC = 1440px */
+  --pc-max: 1440px;
+
+  --header-h: 64px;
+}
+
+/* mobile viewport height fix (JS set --vh) */
+:root { --vh: 1vh; }
+
+/* ===== Base ===== */
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-serif);
+  color: var(--color-white);
+  background: var(--color-bg);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+body.fixed { overflow: hidden; }
+
+img { width: 100%; height: 100%; object-fit: cover; }
+
+.sp-only { display: inline; }
+
+/* ===========================================================
+   Header
+   =========================================================== */
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 120;              /* trên cả menu (100) → hamburger luôn thấy & morph tại chỗ */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  pointer-events: none; /* để click xuyên qua vùng trống, các nút tự bật lại */
+}
+.header > * { pointer-events: auto; }
+
+/* Khi menu mở: ẩn logo + LANG (giữ layout để hamburger đứng yên), chỉ chừa nút toggle */
+body.fixed .header__logo,
+body.fixed .lang {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Logo & nút .btn-bracket nằm ở common.css (tái sử dụng) */
+.header__logo {
+  font-size: 18px;            /* = cỡ 健康の森 ở header (SP) */
+  text-decoration: none;
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.lang { position: relative; }
+.lang__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: var(--color-white);
+  font-family: var(--font-serif);
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+.lang__caret {
+  font-size: 9.55px;                 /* Figma SP: 9.55px */
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+.lang.is-open .lang__caret { transform: rotate(180deg); }
+
+/* dropdown ngôn ngữ */
+.lang__menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  min-width: 150px;
+  background: rgba(18, 19, 18, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  padding: 6px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+.lang.is-open .lang__menu { opacity: 1; visibility: visible; transform: none; }
+.lang__menu a {
+  display: block;
+  padding: 9px 20px;
+  font-family: var(--font-serif);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--color-white);
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.lang__menu a:hover { background: rgba(255, 255, 255, 0.1); }
+.lang__menu a.is-active { color: var(--color-green); }
+
+/* Hamburger */
+.drawer {
+  position: relative;
+  width: 30px;
+  height: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.drawer span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--color-white);
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+.drawer span:nth-child(1) { top: 0; }
+.drawer span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.drawer span:nth-child(3) { bottom: 0; }
+.drawer.active span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
+.drawer.active span:nth-child(2) { opacity: 0; }
+.drawer.active span:nth-child(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
+
+/* ===========================================================
+   Menu (toggle) — full-screen overlay
+   SP: 1 cột (logo → list → nút → brand+ảnh)
+   PC: 3 cột (ảnh | list | brand+nút)
+   =========================================================== */
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--color-bg);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  overflow-y: auto;
+}
+.menu.panel-active { opacity: 1; visibility: visible; }
+
+/* Đóng menu = bấm lại chính nút hamburger (đã morph thành X) ở header */
+
+/* panel — SP: 1 cột (logo → list → nút → brand+ảnh) */
+.menu__panel {
+  min-height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 56px 40px 90px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "toplogo toplogo"
+    "nav     nav"
+    "btns    btns"
+    "brand   visual";
+  align-content: start;
+  column-gap: 30px;   /* Figma: brand ↔ ảnh = 30px */
+  row-gap: 0;
+}
+
+/* fade-in nội dung khi mở */
+.menu__panel > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.menu.panel-active .menu__panel > * { opacity: 1; transform: none; }
+.menu.panel-active .menu__panel > *:nth-child(2) { transition-delay: 0.08s; }
+.menu.panel-active .menu__panel > *:nth-child(3) { transition-delay: 0.16s; }
+.menu.panel-active .menu__panel > *:nth-child(4) { transition-delay: 0.24s; }
+.menu.panel-active .menu__panel > *:nth-child(5) { transition-delay: 0.32s; }
+
+/* logo nhỏ trên cùng (SP) */
+.menu__top-logo {
+  grid-area: toplogo;
+  justify-self: start;
+  align-items: flex-start;
+  font-size: 20px;
+  margin-bottom: 56px;
+}
+
+/* ảnh (SP: nhỏ, dọc — Figma 104×155) */
+.menu__visual {
+  grid-area: visual;
+  position: relative;
+  overflow: hidden;
+  width: 104px;
+  aspect-ratio: 104 / 155;
+  align-self: center;
+  border-radius: 1px;
+}
+.menu__visual img { width: 100%; height: 100%; object-fit: cover; }
+.menu__visual-text { display: none; }   /* caption chỉ hiện ở PC */
+
+/* danh sách điều hướng (SP: gạch + mũi tên tròn) */
+.menu__nav { grid-area: nav; }
+.menu__label { display: none; }             /* "Contents" chỉ PC */
+.menu__list { border-top: 0.5px solid #292929; }
+.menu__list li { border-bottom: 0.5px solid #292929; }
+.menu__list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 2px;
+  font-family: var(--font-serif);
+  font-size: 16px;                            /* Figma: Regular 16px */
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: var(--color-white);
+}
+.menu__list a::after {
+  content: "›";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px; height: 25px;                  /* Figma icon 25×25 */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  font-size: 14px;
+  line-height: 1;
+  padding-bottom: 2px;
+}
+
+/* nút CTA (Bold 18px, ls 0.0444em, ngoặc cao 36px) */
+.menu__btns {
+  grid-area: btns;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin: 68px 0 82px;
+}
+.menu__btns .btn-bracket::before,
+.menu__btns .btn-bracket::after { height: 36px; }
+.menu__btns .btn-bracket span {
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.0444em;
+}
+
+/* brand / địa chỉ (SP: căn giữa) */
+.menu__brand {
+  grid-area: brand;
+  align-self: center;
+  text-align: center;
+}
+.menu__tagline {
+  font-family: var(--font-serif);
+  font-size: 14px;                            /* Figma SP: 14px */
+  line-height: 1.5;
+  color: var(--color-white);
+}
+.menu__brand-logo {
+  font-size: 32px;                            /* logo 155px ~ 32px */
+  margin: 12px auto;
+}
+.menu__address {
+  font-family: var(--font-serif);
+  font-weight: 200;
+  font-size: 12px;                            /* Figma SP: 12px */
+  line-height: 1.7;
+  color: #787878;
+  text-align: left;
+}
+
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.nav-overlay.is-show { opacity: 1; visibility: visible; }
+
+/* ===========================================================
+   FV / Hero
+   =========================================================== */
+.fv {
+  position: relative;
+  z-index: 2;                 /* mây (hero) đè lên section Concept phía dưới */
+  width: 100%;
+  height: calc(var(--vh, 1vh) * 120); /* cao hơn 1 màn → cuộn xuống mới hết banner, rồi tới concept */
+  min-height: 672px;
+  overflow: hidden;
+}
+.fv__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* đáy hero tan dần → cross-fade sang Concept. Vùng fade = đúng phần concept đè lên (140px mobile)
+     nên không hở dải nền tối giữa banner và general-banner. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 140px), rgba(0, 0, 0, 0.4) calc(100% - 45px), transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 140px), rgba(0, 0, 0, 0.4) calc(100% - 45px), transparent 100%);
+}
+.fv__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.fv__inner {
+  position: absolute;
+  z-index: 2;
+  /* căn TÂM khối chữ vào chính giữa màn hình đầu tiên (50vh), không phụ thuộc chiều cao hero */
+  top: calc(var(--vh, 1vh) * 50);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+.fv__title {
+  font-size: 42px;            /* = cỡ 健康の森 ở hero (SP) */
+  margin: 0 auto;
+}
+.fv__sub {
+  margin-top: 16px;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 16px;            /* Figma SP: Bold 16px */
+  letter-spacing: 0.13em;
+  line-height: 1.2;           /* Figma: 1.2em */
+  color: var(--color-white);  /* #FFFFFF */
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  transition-delay: 0.25s;    /* fadeUp trễ hơn title một nhịp */
+}
+
+/* Scroll indicator */
+.fv__scroll {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--vh, 1vh) * 66); /* dưới title (căn giữa 50vh), chừa khoảng cách với phụ đề */
+  bottom: auto;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.fv__scroll-text {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--color-white);
+  transform: rotate(90deg);
+  transform-origin: center;
+  margin-bottom: 10px;
+}
+.fv__scroll-line {
+  position: relative;
+  width: 1px;
+  height: 150px;
+  overflow: hidden;
+  /* nền tĩnh giống Figma (line 338px): trắng ~34% phía trên rồi mờ dần thành trong suốt xuống dưới */
+  background: linear-gradient(to bottom,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 34%,
+    rgba(255, 255, 255, 0) 100%);
+}
+/* vạch sáng trượt xuống lặp lại (byaku) — đè lên nền tĩnh */
+.fv__scroll-line::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+  animation: scrollFlow 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+@keyframes scrollFlow {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* Reservation button (SP: dưới giữa) */
+.fv__reserve {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--vh, 1vh) * 20 + 36px); /* neo theo đáy màn đầu (hero cao 120vh) */
+  transform: translateX(-50%);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 8px 4px;
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(2.6px);
+}
+.fv__reserve::before,
+.fv__reserve::after {
+  content: "";
+  width: 1px;
+  height: 26px;
+  background: var(--color-white);
+}
+.fv__reserve-text {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 20.55px;         /* Figma SP: Medium 20.55px */
+  letter-spacing: 0.13em;
+  line-height: 1.2;           /* Figma: 1.2em */
+  color: var(--color-white);  /* #FFFFFF */
+  white-space: nowrap;
+}
+
+/* ===========================================================
+   PC (thiết kế gốc Figma 1440px) — áp dụng từ 1024px trở lên.
+   Dưới 1024px = thiết kế SP (390px) đúng tuyệt đối.
+   =========================================================== */
+@media (min-width: 1024px) {
+  :root { --header-h: 88px; }
+  .sp-only { display: none; }
+
+  .header { padding: 28px 40px; }
+  .header__logo { font-size: 34px; }   /* 健康の森 ở header PC */
+  .header__right { gap: 28px; }
+  .lang__toggle { font-weight: 200; font-size: 15px; }  /* Figma PC: ExtraLight 15px */
+  .lang__caret { font-size: 13px; }    /* Figma PC: 13px */
+  .lang__menu a { font-size: 15px; }
+
+  /* Hero: nội dung dồn lên nửa trên như Figma (frame FV 1440×1695) */
+  .fv__inner {
+    padding-top: 0;                    /* căn giữa màn hình (bỏ canh ~27% từ trên của Figma) */
+  }
+  .fv__title { font-size: 78px; }      /* 健康の森 ở hero PC */
+  .fv__sub {
+    margin-top: 26px;
+    font-size: 26px;                   /* Figma PC: Bold 26px */
+    letter-spacing: 0.13em;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+  .fv__scroll-text { font-size: 13px; } /* Figma PC: 13px */
+
+  /* PC: concept đè lên hero 38vh → vùng fade của mask phải khớp 38vh (không hở nền tối) */
+  .fv__bg {
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - var(--vh, 1vh) * 38), rgba(0, 0, 0, 0.4) calc(100% - var(--vh, 1vh) * 12), transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - var(--vh, 1vh) * 38), rgba(0, 0, 0, 0.4) calc(100% - var(--vh, 1vh) * 12), transparent 100%);
+  }
+
+  /* scroll ở giữa hero (Figma: ~47%, line dài xuống) */
+  .fv__scroll {
+    top: calc(var(--vh, 1vh) * 68); /* xuống dưới title (đã căn giữa 50vh), tránh đè */
+    bottom: auto;
+  }
+  .fv__scroll-line { height: 210px; }
+
+  /* Reservation: dọc mép phải, trên-giữa (Figma: ~37%) */
+  .fv__reserve {
+    left: auto;
+    right: 28px;
+    bottom: auto;
+    top: calc(var(--vh, 1vh) * 37); /* theo màn đầu, không theo full hero 120vh */
+    transform: none;
+    flex-direction: column;
+    gap: 18px;
+    padding: 4px 10px;
+    background: none;
+    backdrop-filter: none;
+  }
+  .fv__reserve::before,
+  .fv__reserve::after {
+    width: 26px;
+    height: 1px;
+  }
+  .fv__reserve-text {
+    writing-mode: vertical-rl;
+    font-size: 29px;           /* Figma PC: Medium 29px, ls 0.13em */
+    letter-spacing: 0.13em;
+  }
+
+  /* ----- Menu PC: [ảnh 129px list] 169px [brand / nút] ----- */
+
+  .menu__panel {
+    max-width: none;
+    padding: 150px 60px 90px 103px;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "visual nav brand"
+      "visual nav btns";
+    justify-content: start;
+    align-content: start;
+    column-gap: 0;
+    row-gap: 0;
+  }
+  .menu__panel > * { transition-delay: 0s; }  /* PC: hiện gọn */
+
+  .menu__top-logo { display: none; }
+
+  /* ảnh trái (Figma 386×578) + caption dọc đè lên ảnh */
+  .menu__visual {
+    width: 386px;
+    aspect-ratio: 386 / 578;
+    align-self: start;
+    margin-right: 129px;
+  }
+  .menu__visual-text {
+    display: block;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    writing-mode: vertical-rl;
+    font-family: var(--font-serif);
+    font-size: 24px;
+    letter-spacing: 0.14em;
+    line-height: 1.9;
+    white-space: nowrap;
+    color: var(--color-white);
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
+  }
+
+  /* list giữa (rộng 181, gap 40, không gạch/mũi tên) */
+  .menu__nav { width: 181px; margin-right: 169px; align-self: start; }
+  .menu__label {
+    display: block;
+    font-family: var(--font-serif);
+    font-weight: 200;                 /* Figma: ExtraLight 12px */
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--color-white);
+    margin-bottom: 54px;
+  }
+  .menu__list { border-top: none; }
+  .menu__list li { border-bottom: none; }
+  .menu__list li + li { margin-top: 40px; }   /* gap 40px */
+  .menu__list a {
+    display: block;
+    padding: 0;
+    font-size: 16px;                  /* Figma: 16px */
+    letter-spacing: 0.04em;
+  }
+  .menu__list a::after { display: none; }
+
+  /* cột phải: brand trên, nút dưới, có đường kẻ dọc trái */
+  .menu__brand {
+    align-self: start;
+    text-align: center;
+    border-left: 0.5px solid #2C2C2C;
+    padding: 0 0 50px 60px;
+    width: 314px;
+  }
+  .menu__tagline { font-size: 18px; }                    /* Figma PC: 18px */
+  .menu__brand-logo { font-size: 32px; margin: 12px auto 0; }
+  .menu__address { font-size: 16px; text-align: center; } /* Figma PC: 16px */
+
+  .menu__btns {
+    align-self: start;
+    align-items: center;
+    gap: 44px;                        /* Figma: 44px */
+    margin: 0;
+    border-left: 0.5px solid #2C2C2C;
+    padding: 50px 0 0 60px;
+    width: 314px;
+  }
+}
+
+/* ===========================================================
+   Màn hình THẤP (chiều cao nhỏ) — tránh chữ Hero bị đè lên nhau
+   (scroll indicator vươn lên đụng tiêu đề/phụ đề khi viewport ngắn)
+   =========================================================== */
+@media (max-height: 780px) {
+  .fv__scroll-line { height: 150px; }    /* màn hơi thấp: rút line vừa phải, vẫn thấy rõ */
+}
+@media (max-height: 620px) {
+  .fv__scroll { top: calc(var(--vh, 1vh) * 64); }  /* màn rất thấp: hạ nhẹ + rút thêm line */
+  .fv__scroll-line { height: 70px; }               /* KHÔNG ẩn — vẫn hiện chỉ báo scroll */
+}

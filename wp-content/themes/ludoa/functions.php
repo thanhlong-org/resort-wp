@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'LUDOA_VERSION', '1.0.0' );
+define( 'LUDOA_VERSION', '2.0.0' );
 
 /**
  * Theme setup.
@@ -36,38 +36,36 @@ function ludoa_assets() {
 	$css = $uri . '/assets/css';
 	$js  = $uri . '/assets/js';
 
-	// Google Fonts.
+	// Google Fonts. JP design fonts + TC/KR for zh/ko coverage.
 	wp_enqueue_style(
 		'ludoa-fonts',
-		'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Roboto:wght@400;500&display=swap',
+		'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;800&family=Noto+Serif+JP:wght@200;300;400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@300;400;500;600;700&family=Playfair+Display+SC&family=Yuji+Syuku&display=swap',
 		array(),
 		null
 	);
 
-	// Swiper (CDN).
-	wp_enqueue_style( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11' );
+	// Slick carousel (CDN).
+	wp_enqueue_style( 'slick', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css', array(), '1.8.1' );
 
 	// Stylesheets in load order. Each depends on the previous so order is preserved.
 	$styles = array(
-		'reset'       => null,
-		'variables'   => null,
-		'common'      => null,
-		'header'      => null,
-		'home'        => null,
-		'hero'        => null,
-		'program'     => '9',
-		'supervision' => '8',
-		'wishes'      => '12',
-		'pricing'     => '3',
-		'schedule'    => '3',
-		'access'      => '2',
-		'faq'         => '2',
-		'footer'      => '3',
-		'modal'       => '2',
-		'animation'   => '2',
+		'reset'     => null,
+		'animation' => null,
+		'common'    => null,
+		'style'     => null,
+		'concept'   => null,
+		'onsen'     => null,
+		'veg'       => null,
+		'house'     => null,
+		'learn'     => null,
+		'tourism'   => null,
+		'plan'      => null,
+		'access'    => null,
+		'footer'    => null,
+		'modal'     => null,
 	);
 
-	$prev = array( 'ludoa-fonts', 'swiper' );
+	$prev = array( 'ludoa-fonts', 'slick' );
 	foreach ( $styles as $name => $ver ) {
 		$handle = 'ludoa-' . $name;
 		wp_enqueue_style( $handle, "$css/$name.css", $prev, $ver ? $ver : LUDOA_VERSION );
@@ -77,28 +75,16 @@ function ludoa_assets() {
 	// Main stylesheet (theme header only).
 	wp_enqueue_style( 'ludoa-style', get_stylesheet_uri(), array(), LUDOA_VERSION );
 
-	// Scripts (footer). config first, swiper, then feature scripts; i18n last.
-	wp_enqueue_script( 'ludoa-config', "$js/config.js", array(), LUDOA_VERSION, true );
-	wp_enqueue_script( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11', true );
+	// Scripts (footer): jQuery stack + slick, then app JS, i18n, contact.
+	wp_enqueue_script( 'jquery-easing', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js', array( 'jquery' ), '1.4.1', true );
+	wp_enqueue_script( 'slick', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array( 'jquery' ), '1.8.1', true );
 
-	$scripts = array(
-		'slider'    => array( '8', array( 'ludoa-config', 'swiper' ) ),
-		'nav'       => array( null, array( 'ludoa-config' ) ),
-		'main'      => array( '10', array( 'ludoa-config' ) ),
-		'schedule'  => array( '1', array( 'ludoa-config' ) ),
-		'access'    => array( '1', array( 'ludoa-config' ) ),
-		'faq'       => array( '1', array( 'ludoa-config' ) ),
-		'animation' => array( '1', array( 'ludoa-config' ) ),
-		'i18n'      => array( '2', array( 'ludoa-config' ) ),
-	);
+	// i18n first so it caches the raw Japanese fallback before main.js mutates titles.
+	wp_enqueue_script( 'ludoa-i18n', "$js/i18n.js", array(), LUDOA_VERSION, true );
+	wp_enqueue_script( 'ludoa-main', "$js/main.js", array( 'jquery', 'jquery-easing', 'slick' ), LUDOA_VERSION, true );
 
-	foreach ( $scripts as $name => $cfg ) {
-		list( $ver, $deps ) = $cfg;
-		wp_enqueue_script( 'ludoa-' . $name, "$js/$name.js", $deps, $ver ? $ver : LUDOA_VERSION, true );
-	}
-
-	// Contact modal flow (入力 → 確認 → 完了, AJAX submit).
-	wp_enqueue_script( 'ludoa-contact', "$js/contact.js", array(), LUDOA_VERSION, true );
+	// Contact modal flow (AJAX submit).
+	wp_enqueue_script( 'ludoa-contact', "$js/contact.js", array( 'jquery' ), LUDOA_VERSION, true );
 	wp_localize_script(
 		'ludoa-contact',
 		'ludoaContact',
@@ -124,19 +110,6 @@ add_action( 'wp_enqueue_scripts', 'ludoa_dequeue_block_styles', 100 );
 /* ============================================================
  * Contact flow: single modal, 入力 → 確認 → 完了 (AJAX submit)
  * ============================================================ */
-
-/**
- * Stylesheet for the contact modal steps (confirm / thankyou).
- */
-function ludoa_contact_styles() {
-	wp_enqueue_style(
-		'ludoa-contact-pages',
-		get_template_directory_uri() . '/assets/css/contact-pages.css',
-		array( 'ludoa-modal' ),
-		LUDOA_VERSION
-	);
-}
-add_action( 'wp_enqueue_scripts', 'ludoa_contact_styles', 20 );
 
 /**
  * Sanitize raw contact input into a normalized field set.

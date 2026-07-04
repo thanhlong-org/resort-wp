@@ -10,93 +10,90 @@
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="大自然阿蘇 健康の森 — 世界最高水準の総合予防医療施設。定年退職後の新しい健康習慣を提案する滞在型健康増進プログラム。" />
+  <meta name="description" content="大自然阿蘇 健康の森 — 世界最高峰のウェルネスリゾート。" />
 
   <!-- hreflang alternates (single-page, query-param strategy) -->
   <link rel="alternate" hreflang="ja" href="?lang=ja" />
-  <link rel="alternate" hreflang="zh-Hant" href="?lang=zh-Hant" />
-  <link rel="alternate" hreflang="ko" href="?lang=ko" />
   <link rel="alternate" hreflang="en" href="?lang=en" />
+  <link rel="alternate" hreflang="zh" href="?lang=zh" />
+  <link rel="alternate" hreflang="ko" href="?lang=ko" />
   <link rel="alternate" hreflang="x-default" href="?lang=ja" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="大自然阿蘇 健康の森" />
-  <meta property="og:description" content="世界最高水準の総合予防医療施設。" />
+  <meta property="og:description" content="世界最高峰のウェルネスリゾート。" />
   <meta property="og:type" content="website" />
 
   <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-  <!-- ============================================================
-       HEADER  (→ tương lai: header.php của WordPress)
-       ============================================================ -->
-  <header class="site-header" id="siteHeader">
-    <div class="site-header__inner">
-      <a href="#top" class="logo" aria-label="大自然阿蘇 健康の森">
-        <span>大自然</span><span class="logo__aso">阿蘇</span><span> 健康の森</span>
-      </a>
 
-      <!-- Nav PC -->
-      <nav class="nav-pc" aria-label="メインナビゲーション">
-        <ul class="nav-pc__list">
-          <li><a href="#program" data-i18n="nav.program">健康プログラムの詳細</a></li>
-          <li><a href="#pricing" data-i18n="nav.pricing">ご宿泊プランと料金</a></li>
-          <li><a href="#access" data-i18n="nav.access">アクセス</a></li>
-          <li><a href="#faq" data-i18n="nav.faq">よくある質問</a></li>
-        </ul>
-      </nav>
+  <!-- ===================== Header ===================== -->
+  <header class="header" id="header">
+    <a class="header__logo logo" href="#top" aria-label="大自然阿蘇 健康の森">
+      <span class="logo__top">大自然<span class="logo__accent">阿蘇</span></span>
+      <span class="logo__main">健康の森</span>
+    </a>
 
-      <div class="header-actions">
-        <!-- お問合せ (PC) → mở modal liên hệ (làm sau) -->
-        <a href="#" class="btn btn-outline header-contact js-contact" data-i18n="header.contact">お問合せ</a>
-
-        <!-- Dropdown ngôn ngữ -->
-        <div class="lang" data-lang>
-          <button type="button" class="btn btn-outline lang__toggle" aria-haspopup="true" aria-expanded="false">
-            <span class="lang__label">JP</span><span class="lang__caret">▼</span>
-          </button>
-          <ul class="lang__menu" role="menu" hidden>
-            <li role="none"><button type="button" role="menuitem" class="lang__item is-active" data-lang-code="ja">日本語</button></li>
-            <li role="none"><button type="button" role="menuitem" class="lang__item" data-lang-code="en">English</button></li>
-            <li role="none"><button type="button" role="menuitem" class="lang__item" data-lang-code="zh-Hant">中文（繁体）</button></li>
-            <li role="none"><button type="button" role="menuitem" class="lang__item" data-lang-code="ko">한국어</button></li>
-          </ul>
-        </div>
-
-        <!-- ご予約はこちら → BOOKING_URL -->
-        <a href="#" class="btn btn-reserve js-reserve" data-i18n="header.reserve">ご予約はこちら</a>
-
-        <!-- Hamburger (SP) -->
-        <button type="button" class="hamburger js-drawer-open" aria-label="メニューを開く" aria-controls="drawer" aria-expanded="false">
-          <span></span><span></span><span></span>
+    <div class="header__right">
+      <div class="lang" id="lang">
+        <button class="lang__toggle" type="button" aria-haspopup="true" aria-expanded="false" data-i18n-aria-label="lang.toggle_aria" aria-label="言語切替">
+          <span class="lang__label">JP</span> <span class="lang__caret">▼</span>
         </button>
+        <ul class="lang__menu" role="menu">
+          <li><a href="#" role="menuitem" data-lang="ja" class="is-active">日本語</a></li>
+          <li><a href="#" role="menuitem" data-lang="en">English</a></li>
+          <li><a href="#" role="menuitem" data-lang="zh">中文</a></li>
+          <li><a href="#" role="menuitem" data-lang="ko">한국어</a></li>
+        </ul>
       </div>
+      <button class="drawer" type="button" data-i18n-aria-label="menu.toggle_aria" aria-label="メニュー" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <!-- Drawer / Hamburger menu (SP) -->
-  <div class="drawer" id="drawer">
-    <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="メニュー">
-      <button type="button" class="drawer__close js-drawer-close" aria-label="メニューを閉じる">✕</button>
-      <nav class="drawer__nav" aria-label="モバイルメニュー">
-        <ul>
-          <li><a href="#program" data-i18n="drawer.program">滞在型健康増進プログラムとは</a></li>
-          <li><a href="#supervision" data-i18n="drawer.supervision">日本健康増進学術機構による総合監修</a></li>
-          <li><a href="#fields" data-i18n="drawer.fields">健康プログラムを構成する6つの分野</a></li>
-          <li><a href="#wishes" data-i18n="drawer.wishes">家族への想い</a></li>
-          <li><a href="#pricing" data-i18n="drawer.pricing">宿泊プランと料金</a></li>
-          <li><a href="#access" data-i18n="drawer.access">アクセス</a></li>
-          <li><a href="#faq" data-i18n="drawer.faq">よくある質問</a></li>
+  <!-- ===================== Menu (toggle) ===================== -->
+  <nav class="menu" id="g-nav" aria-hidden="true">
+    <div class="menu__panel">
+      <a class="menu__top-logo logo" href="#top" aria-label="健康の森">
+        <span class="logo__top">大自然<span class="logo__accent">阿蘇</span></span>
+        <span class="logo__main">健康の森</span>
+      </a>
+
+      <figure class="menu__visual">
+        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/hambur-img.jpg" alt="温浴施設" />
+        <figcaption class="menu__visual-text" data-i18n="menu.visual">心と体を解き放つ<br />五感で味わう極上の休日。</figcaption>
+      </figure>
+
+      <div class="menu__nav">
+        <p class="menu__label" data-i18n="menu.contents_label">Contents</p>
+        <ul class="menu__list">
+          <li><a href="#about" data-i18n="nav.about">大自然阿蘇 健康の森とは</a></li>
+          <li><a href="#onsen" data-i18n="nav.onsen">温浴施設</a></li>
+          <li><a href="#dining" data-i18n="nav.dining">お食事</a></li>
+          <li><a href="#stay" data-i18n="nav.stay">宿泊施設</a></li>
+          <li><a href="#experience" data-i18n="nav.experience">体験/その他健康施設</a></li>
+          <li><a href="#tourism" data-i18n="nav.tourism">阿蘇の観光名所</a></li>
+          <li><a href="#price" data-i18n="nav.price">料金プラン</a></li>
+          <li><a href="#access" data-i18n="nav.access">アクセス</a></li>
         </ul>
-      </nav>
-      <div class="drawer__actions">
-        <a href="#" class="btn btn-pill-orange js-reserve" data-i18n="drawer.reserve">今すぐ予約する</a>
-        <a href="#" class="btn btn-pill-outline js-contact" data-i18n="drawer.contact">お問い合わせ・ご相談はこちら</a>
+      </div>
+
+      <div class="menu__btns">
+        <a class="btn-bracket" href="#" data-modal="contact"><span data-i18n="cta.contact">お問い合わせはこちら</span></a>
+        <a class="btn-bracket" href="#reserve"><span data-i18n="cta.reserve">今すぐ予約する</span></a>
+      </div>
+
+      <div class="menu__brand">
+        <p class="menu__tagline" data-i18n="brand.tagline">大自然ウェルネス・リトリート</p>
+        <span class="logo menu__brand-logo">
+          <span class="logo__top">大自然<span class="logo__accent">阿蘇</span></span>
+          <span class="logo__main">健康の森</span>
+        </span>
+        <p class="menu__address" data-i18n="brand.address">〒869-1404<br />熊本県阿蘇郡南阿蘇村河陽5582-37</p>
       </div>
     </div>
-  </div>
-
-  <!-- ============================================================
-       MAIN — trang chủ (LP 1 trang). Các section dựng dần theo phase.
-       ============================================================ -->
+  </nav>
+  <div class="nav-overlay" id="js-overlay"></div>

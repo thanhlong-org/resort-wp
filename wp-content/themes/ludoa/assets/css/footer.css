@@ -1,362 +1,132 @@
-/* ============================================================
-   SECTION: FOOTER (フッター)
-   ============================================================ */
-
-.site-footer {
-  background: linear-gradient(360deg, #080052 45.18%, #10297D 100%);
-  color: rgba(255, 255, 255, 0.7);
-  padding: 56px 0 32px;
-  font-family: var(--font-sans);
-  z-index: 10;
+/* ===========================================================
+   フッター (footer)
+   Mobile-first → PC ở cuối file.
+   =========================================================== */
+.footer {
   position: relative;
+  background: linear-gradient(0deg, #000 60%, rgba(0, 0, 0, 0) 100%), var(--color-bg);
+  padding: 60px 0 24px;
 }
-
-@media (min-width: 1024px) {
-  .site-footer {
-    padding: 80px var(--container-pad) 40px;
-  }
-}
-
-/* Footer Inner Container */
 .footer__inner {
-  max-width: var(--container-max);
+  width: 100%;
+  max-width: 350px;
   margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "nav"
+    "btns"
+    "brand";
+  gap: 48px;
+  justify-items: center;
 }
 
-/* ==========================================
-   1. Footer Top Call to Action (CTA)
-   ========================================== */
-
-.footer__cta {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.footer__cta-title {
-  font-family: var(--font-serif);
-  font-weight: 500;
-  font-size: 31px;
-  color: var(--color-white);
-  line-height: 1.6;
-  margin: 0 0 28px 0;
-  letter-spacing: 0.03em;
-}
-
-.footer__cta-highlight {
-  display: block;
-  color: var(--color-orange); /* Chữ màu vàng cam */
-  margin-top: 8px;
-  font-size: 16px;
-}
-
-@media (min-width: 768px) {
-  .footer__cta-title {
-    font-size: 28px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .footer__cta {
-    margin-bottom: 56px;
-  }
-  .footer__cta-title {
-    font-size: 48px;
-    margin-bottom: 64px;
-  }
-  .footer__cta-highlight {
-    font-size: 36px;
-  }
-}
-
-/* CTA Buttons */
-.footer__cta-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-}
-
-@media (min-width: 640px) {
-  .footer__cta-buttons {
-    flex-direction: row;
-    justify-content: center;
-    gap: 20px;
-  }
-}
-
-/* Common Button Styles */
-.btn-footer {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 54px;
-  width: 100%;
-  max-width: 320px;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-serif);
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-}
-
-@media (min-width: 1024px) {
-  .btn-footer {
-    min-height: 60px;
-    font-size: 16px;
-    max-width: 265px;
-  }
-}
-
-/* Primary Button (Book Now) */
-.btn-footer--primary {
-  background-color: var(--color-orange);
-  color: var(--color-white);
-  border: none;
-  box-shadow: 0 6px 20px rgba(235, 159, 52, 0.3);
-}
-
-.btn-footer--primary:hover {
-  background-color: #f7ac3e;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(235, 159, 52, 0.45);
-}
-
-
-
-/* Outline Button (Contact) */
-.btn-footer--outline {
-  background-color: transparent;
-  color: var(--color-white);
-  border: 1.5px solid var(--color-white);
-}
-
-.btn-footer--outline:hover {
-  background-color: var(--color-white);
-  color: var(--color-navy-deep);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
-}
-
-
-/* ==========================================
-   2. Horizontal Divider Line
-   ========================================== */
-
-.footer__divider {
-  border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin: 0 0 40px 0;
-  width: 100%;
-}
-
-@media (min-width: 1024px) {
-  .footer__divider {
-    margin-bottom: 56px;
-  }
-
-  .btn-footer--outline {
-    max-width: 406px;  
-  }
-}
-
-
-/* ==========================================
-   3. Footer Bottom Content
-   ========================================== */
-
-.footer__bottom {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  text-align: left;
-}
-
-@media (min-width: 1024px) {
-  .footer__bottom {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: start;
-    gap: 64px;
-  }
-}
-
-/* SP: show the nav links first, then the brand/contact block (like the mockup). */
-@media (max-width: 1023px) {
-  .footer__nav {
-    order: -1;
-  }
-}
-
-/* Left side: Brand Info */
-.footer__brand {
-  flex-shrink: 0;
-}
-
-.logo--footer {
-  font-size: 29px;
-  font-family: var(--font-serif);
-  font-weight: 700;
-  color: var(--color-white) !important;
-}
-
-.footer__address {
-  font-size: 14px;
-  line-height: 1.6;
-  margin: 0 0 8px 0;
-  color: #9CA3AF;
-}
-
-@media (min-width: 1024px) {
-  .logo--footer {
-    font-size: 22px;
-    margin: 0 0 16px 0;
-  }
-
-  .footer__address {
-    margin-bottom: 24px;
-  }
-}
-
-/* Contact Info */
-.footer__contact {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.footer__phone {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-latin);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--color-white);
-  text-decoration: none;
-  transition: color 0.2s ease;
-  line-height: 1;
-}
-
-.footer__phone:hover {
-  color: var(--color-orange);
-}
-
-.footer__phone-icon {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-}
-
-.footer__hours {
-  font-size: 14px;
-  color: #9CA3AF;
-  margin: 0;
-}
-
-@media (min-width: 1024px) {
-  .footer__phone {
-    font-size: 24px;
-  }
-}
-
-
-/* Right side: Links Grid Navigation */
+/* nav */
 .footer__nav {
-  flex-grow: 1;
-}
-
-@media (min-width: 1024px) {
-  .footer__nav {
-    flex-grow: 0;
-    margin-left: auto; /* Push the menu container to the right end of the footer */
-  }
-}
-
-.footer__nav-list {
+  grid-area: nav;
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px 25px; /* SP gap: row 16px, col 25px */
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
 }
-
-.footer__nav-link {
-  display: inline-block;
-  width: calc(50% - 12.5px); /* Adjusted for 25px gap */
-  font-size: 16px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-  transition: color 0.2s ease;
-  letter-spacing: 0.02em;
+.footer__nav a {
+  font-family: var(--font-serif);
+  font-weight: 200;                           /* Figma SP: ExtraLight */
+  font-size: 16px;                            /* Figma SP: 16px (PC 18px) */
+  letter-spacing: 0.04em;
+  color: var(--color-white);
+  transition: opacity 0.3s ease;
 }
+.footer__nav a:hover { opacity: 0.6; }
 
-.footer__nav-link:hover {
-  color: var(--color-orange); /* Hover màu vàng cam */
+/* buttons */
+.footer__btns {
+  grid-area: btns;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
 }
+.footer__btns .btn-bracket span { font-size: 18px; font-weight: 400; } /* Figma: 18px w400 */
 
-/* Order links on mobile (SP) to match UI layout */
-.footer__nav-link[href="#program"] { order: 1; }
-.footer__nav-link[href="#supervision"] { order: 2; }
-.footer__nav-link[href="#fields"] { order: 3; }
-.footer__nav-link[href="#wishes"] { order: 4; }
-.footer__nav-link[href="#pricing"] { order: 5; }
-.footer__nav-link[href="#access"] { order: 6; }
-.footer__nav-link.js-contact { order: 7; }
-.footer__nav-link[href="#faq"] { order: 8; }
-.footer__nav-link[data-i18n="footer.nav_privacy"] { order: 9; }
-
-/* 3 long links occupy full row on mobile */
-.footer__nav-link--full {
-  width: 100%;
-}
-
-@media (min-width: 1024px) {
-  .footer__nav-list {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 160px; /* Fixed height to flow vertically into 3 columns (3 items per col) */
-    gap: 25px; /* Strict 25px gap on PC */
-  }
-
-  .footer__nav-link {
-    font-size: 16px;
-    width: auto; /* Let items shrink to their text content */
-    white-space: nowrap; /* Prevent any Japanese text from wrapping */
-    order: 0 !important; /* Reset order to follow HTML source code order on PC */
-  }
-
-  /* Reset full row width on PC */
-  .footer__nav-link--full {
-    width: auto;
-  }
-}
-
-
-/* ==========================================
-   4. Copyright Area
-   ========================================== */
-
-.footer__copyright {
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  margin-top: 20px;
-  padding-top: 24px;
+/* brand */
+.footer__brand {
+  grid-area: brand;
   text-align: center;
 }
-
-.footer__copyright p {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.4);
-  margin: 0;
-  letter-spacing: 0.05em;
+.footer__tag {
+  font-family: var(--font-serif);
+  font-size: 18px;                            /* Figma SP: 18px */
+  letter-spacing: 0.04em;
+  color: var(--color-white);
+  margin-bottom: 10px;
+}
+.footer__logo {
+  font-size: 30px;
+  margin-bottom: 16px;
+}
+.footer__addr {
+  font-family: var(--font-serif);
+  font-weight: 200;
+  font-size: 16px;                            /* Figma SP: ExtraLight 16px */
+  line-height: 1.7;
+  color: #787878;
 }
 
+/* copyright */
+.footer__copy {
+  margin-top: 44px;
+  padding-top: 20px;
+  border-top: 1px solid #2C2C2C;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 12px;                            /* Figma SP: 12px (PC 14px) */
+  letter-spacing: 0.04em;
+  color: #464646;
+}
+
+/* ===========================================================
+   PC (≥1024px)
+   =========================================================== */
 @media (min-width: 1024px) {
-  .footer__copyright {
-    margin-top: 56px;
+  .footer { padding: 90px 0 30px; }
+  .footer__inner {
+    max-width: 1346px;
+    padding: 0 47px;
+    grid-template-columns: 1fr auto;   /* brand chiếm trái, cột phải = bề rộng nav */
+    grid-template-areas:
+      "brand btns"
+      "brand nav";
+    column-gap: 40px;
+    row-gap: 40px;
+    justify-items: start;
+    align-items: start;
   }
-  .footer__copyright p {
-    font-size: 12px;
+
+  .footer__brand { align-self: center; text-align: left; }
+  .footer__tag { font-size: 18px; }
+  .footer__logo { font-size: 40px; align-items: flex-start; }
+  .footer__addr { font-size: 16px; }
+
+  /* buttons top-right (row) — trải đều theo bề rộng nav */
+  .footer__btns {
+    flex-direction: row;
+    justify-self: stretch;
+    justify-content: space-around;
   }
+
+  /* nav grid 4 × 2 */
+  .footer__nav {
+    justify-self: end;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    column-gap: 44px;
+    row-gap: 18px;
+  }
+  .footer__nav a { font-size: 18px; font-weight: 200; }  /* Figma PC: ExtraLight 18px */
+
+  .footer__btns .btn-bracket span { font-size: 18px; }   /* Figma PC: 18px */
+
+  .footer__copy { margin-top: 60px; font-size: 14px; }   /* Figma PC: 14px */
 }

@@ -1,0 +1,222 @@
+/* ===========================================================
+   料金プラン (plan)
+   Mobile-first → PC ở cuối file.
+   =========================================================== */
+.plan {
+  position: relative;
+  background: var(--color-bg);
+  padding: 70px 0 80px;
+}
+.plan__inner {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* eyebrow tiêu đề section */
+.plan__eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+.plan__eyebrow::before,
+.plan__eyebrow::after {
+  content: "";
+  width: 16px;
+  height: 1px;
+  background: var(--color-white);
+}
+.plan__eyebrow span {
+  font-family: var(--font-brush);
+  font-size: 24px;
+  letter-spacing: 0.08em;
+  color: var(--color-white);
+}
+
+/* header: tên plan + giá */
+.plan__header { margin-bottom: 40px; }
+.plan__lead {
+  padding-left: 16px;
+  border-left: 0.5px solid var(--color-white);
+  margin-bottom: 28px;
+}
+.plan__brand {
+  font-family: var(--font-serif);
+  font-size: 12px;                    /* Figma SP: 12px (PC 18px) */
+  color: var(--color-white);
+  margin-bottom: 6px;
+}
+.plan__name {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 19px;                    /* Figma SP: 19px (PC 25px) */
+  line-height: 1.7;
+  color: var(--color-white);
+}
+.plan__price-note {
+  font-family: var(--font-serif);
+  font-size: 20px;                    /* Figma SP: 20px (PC 24px) */
+  letter-spacing: 0.04em;
+  color: var(--color-white);
+  margin-bottom: 4px;
+}
+.plan__price-note strong { font-weight: 400; }
+.plan__price-main {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  color: var(--color-white);
+}
+.plan__price-num {
+  font-family: var(--font-serif);
+  font-weight: 500;                   /* Figma SP: Medium 60px (PC SemiBold 80px) */
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+.plan__price-unit {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 4px;
+}
+.plan__price-tax { font-family: var(--font-serif); font-size: 12px; } /* Figma SP: 12px (PC 18px) */
+.plan__price-yen { font-family: var(--font-serif); font-weight: 600; font-size: 20px; } /* Figma SP: 20px (PC 37px) */
+
+/* cards */
+.plan__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.plan__card {
+  background: var(--color-card);         /* #282828 */
+  border-radius: 2px;
+  padding: 30px 28px 34px;
+}
+.plan__card--center { text-align: center; }
+.plan__card-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 19px;                    /* Figma SP: 19px (PC 21px) */
+  text-align: center;
+  color: var(--color-white);
+  padding-bottom: 16px;
+  margin-bottom: 22px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.16);
+}
+.plan__card-sub {
+  display: block;
+  font-size: 13.5px;                  /* Figma SP: 13.5px (PC 17px) */
+  margin-top: 8px;
+}
+
+/* bullet list */
+.plan__list { display: flex; flex-direction: column; gap: 15px; margin-bottom: 22px; }
+.plan__list li {
+  position: relative;
+  padding-left: 20px;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 14px;                    /* Figma SP: 14px (PC 18px) */
+  color: var(--color-gray);
+}
+.plan__list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.7em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-gray);
+}
+.plan__note {
+  font-family: var(--font-serif);
+  font-size: 14px;                    /* Figma SP: 14px (PC 16px) */
+  line-height: 1.6;
+  color: var(--color-gray);
+}
+.plan__ctext {
+  font-family: var(--font-serif);
+  font-size: 13px;                    /* Figma SP: 13px (PC 16px) */
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  color: var(--color-gray);
+}
+
+/* fees (card 3) */
+.plan__fees { display: flex; flex-direction: column; gap: 14px; }
+.plan__fees > li:not(.plan__fee-hr) {
+  position: relative;
+  padding-left: 20px;
+}
+.plan__fees > li:not(.plan__fee-hr)::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.55em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-gray);
+}
+.plan__fee-name {
+  font-family: var(--font-serif);
+  font-weight: 400;                   /* Figma SP: Regular (PC Medium 500) */
+  font-size: 18px;
+  color: var(--color-gray);
+}
+.plan__fee-sub {
+  font-family: var(--font-serif);
+  font-size: 14px;                    /* Figma SP: 14px (PC 16px) */
+  line-height: 1.6;
+  color: var(--color-gray);
+}
+.plan__fee-sub strong { font-weight: 700; }
+.plan__fee-hr {
+  height: 1px;
+  background: #909090;
+  opacity: 0.6;
+  margin: 4px 0;
+}
+
+/* cta */
+.plan__cta { display: flex; justify-content: center; margin-top: 44px; }
+.plan__cta .btn-bracket span { font-size: 20px; font-weight: 400; }
+
+/* ===========================================================
+   PC (≥1024px)
+   =========================================================== */
+@media (min-width: 1024px) {
+  .plan { padding: 110px 0 120px; }
+  .plan__inner { max-width: 1240px; padding: 0 100px; }
+
+  .plan__eyebrow { margin-bottom: 70px; }
+  .plan__eyebrow span { font-size: 28px; }
+
+  .plan__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 56px;
+  }
+  .plan__lead { margin-bottom: 0; padding-left: 20px; }
+  .plan__brand { font-size: 18px; }
+  .plan__name { font-size: 25px; line-height: 1.8; }
+  .plan__price-note { text-align: center; font-size: 24px; }
+  .plan__price-num { font-size: 80px; font-weight: 600; }   /* Figma PC: SemiBold 80px */
+  .plan__price-yen { font-size: 37px; }
+  .plan__price-tax { font-size: 18px; }
+  .plan__price-main { justify-content: center; }
+
+  .plan__card-title { font-size: 21px; }                    /* Figma PC: 21px */
+  .plan__card-sub { font-size: 17px; }                      /* Figma PC: 17px */
+  .plan__list li { font-size: 18px; }                       /* Figma PC: 18px */
+  .plan__note { font-size: 16px; }                          /* Figma PC: 16px */
+  .plan__ctext { font-size: 16px; }                         /* Figma PC: 16px */
+  .plan__fee-name { font-weight: 500; }                     /* Figma PC: Medium 500 */
+  .plan__fee-sub { font-size: 16px; }                       /* Figma PC: 16px */
+
+  .plan__cards { flex-direction: row; gap: 26px; }
+  .plan__card { flex: 1; min-height: 351px; padding: 36px 31px; }
+}

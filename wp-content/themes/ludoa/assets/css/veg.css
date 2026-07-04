@@ -1,0 +1,150 @@
+/* ===========================================================
+   お食事 (vegetable) — 自社栽培野菜料理
+   Mobile-first → PC ở cuối file.
+   =========================================================== */
+.veg {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-bg);
+  padding: 0 0 90px;
+}
+
+/* nền ruộng rau + gradient */
+.veg__bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  aspect-ratio: 910 / 683;
+  z-index: 0;
+}
+.veg__bg img { width: 100%; height: 100%; object-fit: cover; }
+.veg__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(18, 19, 18, 1) 6%,
+    rgba(18, 19, 18, 0.71) 38%,
+    rgba(18, 19, 18, 0.7) 78%,
+    rgba(18, 19, 18, 1) 100%);
+}
+
+.veg__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 60px 20px 0;
+}
+
+/* ---- tiêu đề ---- */
+.veg__headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 40px;
+}
+.veg__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.veg__eyebrow::before,
+.veg__eyebrow::after {
+  content: "";
+  width: 16px;
+  height: 1px;
+  background: var(--color-gray);
+}
+.veg__eyebrow span {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  letter-spacing: 0.18em;
+  color: var(--color-white);
+}
+.veg__title {
+  display: flex;
+  flex-direction: row-reverse;      /* 自社栽培 (phải) / 野菜料理 (trái) */
+  justify-content: center;
+  gap: 4px;
+}
+.veg__title span {
+  writing-mode: vertical-rl;
+  font-family: var(--font-brush);
+  font-weight: 400;
+  font-size: 34px;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  color: var(--color-white);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* ---- content: ảnh + body ---- */
+.veg__content { position: relative; }
+
+.veg__photos { position: relative; height: 400px; }
+.veg__ph { margin: 0; }
+.veg__ph img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1px;
+  box-shadow: -10px 14px 44px rgba(0, 0, 0, 0.6);
+}
+.veg__ph--basket  { position: absolute; right: 4%; top: 0;    width: 211px; z-index: 2; }
+.veg__ph--kaiseki { position: absolute; left: 0;   top: 150px; width: 293px; z-index: 1; }
+
+.veg__body { margin-top: 20px; }
+.veg__body p {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 2.2;
+  letter-spacing: 0.03em;
+  color: var(--color-white);
+}
+.veg__body p + p { margin-top: 1.8em; }
+
+.veg__ph--buffet {
+  width: 278px;
+  margin: 40px auto 0;
+}
+
+/* ===========================================================
+   PC (≥1024px)
+   =========================================================== */
+@media (min-width: 1024px) {
+  .veg { padding: 0 0 140px; }
+  .veg__bg { aspect-ratio: 1441 / 1081; }
+
+  .veg__inner { max-width: 1240px; padding: 120px 40px 0; }
+
+  .veg__headline { gap: 32px; margin-bottom: 0; }
+  .veg__eyebrow { gap: 14px; }
+  .veg__eyebrow::before,
+  .veg__eyebrow::after { width: 26px; }
+  .veg__eyebrow span { font-size: 20px; }
+  .veg__title { gap: 8px; }
+  .veg__title span { font-size: 56px; }
+
+  .veg__content {
+    max-width: 1160px;
+    margin: 60px auto 0;
+    min-height: 960px;
+  }
+  .veg__photos { position: static; height: auto; }
+  .veg__ph--basket  { left: 22%; right: auto; top: 0;    width: 302px; }
+  .veg__ph--kaiseki { left: 0;   top: 200px;  width: 418px; }
+  .veg__ph--buffet  { position: absolute; left: 10%; top: 600px; width: 435px; margin: 0; }
+
+  .veg__body {
+    position: absolute;
+    right: 0;
+    top: 100px;
+    width: 500px;
+    margin: 0;
+  }
+  .veg__body p { font-size: 18px; line-height: 2.2; }
+}

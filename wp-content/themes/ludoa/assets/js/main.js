@@ -1,154 +1,256 @@
-/* ============================================================
-   Khởi tạo chung cho trang chủ.
-   ============================================================ */
-(function () {
-  function onReady(fn) {
-    if (document.readyState !== "loading") fn();
-    else document.addEventListener("DOMContentLoaded", fn);
+/* ===========================================================
+   Main JS — cơ chế animation theo byaku.site (Phương án A)
+   jQuery + class toggle khi phần tử vào viewport.
+   =========================================================== */
+(function ($) {
+  'use strict';
+
+  /* ---- Fix viewport height trên mobile (--vh) ---- */
+  function setVh() {
+    var vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', vh + 'px');
+  }
+  setVh();
+  var lastW = window.innerWidth;
+  window.addEventListener('resize', function () {
+    // chỉ cập nhật khi đổi chiều rộng (tránh giật do thanh địa chỉ mobile)
+    if (lastW !== window.innerWidth) {
+      lastW = window.innerWidth;
+      setVh();
+    }
+  });
+
+  /* ---- Tách tiêu đề brush thành từng ký tự (để reveal lần lượt) ---- */
+  var CHAR_TITLES = [
+    '.concept__headline-main', '.onsen__title', '.veg__title', '.house__title',
+    '.learn__title', '.tourism__title', '.fv__title',
+    '.house__eyebrow', '.veg__eyebrow', '.learn__eyebrow',
+    '.tourism__eyebrow', '.plan__eyebrow', '.access__eyebrow'
+  ].join(', ');
+
+  function splitTitleChars() {
+    $(CHAR_TITLES).each(function () {
+      var $t = $(this);
+      if ($t.data('split')) return;
+      // shimmer chỉ cho title lớn + Hero (eyebrow dùng ::after cho gạch nên bỏ qua)
+      if (!/__eyebrow/.test($t.attr('class') || '')) $t.addClass('title-fx');
+
+      var i = 0;
+      var $cols = $t.children('span');
+      var $targets = $cols.length ? $cols : $t;
+      $targets.each(function () {
+        var $col = $(this);
+        if ($col.children().length) return;   // bỏ span có phần tử con (br / 阿蘇 xanh)
+        var txt = $col.text();
+        $col.empty();
+        for (var k = 0; k < txt.length; k++) {
+          $('<span class="char"></span>').text(txt[k]).css('--ci', i++).appendTo($col);
+        }
+      });
+      $t.data('split', true);
+    });
   }
 
-  onReady(function () {
-    var cfg = window.SITE_CONFIG || {};
+  /* ---- Scroll-trigger: thêm class khi phần tử vào viewport ---- */
+  function reveal() {
+    var winBottom = $(window).scrollTop() + $(window).height();
 
-    // Gắn URL đặt phòng cho mọi nút .js-reserve (khi đã có link thật).
-    if (cfg.BOOKING_URL && cfg.BOOKING_URL !== "#") {
-      document.querySelectorAll(".js-reserve").forEach(function (a) {
-        a.setAttribute("href", cfg.BOOKING_URL);
-        a.setAttribute("target", "_blank");
-        a.setAttribute("rel", "noopener");
-      });
-    } else {
-      // Nếu chưa có link thật (bằng "#"), gán sự kiện click mở modal contact
-      document.querySelectorAll(".js-reserve").forEach(function (a) {
-        a.addEventListener("click", function (e) {
-          e.preventDefault();
-          var contactModal = document.getElementById('modal-contact');
-          if (contactModal) {
-            contactModal.classList.add("is-open");
-            document.body.style.overflow = "hidden";
-          }
-        });
-      });
-    }
-
-    // .js-contact -> sẽ mở modal liên hệ (làm ở phase sau).
-
-    // Modal cho phần Supervision / Fields
-    var modalTriggers = document.querySelectorAll('.js-field-modal');
-    modalTriggers.forEach(function (trigger) {
-      var fieldId = trigger.getAttribute('data-field');
-      var modalEl = document.getElementById('modal-field-' + fieldId);
-
-      if (modalEl) {
-        // Mở modal
-        trigger.addEventListener("click", function (e) {
-          e.preventDefault();
-          modalEl.classList.add("is-open");
-          document.body.style.overflow = "hidden";
-        });
-
-        // Đóng modal
-        var closeElements = modalEl.querySelectorAll(".js-modal-close");
-        closeElements.forEach(function (btn) {
-          btn.addEventListener("click", function (e) {
-            e.preventDefault();
-            modalEl.classList.remove("is-open");
-            var openModals = document.querySelectorAll('.modal.is-open');
-            if (openModals.length === 0) {
-              document.body.style.overflow = "";
-            }
-          });
-        });
-      }
+    $(CHAR_TITLES).each(function () {
+      if (winBottom >= $(this).offset().top + 40) $(this).addClass('is-charon');
     });
 
-    // Modal cho phần Contact Form (Liên hệ) - kích hoạt bằng js-contact
-    var contactTriggers = document.querySelectorAll('.js-contact');
-    var contactModal = document.getElementById('modal-contact');
-    if (contactModal) {
-      contactTriggers.forEach(function (trigger) {
-        trigger.addEventListener("click", function (e) {
-          e.preventDefault();
-          contactModal.classList.add("is-open");
-          document.body.style.overflow = "hidden";
+    $('.fadeUpTrigger').each(function () {
+      if (winBottom >= $(this).offset().top + 50) $(this).addClass('fadeUp');
+    });
+    $('.fadeInTrigger').each(function () {
+      if (winBottom >= $(this).offset().top + 50) $(this).addClass('fadeIn');
+    });
+    $('.blurTrigger').each(function () {
+      if (winBottom >= $(this).offset().top + 50) $(this).addClass('blur');
+    });
+    $('.blurInTrigger').each(function () {
+      if (winBottom >= $(this).offset().top + 50) $(this).addClass('blurIn');
+    });
+    $('.blurImageTrigger').each(function () {
+      if (winBottom >= $(this).offset().top + 50) $(this).addClass('blur-image');
+    });
+
+    // stagger: gắn delay tăng dần cho từng item con
+    $('.staggerTrigger').each(function () {
+      if (winBottom >= $(this).offset().top + 50 && !$(this).hasClass('is-on')) {
+        var $self = $(this);
+        $self.children().each(function (i) {
+          $(this).css('transition-delay', (i * 0.12) + 's');
         });
-      });
-
-      var closeElements = contactModal.querySelectorAll(".js-modal-close");
-      closeElements.forEach(function (btn) {
-        btn.addEventListener("click", function (e) {
-          e.preventDefault();
-          contactModal.classList.remove("is-open");
-          var openModals = document.querySelectorAll('.modal.is-open');
-          if (openModals.length === 0) {
-            document.body.style.overflow = "";
-          }
-        });
-      });
-    }
-
-    // Modal cho phần Privacy Policy (Chính sách bảo mật) - kích hoạt bằng js-privacy-trigger
-    // Dùng event delegation vì link trong contact modal bị i18n tạo lại (đổi ngôn ngữ),
-    // nên không thể gắn listener trực tiếp một lần.
-    var privacyModal = document.getElementById('modal-privacy');
-    if (privacyModal) {
-      document.addEventListener("click", function (e) {
-        var trigger = e.target.closest(".js-privacy-trigger");
-        if (!trigger) return;
-        e.preventDefault();
-        privacyModal.classList.add("is-open");
-        document.body.style.overflow = "hidden";
-      });
-
-      var closeElements = privacyModal.querySelectorAll(".js-modal-close");
-      closeElements.forEach(function (btn) {
-        btn.addEventListener("click", function (e) {
-          e.preventDefault();
-          privacyModal.classList.remove("is-open");
-          var openModals = document.querySelectorAll('.modal.is-open');
-          if (openModals.length === 0) {
-            document.body.style.overflow = "";
-          }
-        });
-      });
-    }
-
-    // Modal cho phần Schedule Detail (Lịch trình chi tiết) - kích hoạt bằng js-schedule-detail-trigger
-    var scheduleTriggers = document.querySelectorAll('.js-schedule-detail-trigger');
-    var scheduleModal = document.getElementById('modal-schedule-detail');
-    if (scheduleModal) {
-      scheduleTriggers.forEach(function (trigger) {
-        trigger.addEventListener("click", function (e) {
-          e.preventDefault();
-          scheduleModal.classList.add("is-open");
-          document.body.style.overflow = "hidden";
-        });
-      });
-
-      var closeElements = scheduleModal.querySelectorAll(".js-modal-close");
-      closeElements.forEach(function (btn) {
-        btn.addEventListener("click", function (e) {
-          e.preventDefault();
-          scheduleModal.classList.remove("is-open");
-          var openModals = document.querySelectorAll('.modal.is-open');
-          if (openModals.length === 0) {
-            document.body.style.overflow = "";
-          }
-        });
-      });
-    }
-
-    // Đóng khi nhấn phím Esc (chung cho tất cả modal)
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") {
-        var openModals = document.querySelectorAll('.modal.is-open');
-        if (openModals.length > 0) {
-          openModals.forEach(function (modal) {
-            modal.classList.remove("is-open");
-          });
-          document.body.style.overflow = "";
-        }
+        $self.addClass('is-on');
       }
     });
+  }
+
+  /* ---- Drawer / hamburger ---- */
+  function bindDrawer() {
+    $('.drawer').on('click', function () {
+      var open = $(this).toggleClass('active').hasClass('active');
+      $('body').toggleClass('fixed', open);
+      $('#g-nav').toggleClass('panel-active', open).attr('aria-hidden', !open);
+      $('#js-overlay').toggleClass('is-show', open);
+      $(this).attr('aria-expanded', open);
+    });
+
+    function closeNav() {
+      $('.drawer').removeClass('active').attr('aria-expanded', false);
+      $('body').removeClass('fixed');
+      $('#g-nav').removeClass('panel-active').attr('aria-hidden', true);
+      $('#js-overlay').removeClass('is-show');
+    }
+    $('#js-overlay').on('click', closeNav);
+    $('#g-nav a[href]').on('click', closeNav);
+  }
+
+  /* ---- Dropdown ngôn ngữ ---- */
+  function bindLang() {
+    var $lang = $('#lang');
+    $lang.find('.lang__toggle').on('click', function (e) {
+      e.stopPropagation();
+      var open = $lang.toggleClass('is-open').hasClass('is-open');
+      $(this).attr('aria-expanded', open);
+    });
+    $lang.find('.lang__menu a').on('click', function (e) {
+      e.preventDefault();
+      $lang.find('.lang__menu a').removeClass('is-active');
+      $(this).addClass('is-active');
+      $lang.removeClass('is-open').find('.lang__toggle').attr('aria-expanded', false);
+      // TODO: chuyển ngôn ngữ theo data-lang khi có bản dịch
+    });
+    // click ra ngoài → đóng
+    $(document).on('click', function () {
+      $lang.removeClass('is-open').find('.lang__toggle').attr('aria-expanded', false);
+    });
+  }
+
+  /* ---- Modal (contact form + 宿泊料金) ---- */
+  function openModal(id) {
+    $('#modal-' + id).addClass('is-open').attr('aria-hidden', false);
+    $('body').addClass('modal-open');
+  }
+  function closeModal() {
+    $('.modal.is-open').removeClass('is-open').attr('aria-hidden', true);
+    $('body').removeClass('modal-open');
+  }
+  function bindModals() {
+    $('[data-modal]').on('click', function (e) {
+      e.preventDefault();
+      // đóng menu nếu đang mở
+      $('.drawer').removeClass('active').attr('aria-expanded', false);
+      $('#g-nav').removeClass('panel-active').attr('aria-hidden', true);
+      $('#js-overlay').removeClass('is-show');
+      $('body').removeClass('fixed');
+      openModal($(this).data('modal'));
+    });
+    $('[data-modal-close]').on('click', function (e) { e.preventDefault(); closeModal(); });
+    $('.modal').on('click', function (e) { if (e.target === this) closeModal(); });
+    $(document).on('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+    // ép thông báo validate sang tiếng Nhật (gắn trực tiếp vì 'invalid' không bubble)
+    $('.cform').find('input, select, textarea').each(function () {
+      this.addEventListener('invalid', function () {
+        var v = this.validity;
+        if (v.valueMissing)      this.setCustomValidity('こちらの項目にご入力ください。');
+        else if (v.typeMismatch && this.type === 'email') this.setCustomValidity('メールアドレスの形式が正しくありません。');
+        else                     this.setCustomValidity('入力内容をご確認ください。');
+      });
+      this.addEventListener('input',  function () { this.setCustomValidity(''); });
+      this.addEventListener('change', function () { this.setCustomValidity(''); });
+    });
+
+    // Submit handled by contact.js (AJAX to WordPress admin-ajax).
+  }
+
+  // Expose so contact.js can close the modal after a successful send.
+  window.ludoaCloseModal = closeModal;
+
+  /* ---- Smooth scroll cho anchor ---- */
+  function bindSmoothScroll() {
+    $('a[href^="#"]').on('click', function () {
+      if ($(this).is('[data-modal], [data-modal-close]')) return;
+      var href = $(this).attr('href');
+      var $target = (href === '#' || href === '') ? $('html') : $(href);
+      if (!$target.length) return;
+      var top = $target.offset().top;
+      $('html, body').animate({ scrollTop: top }, 1200, 'easeInOutQuint');
+      return false;
+    });
+  }
+
+  /* ---- Marquee đa lớp: nhân đôi unit mỗi lớp để cuộn liền mạch ---- */
+  function initHouseMarquee() {
+    $('.js-house-layer').each(function () {
+      var $layer = $(this);
+      if (!$layer.data('cloned')) {
+        $layer.append($layer.children('.house__unit').clone());
+        $layer.data('cloned', true);
+      }
+    });
+  }
+
+  /* ---- Dải ảnh tự chạy (access) — nhân đôi để cuộn liền mạch ---- */
+  function initStrip() {
+    var $t = $('.js-strip');
+    if ($t.length && $t.children().length && !$t.data('cloned')) {
+      $t.append($t.children().clone());
+      $t.data('cloned', true);
+    }
+  }
+
+  /* ---- Learn slider (slick, độ rộng slide linh hoạt) ---- */
+  function initLearnSlider() {
+    var $s = $('.learn__slider');
+    if (!$s.length || !$.fn.slick) return;
+
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    var total = $s.children('.learn__slide').length;
+    $('.learn__total').text(pad(total));
+
+    $s.on('init afterChange', function (e, slick, current) {
+      $('.learn__count .js-current').text(pad((current || 0) + 1));
+    });
+
+    $s.slick({
+      variableWidth: true,
+      slidesToShow: 1,
+      infinite: true,
+      arrows: false,
+      speed: 700,
+      cssEase: 'cubic-bezier(0.22, 1, 0.36, 1)'
+    });
+
+    $('.learn__arrow--prev').on('click', function () { $s.slick('slickPrev'); });
+    $('.learn__arrow--next').on('click', function () { $s.slick('slickNext'); });
+  }
+
+  /* ---- Re-run title split + reveal after an i18n locale switch ----
+     i18n.js replaces innerHTML of translated nodes; the brush titles
+     therefore lose their per-char <span>s. Reset and re-split them. */
+  window.ludoaAfterI18n = function () {
+    $(CHAR_TITLES).removeData('split').removeClass('is-charon title-fx');
+    splitTitleChars();
+    reveal();
+  };
+
+  /* ---- Init ---- */
+  $(function () {
+    bindDrawer();
+    bindSmoothScroll();
+    bindLang();
+    bindModals();
+    splitTitleChars();
+    initHouseMarquee();
+    initStrip();
+    initLearnSlider();
+    reveal();
   });
-})();
+
+  $(window).on('scroll', reveal);
+  $(window).on('load', reveal);
+
+})(jQuery);

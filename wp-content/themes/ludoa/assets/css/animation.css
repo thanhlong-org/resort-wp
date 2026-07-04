@@ -1,137 +1,128 @@
-/* ============================================================
-   REVEAL & SCROLL ANIMATIONS (WOW FACTOR)
-   ============================================================ */
+/* ===========================================================
+   Animation — theo cơ chế byaku.site:
+   JS thêm class kích hoạt (vd .fadeUp) khi phần tử vào viewport.
+   Trạng thái ban đầu đặt ở class ...Trigger; hiệu ứng ở class kích hoạt.
+   =========================================================== */
 
-/* 1. Reveal Base Styles */
-.reveal-fade,
-.reveal-up,
-.reveal-left,
-.reveal-right {
+/* Token chung: chuyển động chậm & mềm (tinh thần byaku) */
+:root {
+  --rv-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --rv-dur: 1.1s;          /* reveal chữ/khối */
+  --rv-dur-img: 1.5s;      /* ảnh focus chậm hơn chút */
+}
+
+/* ---- fadeUp: trượt lên + hiện ---- */
+.fadeUpTrigger {
   opacity: 0;
-  will-change: transform, opacity;
+  transform: translateY(36px);
+  transition: opacity var(--rv-dur) ease, transform var(--rv-dur) var(--rv-ease);
+  will-change: opacity, transform;
 }
-
-.reveal-fade {
-  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.reveal-fade.is-visible {
+.fadeUpTrigger.fadeUp {
   opacity: 1;
-}
-
-.reveal-up {
-  transform: translateY(40px);
-  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.reveal-up.is-visible {
   transform: translateY(0);
+}
+
+/* ---- fadeIn: chỉ hiện ---- */
+.fadeInTrigger {
+  opacity: 0;
+  transition: opacity var(--rv-dur) ease;
+}
+.fadeInTrigger.fadeIn {
   opacity: 1;
 }
 
-.reveal-left {
-  transform: translateX(-50px);
-  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+/* ---- blurIn: mờ → nét + hiện (cho chữ/khối) ---- */
+.blurTrigger,
+.blurInTrigger {
+  opacity: 0;
+  filter: blur(12px);
+  transition: opacity var(--rv-dur) ease, filter var(--rv-dur) ease;
 }
-.reveal-left.is-visible {
-  transform: translateX(0);
+.blurTrigger.blur,
+.blurInTrigger.blurIn {
   opacity: 1;
+  filter: blur(0);
 }
 
-.reveal-right {
-  transform: translateX(50px);
-  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+/* ---- blur-image: ảnh mờ → nét, hơi zoom ---- */
+.blurImageTrigger {
+  filter: blur(14px);
+  transform: scale(1.06);
+  transition: filter var(--rv-dur-img) ease, transform var(--rv-dur-img) ease;
+  will-change: filter, transform;
 }
-.reveal-right.is-visible {
-  transform: translateX(0);
-  opacity: 1;
+.blurImageTrigger.blur-image {
+  filter: blur(0);
+  transform: scale(1);
 }
 
-/* 2. Staggered reveal for grids/lists */
-.reveal-stagger > * {
+/* ---- stagger: dùng cho list/grid (JS gắn delay) ---- */
+.staggerTrigger > * {
   opacity: 0;
   transform: translateY(30px);
-  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: transform, opacity;
+  transition: opacity 0.9s ease, transform 0.9s var(--rv-ease);
 }
-
-.reveal-stagger.is-visible > * {
+.staggerTrigger.is-on > * {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Auto-generate delay for staggered items up to 10 children */
-.reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0.1s; }
-.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 0.2s; }
-.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 0.3s; }
-.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 0.4s; }
-.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 0.5s; }
-.reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 0.6s; }
-.reveal-stagger.is-visible > *:nth-child(7) { transition-delay: 0.7s; }
-.reveal-stagger.is-visible > *:nth-child(8) { transition-delay: 0.8s; }
-.reveal-stagger.is-visible > *:nth-child(9) { transition-delay: 0.9s; }
-.reveal-stagger.is-visible > *:nth-child(10) { transition-delay: 1.0s; }
-
-/* ============================================================
-   HOVER SHIMMER EFFECT FOR PROGRAM CARDS
-   ============================================================ */
-.field-card__img-wrapper {
-  position: relative;
+/* ---- Reveal tiêu đề theo TỪNG KÝ TỰ ---- */
+/* #2 ink-wipe (mực loang từ trên xuống) + blur→nét + #1 đan hướng chẵn/lẻ */
+.char {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateY(var(--dir, 12px)) scale(0.9);
+  clip-path: inset(0 0 100% 0);
+  transition: opacity 0.7s ease, filter 0.7s ease,
+              transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              clip-path 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.char:nth-child(even) { --dir: -12px; }   /* #1: ký tự chẵn trồi từ TRÊN xuống */
+.is-charon .char {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+  clip-path: inset(0 0 0 0);
+  transition-delay: calc(var(--ci, 0) * 0.08s);   /* đổ lần lượt từng chữ */
 }
 
-/* Tia sáng quét qua */
-.field-card__img-wrapper::after {
+/* #3 shimmer: vệt sáng lướt qua sau khi chữ hiện xong */
+.title-fx { position: relative; }
+.title-fx::after {
   content: "";
   position: absolute;
-  top: 0;
-  left: -150%;
-  width: 80px;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.35) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: skewX(-25deg);
-  pointer-events: none;
-  z-index: 5;
-}
-
-.field-card:hover .field-card__img-wrapper::after {
-  animation: shineEffect 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-@keyframes shineEffect {
-  0% {
-    left: -150%;
-  }
-  100% {
-    left: 200%;
-  }
-}
-
-/* ============================================================
-   PARALLAX & REVEAL FOR DECO TEXTS
-   ============================================================ */
-.program__deco,
-.supervision__deco,
-.fields__deco,
-.wishes__deco,
-.pricing__deco,
-.schedule__deco,
-.access__deco,
-.faq__deco {
+  inset: -8%;
+  background: linear-gradient(115deg,
+    transparent 47.5%, rgba(255, 255, 255, 0.1) 50%, transparent 52.5%);
   opacity: 0;
-  will-change: transform, opacity;
-  transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+}
+.title-fx.is-charon::after {
+  animation: titleShimmer 1.6s ease 1.2s 1 both;
+}
+@keyframes titleShimmer {
+  0%   { opacity: 0; transform: translateX(-40%); }
+  40%  { opacity: 1; }
+  100% { opacity: 0; transform: translateX(40%); }
 }
 
-.program__deco.is-visible,
-.supervision__deco.is-visible,
-.fields__deco.is-visible,
-.wishes__deco.is-visible,
-.pricing__deco.is-visible,
-.schedule__deco.is-visible,
-.access__deco.is-visible,
-.faq__deco.is-visible {
-  opacity: 0.8 !important; /* Đảm bảo độ mờ tinh tế sang trọng */
+/* Tôn trọng người dùng tắt motion */
+@media (prefers-reduced-motion: reduce) {
+  .fadeUpTrigger,
+  .fadeInTrigger,
+  .blurTrigger,
+  .blurInTrigger,
+  .blurImageTrigger,
+  .staggerTrigger > *,
+  .char {
+    transition: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+  .title-fx.is-charon::after { animation: none !important; }
 }

@@ -6,1041 +6,632 @@
  */
 
 get_header();
+$img = get_template_directory_uri() . '/assets/images';
 ?>
+  <!-- ===================== Main ===================== -->
   <main id="top">
-    <!-- ===================== FV / HERO ===================== -->
-    <section id="hero" class="hero" aria-label="ファーストビュー">
-      <div class="hero__container">
-        <!-- 1. Tiêu đề -->
-        <div class="hero__copy reveal-up">
-          <h1 class="hero__title" data-i18n="hero.title">
-            <span class="hero__title-top">世界最高水準<span class="hero__title-of">の</span></span>
-            <span class="hero__title-main">総合予防医療施設</span>
-          </h1>
-          <p class="hero__tag" data-i18n="hero.tag">定年退職後の新しい健康習慣</p>
+
+    <!-- ===== FV / Hero ===== -->
+    <section class="fv" id="fv">
+      <div class="fv__bg">
+        <img class="fv__bg-img blurImageTrigger" src="<?php echo esc_url( $img ); ?>/banner.jpg" alt="阿蘇の雲海" />
+      </div>
+
+      <div class="fv__inner">
+        <h1 class="fv__title logo fadeUpTrigger">
+          <span class="logo__top">大自然<span class="logo__accent">阿蘇</span></span>
+          <span class="logo__main">健康の森</span>
+        </h1>
+        <p class="fv__sub fadeUpTrigger" data-i18n="fv.sub">世界最高峰の<br class="sp-only" />ウェルネスリゾート</p>
+      </div>
+
+      <div class="fv__scroll">
+        <span class="fv__scroll-text">scroll</span>
+        <span class="fv__scroll-line"></span>
+      </div>
+
+      <a class="fv__reserve" href="#reserve">
+        <span class="fv__reserve-text" data-i18n="fv.reserve">ご予約はこちら</span>
+      </a>
+    </section>
+
+    <!-- ===== Concept ===== -->
+    <section class="concept" id="about">
+      <div class="concept__bg">
+        <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/general-banner.jpg" alt="" />
+      </div>
+
+      <div class="concept__inner">
+        <div class="concept__hero">
+          <div class="concept__headline fadeInTrigger">
+            <h2 class="concept__headline-main" data-i18n="concept.head_main">
+              <span>世界初　総合的な</span><span>癒しのリゾート</span>
+            </h2>
+            <p class="concept__headline-sub" data-i18n="concept.head_sub">
+              <span>心と体を解き放つ</span><span>五感で味わう極上の休日。</span>
+            </p>
+          </div>
+          <div class="concept__photos">
+            <img class="concept__photo concept__photo--1 blurImageTrigger" src="<?php echo esc_url( $img ); ?>/general-img-01.jpg" alt="施設内観" />
+            <img class="concept__photo concept__photo--2 blurImageTrigger" src="<?php echo esc_url( $img ); ?>/general-img-02.jpg" alt="露天風呂" />
+            <img class="concept__photo concept__photo--3 blurImageTrigger" src="<?php echo esc_url( $img ); ?>/general-img-03.jpg" alt="温泉" />
+          </div>
         </div>
 
-        <!-- 2+3. Nhóm huy hiệu + ảnh (canh thẳng hàng, dễ kiểm soát) -->
-        <div class="hero__visual">
-          <ul class="hero__badges reveal-stagger">
-            <li><img src="<?php echo get_template_directory_uri(); ?>/assets/img/badge-1.png" alt="自社生産による安全と機能性" width="262" height="117" /></li>
-            <li><img src="<?php echo get_template_directory_uri(); ?>/assets/img/badge-2.png" alt="日本健康増進学術機構による総合監修" width="280" height="140" /></li>
-            <li><img src="<?php echo get_template_directory_uri(); ?>/assets/img/badge-3.png" alt="厚労省認定施設 ヘルスツーリズム認証" width="273" height="113" /></li>
-            <li><img src="<?php echo get_template_directory_uri(); ?>/assets/img/badge-4.png" alt="阿蘇外輪山を一望 日本最大級 of 温泉" width="273" height="112" /></li>
+        <div class="concept__lead">
+          <h3 class="concept__title fadeUpTrigger" data-i18n="concept.title">世界最高峰の<br />ウェルネス・リトリート</h3>
+          <div class="concept__body fadeUpTrigger" data-i18n="concept.body">
+            <p>日々の重責から解き放たれ、ただの「自分」に還る場所。<br />それが大自然の中に佇む、<br />世界でここだけのウェルネス・リトリートです。</p>
+            <p>よりも早く走ってきたあなたにこそ、<br />今、究極の「癒し」が必要です。</p>
+            <p>――選び抜かれた設えの中で大自然に触れ、心を澄ますこと。</p>
+            <p>ここで手に入るものは、<br />あなたの未来を健康的で豊かに変える、<br />一生モノの価値という名の投資です。</p>
+          </div>
+        </div>
+
+        <div class="concept__map fadeUpTrigger">
+          <img src="<?php echo esc_url( $img ); ?>/img-mapJP.png" alt="日本地図" />
+          <svg class="concept__map-line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="7" y1="70" x2="20" y2="76" stroke="#FFFFFF" stroke-width="1" vector-effect="non-scaling-stroke" />
+          </svg>
+          <span class="concept__map-pin" aria-hidden="true"></span>
+          <span class="concept__map-label"><span>大自然阿蘇</span><span>健康の森</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 温泉施設 (onsen) ===== -->
+    <section class="onsen" id="onsen">
+      <div class="onsen__inner">
+        <div class="onsen__headline fadeUpTrigger">
+          <p class="onsen__eyebrow" data-i18n="onsen.eyebrow"><span>訪れる人を<br />魅了する</span></p>
+          <h2 class="onsen__title" data-i18n="onsen.title"><span>世界一の</span><span>温泉施設</span></h2>
+        </div>
+
+        <div class="onsen__main">
+          <figure class="onsen__photo">
+            <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-01.jpg" alt="阿蘇健康火山温泉 大浴場" />
+            <figcaption class="onsen__caption" data-i18n="onsen.caption"><span>湧き上がる</span><span>大地の恵み</span></figcaption>
+          </figure>
+
+          <div class="onsen__text fadeInTrigger">
+            <div class="onsen__body staggerTrigger" data-i18n="onsen.body">
+              <p>「阿蘇健康火山温泉」は</p>
+              <p>世界最大級の大自然石庭露天風呂。</p>
+              <p>世界のカルデラから湧き上がる恵みは、</p>
+              <p>心身を癒し、温め、リセットしてくれます。</p>
+              <p>阿蘇外輪山を一望できる露天風呂は、</p>
+              <p>解放感と四季折々を肌で感じれる</p>
+              <p>唯一無二の温浴施設です。</p>
+              <p>また、大自然石庭露天風呂は、</p>
+              <p>天然のトリプルミネラルを含む硫酸塩温泉で、</p>
+              <p>日頃の疲れを癒し、</p>
+              <p>疲労回復やストレス解放を促します。</p>
+            </div>
+            <h3 class="onsen__heading" data-i18n="onsen.heading">阿蘇健康火山温泉</h3>
+          </div>
+        </div>
+
+        <div class="onsen__other">
+          <p class="onsen__other-label fadeUpTrigger" data-i18n="onsen.other_label">その他の温泉施設</p>
+          <ul class="onsen__gallery">
+            <li class="onsen__gitem">
+              <figure>
+                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-02.jpg" alt="宝石窯" />
+                <figcaption data-i18n="onsen.g1">宝石窯</figcaption>
+              </figure>
+            </li>
+            <li class="onsen__gitem">
+              <figure>
+                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-03.jpg" alt="大自然石庭露天風呂" />
+                <figcaption data-i18n="onsen.g2">大自然石庭露天風呂</figcaption>
+              </figure>
+            </li>
+            <li class="onsen__gitem">
+              <figure>
+                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-04.jpg" alt="フラワースパ" />
+                <figcaption data-i18n="onsen.g3">フラワースパ</figcaption>
+              </figure>
+            </li>
           </ul>
+        </div>
 
-          <div class="hero__media reveal-fade">
-            <div class="hero__media-frame">
-              <picture>
-                <source media="(max-width: 1023px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/hero-resort-sp.jpg" />
-                <img class="hero__img" src="<?php echo get_template_directory_uri(); ?>/assets/img/hero-resort.jpg" alt="大自然阿蘇 健康の森 全景" />
-              </picture>
-            </div>
-            <a class="hero__reserve js-reserve" href="#">
-              <span class="hero__reserve-tag" data-i18n="hero.reserve_tag">滞在型健康増進プログラム</span>
-              <span class="hero__reserve-label" data-i18n="hcero.reserve_label">今すぐ予約する<span class="hero__reserve-arrow" aria-hidden="true">›</span></span>
-            </a>
+        <div class="kiln">
+          <div class="kiln__text">
+            <h3 class="kiln__title fadeUpTrigger" data-i18n="kiln.title">健康温熱窯十三種</h3>
+            <p class="kiln__body fadeUpTrigger" data-i18n="kiln.body">薬草や鉱石の効能を体感できる13種類のドーム窯を備えた、<br />日本最大級の健康温浴施設です。<br />他に類を見ない特別空間は、ひとつひとつの窯の中が丸く、<br />それぞれで違う癒しを感じれます。<br />自然のエネルギーを全身に受け、<br />身体が欲する癒しを感じお選びください。<br />また、窯の外は広いスペースが設けられ、<br />横になりゆったりとした時間をお過ごし下さい。</p>
           </div>
-        </div>
-
-        <!-- 4. SCROLL -->
-        <div class="hero__scroll" aria-hidden="true">
-          <span class="hero__scroll-line"></span>
-          <span class="hero__scroll-text">SCROLL</span>
-        </div>
-      </div>
-    </section>
-    <!-- Phase 4 -->
-    <!-- ===================== PROGRAM ===================== -->
-    <section id="program" class="program">
-      <img class="program__deco reveal-deco" src="<?php echo get_template_directory_uri(); ?>/assets/img/deco-program.svg" alt="" aria-hidden="true" />
-
-      <figure class="program__photo program__photo--1 reveal-left">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/img-01.jpg" alt="ご夫婦で参加する様子" />
-      </figure>
-
-      <div class="program__inner">
-        <div class="program__body reveal-up">
-          <div class="program__head">
-            <h2 class="program__title" data-i18n="program.title">滞在型健康増進プログラムとは</h2>
-            <span class="program__divider"></span>
-          </div>
-          <div class="program__text">
-            <p data-i18n="program.p1">本プログラムは、<br class="u-sp" />60歳前後の定年退職される方を中心とした<br class="u-pc" />定年退職者向けの滞在型健康増進プログラムです。</p>
-            <p data-i18n="program.p2">人生の転換期において「健康を再定義し、習慣化する」ことを目的とし、<br class="u-pc" />科学的根拠（エビデンス）に基づいた実践型の学びと体験を提供します。</p>
-            <p data-i18n="program.p3">単なる健康施設ではなく、悔いのないセカンドステージを実現するための<br class="u-pc" />「健康の登竜門」として、ご夫婦一緒に参加しながら、<br class="u-pc" />これからの人生を自立して歩むための土台を築きます。</p>
-            <p data-i18n="program.p4">大切な家族のためにも、いつまでも元気で過ごすために。<br class="u-pc" />そして、豊かな老後のために、健康寿命を延ばすことを目指します。</p>
-          </div>
-        </div>
-      </div>
-
-      <figure class="program__photo program__photo--2 reveal-right">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/img-02.jpg" alt="温浴・リラクゼーション体験" />
-      </figure>
-      <figure class="program__photo program__photo--3 reveal-right">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/img-03.jpg" alt="施設全景" />
-      </figure>
-    </section>
-    <!-- ===================== SUPERVISION ===================== -->
-    <section id="supervision" class="supervision">
-
-      <div class="supervision__inner">
-        <!-- Huy hiệu PC: Hiển thị trên tiêu đề ở PC -->
-        <ul class="supervision__badges supervision__badges--pc u-pc" aria-hidden="true">
-          <li><img src="<?php echo get_template_directory_uri(); ?>/assets/img/badge-1.png" alt="スマートミール認証" width="260" height="130" /></li>
-          <li><img src="<?php echo get_template_directory_uri(); ?>/assets/img/badge-3.png" alt="厚生労働省認定施設 ヘルスツーリズム認証" width="260" height="130" /></li>
-          <li><img src="<?php echo get_template_directory_uri(); ?>/assets/img/badge-2.png" alt="医師/博士/管理栄養士等 120名の専門家監修" width="280" height="140" /></li>
-        </ul>
-
-        <!-- Cụm Tiêu đề chính -->
-        <div class="supervision__header reveal-up">
-          <p class="supervision__subtitle" data-i18n="supervision.subtitle">一般社団法人</p>
-          <h2 class="supervision__title" data-i18n="supervision.title">日本健康増進学術機構による総合監修</h2>
-          <span class="supervision__divider"></span>
-        </div>
-
-        <!-- Huy hiệu SP: Hiển thị dưới tiêu đề ở SP -->
-        <ul class="supervision__badges supervision__badges--sp u-sp" aria-hidden="true">
-          <li class="badge-top"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/badge-3.png" alt="厚生労働省認定施設 ヘルスツーリズム認証" width="200" height="100" /></li>
-          <li class="badge-left"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/badge-1.png" alt="自社生産による安全と機能性" width="160" height="80" /></li>
-          <li class="badge-right"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/badge-4.png" alt="阿蘇外輪山を一望 日本最大級の温泉" width="160" height="80" /></li>
-        </ul>
-
-        <!-- Mô tả ngắn -->
-        <div class="supervision__desc reveal-up">
-          <p data-i18n="supervision.desc1">本滞在型健康増進プログラムでは、<br class="u-sp" />プログラム食・医療・予防・自然の力を融合し、<br class="u-pc" />専門家たちが辿り着いた唯一無二 of 健康体験を提供します。</p>
-          <p data-i18n="supervision.desc2">あなたの未来の健康を本気で想う、<br class="u-sp" />その答えがここにあります。</p>
-        </div>
-      </div>
-
-      <!-- Slider Chuyên gia / Bác sĩ -->
-      <div class="supervision__slider-container reveal-fade">
-          <div class="swiper supervision-swiper">
-            <div class="swiper-wrapper">
-              <!-- Slide 1: 福生 吉裕 -->
-              <div class="swiper-slide">
-                <div class="member-card">
-                  <div class="member-card__bg"></div>
-                  <div class="member-card__img-wrapper">
-                    <img class="member-card__img" src="<?php echo get_template_directory_uri(); ?>/assets/img/member-1.png" alt="福生 吉裕" />
-                  </div>
-                  <div class="member-card__info">
-                    <span class="member-card__en">Fukuo Yoshihiro</span>
-                    <h3 class="member-card__name">福生 吉裕</h3>
-                    <p class="member-card__title" data-i18n="supervision.member1_title">
-                      日本健康増進学術機構 理事<br />
-                      (一財)博慈会 老人病研究所 所長<br />
-                      医学博士
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Slide 2: 坂口 力 -->
-              <div class="swiper-slide">
-                <div class="member-card">
-                  <div class="member-card__bg"></div>
-                  <div class="member-card__img-wrapper">
-                    <img class="member-card__img" src="<?php echo get_template_directory_uri(); ?>/assets/img/member-2.png" alt="坂口 力" />
-                  </div>
-                  <div class="member-card__info">
-                    <span class="member-card__en">Sakaguchi Riki</span>
-                    <h3 class="member-card__name">坂口 力</h3>
-                    <p class="member-card__title" data-i18n="supervision.member2_title">
-                      初代厚生労働大臣 (元)<br />
-                      東京医科大学医学部<br />
-                      特任教授 医学博士
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Slide 3: 小野寺 敏 -->
-              <div class="swiper-slide">
-                <div class="member-card">
-                  <div class="member-card__bg"></div>
-                  <div class="member-card__img-wrapper">
-                    <img class="member-card__img" src="<?php echo get_template_directory_uri(); ?>/assets/img/member-3.png" alt="小野寺 敏" />
-                  </div>
-                  <div class="member-card__info">
-                    <span class="member-card__en">Onodera Bin</span>
-                    <h3 class="member-card__name">小野寺 敏</h3>
-                    <p class="member-card__title" data-i18n="supervision.member3_title">
-                      日本健康増進学術機構 理事長<br />
-                      治未病医学総合研究所 所長<br />
-                      治未病総合治療院 院長<br />
-                      医学博士 精神対話士
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Slide 4: 清水 邦義 -->
-              <div class="swiper-slide">
-                <div class="member-card">
-                  <div class="member-card__bg"></div>
-                  <div class="member-card__img-wrapper">
-                    <img class="member-card__img" src="<?php echo get_template_directory_uri(); ?>/assets/img/member-4.png" alt="清水 邦義" />
-                  </div>
-                  <div class="member-card__info">
-                    <span class="member-card__en">Simizu Kuniyoshi</span>
-                    <h3 class="member-card__name">清水 邦義</h3>
-                    <p class="member-card__title" data-i18n="supervision.member4_title">
-                      日本健康増進学術機構 理事<br />
-                      九州大学大学院農学研究院<br />
-                      森林圏環境資源科学 准教授<br />
-                      農学博士
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Slide 5: 辨野 義己 -->
-              <div class="swiper-slide">
-                <div class="member-card">
-                  <div class="member-card__bg"></div>
-                  <div class="member-card__img-wrapper">
-                    <img class="member-card__img" src="<?php echo get_template_directory_uri(); ?>/assets/img/member-5.png" alt="辨野 義己" />
-                  </div>
-                  <div class="member-card__info">
-                    <span class="member-card__en">Benno Yoshimi</span>
-                    <h3 class="member-card__name">辨野 義己</h3>
-                    <p class="member-card__title" data-i18n="supervision.member5_title">
-                      (財)「辨野腸内フローラ研究所」理事長<br />
-                      国立研究開発法人理化学研究所<br />
-                      名誉研究員 農学博士
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Slide 6: 大貫 宏一郎 -->
-              <div class="swiper-slide">
-                <div class="member-card">
-                  <div class="member-card__bg"></div>
-                  <div class="member-card__img-wrapper">
-                    <img class="member-card__img" src="<?php echo get_template_directory_uri(); ?>/assets/img/member-6.png" alt="大貫 宏一郎" />
-                  </div>
-                  <div class="member-card__info">
-                    <span class="member-card__en">Ohnuki Koichiro</span>
-                    <h3 class="member-card__name">大貫 宏一郎</h3>
-                    <p class="member-card__title" data-i18n="supervision.member6_title">
-                      日本健康増進学術機構 メンバー<br />
-                      株式会社ユーザーライフサイエンス<br />
-                      取締役会長 農学博士
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Slide 7: 工藤 真樹子 -->
-              <div class="swiper-slide">
-                <div class="member-card">
-                  <div class="member-card__bg"></div>
-                  <div class="member-card__img-wrapper">
-                    <img class="member-card__img" src="<?php echo get_template_directory_uri(); ?>/assets/img/member-7.png" alt="工藤 真樹子" />
-                  </div>
-                  <div class="member-card__info">
-                    <span class="member-card__en">Kudo Makiko</span>
-                    <h3 class="member-card__name">工藤 真樹子</h3>
-                    <p class="member-card__title" data-i18n="supervision.member7_title">
-                      日本健康増進学術機構 メンバー<br />
-                      松村犬猫病院<br />
-                      獣医師
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Slide 8: 三木 健輔 -->
-              <div class="swiper-slide">
-                <div class="member-card">
-                  <div class="member-card__bg"></div>
-                  <div class="member-card__img-wrapper">
-                    <img class="member-card__img" src="<?php echo get_template_directory_uri(); ?>/assets/img/member-8.png" alt="三木 健輔" />
-                  </div>
-                  <div class="member-card__info">
-                    <span class="member-card__en">Miki Kensuke</span>
-                    <h3 class="member-card__name">三木 健輔</h3>
-                    <p class="member-card__title" data-i18n="supervision.member8_title">
-                      日本健康増進学術機構 メンバー<br />
-                      横浜市立大学 長寿科学研究室<br />
-                      特任助教 理学博士
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Nút điều hướng & Pagination -->
-      <div class="supervision__controls container">
-        <div class="supervision__controls-left">
-          <div class="supervision__nav">
-            <button type="button" class="supervision__btn supervision__btn--prev" aria-label="前のスライド">
-              <span>←</span>
-            </button>
-            <button type="button" class="supervision__btn supervision__btn--next" aria-label="次のスライド">
-              <span>→</span>
-            </button>
-          </div>
-          <div class="supervision__pagination"></div>
-        </div>
-
-        <p class="supervision__notice" data-i18n="supervision.notice">※一部の方のみご紹介させて頂いています。</p>
-      </div>
-
-      <!-- Chữ dọc nền trang trí -->
-      <img class="supervision__deco reveal-deco" src="<?php echo get_template_directory_uri(); ?>/assets/img/deco-supervision.svg" alt="" aria-hidden="true" />
-    </section>
-    <section id="fields" class="fields">
-      <div class="fields__inner container">
-        <!-- Badge -->
-        <span class="fields__badge" data-i18n="fields.badge">健康プログラムの詳細</span>
-
-        <!-- Header -->
-        <h2 class="fields__title reveal-up" data-i18n="fields.title">
-          健康プログラムを構成する<br />
-          <span>6つの分野</span>
-        </h2>
-        <span class="fields__divider"></span>
-
-        <!-- Description -->
-        <div class="fields__desc reveal-up">
-          <p data-i18n="fields.desc1">本プログラムは、<br class="u-sp">「学・測・動・食・癒・宿」の<br class="u-sp">6つの分野を軸に構成された、<br class="u-pc" />滞在型の<br class="u-sp">総合予防医療ウェルネスプログラムです。</p>
-          <p data-i18n="fields.desc2">120名の専門家の知見と、<br class="u-sp">阿蘇の雄大な自然環境が融合した、<br class="u-sp">唯一無二の健康体験をご提供します。</p>
-        </div>
-
-        <!-- Grid of 6 Fields -->
-        <div class="fields__grid reveal-stagger">
-          
-          <!-- Field 1: 学 -->
-          <a href="#" class="field-card js-field-modal" data-field="1">
-            <div class="field-card__img-wrapper">
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/img/fields-img-01.jpg" alt="学" />
-            </div>
-            <div class="field-card__label">
-              <span class="field-card__label-line" data-i18n="fields.card1_line1">ご夫婦で学び、</span>
-              <span class="field-card__label-line" data-i18n="fields.card1_line2">ご自身の体を知る</span>
-            </div>
-            <div class="field-card__bottom">
-              <span class="field-card__kanji">
-                <svg viewBox="0 0 120 120" width="120" height="120">
-                  <text x="60" y="95" text-anchor="middle">学</text>
-                </svg>
-              </span>
-              <div class="field-card__link">
-                <span data-i18n="fields.more">詳しく見る</span>
-                <span class="field-card__arrow"><span>→</span></span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Field 2: 測 -->
-          <a href="#" class="field-card js-field-modal" data-field="2">
-            <div class="field-card__img-wrapper">
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/img/fields-img-02.jpg" alt="測" />
-            </div>
-            <div class="field-card__label">
-              <span class="field-card__label-line" data-i18n="fields.card2_line1">15種類の最新機器で</span>
-              <span class="field-card__label-line" data-i18n="fields.card2_line2">健康セルフチェック</span>
-            </div>
-            <div class="field-card__bottom">
-              <span class="field-card__kanji">
-                <svg viewBox="0 0 120 120" width="120" height="120">
-                  <text x="60" y="95" text-anchor="middle">測</text>
-                </svg>
-              </span>
-              <div class="field-card__link">
-                <span data-i18n="fields.more">詳しく見る</span>
-                <span class="field-card__arrow"><span>→</span></span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Field 3: 動 -->
-          <a href="#" class="field-card js-field-modal" data-field="3">
-            <div class="field-card__img-wrapper">
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/img/fields-img-03.jpg" alt="動" />
-            </div>
-            <div class="field-card__label">
-              <span class="field-card__label-line" data-i18n="fields.card3_line1">自分の体力にあった</span>
-              <span class="field-card__label-line" data-i18n="fields.card3_line2">効果的な運動体験</span>
-            </div>
-            <div class="field-card__bottom">
-              <span class="field-card__kanji">
-                <svg viewBox="0 0 120 120" width="120" height="120">
-                  <text x="60" y="95" text-anchor="middle">動</text>
-                </svg>
-              </span>
-              <div class="field-card__link">
-                <span data-i18n="fields.more">詳しく見る</span>
-                <span class="field-card__arrow"><span>→</span></span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Field 4: 食 -->
-          <a href="#" class="field-card js-field-modal" data-field="4">
-            <div class="field-card__img-wrapper">
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/img/fields-img-04.jpg" alt="食" />
-            </div>
-            <div class="field-card__label">
-              <span class="field-card__label-line" data-i18n="fields.card4_line1">無農薬による</span>
-              <span class="field-card__label-line" data-i18n="fields.card4_line2">自社栽培野菜を使用</span>
-            </div>
-            <div class="field-card__bottom">
-              <span class="field-card__kanji">
-                <svg viewBox="0 0 120 120" width="120" height="120">
-                  <text x="60" y="95" text-anchor="middle">食</text>
-                </svg>
-              </span>
-              <div class="field-card__link">
-                <span data-i18n="fields.more">詳しく見る</span>
-                <span class="field-card__arrow"><span>→</span></span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Field 5: 癒 -->
-          <a href="#" class="field-card js-field-modal" data-field="5">
-            <div class="field-card__img-wrapper">
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/img/fields-img-05.jpg" alt="癒" />
-            </div>
-            <div class="field-card__label">
-              <span class="field-card__label-line" data-i18n="fields.card5_line1">100万㎡の施設と</span>
-              <span class="field-card__label-line" data-i18n="fields.card5_line2">大自然に包まれる温浴体験。</span>
-            </div>
-            <div class="field-card__bottom">
-              <span class="field-card__kanji">
-                <svg viewBox="0 0 120 120" width="120" height="120">
-                  <text x="60" y="95" text-anchor="middle">癒</text>
-                </svg>
-              </span>
-              <div class="field-card__link">
-                <span data-i18n="fields.more">詳しく見る</span>
-                <span class="field-card__arrow"><span>→</span></span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Field 6: 宿 -->
-          <a href="#" class="field-card js-field-modal" data-field="6">
-            <div class="field-card__img-wrapper">
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/img/fields-img-06.jpg" alt="宿" />
-            </div>
-            <div class="field-card__label">
-              <span class="field-card__label-line" data-i18n="fields.card6_line1">胎内空間が</span>
-              <span class="field-card__label-line" data-i18n="fields.card6_line2">安らぎと良質な睡眠へ</span>
-            </div>
-            <div class="field-card__bottom">
-              <span class="field-card__kanji">
-                <svg viewBox="0 0 120 120" width="120" height="120">
-                  <text x="60" y="95" text-anchor="middle">宿</text>
-                </svg>
-              </span>
-              <div class="field-card__link">
-                <span data-i18n="fields.more">詳しく見る</span>
-                <span class="field-card__arrow"><span>→</span></span>
-              </div>
-            </div>
-          </a>
-
-        </div>
-
-      </div>
-      
-      <!-- Outline decorative SVG "FIELDS" -->
-      <img class="fields__deco reveal-deco" src="<?php echo get_template_directory_uri(); ?>/assets/img/deco-fields.svg" alt="" aria-hidden="true" />
-    </section>
-    <!-- ===================== WISHES ===================== -->
-    <section id="wishes" class="wishes">
-      <!-- Vertical background text "WISHES" - anchored to the section so it stays top-right on all breakpoints -->
-      <img class="wishes__deco reveal-deco" src="<?php echo get_template_directory_uri(); ?>/assets/img/deco-wishes.svg" alt="" aria-hidden="true" />
-      <div class="wishes__grid">
-        <!-- Panel 1 (Top-Left): Text & Cards -->
-        <div class="wishes__panel wishes__panel--text wishes__panel--1 reveal-left">
-          <h2 class="wishes__title" data-i18n="wishes.title1">家族への想い</h2>
-          <div class="wishes__text">
-            <p data-i18n="wishes.text1_p1">本健康プログラムは、<br class="u-sp" />単に“健康になる”ためのサービスではありません。<br />大切な家族やパートナーと、<br />これから先も安心して豊かに暮らしていくための<br />「未来への備え」を提供する<br class="u-sp" />滞在型ウェルネスプログラムです。</p>
-            <p data-i18n="wishes.text1_p2">健康でいることは、単に自分一人の体が<br class="u-sp" />丈夫である<br class="u-pc" />ということにとどまりません。<br />それは、あなたを取り巻く「大切な人たち」の<br class="u-sp" />人生をも守り、<br class="u-pc" />支えることにつながっています。</p>
-          </div>
-
-          <!-- 3 Cards -->
-          <div class="wishes__cards">
-            <div class="wish-card">
-              <span class="wish-card__capsule" data-i18n="wishes.card1_capsule">自立</span>
-              <p class="wish-card__text" data-i18n="wishes.card1_text">家族に<br />負担をかけない</p>
-            </div>
-            <div class="wish-card">
-              <span class="wish-card__capsule" data-i18n="wishes.card2_capsule">予防</span>
-              <p class="wish-card__text" data-i18n="wishes.card2_text">医療費の抑制</p>
-            </div>
-            <div class="wish-card">
-              <span class="wish-card__capsule" data-i18n="wishes.card3_capsule">安心</span>
-              <p class="wish-card__text" data-i18n="wishes.card3_text">精神的、<br />経済的な安心</p>
-            </div>
-          </div>
-
-          <p class="wishes__note" data-i18n="wishes.note">「大切な家族・パートナー」のためにも、<br />いつまでも元気でいることは、<br class="u-sp">社会的にも大きな価値を持ちます。</p>
-        </div>
-
-        <!-- Panel 2 (Top-Right): Image & CTA -->
-        <div class="wishes__panel-wrapper wishes__panel-wrapper--2 reveal-right">
-          <div class="wishes__panel wishes__panel--media wishes__panel--2">
-            <div class="wishes__img-wrapper">
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/img/wishes-img-01.jpg" alt="家族と砂浜で凧揚げ" class="wishes__img" />
-            </div>
-          </div>
-          <a href="#pricing" class="wishes__sticky-btn">
-            <span class="wishes__sticky-btn-text" data-i18n="wishes.sticky_btn">予防医療宿泊プランを見る</span>
-            <span class="wishes__sticky-btn-arrow"><span>→</span></span>
-          </a>
-        </div>
-
-        <!-- Panel 3 (Bottom-Left): Image -->
-        <div class="wishes__panel wishes__panel--media wishes__panel--3 reveal-left">
-          <div class="wishes__img-wrapper">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/wishes-img-02.jpg" alt="砂浜の遊歩道を歩く夫婦" class="wishes__img" />
-          </div>
-        </div>
-
-        <!-- Panel 4 (Bottom-Right): Text -->
-        <div class="wishes__panel wishes__panel--text wishes__panel--4 reveal-right">
-          <h2 class="wishes__title" data-i18n="wishes.title2">健康は一生の付き合い</h2>
-          <div class="wishes__text">
-            <p data-i18n="wishes.text2_p1">これからもずっと動ける体と笑顔の毎日を。<br />健康は、一度手に入れたら<br class="u-sp">終わりではありません。</p>
-            <p data-i18n="wishes.text2_p2">大切なのは、今の自分の状態を「知ること」。<br />そして、無理のない範囲で新しい知恵を<br class="u-sp">「取り入れること」。</p>
-            <p data-i18n="wishes.text2_p3">この積み重ねが、5年後、10年後の<br class="u-sp">あなたを支える<br class="u-pc" />大きな安心に変わります。</p>
+          <div class="kiln__photos">
+            <figure class="kiln__ph kiln__ph--amethyst">
+              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-05.jpg" alt="紫水晶窯" />
+              <figcaption data-i18n="kiln.c1">紫水晶窯</figcaption>
+            </figure>
+            <figure class="kiln__ph kiln__ph--gem">
+              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-06.jpg" alt="宝石窯" />
+              <figcaption data-i18n="kiln.c2">宝石窯</figcaption>
+            </figure>
+            <figure class="kiln__ph kiln__ph--salt">
+              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-07.jpg" alt="石塩窯" />
+              <figcaption data-i18n="kiln.c3">石塩窯</figcaption>
+            </figure>
           </div>
         </div>
       </div>
     </section>
-    <!-- ===================== PRICING ===================== -->
-    <section id="pricing" class="pricing">
-      <!-- Chữ trang trí nền -->
-      <img class="pricing__deco reveal-deco" src="<?php echo get_template_directory_uri(); ?>/assets/img/deco-price.svg" alt="" aria-hidden="true" />
 
-      <div class="pricing__inner container">
-        <!-- Tiêu đề & Giới thiệu -->
-        <div class="pricing__header reveal-up">
-          <h2 class="pricing__title" data-i18n="pricing.title">ご宿泊プランと料金</h2>
-          <span class="pricing__divider"></span>
-          <div class="pricing__desc">
-            <p data-i18n="pricing.desc">
-              ご滞在を通じて健康習慣を身につける、<br class="u-sp" />ヘルスツーリズム認証取得プランです。<br />
-              連続滞在で、講座・測定・運動・温浴・食<br class="u-sp" />事・睡眠を日ごとに組み合わせ体験し、<br />
-              習慣化のきっかけをつくることを目的としています。
+    <!-- ===== お食事 (veg) ===== -->
+    <section class="veg" id="dining">
+      <div class="veg__bg">
+        <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-banner.jpg" alt="" />
+      </div>
+
+      <div class="veg__inner">
+        <div class="veg__headline fadeUpTrigger">
+          <p class="veg__eyebrow" data-i18n="veg.eyebrow"><span>無農薬</span></p>
+          <h2 class="veg__title" data-i18n="veg.title"><span>自社栽培</span><span>野菜料理</span></h2>
+        </div>
+
+        <div class="veg__content">
+          <div class="veg__photos">
+            <figure class="veg__ph veg__ph--basket">
+              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-01.jpg" alt="きのこ" />
+            </figure>
+            <figure class="veg__ph veg__ph--kaiseki">
+              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-02.jpg" alt="創作薬膳料理" />
+            </figure>
+          </div>
+
+          <div class="veg__body fadeInTrigger" data-i18n="veg.body">
+            <p>阿蘇大自然 健康の森施設内にある 薬膳旬菜 阿蘇きのこ亭では、「体の中から元気に」を<br />テーマに「阿蘇健康農園」や「阿蘇バイオテック」で<br />大切に育てられた新鮮な野菜やきのこの旨味を引き出した<br />特別な創作薬膳料理や大自然の恵みが凝縮された<br />自慢のスープをご堪能いただけます。</p>
+            <p>自社栽培の採れたて食材を使った<br />大自然農園レストラン ビッグファームでは、<br />管理栄養士監修のもとシェフが丁寧に仕上げた<br />パレットのように色鮮やかな彩り薫る<br />ヘルシーバイキングをライブキッチンの出来立ての<br />香ばしい匂いとともにお届けしています。</p>
+            <p>四季折々の厳選食材や瑞々しい旬の野菜、<br />職人技が光るお造りを最も美味しい仕立てで愉しめる<br />「セットメニュー」もご用意し、素材の持ち味を活かした<br />多彩なメニューを通じて五感で季節の移ろいを<br />心ゆくまでご堪能いただけます。</p>
+          </div>
+
+          <figure class="veg__ph veg__ph--buffet">
+            <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-03.jpg" alt="ヘルシーバイキング" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 宿泊施設 (house) — marquee (decorative floating text, not translated) ===== -->
+    <section class="house" id="stay">
+      <div class="house__head">
+        <div class="house__headline fadeUpTrigger">
+          <p class="house__eyebrow" data-i18n="house.eyebrow"><span>全450棟</span></p>
+          <h2 class="house__title" data-i18n="house.title"><span>癒しの</span><span>ドームハウス</span></h2>
+        </div>
+        <p class="house__intro fadeInTrigger" data-i18n="house.intro">全室「離れ」の独立した空間で、五感を満たす極上の休息を。<br />大自然に広がる全450棟のドームハウス。<br />癒しと安らぎの「胎内空間」でエビデンスに基づいた<br />良質な睡眠と心身のリラックスを実感ください。</p>
+      </div>
+
+      <div class="house__view fadeInTrigger">
+        <div class="house__scaler">
+          <div class="house__layer house__layer--img js-house-layer">
+            <div class="house__unit">
+              <img class="hm-img blurImageTrigger" src="<?php echo esc_url( $img ); ?>/house-img-01.jpg" style="left:220px;top:0;width:303px;height:361px" alt="全450棟のドームハウス" />
+              <img class="hm-img blurImageTrigger" src="<?php echo esc_url( $img ); ?>/house-img-02.jpg" style="left:661px;top:333px;width:454px;height:302px" alt="客室" />
+              <img class="hm-img blurImageTrigger" src="<?php echo esc_url( $img ); ?>/house-img-03.jpg" style="left:1159px;top:80px;width:327px;height:245px" alt="離れの露天" />
+              <img class="hm-img blurImageTrigger" src="<?php echo esc_url( $img ); ?>/house-img-04.jpg" style="left:1661px;top:280px;width:296px;height:441px" alt="庭" />
+            </div>
+          </div>
+
+          <div class="house__layer house__layer--jp js-house-layer">
+            <div class="house__unit">
+              <span class="hm-jp" style="left:293px;top:142px;font-size:25px">心身をほどく、</span>
+              <span class="hm-jp" style="left:253px;top:142px;font-size:25px">450の癒しのかたち</span>
+              <span class="hm-jp hm-jp--light" style="left:691px;top:234px;font-size:17px">静けさに眠る</span>
+              <span class="hm-jp hm-jp--tight" style="left:640px;top:409px;font-size:28px">眠りを整え、</span>
+              <span class="hm-jp hm-jp--tight" style="left:594px;top:409px;font-size:28px">深く休む</span>
+              <span class="hm-jp hm-jp--light" style="left:130px;top:381px;font-size:17px">心ほどく滞在</span>
+              <span class="hm-jp" style="left:895px;top:97px;font-size:20px">癒しと安らぎが満ちる、</span>
+              <span class="hm-jp" style="left:855px;top:97px;font-size:20px">独立した休息空間</span>
+              <span class="hm-jp hm-jp--light" style="left:1220px;top:339px;font-size:17px">癒しに泊まる</span>
+              <span class="hm-jp" style="left:1432px;top:454px;font-size:25px">喧騒を離れ、</span>
+              <span class="hm-jp" style="left:1392px;top:454px;font-size:25px">眠りの本質へ</span>
+              <span class="hm-jp" style="left:1756px;top:22px;font-size:35px">自然、静けさ、</span>
+              <span class="hm-jp" style="left:1703px;top:22px;font-size:35px">眠りが重なる場所</span>
+              <span class="hm-jp hm-jp--light" style="left:1781px;top:606px;font-size:17px">自然に還る休息</span>
+            </div>
+          </div>
+
+          <div class="house__layer house__layer--en js-house-layer">
+            <div class="house__unit">
+              <span class="hm-en" style="left:336px;top:339px;font-size:16px">450 forms of healing<br />that unwind the body and mind</span>
+              <span class="hm-en" style="left:130px;top:549px;font-size:16px">A stay that unwinds the mind</span>
+              <span class="hm-en" style="left:602px;top:190px;font-size:11px">Sleep in stillness</span>
+              <span class="hm-en" style="left:428px;top:592px;font-size:12px">Rest deeply,<br />with sleep gently restored</span>
+              <span class="hm-en" style="left:1058px;top:4px;font-size:11px">A private retreat filled<br />with healing and serenity</span>
+              <span class="hm-en" style="left:1178px;top:501px;font-size:13px">Stay in healing</span>
+              <span class="hm-en" style="left:1234px;top:650px;font-size:16px">Away from the noise,<br />toward the essence of sleep</span>
+              <span class="hm-en" style="left:1566px;top:180px;font-size:12px">Where nature,<br />stillness,<br />and sleep come<br />together</span>
+              <span class="hm-en" style="left:1829px;top:718px;font-size:12px">Rest that returns<br />to nature</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 体験 (learn) — slider ===== -->
+    <section class="learn" id="experience">
+      <div class="learn__inner">
+        <div class="learn__headline fadeUpTrigger">
+          <p class="learn__eyebrow" data-i18n="learn.eyebrow"><span>体で学ぶ</span></p>
+          <h2 class="learn__title" data-i18n="learn.title"><span>心身を</span><span>整える体験</span></h2>
+        </div>
+
+        <div class="learn__lower">
+          <div class="learn__lead">
+            <p class="learn__label fadeUpTrigger" data-i18n="learn.label">多彩な健康体験</p>
+            <p class="learn__desc fadeInTrigger" data-i18n="learn.desc">ホットヨガや健康トレーニング、講演等、他にも様々な体験、アクティビティをご用意しております。</p>
+          </div>
+
+          <div class="learn__main">
+            <div class="learn__slider">
+              <div class="learn__slide">
+                <figure><img src="<?php echo esc_url( $img ); ?>/learn-img-01.jpg" alt="ヨガ" /><figcaption><span data-i18n="learn.s1">ヨガ</span></figcaption></figure>
+              </div>
+              <div class="learn__slide">
+                <figure><img src="<?php echo esc_url( $img ); ?>/learn-img-02.jpg" alt="ピラティス" /><figcaption><span data-i18n="learn.s2">ピラティス</span></figcaption></figure>
+              </div>
+              <div class="learn__slide">
+                <figure><img src="<?php echo esc_url( $img ); ?>/learn-img-03.jpg" alt="瞑想" /><figcaption><span data-i18n="learn.s3">瞑想</span></figcaption></figure>
+              </div>
+              <div class="learn__slide">
+                <figure><img src="<?php echo esc_url( $img ); ?>/learn-img-04.jpg" alt="体力年齢測定" /><figcaption><span data-i18n="learn.s4">体力年齢測定</span></figcaption></figure>
+              </div>
+            </div>
+
+            <div class="learn__nav">
+              <button class="learn__arrow learn__arrow--prev" type="button" data-i18n-aria-label="learn.prev" aria-label="前へ">‹</button>
+              <span class="learn__count">
+                <em class="js-current">01</em>
+                <span class="learn__count-line"></span>
+                <span class="learn__total">04</span>
+              </span>
+              <button class="learn__arrow learn__arrow--next" type="button" data-i18n-aria-label="learn.next" aria-label="次へ">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 阿蘇の観光名所 (tourism) ===== -->
+    <section class="tourism" id="tourism">
+      <div class="tourism__bg">
+        <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/tourism-banner.jpg" alt="" />
+      </div>
+
+      <div class="tourism__inner">
+        <div class="tourism__headline fadeUpTrigger">
+          <p class="tourism__eyebrow" data-i18n="tourism.eyebrow"><span>自然を感じる</span></p>
+          <h2 class="tourism__title" data-i18n="tourism.title"><span>阿蘇の</span><span>観光名所</span></h2>
+        </div>
+
+        <div class="tourism__list">
+          <article class="tsp">
+            <div class="tsp__text fadeUpTrigger">
+              <h3 class="tsp__title" data-i18n="tourism.t1_title">世界最大級のカルデラ</h3>
+              <p class="tsp__body" data-i18n="tourism.t1_body">世界でも類を見ない活火山の巨大なカルデラ内に位置する阿蘇サンクチュアリ。<br />ここは、地球の原初的なエネルギーと直結できる稀有な場所です。<br />「エメラルド・ベルベット」と称される広大な草原と朝霧が、<br />都会のリゾートでは決して味わえない精神的な静寂をもたらします。<br />まさに「大地の呼吸」を感じる舞台です。</p>
+            </div>
+            <figure class="tsp__photo">
+              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/tourism-img-01.jpg" alt="エメラルドベルベット" />
+              <figcaption class="tsp__cap" data-i18n="tourism.t1_cap"><span>エメラルド</span><span>ベルベット</span></figcaption>
+            </figure>
+          </article>
+
+          <article class="tsp">
+            <div class="tsp__text fadeUpTrigger">
+              <h3 class="tsp__title" data-i18n="tourism.t2_title">明神池名水公園</h3>
+              <p class="tsp__body" data-i18n="tourism.t2_body">圧倒的な透明度と「モネの池」のような美しさ。毎分約２トン湧き出る<br />清水は、池の底がくっきりと見えるほど高い透明度を誇ります。<br />特に冬場の水草が少ない時期には、光の加減で水面が深いインディゴブルーに<br />染まり、悠々と泳ぐ鯉の姿も相まって「まるで岐阜の“モネの池”のよう」と<br />SNSなどでも話題になります。夏には水草が広がり、生命力あふれる<br />緑の風景へ。訪れる季節ごとに異なる美しさに出会えるスポットです。</p>
+            </div>
+            <figure class="tsp__photo">
+              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/tourism-img-02.jpg" alt="岐阜のモネの池" />
+              <figcaption class="tsp__cap" data-i18n="tourism.t2_cap"><span>岐阜の</span><span>モネの池”</span></figcaption>
+            </figure>
+          </article>
+
+          <article class="tsp">
+            <div class="tsp__text fadeUpTrigger">
+              <h3 class="tsp__title" data-i18n="tourism.t3_title">上色見熊野座神社</h3>
+              <p class="tsp__body" data-i18n="tourism.t3_body">近年、SNSをきっかけに世界中から注目を集めている、幻想的な雰囲気の<br />神社です。杉木立に囲まれた参道と神秘的な景観は、「まるで異世界への<br />入り口のよう」と海外旅行者の間でも話題となっています。<br />また、蛍火の杜へを思わせる美しい世界観や、るろうに剣心のロケ地として<br />知られており、日本ならではの静寂と神秘を体感できる人気スポットとして、<br />多くの観光客が訪れています。</p>
+            </div>
+            <figure class="tsp__photo">
+              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/tourism-img-03.jpg" alt="異世界への入り口" />
+              <figcaption class="tsp__cap" data-i18n="tourism.t3_cap"><span>異世界への</span><span>入り口</span></figcaption>
+            </figure>
+          </article>
+
+          <article class="tsp">
+            <div class="tsp__text fadeUpTrigger">
+              <h3 class="tsp__title" data-i18n="tourism.t4_title">阿蘇山頂・草千里ヶ浜</h3>
+              <p class="tsp__body" data-i18n="tourism.t4_body">草千里ヶ浜 （くさせんりがはま）は、熊本県・阿蘇を代表する<br />絶景スポットのひとつで、阿蘇五岳のひとつ「烏帽子岳（えぼしだけ）」の<br />北麓に広がる大草原です。 「阿蘇といえばここ」と言われるほど有名で、<br />火山・草原・放牧風景が一度に見られる、日本でもかなり珍しい景観です。<br />雄大な火山と大草原のエネルギーを五感で体感できる場所です。</p>
+            </div>
+            <figure class="tsp__photo">
+              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/tourism-img-04.jpg" alt="大草原のエネルギー" />
+              <figcaption class="tsp__cap" data-i18n="tourism.t4_cap"><span>大草原の</span><span>エネルギー</span></figcaption>
+            </figure>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 料金プラン (plan) ===== -->
+    <section class="plan" id="price">
+      <div class="plan__inner">
+        <p class="plan__eyebrow fadeUpTrigger" data-i18n="plan.eyebrow"><span>料金プラン</span></p>
+
+        <div class="plan__header">
+          <div class="plan__lead fadeUpTrigger">
+            <p class="plan__brand">大自然阿蘇健康の森</p>
+            <h3 class="plan__name" data-i18n="plan.name">世界一の温浴施設で癒しを極める<br />ウェルネス・リトリートプラン</h3>
+          </div>
+          <div class="plan__price fadeUpTrigger">
+            <p class="plan__price-note" data-i18n="plan.price_note"><strong>お一人様3泊〜</strong> （2名1室利用時）</p>
+            <p class="plan__price-main">
+              <span class="plan__price-num">150,000</span>
+              <span class="plan__price-unit">
+                <span class="plan__price-tax" data-i18n="plan.price_tax">（税込）</span>
+                <span class="plan__price-yen" data-i18n="plan.price_yen">円〜</span>
+              </span>
             </p>
           </div>
         </div>
 
-        <!-- Khung Pricing -->
-        <div class="pricing__card reveal-fade">
-          <!-- Cột trái / Khối chính -->
-          <div class="pricing__main-col">
-            <div class="pricing__badge" data-i18n="pricing.badge">予防医療宿泊プラン</div>
-            <p class="pricing__duration" data-i18n="pricing.duration">お一人様 5泊6日〜（2名1室利用時）</p>
-            <div class="pricing__price">
-              <span class="pricing__price-amount">300,000</span>
-              <span class="pricing__price-unit" data-i18n="pricing.unit">円</span>
-              <span class="pricing__price-tax" data-i18n="pricing.tax">(税込)</span>
-            </div>
-            <p class="pricing__plan-desc" data-i18n="pricing.plan_desc">
-              ご夫婦それぞれのペースで、長時間の滞在により、<br class="u-pc">健康的な生活習慣をより深く身につけるプランです。
-            </p>
+        <div class="plan__cards staggerTrigger">
+          <div class="plan__card">
+            <h4 class="plan__card-title" data-i18n="plan.c1_title">プランに含まれるもの</h4>
+            <ul class="plan__list" data-i18n="plan.c1_list">
+              <li>宿泊施設</li>
+              <li>食事料金</li>
+              <li>基本利用料金</li>
+            </ul>
+            <p class="plan__note" data-i18n="plan.c1_note">宿泊施設や食事料金等は基本的にすべて含まれています。</p>
           </div>
 
-          <!-- Cột phải / Khối chi tiết -->
-          <div class="pricing__details-col">
-            <!-- Chi tiết dịch vụ -->
-            <div class="pricing__inclusions">
-              <h3 class="pricing__sub-title" data-i18n="pricing.inclusions_title">料金に含まれる内容</h3>
-              <ul class="pricing__list">
-                <li data-i18n="pricing.incl1">ご宿泊</li>
-                <li data-i18n="pricing.incl2">専門家指定の健康食事（1日3食）</li>
-                <li data-i18n="pricing.incl3">各種施設利用料</li>
-                <li data-i18n="pricing.incl4">健康講座・測定・運動・温泉などのプログラム体験</li>
-              </ul>
-            </div>
+          <div class="plan__card plan__card--center">
+            <h4 class="plan__card-title" data-i18n="plan.c2_title">無料送迎<span class="plan__card-sub">要予約</span></h4>
+            <p class="plan__ctext" data-i18n="plan.c2_text">主要公共交通機関の<br />空港、駅、バスターミナルまでの<br />無料送迎バスがございます。</p>
+          </div>
 
-            <!-- Tùy chọn thêm -->
-            <div class="pricing__options">
-              <h3 class="pricing__sub-title pricing__sub-title--option" data-i18n="pricing.option_title">オプション</h3>
-              <div class="pricing__option-box">
-                <h4 class="pricing__option-name" data-i18n="pricing.option_name">コンシェルジュサービス</h4>
-                <p class="pricing__option-price">
-                  <span class="pricing__option-label" data-i18n="pricing.option_label">1日あたり</span>
-                  <span class="pricing__option-value">10,000</span>
-                  <span class="pricing__option-currency" data-i18n="pricing.option_currency">円</span>
-                </p>
-              </div>
-            </div>
+          <div class="plan__card">
+            <h4 class="plan__card-title" data-i18n="plan.c3_title">別途費用</h4>
+            <ul class="plan__fees">
+              <li>
+                <p class="plan__fee-name" data-i18n="plan.c3_f1_name">通訳・コンシェルジュ費用</p>
+                <p class="plan__fee-sub" data-i18n="plan.c3_f1_sub">一日あたり <strong>10,000円</strong></p>
+              </li>
+              <li class="plan__fee-hr"></li>
+              <li>
+                <p class="plan__fee-name" data-i18n="plan.c3_f2_name">入湯税</p>
+                <p class="plan__fee-sub" data-i18n="plan.c3_f2_sub">大人の方（13歳以上）は、お一人様<br />１泊につき <strong>150円</strong> 別途必要です。</p>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <!-- Nút đặt phòng CTA -->
-        <div class="pricing__cta">
-          <a href="#" class="btn-booking js-reserve">
-            <span class="btn-booking__text" data-i18n="common.reserve_now">今すぐ予約する</span>
-            <span class="btn-booking__arrow"><span>→</span></span>
-          </a>
+        <div class="plan__cta fadeUpTrigger">
+          <a class="btn-bracket" href="#" data-modal="price"><span data-i18n="plan.cta">料金を確認する</span></a>
         </div>
       </div>
     </section>
-    <!-- ===================== SCHEDULE ===================== -->
-    <section id="schedule" class="schedule">
-      <!-- Chữ trang trí nền -->
-      <img class="schedule__deco reveal-deco" src="<?php echo get_template_directory_uri(); ?>/assets/img/deco-schedule.svg" alt="" aria-hidden="true" />
 
-      <div class="schedule__inner container">
-        <!-- Header -->
-        <div class="schedule__header reveal-up">
-          <span class="schedule__badge-capsule" data-i18n="schedule.capsule">ご夫婦でのご利用例</span>
-          <h2 class="schedule__title" data-i18n="schedule.title">5泊6日の<br class="u-sp">モデルスケジュール</h2>
-          <span class="schedule__divider"></span>
-        </div>
-
-        <!-- Timeline Area -->
-        <div class="schedule__timeline reveal-stagger">
-          <!-- Day 1 (Left) -->
-          <div class="schedule__item schedule__item--left" data-day="1">
-            <div class="schedule__badge">
-              <span class="schedule__badge-day">DAY</span>
-              <span class="schedule__badge-num">1</span>
-            </div>
-            <div class="schedule__connector">
-              <span class="schedule__connector-line"></span>
-              <span class="schedule__connector-dot"></span>
-            </div>
-            <div class="schedule__card">
-              <h3 class="schedule__card-title" data-i18n="schedule.day1_title">健康状態を知るはじまり</h3>
-              <p class="schedule__card-text" data-i18n="schedule.day1_text">
-                チェックイン後はオリエンテーションと<br class="u-sp">体の状態測定で体力年齢を確認。<br class="u-sp">温泉と夕食で初日の体を<br class="u-sp">ゆっくり整えます。
-              </p>
-              <div class="schedule__media">
-                <div class="schedule__img-wrap schedule__img-wrap--main">
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/schedulf-1.jpg" alt="健康状態を知るはじまり (メイン)" class="schedule__img" />
-                </div>
-                <div class="schedule__img-wrap schedule__img-wrap--sub">
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/schedulf-1-small.jpg" alt="健康状態を知るはじまり (サブ)" class="schedule__img" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Day 2 (Right) -->
-          <div class="schedule__item schedule__item--right" data-day="2">
-            <div class="schedule__badge">
-              <span class="schedule__badge-day">DAY</span>
-              <span class="schedule__badge-num">2</span>
-            </div>
-            <div class="schedule__connector">
-              <span class="schedule__connector-line"></span>
-              <span class="schedule__connector-dot"></span>
-            </div>
-            <div class="schedule__card">
-              <h3 class="schedule__card-title" data-i18n="schedule.day2_title">学びとヨガで整える日</h3>
-              <p class="schedule__card-text" data-i18n="schedule.day2_text">
-                朝食後は健康知識を学びフリータイムを。<br class="u-sp">昼食やヨガ、温泉で<br class="u-sp">心体を無理なく整えます。
-              </p>
-              <div class="schedule__media">
-                <div class="schedule__img-wrap schedule__img-wrap--main">
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/schedulf-2.jpg" alt="学びとヨガで整える日 (メイン)" class="schedule__img" />
-                </div>
-                <div class="schedule__img-wrap schedule__img-wrap--sub">
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/schedulf-2-small.jpg" alt="学びとヨガで整える日 (サブ)" class="schedule__img" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Day 3 (Left) -->
-          <div class="schedule__item schedule__item--left" data-day="3">
-            <div class="schedule__badge">
-              <span class="schedule__badge-day">DAY</span>
-              <span class="schedule__badge-num">3</span>
-            </div>
-            <div class="schedule__connector">
-              <span class="schedule__connector-line"></span>
-              <span class="schedule__connector-dot"></span>
-            </div>
-            <div class="schedule__card">
-              <h3 class="schedule__card-title" data-i18n="schedule.day3_title">運動と温熱で整える日</h3>
-              <p class="schedule__card-text" data-i18n="schedule.day3_text">
-                健康トレーニング館で<br class="u-sp">体力に合わせた運動を。<br class="u-sp">昼食後は温熱窯や温泉を楽しみながら、<br class="u-sp">フリータイムでリラックスします。
-              </p>
-              <div class="schedule__media">
-                <div class="schedule__img-wrap schedule__img-wrap--main">
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/schedulf-3.jpg" alt="運動と温熱で整える日 (メイン)" class="schedule__img" />
-                </div>
-                <div class="schedule__img-wrap schedule__img-wrap--sub">
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/schedulf-3-small.jpg" alt="運動と温熱で整える日 (サブ)" class="schedule__img" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Day 4 (Right) -->
-          <div class="schedule__item schedule__item--right" data-day="4">
-            <div class="schedule__badge">
-              <span class="schedule__badge-day">DAY</span>
-              <span class="schedule__badge-num">4</span>
-            </div>
-            <div class="schedule__connector">
-              <span class="schedule__connector-line"></span>
-              <span class="schedule__connector-dot"></span>
-            </div>
-            <div class="schedule__card">
-              <h3 class="schedule__card-title" data-i18n="schedule.day4_title">阿蘇の名所を巡る一日</h3>
-              <p class="schedule__card-text" data-i18n="schedule.day4_text">
-                朝食後は菊池渓谷や大観峰など<br class="u-sp">阿蘇周辺の観光地を巡り、<br class="u-sp">温泉と夕食で旅の疲れを<br class="u-sp">ゆっくり癒します。
-              </p>
-              <div class="schedule__media">
-                <div class="schedule__img-wrap schedule__img-wrap--main">
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/schedulf-4.jpg" alt="阿蘇の名所を巡る一日 (メイン)" class="schedule__img" />
-                </div>
-                <div class="schedule__img-wrap schedule__img-wrap--sub">
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/schedulf-4-small.jpg" alt="阿蘇の名所を巡る一日 (サブ)" class="schedule__img" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Day 5 (Left) -->
-          <div class="schedule__item schedule__item--left" data-day="5">
-            <div class="schedule__badge">
-              <span class="schedule__badge-day">DAY</span>
-              <span class="schedule__badge-num">5</span>
-            </div>
-            <div class="schedule__connector">
-              <span class="schedule__connector-line"></span>
-              <span class="schedule__connector-dot"></span>
-            </div>
-            <div class="schedule__card">
-              <h3 class="schedule__card-title" data-i18n="schedule.day5_title">ご夫婦で自由に過ごす日</h3>
-              <p class="schedule__card-text" data-i18n="schedule.day5_text">
-                早朝はフリータイムから始まります。<br class="u-sp">朝食後はドーム還元浴や観光、<br class="u-sp">昼食を楽しみ、<br class="u-sp">温泉と夕食で穏やかに過ごします。
-              </p>
-              <div class="schedule__media">
-                <div class="schedule__img-wrap schedule__img-wrap--main">
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/schedulf-5.jpg" alt="ご夫婦で自由に過ごす日 (メイン)" class="schedule__img" />
-                </div>
-                <div class="schedule__img-wrap schedule__img-wrap--sub">
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/schedulf-5-small.jpg" alt="ご夫婦で自由に過ごす日 (サブ)" class="schedule__img" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Day 6 (Right) -->
-          <div class="schedule__item schedule__item--right" data-day="6">
-            <div class="schedule__badge">
-              <span class="schedule__badge-day">DAY</span>
-              <span class="schedule__badge-num">6</span>
-            </div>
-            <div class="schedule__connector">
-              <span class="schedule__connector-line"></span>
-              <span class="schedule__connector-dot"></span>
-            </div>
-            <div class="schedule__card">
-              <h3 class="schedule__card-title" data-i18n="schedule.day6_title">変化を確認し旅を結ぶ日</h3>
-              <p class="schedule__card-text" data-i18n="schedule.day6_text">
-                朝食後はチェックアウトし<br class="u-sp">最終測定をします。<br class="u-sp">健康キャンパスでの滞在を振り返り、<br class="u-sp">出発までフリータイムを楽しめます。
-              </p>
-              <div class="schedule__media">
-                <div class="schedule__img-wrap schedule__img-wrap--main">
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/schedulf-6.jpg" alt="変化を確認し旅を結ぶ日 (メイン)" class="schedule__img" />
-                </div>
-                <div class="schedule__img-wrap schedule__img-wrap--sub">
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/schedulf-6-small.jpg" alt="変化を確認し旅を結ぶ日 (サブ)" class="schedule__img" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CTA Button -->
-        <div class="schedule__cta">
-          <a href="#" class="btn-booking btn-booking--schedule js-schedule-detail-trigger">
-            <span class="btn-booking__text" data-i18n="schedule.cta">スケジュール詳細を見る</span>
-            <span class="btn-booking__arrow"><span>→</span></span>
-          </a>
-        </div>
+    <!-- ===== アクセス (access) ===== -->
+    <section class="access" id="access">
+      <div class="access__bg">
+        <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/map-banner.jpg" alt="" />
       </div>
-    </section>
-    <!-- ===================== ACCESS ===================== -->
-    <section id="access" class="access">
-      <img class="access__deco reveal-deco" src="<?php echo get_template_directory_uri(); ?>/assets/img/deco-access.svg" alt="" aria-hidden="true" />
-      <div class="access__inner container">
-        <div class="access__header reveal-up">
-          <h2 class="access__title" data-i18n="access.title">アクセス</h2>
-          <span class="access__divider"></span>
+
+      <div class="access__inner">
+        <p class="access__eyebrow fadeUpTrigger" data-i18n="access.eyebrow"><span>アクセス</span></p>
+
+        <div class="access__loc fadeUpTrigger">
+          <p class="access__loc-head" data-i18n="access.loc_head">所在地</p>
+          <p class="access__addr" data-i18n="access.addr">〒869-1404　熊本県阿蘇郡南阿蘇村河陽5579-3</p>
         </div>
-        <p class="access__intro reveal-up" data-i18n="access.intro">
-          阿蘇の雄大な自然に包まれた特別な<br class="u-sp" />ロケーションでありながら、<br class="u-pc" />主要空港や<br class="u-sp" />駅からもアクセスしやすい環境です。
-        </p>
 
-        <div class="access__card reveal-fade">
-          <div class="access__grid">
-            <!-- Left Column: Transport Info -->
-            <div class="access__info">
-              <!-- Location block -->
-              <div class="access__block">
-                <h3 class="access__block-title" data-i18n="access.location_title">所在地</h3>
-                <div class="access__address-details">
-                  <p class="access__zip">〒869-1404</p>
-                  <p class="access__address" data-i18n="access.address">熊本県阿蘇郡南阿蘇村河陽5579-3</p>
-                </div>
-              </div>
+        <div class="access__map fadeInTrigger">
+          <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/map-img.jpg" alt="地図" />
+        </div>
 
-              <!-- Access block -->
-              <div class="access__block access__block--transit">
-                <h3 class="access__block-title" data-i18n="access.transit_title">主要な交通機関からのアクセス</h3>
-                
-                <div class="access__transit-list">
-                  <!-- Airport -->
-                  <div class="access__transit-item">
-                    <div class="access__transit-icon">
-                      <img src="<?php echo get_template_directory_uri(); ?>/assets/img/access-icon-01.svg" alt="空港" />
-                    </div>
-                    <div class="access__transit-content">
-                      <h4 class="access__transit-title" data-i18n="access.airport_title">空港からお越しのお客様</h4>
-                      <p class="access__transit-desc" data-i18n="access.airport_desc1">熊本空港から 車で約30分</p>
-                      <p class="access__transit-desc" data-i18n="access.airport_desc2">福岡空港から 車で約135分</p>
-                    </div>
-                  </div>
+        <div class="access__btns fadeUpTrigger">
+          <a class="btn-bracket" href="#" target="_blank" rel="noopener"><span data-i18n="access.btn_map">Google Mapで見る</span></a>
+          <a class="btn-bracket" href="#" target="_blank" rel="noopener"><span data-i18n="access.btn_route">経路を見る</span></a>
+        </div>
 
-                  <!-- Train -->
-                  <div class="access__transit-item">
-                    <div class="access__transit-icon">
-                      <img src="<?php echo get_template_directory_uri(); ?>/assets/img/access-icon-02.svg" alt="電車" />
-                    </div>
-                    <div class="access__transit-content">
-                      <h4 class="access__transit-title" data-i18n="access.train_title">電車でお越しのお客様</h4>
-                      <p class="access__transit-desc" data-i18n="access.train_desc1">JR阿蘇駅から タクシーで約20分</p>
-                      <p class="access__transit-desc" data-i18n="access.train_desc2">JR赤水駅から タクシーで約7分</p>
-                    </div>
-                  </div>
-
-                  <!-- Car -->
-                  <div class="access__transit-item">
-                    <div class="access__transit-icon">
-                      <img src="<?php echo get_template_directory_uri(); ?>/assets/img/access-icon-03.svg" alt="車" />
-                    </div>
-                    <div class="access__transit-content">
-                      <h4 class="access__transit-title" data-i18n="access.car_title">お車でお越しのお客様</h4>
-                      <p class="access__transit-desc" data-i18n="access.car_desc1">熊本市内から 車で約60分</p>
-                      <p class="access__transit-desc" data-i18n="access.car_desc2">福岡方面から 高速道路利用でアクセスが可能</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <div class="access__transit">
+          <p class="access__transit-head fadeUpTrigger" data-i18n="access.transit_head">主要な交通機関からのアクセス</p>
+          <div class="access__groups staggerTrigger">
+            <div class="access__group">
+              <p class="access__group-title" data-i18n="access.g1_title">空港からお越しのお客様</p>
+              <p class="access__item" data-i18n="access.g1_i1">熊本空港から 車で約30分</p>
+              <p class="access__item" data-i18n="access.g1_i2">福岡空港から 車で約135分</p>
             </div>
-
-            <!-- Right Column: Map and CTA -->
-            <div class="access__map-col">
-              <div class="access__map-wrap">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/access-img-01.jpg" alt="アクセスマップ" class="access__map-img" />
-              </div>
-              <div class="access__buttons">
-                <a href="https://maps.google.com/?q=熊本県阿蘇郡南阿蘇村河陽5579-3" target="_blank" rel="noopener noreferrer" class="btn-access btn-access--primary">
-                  <span data-i18n="access.btn_map">Google Mapで見る</span>
-                </a>
-                <a href="https://maps.google.com/maps?daddr=熊本県阿蘇郡南阿蘇村河陽5579-3" target="_blank" rel="noopener noreferrer" class="btn-access btn-access--outline">
-                  <span data-i18n="access.btn_route">経路を見る</span>
-                </a>
-              </div>
+            <div class="access__group">
+              <p class="access__group-title" data-i18n="access.g2_title">電車でお越しのお客様</p>
+              <p class="access__item" data-i18n="access.g2_i1">JR阿蘇駅から タクシーで約20分</p>
+              <p class="access__item" data-i18n="access.g2_i2">JR赤水駅から タクシーで約7分</p>
+            </div>
+            <div class="access__group">
+              <p class="access__group-title" data-i18n="access.g3_title">お車でお越しのお客様</p>
+              <p class="access__item" data-i18n="access.g3_i1">熊本市内から 車で約60分</p>
+              <p class="access__item" data-i18n="access.g3_i2">福岡方面から 高速道路利用でアクセス可能</p>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <!-- ===================== FAQ ===================== -->
-    <section id="faq" class="faq">
-      <img class="faq__deco reveal-deco" src="<?php echo get_template_directory_uri(); ?>/assets/img/deco-faq.svg" alt="" aria-hidden="true" />
-      <div class="faq__inner container">
-        <div class="faq__header">
-          <h2 class="faq__title" data-i18n="faq.title">よくあるご質問</h2>
-          <span class="faq__divider"></span>
-        </div>
 
-        <div class="faq__list">
-          <!-- Item 1 (Open by default) -->
-          <div class="faq__item is-open">
-            <button class="faq__item-header" aria-expanded="true">
-              <span class="faq__question-num">Q.</span>
-              <span class="faq__question-text" data-i18n="faq.q1">最低何泊から滞在できますか？</span>
-              <span class="faq__toggle-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer-wrapper">
-              <div class="faq__answer-inner">
-                <div class="faq__answer-content">
-                  <span class="faq__answer-num">A.</span>
-                  <p class="faq__answer-text" data-i18n="faq.a1">
-                    本プログラムは、5泊6日以上の滞在を推奨しております。<br />短期滞在ではなく、食事・運動・温熱・睡眠を通じて生活習慣を整えることで、より深い健康体験をご提供します。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 2 -->
-          <div class="faq__item">
-            <button class="faq__item-header" aria-expanded="false">
-              <span class="faq__question-num">Q.</span>
-              <span class="faq__question-text" data-i18n="faq.q2">夫婦で参加できますか？</span>
-              <span class="faq__toggle-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer-wrapper">
-              <div class="faq__answer-inner">
-                <div class="faq__answer-content">
-                  <span class="faq__answer-num">A.</span>
-                  <p class="faq__answer-text" data-i18n="faq.a2">
-                    はい。ご夫婦でのご参加を推奨しております。<br />お互いの健康状態を見つめ直しながら、これから先の人生をより豊かに過ごすための時間としてご利用いただけます。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 3 -->
-          <div class="faq__item">
-            <button class="faq__item-header" aria-expanded="false">
-              <span class="faq__question-num">Q.</span>
-              <span class="faq__question-text" data-i18n="faq.q3">医療行為や治療を行う施設ですか？</span>
-              <span class="faq__toggle-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer-wrapper">
-              <div class="faq__answer-inner">
-                <div class="faq__answer-content">
-                  <span class="faq__answer-num">A.</span>
-                  <p class="faq__answer-text" data-i18n="faq.a3">
-                    本プログラムは、病気の治療を目的とした医療施設ではありません。<br />予防医療・ウェルネス・生活習慣改善を目的とした滞在型健康増進プログラムです。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 4 -->
-          <div class="faq__item">
-            <button class="faq__item-header" aria-expanded="false">
-              <span class="faq__question-num">Q.</span>
-              <span class="faq__question-text" data-i18n="faq.q4">運動が苦手でも参加できますか？</span>
-              <span class="faq__toggle-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer-wrapper">
-              <div class="faq__answer-inner">
-                <div class="faq__answer-content">
-                  <span class="faq__answer-num">A.</span>
-                  <p class="faq__answer-text" data-i18n="faq.a4">
-                    もちろん可能です。年齢や体力に合わせて、無理なく取り組めるプログラムをご用意しております。<br />健康測定をもとに、ご自身に合ったペースでご参加いただけます。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 5 -->
-          <div class="faq__item">
-            <button class="faq__item-header" aria-expanded="false">
-              <span class="faq__question-num">Q.</span>
-              <span class="faq__question-text" data-i18n="faq.q5">食事制限やアレルギーへの対応は可能ですか？</span>
-              <span class="faq__toggle-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer-wrapper">
-              <div class="faq__answer-inner">
-                <div class="faq__answer-content">
-                  <span class="faq__answer-num">A.</span>
-                  <p class="faq__answer-text" data-i18n="faq.a5">
-                    可能な限り対応しております。<br />アレルギーや食事制限、ベジタリアン対応などについては、ご予約時に事前にご相談ください。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 6 -->
-          <div class="faq__item">
-            <button class="faq__item-header" aria-expanded="false">
-              <span class="faq__question-num">Q.</span>
-              <span class="faq__question-text" data-i18n="faq.q6">英語での対応は可能ですか？</span>
-              <span class="faq__toggle-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer-wrapper">
-              <div class="faq__answer-inner">
-                <div class="faq__answer-content">
-                  <span class="faq__answer-num">A.</span>
-                  <p class="faq__answer-text" data-i18n="faq.a6">
-                    海外からのお客様にも安心してご滞在いただけるよう、英語対応を順次整備しております。<br />事前にご相談いただければ、できる限りサポートいたします。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 7 -->
-          <div class="faq__item">
-            <button class="faq__item-header" aria-expanded="false">
-              <span class="faq__question-num">Q.</span>
-              <span class="faq__question-text" data-i18n="faq.q7">料金には何が含まれていますか</span>
-              <span class="faq__toggle-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer-wrapper">
-              <div class="faq__answer-inner">
-                <div class="faq__answer-content">
-                  <span class="faq__answer-num">A.</span>
-                  <p class="faq__answer-text" data-i18n="faq.a7">
-                    宿泊費、ご指定のお食事、健康施設利用料が含まれております。<br />詳細は<a href="#pricing" class="faq__link">プラン内容</a>をご確認ください。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 8 -->
-          <div class="faq__item">
-            <button class="faq__item-header" aria-expanded="false">
-              <span class="faq__question-num">Q.</span>
-              <span class="faq__question-text" data-i18n="faq.q8">コンシェルジュサービスはありますか？</span>
-              <span class="faq__toggle-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer-wrapper">
-              <div class="faq__answer-inner">
-                <div class="faq__answer-content">
-                  <span class="faq__answer-num">A.</span>
-                  <p class="faq__answer-text" data-i18n="faq.a8">
-                    はい。より快適な滞在をサポートするコンシェルジュサービスをご用意しております。<br />ご利用をご希望の場合は、予約ページにてコンシェルジュオプションを選択してください。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 9 -->
-          <div class="faq__item">
-            <button class="faq__item-header" aria-expanded="false">
-              <span class="faq__question-num">Q.</span>
-              <span class="faq__question-text" data-i18n="faq.q9">滞在前に相談することはできますか？</span>
-              <span class="faq__toggle-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer-wrapper">
-              <div class="faq__answer-inner">
-                <div class="faq__answer-content">
-                  <span class="faq__answer-num">A.</span>
-                  <p class="faq__answer-text" data-i18n="faq.a9">
-                    はい。ご不安な点や健康状態、滞在目的などについて、事前相談を承っております。<br />お問い合わせは<a href="#contact" class="faq__link faq__link--underline">こちら</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="access__strip">
+        <div class="access__strip-track js-strip">
+          <img src="<?php echo esc_url( $img ); ?>/introduce-img-01.jpg" alt="" />
+          <img src="<?php echo esc_url( $img ); ?>/introduce-img-02.jpg" alt="" />
+          <img src="<?php echo esc_url( $img ); ?>/introduce-img-07.jpg" alt="" />
+          <img src="<?php echo esc_url( $img ); ?>/introduce-img-03.jpg" alt="" />
+          <img src="<?php echo esc_url( $img ); ?>/introduce-img-05.jpg" alt="" />
+          <img src="<?php echo esc_url( $img ); ?>/house-img-03.jpg" alt="" />
+          <img src="<?php echo esc_url( $img ); ?>/introduce-img-06.jpg" alt="" />
+          <img src="<?php echo esc_url( $img ); ?>/house-img-02.jpg" alt="" />
         </div>
       </div>
     </section>
+
   </main>
 
-<?php get_footer(); ?>
+  <!-- ===================== Modals ===================== -->
+  <!-- お問い合わせフォーム -->
+  <div class="modal" id="modal-contact" aria-hidden="true">
+    <div class="modal__box modal__box--form">
+      <button class="modal__close" type="button" data-modal-close data-i18n-aria-label="modal.close" aria-label="閉じる"></button>
+      <div class="modal__scroll">
+        <p class="modal__title"><span data-i18n="form.title">お問い合わせ</span></p>
+        <form class="cform" novalidate>
+          <?php wp_nonce_field( 'ludoa_contact', 'ludoa_contact_nonce' ); ?>
+          <div class="cform__row">
+            <label class="cform__label"><span data-i18n="form.name">お名前</span> <em>*</em></label>
+            <input type="text" name="ludoa_name" data-i18n-placeholder="form.name_ph" placeholder="阿蘇 太郎" required />
+          </div>
+          <div class="cform__grid">
+            <div class="cform__row">
+              <label class="cform__label"><span data-i18n="form.email">メールアドレス</span> <em>*</em></label>
+              <input type="email" name="ludoa_email" placeholder="example@domain.com" required />
+            </div>
+            <div class="cform__row">
+              <label class="cform__label"><span data-i18n="form.tel">お電話番号</span> <em>*</em></label>
+              <input type="tel" name="ludoa_tel" placeholder="090-0000-0000" required />
+            </div>
+          </div>
+          <div class="cform__row">
+            <label class="cform__label"><span data-i18n="form.subject">お問い合わせ内容の種類</span> <em>*</em></label>
+            <div class="cform__select">
+              <select name="ludoa_subject_type" required>
+                <option value="" disabled selected data-i18n="form.opt1">プラン内容について</option>
+                <option data-i18n="form.opt1b">プラン内容について</option>
+                <option data-i18n="form.opt2">ご予約について</option>
+                <option data-i18n="form.opt3">アクセスについて</option>
+                <option data-i18n="form.opt4">その他</option>
+              </select>
+            </div>
+          </div>
+          <div class="cform__row">
+            <label class="cform__label" data-i18n="form.message">ご質問・ご要望</label>
+            <textarea name="ludoa_message" data-i18n-placeholder="form.message_ph" placeholder="食事制限やアレルギー、送迎に関するご相談などはこちらにご記入ください。"></textarea>
+          </div>
+          <p class="cform__privacy" data-i18n="form.privacy">ご入力いただきました情報は、当社の個人情報保護方針に基づき厳重に管理いたします。<br />当社の<a href="https://asofarmland.co.jp/privacy-policy" target="_blank" rel="noopener">個人情報保護方針</a>をご確認いただき、同意いただいた上で送信ください。</p>
+          <label class="cform__agree"><input type="checkbox" name="ludoa_agree" required /><span data-i18n="form.agree">同意する<em>*</em></span></label>
+          <button type="submit" class="btn-bracket cform__submit"><span data-i18n="form.submit">送信する</span></button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 宿泊料金 -->
+  <div class="modal" id="modal-price" aria-hidden="true">
+    <div class="modal__box modal__box--price">
+      <button class="modal__close" type="button" data-modal-close data-i18n-aria-label="modal.close" aria-label="閉じる"></button>
+      <div class="modal__scroll">
+        <div class="price">
+          <section class="price__sec">
+            <p class="modal__title"><span data-i18n="price.stay_title">宿泊料金</span></p>
+            <p class="price__subtitle" data-i18n="price.stay_sub">1泊お一人様あたり　※サ込税込・円</p>
+            <div class="price__zone">
+              <p class="price__zone-name" data-i18n="price.zone_village">ヴィレッジゾーン</p>
+              <div class="price__tablewrap">
+                <table class="price__table">
+                  <thead><tr><th data-i18n="price.th_type">区分</th><th data-i18n="price.th_1">1名利用時</th><th data-i18n="price.th_2">2名利用時</th><th data-i18n="price.th_3">3名利用時</th><th data-i18n="price.th_4">4名利用時</th></tr></thead>
+                  <tbody>
+                    <tr><th data-i18n="price.row_adult">大人</th><td>80,000</td><td>50,000</td><td>49,000</td><td>48,000</td></tr>
+                    <tr><th data-i18n="price.row_elem">小学生</th><td>–</td><td>35,000</td><td>34,000</td><td>33,000</td></tr>
+                    <tr><th data-i18n="price.row_child">幼児（4〜6歳）</th><td>–</td><td>25,000</td><td>24,000</td><td>23,000</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="price__zone">
+              <p class="price__zone-name" data-i18n="price.zone_royal">ロイヤルゾーン</p>
+              <div class="price__tablewrap">
+                <table class="price__table">
+                  <thead><tr><th data-i18n="price.th_type">区分</th><th data-i18n="price.th_1">1名利用時</th><th data-i18n="price.th_2">2名利用時</th><th data-i18n="price.th_3">3名利用時</th><th data-i18n="price.th_4">4名利用時</th></tr></thead>
+                  <tbody>
+                    <tr><th data-i18n="price.row_adult">大人</th><td>85,000</td><td>55,000</td><td>54,000</td><td>53,000</td></tr>
+                    <tr><th data-i18n="price.row_elem">小学生</th><td>–</td><td>38,500</td><td>37,500</td><td>36,500</td></tr>
+                    <tr><th data-i18n="price.row_child">幼児（4〜6歳）</th><td>–</td><td>27,500</td><td>26,500</td><td>25,500</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <ul class="price__notes">
+              <li data-i18n="price.note1">※大人（13歳以上）の方は、お一人様1泊につき入湯税＠150円別途必要です。</li>
+              <li data-i18n="price.note2">※滞在中の通訳・コンシェルジュ費用は別途いただきます。（一日あたり10,000円）</li>
+              <li data-i18n="price.note3">※主要公共交通機関の空港、駅、バスターミナルまでの無料送迎バスがございます。（要予約）</li>
+            </ul>
+          </section>
+
+          <section class="price__sec">
+            <p class="modal__title"><span data-i18n="price.meal_title">食事</span></p>
+            <p class="price__subtitle price__subtitle--note" data-i18n="price.meal_sub">（宿泊料金に含む）</p>
+            <div class="price__zone">
+              <div class="price__tablewrap">
+                <table class="price__table">
+                  <thead><tr><th data-i18n="price.meal_th">内容</th><th data-i18n="price.meal_breakfast">朝食</th><th data-i18n="price.meal_lunch">昼食</th><th data-i18n="price.meal_dinner">夕食</th></tr></thead>
+                  <tbody>
+                    <tr><th data-i18n="price.meal_r1">健康御膳</th><td data-i18n="price.meal_buffet">バイキング</td><td data-i18n="price.meal_setcourse">セット又はコース</td><td data-i18n="price.meal_setcourse">セット又はコース</td></tr>
+                    <tr><th data-i18n="price.meal_r2">デラックスバイキング</th><td data-i18n="price.meal_buffet">バイキング</td><td data-i18n="price.meal_buffet">バイキング</td><td data-i18n="price.meal_buffet">バイキング</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <ul class="price__notes">
+              <li data-i18n="price.meal_note1">※朝食・夕食はビックファームレストランでのご提供、ご昼食についてはビックファームレストラン又は他のレストランがご利用できます。</li>
+              <li data-i18n="price.meal_note2">※Aコースについては事前（宿泊のご予約時）のご予約になります。</li>
+            </ul>
+          </section>
+
+          <section class="price__sec">
+            <p class="modal__title"><span data-i18n="price.fac_title">ご利用いただける施設</span></p>
+
+            <div class="price__area price__area--5">
+              <p class="price__area-name" data-i18n="price.area1">農園・体験エリア</p>
+              <div class="price__cards">
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f1_h">元気の森</p><p class="price__card-b" data-i18n="price.f1_b">森の中を歩きながら自然に触れられる散策スポット</p></div>
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f2_h">元気チャレンジ館</p><p class="price__card-b" data-i18n="price.f2_b">体を動かしながら楽しく取り組めるアクティビティ施設</p></div>
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f3_h">幼児チャレンジ館</p><p class="price__card-b" data-i18n="price.f3_b">小さなお子様向けの遊び・体験施設</p></div>
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f4_h">ふれあい動物王国</p><p class="price__card-b" data-i18n="price.f4_b">動物たちとふれあいながら過ごせるエリア</p></div>
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f5_h">ビックファーム</p><p class="price__card-b" data-i18n="price.f5_b">全450棟のドーム型宿泊施設</p></div>
+              </div>
+            </div>
+
+            <div class="price__area price__area--4">
+              <p class="price__area-name" data-i18n="price.area2">測定・トレーニングエリア</p>
+              <div class="price__cards">
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f6_h">体力年齢測定館</p><p class="price__card-b" data-i18n="price.f6_b">ご自身の体力年齢をチェックできる測定施設</p></div>
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f7_h">健康トレーニング館</p><p class="price__card-b" data-i18n="price.f7_b">運動器具を使ったトレーニングができる施設</p></div>
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f8_h">健康リフレッシュ館</p><p class="price__card-b" data-i18n="price.f8_b">軽い運動やストレッチで心身をリフレッシュできる施設</p></div>
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f9_h">手のひら発汗測定</p><p class="price__card-b" data-i18n="price.f9_b">手のひらの発汗量から自律神経の状態をチェック</p></div>
+              </div>
+            </div>
+
+            <div class="price__area price__area--5">
+              <p class="price__area-name" data-i18n="price.area3">温浴・リラクゼーションエリア</p>
+              <div class="price__cards">
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f10_h">オキシゲンドーム</p><p class="price__card-b" data-i18n="price.f10_b">酸素濃度を高めた空間でゆったり過ごせるドーム</p></div>
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f11_h">酵素風呂</p><p class="price__card-b" data-i18n="price.f11_b">発酵の熱を利用した、米ぬかなどの酵素風呂</p></div>
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f12_h">よもぎ蒸し</p><p class="price__card-b" data-i18n="price.f12_b">よもぎの蒸気を下半身から浴びる温浴</p></div>
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f13_h">マッサージ</p><p class="price__card-b" data-i18n="price.f13_b">専門スタッフによる、心身をゆるめるマッサージ</p></div>
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f14_h">ヘッドスパ</p><p class="price__card-b" data-i18n="price.f14_b">頭を中心に、凝りや疲れをほぐすリラクゼーション</p></div>
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f15_h">健康火山温泉</p><p class="price__card-b" data-i18n="price.f15_b">阿蘇の地で楽しめる火山由来の温泉</p></div>
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f16_h">健康温熱十三種</p><p class="price__card-b" data-i18n="price.f16_b">13種類の温熱窯を巡って楽しめる発汗施設</p></div>
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f17_h">岩草浴</p><p class="price__card-b" data-i18n="price.f17_b">温めた岩と薬草の香りに包まれる発汗浴</p></div>
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f18_h">ドーム還元浴</p><p class="price__card-b" data-i18n="price.f18_b">ドーム型の温熱室でじんわりと汗を流す発汗浴</p></div>
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f19_h">マグマクレイスパ</p><p class="price__card-b" data-i18n="price.f19_b">マグマ由来の泥（クレイ）を使ったスパ施設</p></div>
+              </div>
+            </div>
+          </section>
+
+          <div class="price__close">
+            <a class="btn-bracket" href="#" data-modal-close><span data-i18n="price.close">閉じる</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<?php
+get_footer();

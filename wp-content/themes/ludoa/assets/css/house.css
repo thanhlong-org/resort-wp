@@ -1,0 +1,164 @@
+/* ===========================================================
+   宿泊施設 (house) — 癒しのドームハウス + dải marquee tự chạy
+   Mobile-first → PC ở cuối file.
+   =========================================================== */
+.house {
+  position: relative;
+  background: var(--color-bg);
+  padding: 80px 0 90px;
+  overflow: hidden;
+}
+
+/* ---- headline + intro ---- */
+.house__head {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+.house__headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 40px;
+}
+.house__eyebrow { display: flex; align-items: center; gap: 10px; }
+.house__eyebrow::before,
+.house__eyebrow::after {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background: var(--color-gray);
+}
+.house__eyebrow span {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  color: var(--color-white);
+}
+.house__title {
+  display: flex;
+  flex-direction: row-reverse;      /* 癒しの (phải) / ドームハウス (trái) */
+  justify-content: center;
+  gap: 4px;
+}
+.house__title span {
+  writing-mode: vertical-rl;
+  font-family: var(--font-brush);
+  font-weight: 400;
+  font-size: 40px;
+  letter-spacing: 0.06em;
+  line-height: 1.12;
+  color: var(--color-white);
+}
+.house__intro {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 2.2;
+  letter-spacing: 0.03em;
+  color: var(--color-gray);
+  text-align: left;
+}
+
+/* ---- marquee đa lớp parallax ---- */
+.house__view {
+  --u-scale: 0.46;                  /* SP: thu nhỏ unit gốc 1957×765 */
+  position: relative;
+  margin-top: 56px;
+  overflow: hidden;
+  height: calc(765px * var(--u-scale));
+  /* mờ dần → rõ → mờ dần ở 2 mép */
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
+}
+.house__scaler {
+  position: relative;
+  width: 1957px;
+  height: 765px;
+  transform: scale(var(--u-scale));
+  transform-origin: left top;
+}
+
+/* mỗi lớp = 1 track chạy độc lập, TỐC ĐỘ KHÁC NHAU → chiều sâu */
+.house__layer {
+  position: absolute;
+  top: 0; left: 0;
+  height: 765px;
+  display: flex;
+  width: max-content;
+}
+.house__layer--img { animation: houseLoop 82s linear infinite; }  /* ảnh: chậm */
+.house__layer--jp  { animation: houseLoop 62s linear infinite; }  /* chữ dọc: vừa */
+.house__layer--en  { animation: houseLoop 46s linear infinite; }  /* chữ ngang: nhanh */
+@keyframes houseLoop {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }   /* = đúng 1 unit (mỗi lớp có 2 unit) */
+}
+@media (prefers-reduced-motion: reduce) {
+  .house__layer { animation: none; }
+}
+
+.house__unit {
+  position: relative;
+  flex: 0 0 auto;
+  width: 1957px;
+  height: 765px;
+}
+
+/* ảnh: nhô nhẹ + đổ bóng sâu cho "nổi khối" */
+.house__layer--img .hm-img {
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* phần tử trong unit (toạ độ px theo Figma, đặt inline) */
+.hm-img {
+  position: absolute;
+  object-fit: cover;
+  border-radius: 1px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+.hm-jp {
+  position: absolute;
+  writing-mode: vertical-rl;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--color-white);
+  white-space: nowrap;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+.hm-jp--light { font-weight: 300; line-height: 1.05; }
+.hm-jp--tight { line-height: 1.0; }
+.hm-en {
+  position: absolute;
+  font-family: var(--font-serif);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+/* ===========================================================
+   Tablet / PC
+   =========================================================== */
+@media (min-width: 768px) {
+  .house__view { --u-scale: 0.72; }
+}
+@media (min-width: 1024px) {
+  .house { padding: 130px 0 130px; }
+  .house__head { max-width: 640px; }
+  .house__headline { gap: 30px; margin-bottom: 44px; }
+  .house__eyebrow { gap: 14px; }
+  .house__eyebrow::before,
+  .house__eyebrow::after { width: 26px; }
+  .house__eyebrow span { font-size: 20px; letter-spacing: 0.18em; }
+  .house__title { gap: 8px; }
+  .house__title span { font-size: 56px; }
+  .house__intro { font-size: 18px; line-height: 2.2; text-align: left; display: inline-block; }
+
+  .house__view { --u-scale: 1; margin-top: 80px; }
+}

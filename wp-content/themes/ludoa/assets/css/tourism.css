@@ -1,0 +1,183 @@
+/* ===========================================================
+   阿蘇の観光名所 (tourism) — 4 địa danh
+   Mobile-first → PC ở cuối file.
+   =========================================================== */
+.tourism {
+  position: relative;
+  background: var(--color-bg);
+  padding: 70px 0 90px;
+  overflow: hidden;
+}
+
+/* nền banner mờ ở trên */
+.tourism__bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  aspect-ratio: 1440 / 960;
+  z-index: 0;
+}
+.tourism__bg img { width: 100%; height: 100%; object-fit: cover; }
+.tourism__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(18, 19, 18, 1) 6%,
+    rgba(18, 19, 18, 0.7) 24%,
+    rgba(18, 19, 18, 0.7) 81%,
+    rgba(18, 19, 18, 1) 97%);
+}
+
+.tourism__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---- headline ---- */
+.tourism__headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 64px;
+}
+.tourism__eyebrow { display: flex; align-items: center; gap: 10px; }
+.tourism__eyebrow::before,
+.tourism__eyebrow::after {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--color-gray);
+}
+.tourism__eyebrow span {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  color: var(--color-white);
+}
+.tourism__title {
+  display: flex;
+  flex-direction: row-reverse;      /* 阿蘇の (phải) / 観光名所 (trái) */
+  justify-content: center;
+  gap: 4px;
+}
+.tourism__title span {
+  writing-mode: vertical-rl;
+  font-family: var(--font-brush);
+  font-weight: 400;
+  font-size: 36px;
+  letter-spacing: 0.06em;
+  line-height: 1.12;
+  color: var(--color-white);
+}
+
+/* ---- list ---- */
+.tourism__list {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+.tsp {
+  display: flex;
+  flex-direction: column-reverse;   /* SP: ảnh trên, chữ dưới */
+  gap: 24px;
+}
+
+/* ảnh + caption */
+.tsp__photo {
+  position: relative;
+  width: 100%;
+  margin: 0;
+}
+.tsp__photo img {
+  display: block;
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+.tsp__cap {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: row-reverse;      /* cột đầu bên phải */
+  align-items: flex-start;
+  gap: 4px;
+}
+/* cột thứ 2 (bên trái) lệch xuống 1 chút cho so le */
+.tsp__cap span:nth-child(2) { margin-top: 18px; }
+.tsp__cap span {
+  writing-mode: vertical-rl;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+}
+
+/* text */
+.tsp__title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 25px;                    /* Figma SP: 25px */
+  letter-spacing: 0.03em;
+  color: var(--color-white);
+  padding-left: 16px;
+  border-left: 1px solid var(--color-white);
+  margin-bottom: 20px;
+}
+.tsp__body {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.8;                 /* Figma SP: lh 1.8 (PC 2.2) */
+  letter-spacing: 0.03em;
+  color: var(--color-white);
+}
+
+/* ===========================================================
+   PC (≥1024px)
+   =========================================================== */
+@media (min-width: 1024px) {
+  .tourism { padding: 120px 0 160px; }
+  .tourism__inner { max-width: 1240px; padding: 0; }
+
+  .tourism__headline { gap: 28px; margin-bottom: 120px; }
+  .tourism__eyebrow { gap: 14px; }
+  .tourism__eyebrow::before,
+  .tourism__eyebrow::after { width: 26px; }
+  .tourism__eyebrow span { font-size: 20px; letter-spacing: 0.18em; }
+  .tourism__title { gap: 8px; }
+  .tourism__title span { font-size: 50px; }
+
+  .tourism__list { gap: 200px; }
+  .tsp {
+    flex-direction: row;            /* PC: chữ trái, ảnh phải */
+    align-items: center;
+    justify-content: space-between;
+  }
+  .tsp__text { max-width: 100%; }
+  .tsp__title { font-size: 25px; padding-left: 20px; margin-bottom: 28px; }
+  .tsp__body { font-size: 18px; line-height: 2.2; }
+
+  .tsp__photo { width: 524px; flex-shrink: 0; }
+  .tsp__photo img { height: 393px; }
+  /* nhãn dọc so le: card lẻ → góc dưới-trái, card chẵn → góc dưới-phải (theo Figma) */
+  .tsp__cap {
+    top: auto;
+    bottom: -60px;              /* tràn nhẹ xuống dưới mép ảnh */
+    left: 20px;
+    right: auto;
+    transform: none;
+  }
+  .tsp:nth-child(even) .tsp__cap { left: auto; right: 20px; }
+  .tsp__cap span { font-size: 25px; gap: 6px; }
+}
