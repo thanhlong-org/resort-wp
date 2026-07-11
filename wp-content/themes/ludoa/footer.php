@@ -10,7 +10,7 @@
     <div class="footer__inner">
       <div class="footer__brand">
         <p class="footer__tag" data-i18n="brand.tagline">大自然ウェルネス・リトリート</p>
-        <span class="logo footer__logo">
+        <span class="logo footer__logo" data-i18n="brand.logo">
           <span class="logo__top">大自然<span class="logo__accent">阿蘇</span></span>
           <span class="logo__main">健康の森</span>
         </span>

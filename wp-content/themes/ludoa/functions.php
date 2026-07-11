@@ -9,7 +9,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'LUDOA_VERSION', '2.0.0' );
+define( 'LUDOA_VERSION', '2.1.0' );
+
+// i18n routing + server-side translation, SEO head/sitemap, contact backend.
+require get_template_directory() . '/inc/i18n.php';
+require get_template_directory() . '/inc/seo.php';
+require get_template_directory() . '/inc/contact.php';
 
 /**
  * Theme setup.
@@ -75,12 +80,11 @@ function ludoa_assets() {
 	// Main stylesheet (theme header only).
 	wp_enqueue_style( 'ludoa-style', get_stylesheet_uri(), array(), LUDOA_VERSION );
 
-	// Scripts (footer): jQuery stack + slick, then app JS, i18n, contact.
+	// Scripts (footer): jQuery stack + slick, then app JS + contact.
+	// Translations are rendered server-side per language URL (inc/i18n.php),
+	// so no client-side i18n script is needed.
 	wp_enqueue_script( 'jquery-easing', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js', array( 'jquery' ), '1.4.1', true );
 	wp_enqueue_script( 'slick', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array( 'jquery' ), '1.8.1', true );
-
-	// i18n first so it caches the raw Japanese fallback before main.js mutates titles.
-	wp_enqueue_script( 'ludoa-i18n', "$js/i18n.js", array(), LUDOA_VERSION, true );
 	wp_enqueue_script( 'ludoa-main', "$js/main.js", array( 'jquery', 'jquery-easing', 'slick' ), LUDOA_VERSION, true );
 
 	// Contact modal flow (AJAX submit).
@@ -106,105 +110,3 @@ function ludoa_dequeue_block_styles() {
 	wp_dequeue_style( 'classic-theme-styles' );
 }
 add_action( 'wp_enqueue_scripts', 'ludoa_dequeue_block_styles', 100 );
-
-/* ============================================================
- * Contact flow: single modal, 入力 → 確認 → 完了 (AJAX submit)
- * ============================================================ */
-
-/**
- * Sanitize raw contact input into a normalized field set.
- *
- * @param array $src Raw $_POST.
- * @return array
- */
-function ludoa_contact_sanitize( $src ) {
-	// Fields are prefixed `ludoa_` to avoid collision with reserved WP query
-	// vars (notably `name`, which would hijack the main query and 404 the page).
-	return array(
-		'name'         => isset( $src['ludoa_name'] ) ? sanitize_text_field( wp_unslash( $src['ludoa_name'] ) ) : '',
-		'email'        => isset( $src['ludoa_email'] ) ? sanitize_email( wp_unslash( $src['ludoa_email'] ) ) : '',
-		'tel'          => isset( $src['ludoa_tel'] ) ? sanitize_text_field( wp_unslash( $src['ludoa_tel'] ) ) : '',
-		'subject_type' => isset( $src['ludoa_subject_type'] ) ? sanitize_text_field( wp_unslash( $src['ludoa_subject_type'] ) ) : '',
-		'message'      => isset( $src['ludoa_message'] ) ? sanitize_textarea_field( wp_unslash( $src['ludoa_message'] ) ) : '',
-		'agree'        => empty( $src['ludoa_agree'] ) ? '' : '1',
-	);
-}
-
-/**
- * Validate sanitized contact data. Returns array of field keys that failed.
- *
- * @param array $d Sanitized data.
- * @return array
- */
-function ludoa_contact_validate( $d ) {
-	$errors = array();
-	if ( '' === $d['name'] ) {
-		$errors[] = 'name';
-	}
-	if ( '' === $d['email'] || ! is_email( $d['email'] ) ) {
-		$errors[] = 'email';
-	}
-	if ( '' === $d['tel'] ) {
-		$errors[] = 'tel';
-	}
-	if ( '' === $d['subject_type'] ) {
-		$errors[] = 'subject_type';
-	}
-	if ( '1' !== $d['agree'] ) {
-		$errors[] = 'agree';
-	}
-	return $errors;
-}
-
-/**
- * Human label for each field (Japanese).
- *
- * @return array
- */
-function ludoa_contact_labels() {
-	return array(
-		'subject_type' => 'お問い合わせ内容の種類',
-		'name'         => 'お名前',
-		'email'        => 'メールアドレス',
-		'tel'          => 'お電話番号',
-		'message'      => 'ご質問・ご要望',
-	);
-}
-
-/**
- * AJAX submit handler. Validates, mails, returns JSON.
- */
-function ludoa_contact_submit() {
-	if ( ! isset( $_POST['nonce'] )
-		|| ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'ludoa_contact' ) ) {
-		wp_send_json_error( array( 'message' => 'invalid_nonce' ), 403 );
-	}
-
-	$data   = ludoa_contact_sanitize( $_POST );
-	$errors = ludoa_contact_validate( $data );
-	if ( $errors ) {
-		wp_send_json_error(
-			array(
-				'message' => 'validation_failed',
-				'fields'  => $errors,
-			),
-			422
-		);
-	}
-
-	$to      = get_option( 'admin_email' );
-	$subject = '【お問い合わせ】' . $data['subject_type'];
-	$body    = "お問い合わせを受け付けました。\n\n";
-	foreach ( ludoa_contact_labels() as $key => $label ) {
-		$body .= $label . "：\n" . ( '' !== $data[ $key ] ? $data[ $key ] : '（なし）' ) . "\n\n";
-	}
-	$headers = array(
-		'Content-Type: text/plain; charset=UTF-8',
-		'Reply-To: ' . $data['name'] . ' <' . $data['email'] . '>',
-	);
-	wp_mail( $to, $subject, $body, $headers );
-
-	wp_send_json_success( array( 'message' => 'ok' ) );
-}
-add_action( 'wp_ajax_ludoa_contact_submit', 'ludoa_contact_submit' );
-add_action( 'wp_ajax_nopriv_ludoa_contact_submit', 'ludoa_contact_submit' );

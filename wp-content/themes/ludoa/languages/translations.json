@@ -1,58 +1,23 @@
-/* ============================================================
-   i18n.js — language switching for the one-page LP.
-   Default + fallback: Japanese (ja, kept inline in the HTML).
-   Switchable: en (English), zh (Traditional Chinese), ko (Korean).
-   Vanilla JS, no dependencies. Dropdown open/close is handled
-   by main.js; this file performs the locale switch.
-   ============================================================ */
-(function () {
-  "use strict";
-
-  var ALLOWED = ["ja", "en", "zh", "ko"];
-  var DEFAULT_LANG = "ja";
-
-  /* Label shown on the toggle button for each locale. */
-  var TOGGLE_LABEL = {
-    ja: "JP",
-    en: "EN",
-    zh: "中文",
-    ko: "한국어"
-  };
-
-  /* <html lang> value per locale. */
-  var HTML_LANG = {
-    ja: "ja",
-    en: "en",
-    zh: "zh-Hant",
-    ko: "ko"
-  };
-
-  /* META (document title + description / OG) per locale. */
-  var META = {
-    ja: {
-      title: "大自然阿蘇 健康の森｜世界最高峰のウェルネスリゾート",
-      desc: "大自然阿蘇 健康の森 — 世界最高峰のウェルネスリゾート。"
+{
+  "meta": {
+    "ja": {
+      "title": "大自然阿蘇 健康の森｜世界最高峰のウェルネスリゾート",
+      "desc": "大自然阿蘇 健康の森 — 世界最高峰のウェルネスリゾート。"
     },
-    en: {
-      title: "Oaso Shizen Kenko no Mori | A World-Class Wellness Resort",
-      desc: "Oaso Shizen Kenko no Mori — a world-class wellness resort in the great nature of Aso."
+    "en": {
+      "title": "Oaso Shizen Kenko no Mori | A World-Class Wellness Resort",
+      "desc": "Oaso Shizen Kenko no Mori — a world-class wellness resort in the great nature of Aso."
     },
-    zh: {
-      title: "大自然阿蘇 健康之森｜世界頂級的養生度假勝地",
-      desc: "大自然阿蘇 健康之森 — 坐落於阿蘇大自然中的世界頂級養生度假勝地。"
+    "zh": {
+      "title": "大自然阿蘇 健康之森｜世界頂級的養生度假勝地",
+      "desc": "大自然阿蘇 健康之森 — 坐落於阿蘇大自然中的世界頂級養生度假勝地。"
     },
-    ko: {
-      title: "오아소 자연 건강의 숲 | 세계 최고의 웰니스 리조트",
-      desc: "오아소 자연 건강의 숲 — 아소의 대자연 속에 자리한 세계 최고 수준의 웰니스 리조트."
+    "ko": {
+      "title": "오아소 자연 건강의 숲 | 세계 최고의 웰니스 리조트",
+      "desc": "오아소 자연 건강의 숲 — 아소의 대자연 속에 자리한 세계 최고 수준의 웰니스 리조트."
     }
-  };
-
-  /* ---------------------------------------------------------
-     Translation dictionaries. Values are innerHTML (may contain
-     <br>/<span>/<strong>/<a> markup mirroring the JA source).
-     A missing key falls back to the cached Japanese original.
-     --------------------------------------------------------- */
-  var I18N = {
+  },
+  "dict": {
     "en": {
       "menu.visual": "Free your mind and body,<br />a supreme escape for all five senses.",
       "menu.contents_label": "Contents",
@@ -237,7 +202,16 @@
       "learn.next": "Next",
       "modal.close": "Close",
       "form.name_ph": "Taro Aso",
-      "form.message_ph": "Please note any dietary restrictions, allergies, or transfer requests here."
+      "form.message_ph": "Please note any dietary restrictions, allergies, or transfer requests here.",
+      "form.confirm_title": "Confirm Your Details",
+      "form.confirm_note": "If the following is correct, please press \"Submit\".",
+      "form.back": "Back",
+      "form.send_error": "Sending failed. Please try again in a moment.",
+      "form.thanks_title": "Thank You",
+      "form.thanks_text": "Thank you for your inquiry.<br />We will review your message and our staff will get back to you shortly.",
+      "form.close": "Close",
+      "brand.logo": "<span class=\"logo__top\">Oaso Shizen</span><span class=\"logo__main\">Kenko no Mori</span>",
+      "brand.logo_aria": "Oaso Shizen Kenko no Mori"
     },
     "zh": {
       "menu.visual": "解放身心<br />以五感細品的極致假期。",
@@ -423,7 +397,16 @@
       "learn.next": "下一個",
       "modal.close": "關閉",
       "form.name_ph": "阿蘇 太郎",
-      "form.message_ph": "如有飲食限制、過敏或接送相關諮詢等，請填寫於此。"
+      "form.message_ph": "如有飲食限制、過敏或接送相關諮詢等，請填寫於此。",
+      "form.confirm_title": "確認輸入內容",
+      "form.confirm_note": "若以下內容無誤，請按「送出」按鈕。",
+      "form.back": "返回",
+      "form.send_error": "送出失敗，請稍後再試。",
+      "form.thanks_title": "送出完成",
+      "form.thanks_text": "感謝您的來信。<br />我們將於確認內容後，由專人與您聯繫。",
+      "form.close": "關閉",
+      "brand.logo": "<span class=\"logo__top\">大自然<span class=\"logo__accent\">阿蘇</span></span><span class=\"logo__main\">健康之森</span>",
+      "brand.logo_aria": "大自然阿蘇 健康之森"
     },
     "ko": {
       "menu.visual": "몸과 마음을 해방하는<br />오감으로 즐기는 최상의 휴일.",
@@ -609,185 +592,16 @@
       "learn.next": "다음",
       "modal.close": "닫기",
       "form.name_ph": "아소 타로",
-      "form.message_ph": "식사 제한이나 알레르기, 픽업에 관한 상담 등은 이곳에 기입해 주세요."
+      "form.message_ph": "식사 제한이나 알레르기, 픽업에 관한 상담 등은 이곳에 기입해 주세요.",
+      "form.confirm_title": "입력 내용 확인",
+      "form.confirm_note": "아래 내용이 맞으시면 \"전송하기\" 버튼을 눌러 주세요.",
+      "form.back": "돌아가기",
+      "form.send_error": "전송에 실패했습니다. 잠시 후 다시 시도해 주세요.",
+      "form.thanks_title": "전송 완료",
+      "form.thanks_text": "문의해 주셔서 감사합니다.<br />내용 확인 후 담당자가 연락드리겠습니다.",
+      "form.close": "닫기",
+      "brand.logo": "<span class=\"logo__top\">오아소 자연</span><span class=\"logo__main\">건강의 숲</span>",
+      "brand.logo_aria": "오아소 자연 건강의 숲"
     }
-  };
-
-  /* ---------------------------------------------------------
-     Implementation
-     --------------------------------------------------------- */
-  function onReady(fn) {
-    if (document.readyState !== "loading") fn();
-    else document.addEventListener("DOMContentLoaded", fn);
   }
-
-  function isAllowed(lang) {
-    return ALLOWED.indexOf(lang) !== -1;
-  }
-
-  /* Attribute-translation map: data-* directive -> real attribute. */
-  var ATTR_MAP = {
-    "data-i18n-placeholder": "placeholder",
-    "data-i18n-aria-label": "aria-label"
-  };
-
-  onReady(function () {
-    var nodes = Array.prototype.slice.call(document.querySelectorAll("[data-i18n]"));
-
-    /* Cache the original (Japanese) innerHTML as the fallback. */
-    var fallback = {};
-    nodes.forEach(function (el) {
-      var key = el.getAttribute("data-i18n");
-      if (key && !(key in fallback)) {
-        fallback[key] = el.innerHTML;
-      }
-    });
-
-    /* Collect attribute-translated nodes and cache their JA originals. */
-    var attrSelector = Object.keys(ATTR_MAP).map(function (d) {
-      return "[" + d + "]";
-    }).join(",");
-    var attrNodes = Array.prototype.slice.call(
-      document.querySelectorAll(attrSelector)
-    );
-    var attrFallback = {};
-    attrNodes.forEach(function (el) {
-      Object.keys(ATTR_MAP).forEach(function (directive) {
-        var key = el.getAttribute(directive);
-        if (key && !(key in attrFallback)) {
-          attrFallback[key] = el.getAttribute(ATTR_MAP[directive]) || "";
-        }
-      });
-    });
-
-    function setMeta(lang) {
-      var meta = META[lang] || META[DEFAULT_LANG];
-      if (!meta) return;
-      if (meta.title) document.title = meta.title;
-
-      var descTag = document.querySelector('meta[name="description"]');
-      if (descTag && meta.desc) descTag.setAttribute("content", meta.desc);
-
-      var ogTitle = document.querySelector('meta[property="og:title"]');
-      if (ogTitle && meta.title) ogTitle.setAttribute("content", meta.title);
-
-      var ogDesc = document.querySelector('meta[property="og:description"]');
-      if (ogDesc && meta.desc) ogDesc.setAttribute("content", meta.desc);
-    }
-
-    function updateSwitcher(lang) {
-      var labels = document.querySelectorAll(".lang__label");
-      Array.prototype.forEach.call(labels, function (lbl) {
-        lbl.textContent = TOGGLE_LABEL[lang] || TOGGLE_LABEL[DEFAULT_LANG];
-      });
-
-      var items = document.querySelectorAll(".lang__menu a[data-lang]");
-      Array.prototype.forEach.call(items, function (item) {
-        var code = item.getAttribute("data-lang");
-        if (code && code === lang) item.classList.add("is-active");
-        else item.classList.remove("is-active");
-      });
-    }
-
-    function updateUrl(lang) {
-      if (!window.history || !window.history.replaceState) return;
-      try {
-        var url = new URL(window.location.href);
-        url.searchParams.set("lang", lang);
-        window.history.replaceState(null, "", url.toString());
-      } catch (e) {
-        /* URL API unavailable — skip silently. */
-      }
-    }
-
-    function applyLocale(lang) {
-      if (!isAllowed(lang)) lang = DEFAULT_LANG;
-
-      var dict = I18N[lang]; /* undefined for 'ja' */
-      nodes.forEach(function (el) {
-        var key = el.getAttribute("data-i18n");
-        if (!key) return;
-        if (lang === DEFAULT_LANG) {
-          el.innerHTML = fallback[key];
-        } else if (dict && Object.prototype.hasOwnProperty.call(dict, key)) {
-          el.innerHTML = dict[key];
-        } else {
-          el.innerHTML = fallback[key]; /* graceful fallback to JA */
-        }
-      });
-
-      /* Translated attributes (placeholder / aria-label). */
-      attrNodes.forEach(function (el) {
-        Object.keys(ATTR_MAP).forEach(function (directive) {
-          var key = el.getAttribute(directive);
-          if (!key) return;
-          var attr = ATTR_MAP[directive];
-          if (lang === DEFAULT_LANG) {
-            el.setAttribute(attr, attrFallback[key]);
-          } else if (dict && Object.prototype.hasOwnProperty.call(dict, key)) {
-            el.setAttribute(attr, dict[key]);
-          } else {
-            el.setAttribute(attr, attrFallback[key]);
-          }
-        });
-      });
-
-      document.documentElement.lang = HTML_LANG[lang] || HTML_LANG[DEFAULT_LANG];
-      setMeta(lang);
-      updateSwitcher(lang);
-
-      try {
-        localStorage.setItem("lang", lang);
-      } catch (e) {
-        /* storage may be blocked — ignore. */
-      }
-      updateUrl(lang);
-
-      /* Let main.js re-run title char-splitting / reveal on the new text. */
-      if (typeof window.ludoaAfterI18n === "function") {
-        window.ludoaAfterI18n();
-      }
-    }
-
-    /* ---- Determine initial locale ---- */
-    function detectLocale() {
-      var stored = null;
-      try {
-        stored = localStorage.getItem("lang");
-      } catch (e) {
-        stored = null;
-      }
-      if (stored && isAllowed(stored)) return stored;
-
-      try {
-        var qp = new URL(window.location.href).searchParams.get("lang");
-        if (qp && isAllowed(qp)) return qp;
-      } catch (e) {
-        /* ignore */
-      }
-      return DEFAULT_LANG;
-    }
-
-    /* ---- Wire up language items (new markup: .lang__menu a[data-lang]) ---- */
-    var langItems = document.querySelectorAll(".lang__menu a[data-lang]");
-    Array.prototype.forEach.call(langItems, function (item) {
-      item.addEventListener("click", function (e) {
-        e.preventDefault();
-        var code = item.getAttribute("data-lang");
-        if (!isAllowed(code)) return;
-        applyLocale(code);
-
-        /* Close the dropdown. */
-        var langWrap = document.getElementById("lang");
-        if (langWrap) {
-          langWrap.classList.remove("is-open");
-          var toggle = langWrap.querySelector(".lang__toggle");
-          if (toggle) toggle.setAttribute("aria-expanded", "false");
-        }
-      });
-    });
-
-    /* ---- Apply initial locale ---- */
-    applyLocale(detectLocale());
-  });
-})();
+}

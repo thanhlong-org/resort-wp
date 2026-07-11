@@ -18,7 +18,7 @@ $img = get_template_directory_uri() . '/assets/images';
       </div>
 
       <div class="fv__inner">
-        <h1 class="fv__title logo fadeUpTrigger">
+        <h1 class="fv__title logo fadeUpTrigger" data-i18n="brand.logo">
           <span class="logo__top">大自然<span class="logo__accent">阿蘇</span></span>
           <span class="logo__main">健康の森</span>
         </h1>
@@ -481,6 +481,9 @@ $img = get_template_directory_uri() . '/assets/images';
     <div class="modal__box modal__box--form">
       <button class="modal__close" type="button" data-modal-close data-i18n-aria-label="modal.close" aria-label="閉じる"></button>
       <div class="modal__scroll">
+
+        <!-- STEP 1: 入力 -->
+        <div class="cform-step cform-step--input">
         <p class="modal__title"><span data-i18n="form.title">お問い合わせ</span></p>
         <form class="cform" novalidate>
           <?php wp_nonce_field( 'ludoa_contact', 'ludoa_contact_nonce' ); ?>
@@ -518,6 +521,50 @@ $img = get_template_directory_uri() . '/assets/images';
           <label class="cform__agree"><input type="checkbox" name="ludoa_agree" required /><span data-i18n="form.agree">同意する<em>*</em></span></label>
           <button type="submit" class="btn-bracket cform__submit"><span data-i18n="form.submit">送信する</span></button>
         </form>
+        </div>
+
+        <!-- STEP 2: 確認 -->
+        <div class="cform-step cform-step--confirm" hidden>
+          <p class="modal__title"><span data-i18n="form.confirm_title">入力内容のご確認</span></p>
+          <p class="cform__note" data-i18n="form.confirm_note">以下の内容でよろしければ「送信する」ボタンを押してください。</p>
+          <dl class="cform__summary">
+            <div class="cform__summary-row">
+              <dt data-i18n="form.name">お名前</dt>
+              <dd data-cfield="name"></dd>
+            </div>
+            <div class="cform__summary-row">
+              <dt data-i18n="form.email">メールアドレス</dt>
+              <dd data-cfield="email"></dd>
+            </div>
+            <div class="cform__summary-row">
+              <dt data-i18n="form.tel">お電話番号</dt>
+              <dd data-cfield="tel"></dd>
+            </div>
+            <div class="cform__summary-row">
+              <dt data-i18n="form.subject">お問い合わせ内容の種類</dt>
+              <dd data-cfield="subject"></dd>
+            </div>
+            <div class="cform__summary-row">
+              <dt data-i18n="form.message">ご質問・ご要望</dt>
+              <dd data-cfield="message"></dd>
+            </div>
+          </dl>
+          <p class="cform__error" data-i18n="form.send_error" hidden>送信に失敗しました。時間をおいて再度お試しください。</p>
+          <div class="cform__actions">
+            <button type="button" class="btn-bracket cform__back"><span data-i18n="form.back">戻る</span></button>
+            <button type="button" class="btn-bracket cform__submit cform__send"><span data-i18n="form.submit">送信する</span></button>
+          </div>
+        </div>
+
+        <!-- STEP 3: 完了 -->
+        <div class="cform-step cform-step--thanks" hidden>
+          <p class="modal__title"><span data-i18n="form.thanks_title">送信完了</span></p>
+          <p class="cform__thanks" data-i18n="form.thanks_text">お問い合わせいただきありがとうございます。<br />内容を確認のうえ、担当者よりご連絡いたします。</p>
+          <div class="cform__actions">
+            <button type="button" class="btn-bracket cform__closebtn" data-modal-close><span data-i18n="form.close">閉じる</span></button>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

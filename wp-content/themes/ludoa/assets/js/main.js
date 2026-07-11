@@ -115,12 +115,10 @@
       var open = $lang.toggleClass('is-open').hasClass('is-open');
       $(this).attr('aria-expanded', open);
     });
-    $lang.find('.lang__menu a').on('click', function (e) {
-      e.preventDefault();
-      $lang.find('.lang__menu a').removeClass('is-active');
-      $(this).addClass('is-active');
+    // Items are real <a href="/en/">… links (per-language URLs, SEO):
+    // no preventDefault — the browser navigates. Just close the dropdown.
+    $lang.find('.lang__menu a').on('click', function () {
       $lang.removeClass('is-open').find('.lang__toggle').attr('aria-expanded', false);
-      // TODO: chuyển ngôn ngữ theo data-lang khi có bản dịch
     });
     // click ra ngoài → đóng
     $(document).on('click', function () {
@@ -151,13 +149,20 @@
     $('.modal').on('click', function (e) { if (e.target === this) closeModal(); });
     $(document).on('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
 
-    // ép thông báo validate sang tiếng Nhật (gắn trực tiếp vì 'invalid' không bubble)
+    // thông báo validate theo ngôn ngữ trang (gắn trực tiếp vì 'invalid' không bubble)
+    var VMSG = {
+      'ja':    { required: 'こちらの項目にご入力ください。', email: 'メールアドレスの形式が正しくありません。', invalid: '入力内容をご確認ください。' },
+      'en':    { required: 'Please fill in this field.', email: 'Please enter a valid email address.', invalid: 'Please check your input.' },
+      'zh-TW': { required: '請填寫此欄位。', email: '電子郵件地址格式不正確。', invalid: '請確認輸入內容。' },
+      'ko':    { required: '이 항목을 입력해 주세요.', email: '이메일 주소 형식이 올바르지 않습니다.', invalid: '입력 내용을 확인해 주세요.' }
+    };
+    var vmsg = VMSG[document.documentElement.lang] || VMSG.ja;
     $('.cform').find('input, select, textarea').each(function () {
       this.addEventListener('invalid', function () {
         var v = this.validity;
-        if (v.valueMissing)      this.setCustomValidity('こちらの項目にご入力ください。');
-        else if (v.typeMismatch && this.type === 'email') this.setCustomValidity('メールアドレスの形式が正しくありません。');
-        else                     this.setCustomValidity('入力内容をご確認ください。');
+        if (v.valueMissing)      this.setCustomValidity(vmsg.required);
+        else if (v.typeMismatch && this.type === 'email') this.setCustomValidity(vmsg.email);
+        else                     this.setCustomValidity(vmsg.invalid);
       });
       this.addEventListener('input',  function () { this.setCustomValidity(''); });
       this.addEventListener('change', function () { this.setCustomValidity(''); });
@@ -227,15 +232,6 @@
     $('.learn__arrow--prev').on('click', function () { $s.slick('slickPrev'); });
     $('.learn__arrow--next').on('click', function () { $s.slick('slickNext'); });
   }
-
-  /* ---- Re-run title split + reveal after an i18n locale switch ----
-     i18n.js replaces innerHTML of translated nodes; the brush titles
-     therefore lose their per-char <span>s. Reset and re-split them. */
-  window.ludoaAfterI18n = function () {
-    $(CHAR_TITLES).removeData('split').removeClass('is-charon title-fx');
-    splitTitleChars();
-    reveal();
-  };
 
   /* ---- Init ---- */
   $(function () {

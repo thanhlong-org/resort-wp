@@ -6,24 +6,11 @@
  */
 ?>
 <!DOCTYPE html>
-<html lang="ja">
+<html <?php language_attributes(); ?>>
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="大自然阿蘇 健康の森 — 世界最高峰のウェルネスリゾート。" />
-
-  <!-- hreflang alternates (single-page, query-param strategy) -->
-  <link rel="alternate" hreflang="ja" href="?lang=ja" />
-  <link rel="alternate" hreflang="en" href="?lang=en" />
-  <link rel="alternate" hreflang="zh" href="?lang=zh" />
-  <link rel="alternate" hreflang="ko" href="?lang=ko" />
-  <link rel="alternate" hreflang="x-default" href="?lang=ja" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="大自然阿蘇 健康の森" />
-  <meta property="og:description" content="世界最高峰のウェルネスリゾート。" />
-  <meta property="og:type" content="website" />
-
+  <?php // description / canonical / hreflang / OG per language: inc/seo.php (wp_head). ?>
   <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -31,21 +18,25 @@
 
   <!-- ===================== Header ===================== -->
   <header class="header" id="header">
-    <a class="header__logo logo" href="#top" aria-label="大自然阿蘇 健康の森">
+    <a class="header__logo logo" href="#top" data-i18n="brand.logo" data-i18n-aria-label="brand.logo_aria" aria-label="大自然阿蘇 健康の森">
       <span class="logo__top">大自然<span class="logo__accent">阿蘇</span></span>
       <span class="logo__main">健康の森</span>
     </a>
 
     <div class="header__right">
+      <?php
+      // Language switcher: crawlable <a> links to per-language URLs (SEO).
+      $ludoa_langs   = ludoa_languages();
+      $ludoa_current = ludoa_lang();
+      ?>
       <div class="lang" id="lang">
         <button class="lang__toggle" type="button" aria-haspopup="true" aria-expanded="false" data-i18n-aria-label="lang.toggle_aria" aria-label="言語切替">
-          <span class="lang__label">JP</span> <span class="lang__caret">▼</span>
+          <span class="lang__label"><?php echo esc_html( $ludoa_langs[ $ludoa_current ]['label'] ); ?></span> <span class="lang__caret">▼</span>
         </button>
         <ul class="lang__menu" role="menu">
-          <li><a href="#" role="menuitem" data-lang="ja" class="is-active">日本語</a></li>
-          <li><a href="#" role="menuitem" data-lang="en">English</a></li>
-          <li><a href="#" role="menuitem" data-lang="zh">中文</a></li>
-          <li><a href="#" role="menuitem" data-lang="ko">한국어</a></li>
+          <?php foreach ( $ludoa_langs as $ludoa_code => $ludoa_cfg ) : ?>
+          <li><a href="<?php echo esc_url( ludoa_lang_url( $ludoa_code ) ); ?>" role="menuitem" hreflang="<?php echo esc_attr( $ludoa_cfg['hreflang'] ); ?>" lang="<?php echo esc_attr( $ludoa_cfg['html_lang'] ); ?>"<?php echo $ludoa_code === $ludoa_current ? ' class="is-active"' : ''; ?>><?php echo esc_html( $ludoa_cfg['name'] ); ?></a></li>
+          <?php endforeach; ?>
         </ul>
       </div>
       <button class="drawer" type="button" data-i18n-aria-label="menu.toggle_aria" aria-label="メニュー" aria-expanded="false">
@@ -57,7 +48,7 @@
   <!-- ===================== Menu (toggle) ===================== -->
   <nav class="menu" id="g-nav" aria-hidden="true">
     <div class="menu__panel">
-      <a class="menu__top-logo logo" href="#top" aria-label="健康の森">
+      <a class="menu__top-logo logo" href="#top" data-i18n="brand.logo" data-i18n-aria-label="brand.logo_aria" aria-label="健康の森">
         <span class="logo__top">大自然<span class="logo__accent">阿蘇</span></span>
         <span class="logo__main">健康の森</span>
       </a>
@@ -88,7 +79,7 @@
 
       <div class="menu__brand">
         <p class="menu__tagline" data-i18n="brand.tagline">大自然ウェルネス・リトリート</p>
-        <span class="logo menu__brand-logo">
+        <span class="logo menu__brand-logo" data-i18n="brand.logo">
           <span class="logo__top">大自然<span class="logo__accent">阿蘇</span></span>
           <span class="logo__main">健康の森</span>
         </span>
