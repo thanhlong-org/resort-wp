@@ -428,13 +428,27 @@ $img = get_template_directory_uri() . '/assets/images';
           <p class="access__addr" data-i18n="access.addr">〒869-1404　熊本県阿蘇郡南阿蘇村河陽5579-3</p>
         </div>
 
+        <?php
+        // Google Maps: destination is the resort address; route opens
+        // directions from the visitor's current location (origin omitted).
+        $ludoa_map_q  = rawurlencode( '〒869-1404 熊本県阿蘇郡南阿蘇村河陽5579-3' );
+        $ludoa_langs  = ludoa_languages();
+        $ludoa_map_hl = $ludoa_langs[ ludoa_lang() ]['html_lang'];
+        ?>
         <div class="access__map fadeInTrigger">
-          <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/map-img.jpg" alt="地図" />
+          <iframe
+            src="https://maps.google.com/maps?q=<?php echo $ludoa_map_q; ?>&hl=<?php echo esc_attr( $ludoa_map_hl ); ?>&z=15&output=embed"
+            title="Google Map"
+            width="588"
+            height="408"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
         <div class="access__btns fadeUpTrigger">
-          <a class="btn-bracket" href="#" target="_blank" rel="noopener"><span data-i18n="access.btn_map">Google Mapで見る</span></a>
-          <a class="btn-bracket" href="#" target="_blank" rel="noopener"><span data-i18n="access.btn_route">経路を見る</span></a>
+          <a class="btn-bracket" href="https://www.google.com/maps/search/?api=1&query=<?php echo $ludoa_map_q; ?>" target="_blank" rel="noopener"><span data-i18n="access.btn_map">Google Mapで見る</span></a>
+          <a class="btn-bracket" href="https://www.google.com/maps/dir/?api=1&destination=<?php echo $ludoa_map_q; ?>&travelmode=driving" target="_blank" rel="noopener"><span data-i18n="access.btn_route">経路を見る</span></a>
         </div>
 
         <div class="access__transit">

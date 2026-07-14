@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'LUDOA_VERSION', '2.1.0' );
+define( 'LUDOA_VERSION', '2.1.1' );
 
 // i18n routing + server-side translation, SEO head/sitemap, contact backend.
 require get_template_directory() . '/inc/i18n.php';

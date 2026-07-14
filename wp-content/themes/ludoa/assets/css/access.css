@@ -91,11 +91,13 @@
   max-width: 588px;
   margin: 0 auto;
 }
-.access__map img {
+.access__map img,
+.access__map iframe {
   display: block;
   width: 100%;
   aspect-ratio: 588 / 408;
   object-fit: cover;
+  border: 0;
   border-radius: 2px;
 }
 
