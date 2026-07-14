@@ -95,6 +95,7 @@ function ludoa_assets() {
 		array(
 			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 			'nonce'   => wp_create_nonce( 'ludoa_contact' ),
+			'lang'    => ludoa_lang(),
 		)
 	);
 }

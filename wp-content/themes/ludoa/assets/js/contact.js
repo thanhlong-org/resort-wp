@@ -81,6 +81,7 @@
         data: {
           action: "ludoa_contact_submit",
           nonce: window.ludoaContact.nonce,
+          ludoa_lang: window.ludoaContact.lang || "",
           ludoa_name: d.name,
           ludoa_email: d.email,
           ludoa_tel: d.tel,
