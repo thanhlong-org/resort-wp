@@ -74,7 +74,7 @@ $img = get_template_directory_uri() . '/assets/images';
             <line x1="7" y1="70" x2="20" y2="76" stroke="#FFFFFF" stroke-width="1" vector-effect="non-scaling-stroke" />
           </svg>
           <span class="concept__map-pin" aria-hidden="true"></span>
-          <span class="concept__map-label"><span>大自然阿蘇</span><span>健康の森</span></span>
+          <span class="concept__map-label" data-i18n="concept.map_label"><span>大自然阿蘇</span><span>健康の森</span></span>
         </div>
       </div>
     </section>
@@ -361,7 +361,7 @@ $img = get_template_directory_uri() . '/assets/images';
 
         <div class="plan__header">
           <div class="plan__lead fadeUpTrigger">
-            <p class="plan__brand">大自然阿蘇健康の森</p>
+            <p class="plan__brand" data-i18n="plan.brand">大自然阿蘇健康の森</p>
             <h3 class="plan__name" data-i18n="plan.name">世界一の温浴施設で癒しを極める<br />ウェルネス・リトリートプラン</h3>
           </div>
           <div class="plan__price fadeUpTrigger">
