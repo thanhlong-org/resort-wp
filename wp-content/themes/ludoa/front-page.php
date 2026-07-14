@@ -30,7 +30,7 @@ $img = get_template_directory_uri() . '/assets/images';
         <span class="fv__scroll-line"></span>
       </div>
 
-      <a class="fv__reserve" href="#reserve">
+      <a class="fv__reserve" href="<?php echo esc_url( ludoa_reserve_url() ); ?>" target="_blank" rel="noopener">
         <span class="fv__reserve-text" data-i18n="fv.reserve">ご予約はこちら</span>
       </a>
     </section>

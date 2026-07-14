@@ -93,6 +93,25 @@ function ludoa_lang_url( $code ) {
 }
 
 /**
+ * External reservation (d-reserve) URL for the current language.
+ *
+ * @param string $code Optional language code; defaults to current.
+ * @return string
+ */
+function ludoa_reserve_url( $code = '' ) {
+	$code  = $code ? $code : ludoa_lang();
+	// d-reserve lang params (site zh is zh-TW, but d-reserve only offers zh-CN).
+	$langs = array(
+		'ja' => 'ja',
+		'en' => 'en',
+		'zh' => 'zh-CN',
+		'ko' => 'ko',
+	);
+	$lang  = isset( $langs[ $code ] ) ? $langs[ $code ] : 'ja';
+	return 'https://d-reserve.jp/GSEA002F01400/GSEA002A01?hotelCode=0000001530&pl=PL00064325&lang=' . $lang;
+}
+
+/**
  * Full translation data (meta + dicts) from languages/translations.json.
  *
  * @return array

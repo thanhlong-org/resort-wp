@@ -74,7 +74,7 @@
 
       <div class="menu__btns">
         <a class="btn-bracket" href="#" data-modal="contact"><span data-i18n="cta.contact">お問い合わせはこちら</span></a>
-        <a class="btn-bracket" href="#reserve"><span data-i18n="cta.reserve">今すぐ予約する</span></a>
+        <a class="btn-bracket" href="<?php echo esc_url( ludoa_reserve_url() ); ?>" target="_blank" rel="noopener"><span data-i18n="cta.reserve">今すぐ予約する</span></a>
       </div>
 
       <div class="menu__brand">
