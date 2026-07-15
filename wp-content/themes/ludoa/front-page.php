@@ -11,6 +11,9 @@ $img = get_template_directory_uri() . '/assets/images';
   <!-- ===================== Main ===================== -->
   <main id="top">
 
+    <!-- ===== Stage: banner bị ghim + Concept trượt lên phủ ===== -->
+    <div class="fv-stage">
+
     <!-- ===== FV / Hero ===== -->
     <section class="fv" id="fv">
       <div class="fv__bg">
@@ -22,7 +25,7 @@ $img = get_template_directory_uri() . '/assets/images';
           <span class="logo__top">大自然<span class="logo__accent">阿蘇</span></span>
           <span class="logo__main">健康の森</span>
         </h1>
-        <p class="fv__sub fadeUpTrigger" data-i18n="fv.sub">世界最高峰の<br class="sp-only" />ウェルネスリゾート</p>
+        <p class="fv__sub fadeUpTrigger" data-i18n="fv.sub">世界最高峰の<br class="u-sp" />ウェルネスリゾート</p>
       </div>
 
       <div class="fv__scroll">
@@ -41,7 +44,7 @@ $img = get_template_directory_uri() . '/assets/images';
         <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/general-banner.jpg" alt="" />
       </div>
 
-      <div class="concept__inner">
+      <div class="l-inner concept__inner">
         <div class="concept__hero">
           <div class="concept__headline fadeInTrigger">
             <h2 class="concept__headline-main" data-i18n="concept.head_main">
@@ -61,9 +64,9 @@ $img = get_template_directory_uri() . '/assets/images';
         <div class="concept__lead">
           <h3 class="concept__title fadeUpTrigger" data-i18n="concept.title">世界最高峰の<br />ウェルネス・リトリート</h3>
           <div class="concept__body fadeUpTrigger" data-i18n="concept.body">
-            <p>日々の重責から解き放たれ、ただの「自分」に還る場所。<br />それが大自然の中に佇む、<br />世界でここだけのウェルネス・リトリートです。</p>
+            <p>日々の重責から解き放たれ、ただの「自分」に<br class="u-sp" />還る場所。<br class="u-pc" />それが大自然の中に佇む、<br />世界でここだけのウェルネス・リトリートです。</p>
             <p>よりも早く走ってきたあなたにこそ、<br />今、究極の「癒し」が必要です。</p>
-            <p>――選び抜かれた設えの中で大自然に触れ、心を澄ますこと。</p>
+            <p>――選び抜かれた設えの中で大自然に触れ、<span class="u-sp"><br />　　</span>心を澄ますこと。</p>
             <p>ここで手に入るものは、<br />あなたの未来を健康的で豊かに変える、<br />一生モノの価値という名の投資です。</p>
           </div>
         </div>
@@ -79,12 +82,14 @@ $img = get_template_directory_uri() . '/assets/images';
       </div>
     </section>
 
+    </div><!-- /.fv-stage -->
+
     <!-- ===== 温泉施設 (onsen) ===== -->
     <section class="onsen" id="onsen">
-      <div class="onsen__inner">
+      <div class="l-inner onsen__inner">
         <div class="onsen__headline fadeUpTrigger">
           <p class="onsen__eyebrow" data-i18n="onsen.eyebrow"><span>訪れる人を<br />魅了する</span></p>
-          <h2 class="onsen__title" data-i18n="onsen.title"><span>世界一の</span><span>温泉施設</span></h2>
+          <h2 class="v-title onsen__title" data-i18n="onsen.title"><span>世界一の</span><span>温泉施設</span></h2>
         </div>
 
         <div class="onsen__main">
@@ -107,7 +112,7 @@ $img = get_template_directory_uri() . '/assets/images';
               <p>日頃の疲れを癒し、</p>
               <p>疲労回復やストレス解放を促します。</p>
             </div>
-            <h3 class="onsen__heading" data-i18n="onsen.heading">阿蘇健康火山温泉</h3>
+            <h3 class="onsen__heading" data-i18n="onsen.heading">阿蘇健康<br class="u-sp" />火山温泉</h3>
           </div>
         </div>
 
@@ -138,7 +143,7 @@ $img = get_template_directory_uri() . '/assets/images';
         <div class="kiln">
           <div class="kiln__text">
             <h3 class="kiln__title fadeUpTrigger" data-i18n="kiln.title">健康温熱窯十三種</h3>
-            <p class="kiln__body fadeUpTrigger" data-i18n="kiln.body">薬草や鉱石の効能を体感できる13種類のドーム窯を備えた、<br />日本最大級の健康温浴施設です。<br />他に類を見ない特別空間は、ひとつひとつの窯の中が丸く、<br />それぞれで違う癒しを感じれます。<br />自然のエネルギーを全身に受け、<br />身体が欲する癒しを感じお選びください。<br />また、窯の外は広いスペースが設けられ、<br />横になりゆったりとした時間をお過ごし下さい。</p>
+            <p class="kiln__body fadeUpTrigger" data-i18n="kiln.body">薬草や鉱石の効能を体感できる13種類のドーム窯を<br class="u-sp" />備えた、<br class="u-pc" />日本最大級の健康温浴施設です。<br />他に類を見ない特別空間は、ひとつひとつの窯の中が<br class="u-sp" />丸く、<br class="u-pc" />それぞれで違う癒しを感じれます。<br />自然のエネルギーを全身に受け、<br />身体が欲する癒しを感じお選びください。<br />また、窯の外は広いスペースが設けられ、<br />横になりゆったりとした時間をお過ごし下さい。</p>
           </div>
           <div class="kiln__photos">
             <figure class="kiln__ph kiln__ph--amethyst">
@@ -164,10 +169,10 @@ $img = get_template_directory_uri() . '/assets/images';
         <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-banner.jpg" alt="" />
       </div>
 
-      <div class="veg__inner">
+      <div class="l-inner veg__inner">
         <div class="veg__headline fadeUpTrigger">
           <p class="veg__eyebrow" data-i18n="veg.eyebrow"><span>無農薬</span></p>
-          <h2 class="veg__title" data-i18n="veg.title"><span>自社栽培</span><span>野菜料理</span></h2>
+          <h2 class="v-title veg__title" data-i18n="veg.title"><span>自社栽培</span><span>野菜料理</span></h2>
         </div>
 
         <div class="veg__content">
@@ -181,9 +186,9 @@ $img = get_template_directory_uri() . '/assets/images';
           </div>
 
           <div class="veg__body fadeInTrigger" data-i18n="veg.body">
-            <p>阿蘇大自然 健康の森施設内にある 薬膳旬菜 阿蘇きのこ亭では、「体の中から元気に」を<br />テーマに「阿蘇健康農園」や「阿蘇バイオテック」で<br />大切に育てられた新鮮な野菜やきのこの旨味を引き出した<br />特別な創作薬膳料理や大自然の恵みが凝縮された<br />自慢のスープをご堪能いただけます。</p>
+            <p><span class="u-pc">阿蘇大自然 健康の森施設内にある </span>薬膳旬菜 阿蘇きのこ亭では、「体の中から元気に」を<br />テーマに「阿蘇健康農園」や「阿蘇バイオテック」で<br />大切に育てられた新鮮な野菜やきのこの旨味を<br class="u-sp" />引き出した<br class="u-pc" />特別な創作薬膳料理や大自然の恵みが<br class="u-sp" />凝縮された<br class="u-pc" />自慢のスープをご堪能いただけます。</p>
             <p>自社栽培の採れたて食材を使った<br />大自然農園レストラン ビッグファームでは、<br />管理栄養士監修のもとシェフが丁寧に仕上げた<br />パレットのように色鮮やかな彩り薫る<br />ヘルシーバイキングをライブキッチンの出来立ての<br />香ばしい匂いとともにお届けしています。</p>
-            <p>四季折々の厳選食材や瑞々しい旬の野菜、<br />職人技が光るお造りを最も美味しい仕立てで愉しめる<br />「セットメニュー」もご用意し、素材の持ち味を活かした<br />多彩なメニューを通じて五感で季節の移ろいを<br />心ゆくまでご堪能いただけます。</p>
+            <p>四季折々の厳選食材や瑞々しい旬の野菜、<br />職人技が光るお造りを最も美味しい仕立てで愉しめる<br />「セットメニュー」もご用意し、素材の持ち味を<br class="u-sp" />活かした<br class="u-pc" />多彩なメニューを通じて五感で季節の<br class="u-sp" />移ろいを<br class="u-pc" />心ゆくまでご堪能いただけます。</p>
           </div>
 
           <figure class="veg__ph veg__ph--buffet">
@@ -195,12 +200,12 @@ $img = get_template_directory_uri() . '/assets/images';
 
     <!-- ===== 宿泊施設 (house) — marquee (decorative floating text, not translated) ===== -->
     <section class="house" id="stay">
-      <div class="house__head">
+      <div class="house__head l-inner">
         <div class="house__headline fadeUpTrigger">
           <p class="house__eyebrow" data-i18n="house.eyebrow"><span>全450棟</span></p>
-          <h2 class="house__title" data-i18n="house.title"><span>癒しの</span><span>ドームハウス</span></h2>
+          <h2 class="v-title house__title" data-i18n="house.title"><span>癒しの</span><span>ドームハウス</span></h2>
         </div>
-        <p class="house__intro fadeInTrigger" data-i18n="house.intro">全室「離れ」の独立した空間で、五感を満たす極上の休息を。<br />大自然に広がる全450棟のドームハウス。<br />癒しと安らぎの「胎内空間」でエビデンスに基づいた<br />良質な睡眠と心身のリラックスを実感ください。</p>
+        <p class="house__intro fadeInTrigger" data-i18n="house.intro">全室「離れ」の独立した空間で、<br class="u-sp" />五感を満たす極上の休息を。<br class="u-pc" />大自然に広がる全450棟のドームハウス。<br />癒しと安らぎの「胎内空間」でエビデンスに基づいた<br />良質な睡眠と心身のリラックスを実感ください。</p>
       </div>
 
       <div class="house__view fadeInTrigger">
@@ -252,16 +257,16 @@ $img = get_template_directory_uri() . '/assets/images';
 
     <!-- ===== 体験 (learn) — slider ===== -->
     <section class="learn" id="experience">
-      <div class="learn__inner">
+      <div class="l-inner learn__inner">
         <div class="learn__headline fadeUpTrigger">
           <p class="learn__eyebrow" data-i18n="learn.eyebrow"><span>体で学ぶ</span></p>
-          <h2 class="learn__title" data-i18n="learn.title"><span>心身を</span><span>整える体験</span></h2>
+          <h2 class="v-title learn__title" data-i18n="learn.title"><span>心身を</span><span>整える体験</span></h2>
         </div>
 
         <div class="learn__lower">
           <div class="learn__lead">
             <p class="learn__label fadeUpTrigger" data-i18n="learn.label">多彩な健康体験</p>
-            <p class="learn__desc fadeInTrigger" data-i18n="learn.desc">ホットヨガや健康トレーニング、講演等、他にも様々な体験、アクティビティをご用意しております。</p>
+            <p class="learn__desc fadeInTrigger" data-i18n="learn.desc">ホットヨガや健康トレーニング、講演等、他にも様々な<br class="u-sp" />体験、アクティビティをご用意しております。</p>
           </div>
 
           <div class="learn__main">
@@ -276,7 +281,7 @@ $img = get_template_directory_uri() . '/assets/images';
                 <figure><img src="<?php echo esc_url( $img ); ?>/learn-img-03.jpg" alt="瞑想" /><figcaption><span data-i18n="learn.s3">瞑想</span></figcaption></figure>
               </div>
               <div class="learn__slide">
-                <figure><img src="<?php echo esc_url( $img ); ?>/learn-img-04.jpg" alt="体力年齢測定" /><figcaption><span data-i18n="learn.s4">体力年齢測定</span></figcaption></figure>
+                <figure><img src="<?php echo esc_url( $img ); ?>/learn-img-03.jpg" alt="体力年齢測定" /><figcaption><span data-i18n="learn.s4">体力年齢測定</span></figcaption></figure>
               </div>
             </div>
 
@@ -300,17 +305,17 @@ $img = get_template_directory_uri() . '/assets/images';
         <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/tourism-banner.jpg" alt="" />
       </div>
 
-      <div class="tourism__inner">
+      <div class="l-inner tourism__inner">
         <div class="tourism__headline fadeUpTrigger">
           <p class="tourism__eyebrow" data-i18n="tourism.eyebrow"><span>自然を感じる</span></p>
-          <h2 class="tourism__title" data-i18n="tourism.title"><span>阿蘇の</span><span>観光名所</span></h2>
+          <h2 class="v-title tourism__title" data-i18n="tourism.title"><span>阿蘇の</span><span>観光名所</span></h2>
         </div>
 
         <div class="tourism__list">
           <article class="tsp">
             <div class="tsp__text fadeUpTrigger">
               <h3 class="tsp__title" data-i18n="tourism.t1_title">世界最大級のカルデラ</h3>
-              <p class="tsp__body" data-i18n="tourism.t1_body">世界でも類を見ない活火山の巨大なカルデラ内に位置する阿蘇サンクチュアリ。<br />ここは、地球の原初的なエネルギーと直結できる稀有な場所です。<br />「エメラルド・ベルベット」と称される広大な草原と朝霧が、<br />都会のリゾートでは決して味わえない精神的な静寂をもたらします。<br />まさに「大地の呼吸」を感じる舞台です。</p>
+              <p class="tsp__body" data-i18n="tourism.t1_body">世界でも類を見ない活火山の巨大なカルデラ内に<br class="u-sp" />位置する阿蘇サンクチュアリ。<br class="u-pc" />ここは、地球の<br class="u-sp" />原初的なエネルギーと直結できる稀有な場所です。<br />「エメラルド・ベルベット」と称される広大な草原と<br class="u-sp" />朝霧が、<br class="u-pc" />都会のリゾートでは決して味わえない<br class="u-sp" />精神的な静寂をもたらします。<br />まさに「大地の呼吸」を感じる舞台です。</p>
             </div>
             <figure class="tsp__photo">
               <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/tourism-img-01.jpg" alt="エメラルドベルベット" />
@@ -321,7 +326,7 @@ $img = get_template_directory_uri() . '/assets/images';
           <article class="tsp">
             <div class="tsp__text fadeUpTrigger">
               <h3 class="tsp__title" data-i18n="tourism.t2_title">明神池名水公園</h3>
-              <p class="tsp__body" data-i18n="tourism.t2_body">圧倒的な透明度と「モネの池」のような美しさ。毎分約２トン湧き出る<br />清水は、池の底がくっきりと見えるほど高い透明度を誇ります。<br />特に冬場の水草が少ない時期には、光の加減で水面が深いインディゴブルーに<br />染まり、悠々と泳ぐ鯉の姿も相まって「まるで岐阜の“モネの池”のよう」と<br />SNSなどでも話題になります。夏には水草が広がり、生命力あふれる<br />緑の風景へ。訪れる季節ごとに異なる美しさに出会えるスポットです。</p>
+              <p class="tsp__body" data-i18n="tourism.t2_body">圧倒的な透明度と「モネの池」のような美しさ。<br class="u-sp" />毎分約２トン湧き出る<br class="u-pc" />清水は、池の底がくっきりと<br class="u-sp" />見えるほど高い透明度を誇ります。<br />特に冬場の水草が少ない時期には、光の加減で水面が<br class="u-sp" />深いインディゴブルーに<br class="u-pc" />染まり、悠々と泳ぐ鯉の姿も<br class="u-sp" />相まって「まるで岐阜の“モネの池”のよう」と<br />SNSなどでも話題になります。夏には水草が広がり、<br class="u-sp" />生命力あふれる<br class="u-pc" />緑の風景へ。訪れる季節ごとに異なる<br class="u-sp" />美しさに出会えるスポットです。</p>
             </div>
             <figure class="tsp__photo">
               <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/tourism-img-02.jpg" alt="岐阜のモネの池" />
@@ -332,7 +337,7 @@ $img = get_template_directory_uri() . '/assets/images';
           <article class="tsp">
             <div class="tsp__text fadeUpTrigger">
               <h3 class="tsp__title" data-i18n="tourism.t3_title">上色見熊野座神社</h3>
-              <p class="tsp__body" data-i18n="tourism.t3_body">近年、SNSをきっかけに世界中から注目を集めている、幻想的な雰囲気の<br />神社です。杉木立に囲まれた参道と神秘的な景観は、「まるで異世界への<br />入り口のよう」と海外旅行者の間でも話題となっています。<br />また、蛍火の杜へを思わせる美しい世界観や、るろうに剣心のロケ地として<br />知られており、日本ならではの静寂と神秘を体感できる人気スポットとして、<br />多くの観光客が訪れています。</p>
+              <p class="tsp__body" data-i18n="tourism.t3_body">近年、SNSをきっかけに世界中から注目を集めている、<br class="u-sp" />幻想的な雰囲気の<br class="u-pc" />神社です。杉木立に囲まれた参道と<br class="u-sp" />神秘的な景観は、「まるで異世界への<br class="u-pc" />入り口のよう」と<br class="u-sp" />海外旅行者の間でも話題となっています。<br />また、蛍火の杜へを思わせる美しい世界観や、<br class="u-sp" />るろうに剣心のロケ地として<br class="u-pc" />知られており、<br class="u-sp" />日本ならではの静寂と神秘を体感できる<br class="u-sp" />人気スポットとして、<br class="u-pc" />多くの観光客が訪れています。</p>
             </div>
             <figure class="tsp__photo">
               <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/tourism-img-03.jpg" alt="異世界への入り口" />
@@ -343,7 +348,7 @@ $img = get_template_directory_uri() . '/assets/images';
           <article class="tsp">
             <div class="tsp__text fadeUpTrigger">
               <h3 class="tsp__title" data-i18n="tourism.t4_title">阿蘇山頂・草千里ヶ浜</h3>
-              <p class="tsp__body" data-i18n="tourism.t4_body">草千里ヶ浜 （くさせんりがはま）は、熊本県・阿蘇を代表する<br />絶景スポットのひとつで、阿蘇五岳のひとつ「烏帽子岳（えぼしだけ）」の<br />北麓に広がる大草原です。 「阿蘇といえばここ」と言われるほど有名で、<br />火山・草原・放牧風景が一度に見られる、日本でもかなり珍しい景観です。<br />雄大な火山と大草原のエネルギーを五感で体感できる場所です。</p>
+              <p class="tsp__body" data-i18n="tourism.t4_body">草千里ヶ浜 （くさせんりがはま）は、<br class="u-sp" />熊本県・阿蘇を代表する<br class="u-pc" />絶景スポットのひとつで、<br class="u-sp" />阿蘇五岳のひとつ「烏帽子岳（えぼしだけ）」の<br />北麓に広がる大草原です。 「阿蘇といえばここ」と<br class="u-sp" />言われるほど有名で、<br class="u-pc" />火山・草原・放牧風景が<br class="u-sp" />一度に見られる、日本でもかなり珍しい景観です。<br />雄大な火山と大草原のエネルギーを五感で体感できる<br class="u-sp" />場所です。</p>
             </div>
             <figure class="tsp__photo">
               <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/tourism-img-04.jpg" alt="大草原のエネルギー" />
@@ -356,7 +361,7 @@ $img = get_template_directory_uri() . '/assets/images';
 
     <!-- ===== 料金プラン (plan) ===== -->
     <section class="plan" id="price">
-      <div class="plan__inner">
+      <div class="l-inner plan__inner">
         <p class="plan__eyebrow fadeUpTrigger" data-i18n="plan.eyebrow"><span>料金プラン</span></p>
 
         <div class="plan__header">
@@ -389,7 +394,7 @@ $img = get_template_directory_uri() . '/assets/images';
 
           <div class="plan__card plan__card--center">
             <h4 class="plan__card-title" data-i18n="plan.c2_title">無料送迎<span class="plan__card-sub">要予約</span></h4>
-            <p class="plan__ctext" data-i18n="plan.c2_text">主要公共交通機関の<br />空港、駅、バスターミナルまでの<br />無料送迎バスがございます。</p>
+            <p class="plan__ctext" data-i18n="plan.c2_text">主要公共交通機関の<br class="u-pc" />空港、駅、バスターミナルまでの<br class="u-pc" />無料送迎バスがございます。</p>
           </div>
 
           <div class="plan__card">
@@ -420,12 +425,12 @@ $img = get_template_directory_uri() . '/assets/images';
         <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/map-banner.jpg" alt="" />
       </div>
 
-      <div class="access__inner">
+      <div class="l-inner access__inner">
         <p class="access__eyebrow fadeUpTrigger" data-i18n="access.eyebrow"><span>アクセス</span></p>
 
         <div class="access__loc fadeUpTrigger">
           <p class="access__loc-head" data-i18n="access.loc_head">所在地</p>
-          <p class="access__addr" data-i18n="access.addr">〒869-1404　熊本県阿蘇郡南阿蘇村河陽5579-3</p>
+          <p class="access__addr" data-i18n="access.addr">〒869-1404　<br class="u-sp" />熊本県阿蘇郡南阿蘇村河陽5579-3</p>
         </div>
 
         <?php

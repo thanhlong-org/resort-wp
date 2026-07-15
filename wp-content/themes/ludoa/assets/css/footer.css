@@ -48,7 +48,7 @@
   align-items: center;
   gap: 24px;
 }
-.footer__btns .btn-bracket span { font-size: 18px; font-weight: 400; } /* Figma: 18px w400 */
+.footer__btns .btn-bracket span { font-size: 18px; font-weight: 400; min-width: 200px; text-align: center; } /* Figma: 18px w400 */
 
 /* brand */
 .footer__brand {
@@ -104,10 +104,10 @@
     align-items: start;
   }
 
-  .footer__brand { align-self: center; text-align: left; }
+  .footer__brand { align-self: center; }
   .footer__tag { font-size: 18px; }
-  .footer__logo { font-size: 40px; align-items: flex-start; }
-  .footer__addr { font-size: 16px; }
+  .footer__logo { font-size: 40px; }
+  .footer__addr { font-size: 16px; text-align: left;}
 
   /* buttons top-right (row) — trải đều theo bề rộng nav */
   .footer__btns {

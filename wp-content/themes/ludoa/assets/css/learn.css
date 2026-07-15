@@ -9,9 +9,6 @@
   overflow: hidden;
 }
 .learn__inner {
-  width: 100%;
-  max-width: 350px;
-  margin: 0 auto;
   padding: 0 20px;
 }
 
@@ -32,21 +29,13 @@
   background: var(--color-gray);
 }
 .learn__eyebrow span {
-  font-family: var(--font-serif);
+  font-family: var(--font-brush);
   font-size: 15px;
   letter-spacing: 0.16em;
   color: var(--color-white);
 }
-.learn__title {
-  display: flex;
-  flex-direction: row-reverse;      /* 心身を (phải) / 整える体験 (trái) */
-  justify-content: center;
-  gap: 4px;
-}
+/* cấu trúc + brush: .v-title (common.css); 心身を (phải) / 整える体験 (trái) */
 .learn__title span {
-  writing-mode: vertical-rl;
-  font-family: var(--font-brush);
-  font-weight: 400;
   font-size: 38px;
   letter-spacing: 0.06em;
   line-height: 1.12;
@@ -139,14 +128,13 @@
    =========================================================== */
 @media (min-width: 1024px) {
   .learn { padding: 120px 0 120px; }
-  .learn__inner { max-width: 1240px; padding: 0; }
+  .learn__inner { padding: 0; }
 
   .learn__headline { gap: 30px; margin-bottom: 70px; }
   .learn__eyebrow { gap: 14px; }
   .learn__eyebrow::before,
   .learn__eyebrow::after { width: 26px; }
   .learn__eyebrow span { font-size: 20px; letter-spacing: 0.18em; }
-  .learn__title { gap: 8px; }
   .learn__title span { font-size: 52px; }
 
   .learn__lower {

@@ -9,9 +9,6 @@
   overflow: hidden;
 }
 .onsen__inner {
-  width: 100%;
-  max-width: 350px;
-  margin: 0 auto;
   padding: 0 20px;
 }
 
@@ -36,27 +33,19 @@
   background: var(--color-gray);
 }
 .onsen__eyebrow span {
-  font-family: var(--font-serif);
+  font-family: var(--font-brush);   /* Figma: eyebrow dùng brush (Yuji Syuku) giống title, KHÔNG phải 明朝 */
   font-size: 15px;
   line-height: 1.6;
   letter-spacing: 0.08em;
   text-align: center;
-  color: var(--color-white);
+  color: var(--color-gray);
 }
-.onsen__title {
-  display: flex;
-  flex-direction: row-reverse;      /* 世界一の (phải) / 温泉施設 (trái) */
-  justify-content: center;
-  gap: 4px;
-}
+/* cấu trúc + brush: .v-title (common.css); 世界一の (phải) / 温泉施設 (trái) */
 .onsen__title span {
-  writing-mode: vertical-rl;
-  font-family: var(--font-brush);
-  font-weight: 400;
   font-size: 44px;
   letter-spacing: 0.08em;
   line-height: 1.08;
-  color: var(--color-white);
+  color: var(--color-gray);
 }
 
 /* ---- ảnh chính + caption ---- */
@@ -148,6 +137,7 @@
   width: 173px;
   height: 0.5px;
   background: var(--color-white);
+  z-index: 1;
 }
 .onsen__other-label {
   flex-shrink: 0;
@@ -184,7 +174,7 @@
 /* SP: so le trái/phải + thứ tự 大自然石庭 → フラワースパ → 宝石窯 */
 .onsen__gitem:nth-child(1) { order: 3; align-self: flex-start; }              /* 宝石窯 */
 .onsen__gitem:nth-child(2) { order: 1; align-self: flex-end; text-align: right; } /* 大自然石庭露天風呂 */
-.onsen__gitem:nth-child(3) { order: 2; align-self: center; text-align: center; } /* フラワースパ */
+.onsen__gitem:nth-child(3) { order: 2; text-align: left; margin-left: -40px; } /* フラワースパ */
 
 /* ---- 健康温熱窯十三種 ---- */
 .kiln {
@@ -233,26 +223,25 @@
   color: var(--color-white);
   white-space: nowrap;
 }
-.kiln__ph--amethyst { left: 18%; top: 0;   width: 82%; }
+.kiln__ph--amethyst { right: 0; top: 0;   width: 82%; }
 .kiln__ph--gem      { left: 0;   top: 22%; width: 67%; z-index: 1; }
 .kiln__ph--salt     { left: 15%; top: 75%; width: 78%; }
 .kiln__ph--amethyst figcaption { writing-mode: vertical-rl; top: 0; left: 100%; margin-left: 6px; }
-.kiln__ph--gem      figcaption { top: 100%; left: 0; margin-top: 8px; }
-.kiln__ph--salt     figcaption { writing-mode: vertical-rl; top: 0; left: 100%; margin-left: 6px; }
+.kiln__ph--gem      figcaption { top: 100%; right: 0; margin-top: 8px; }
+.kiln__ph--salt     figcaption { writing-mode: vertical-rl; bottom: 0; left: 100%; margin-left: 6px; }
 
 /* ===========================================================
    PC (≥1024px)
    =========================================================== */
 @media (min-width: 1024px) {
   .onsen { padding: 130px 0 120px; }
-  .onsen__inner { max-width: 1240px; padding: 0; }
+  .onsen__inner { padding: 0; }
 
   .onsen__headline { gap: 34px; margin-bottom: 90px; }
   .onsen__eyebrow { gap: 16px; }
   .onsen__eyebrow::before,
   .onsen__eyebrow::after { width: 28px; }
   .onsen__eyebrow span { font-size: 22px; letter-spacing: 0.12em; }
-  .onsen__title { gap: 8px; }
   .onsen__title span { font-size: 60px; }
 
   .onsen__main {
@@ -279,24 +268,36 @@
     margin-top: 0;                /* heading canh sát mép trên ảnh */
   }
   .onsen__body {
+    position: relative;
     gap: 15px;
-    margin-top: 92px;             /* đẩy body + line xuống để heading nhô lên trên */
+    margin-top: 50px;             /* đẩy body + line xuống để heading nhô lên trên */
     padding-top: 40px;
-    border-top: 0.5px solid rgba(255, 255, 255, 0.6);
+  }
+  /* đường kẻ ngang: CHỌC ~57px vào ảnh chính bên trái + vươn tới sát heading (theo Figma) */
+  .onsen__body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -113px;   /* photo cách body 56px → -113px = line lấn 57px vào ảnh */
+    right: -21px;   /* body cách heading 48px → line dừng ~27px trước heading */
+    height: 0.5px;
+    background: rgba(255, 255, 255, 0.6);
   }
   .onsen__body p { font-size: 18px; }
   .onsen__heading { font-size: 38px; letter-spacing: 0.05em; line-height: 1.35; }
 
   /* その他: hàng ngang 3 ảnh so le */
   .onsen__other { gap: 40px; margin-top: 120px; padding-top: 30px; }
-  .onsen__other-label { font-size: 24px; }
+  /* hạ line xuống ngang mép trên ảnh & rút ngắn → chọc nhẹ vào ảnh 宝石窯 (theo Figma) */
+  .onsen__other::before { top: 52px; width: 105px; }
+  .onsen__other-label { font-size: 24px; margin-top: 50px;}
   .onsen__gallery { flex-direction: row; align-items: flex-start; gap: 30px; }
   .onsen__gitem { width: 326px; max-width: none; }
   .onsen__gitem figcaption { font-size: 18px; }
   /* PC: thứ tự 宝石窯 → 大自然石庭 → フラワースパ, lệch cao thấp */
   .onsen__gitem:nth-child(1) { order: 1; align-self: flex-start; margin-top: 12px; text-align: left; }   /* 宝石窯 */
   .onsen__gitem:nth-child(2) { order: 2; align-self: flex-start; margin-top: 53px; text-align: left; }   /* 大自然石庭 */
-  .onsen__gitem:nth-child(3) { order: 3; align-self: flex-start; margin-top: 0;    text-align: left; }   /* フラワースパ */
+  .onsen__gitem:nth-child(3) { order: 3; align-self: flex-start; margin-top: 0; margin-left: unset;    text-align: left; }   /* フラワースパ */
 
   /* 健康温熱窯: ảnh trái (collage), text phải */
   .kiln {
@@ -316,7 +317,7 @@
     margin: 0;
     aspect-ratio: 704 / 688;
   }
-  .kiln__ph--amethyst { left: 28%; top: 0;   width: 41%; }
+  .kiln__ph--amethyst { left: 28%; right: unset; top: 0;   width: 41%; }
   .kiln__ph--gem      { left: 0;   top: 20%; width: 33%; }
   .kiln__ph--salt     { left: 42%; top: 60%; width: 52%; }
 }

@@ -4,11 +4,13 @@
    =========================================================== */
 .concept {
   position: relative;
-  z-index: 1;                 /* dưới hero → mây đè lên phần trên banner */
-  margin-top: -140px;         /* trượt lên cho mây đè general-banner */
+  z-index: 2;                 /* TRÊN hero → trượt lên PHỦ dần banner đang bị ghim */
   overflow: hidden;
   background: var(--color-bg);
   padding: 0 0 90px;
+  /* mép trên tan mềm: khi Concept trồi lên đè banner, cạnh dẫn đầu blend mượt (không thành lằn cứng) */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 110px);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 110px);
 }
 
 /* nền resort — giữ đúng tỉ lệ ảnh, neo ở đỉnh section */
@@ -29,6 +31,7 @@
   content: "";
   position: absolute;
   inset: 0;
+  bottom: -1px;
   /* trong suốt ở trên (nối liền mây hero) → tối dần xuống */
   background: linear-gradient(180deg,
     rgba(18, 19, 18, 0) 0%,
@@ -39,10 +42,7 @@
 .concept__inner {
   position: relative;
   z-index: 1;
-  width: 100%;
-  max-width: 350px;
-  margin: 0 auto;
-  padding: 200px 20px 0;      /* chừa vùng mây đè + đỉnh banner */
+  padding: 200px 20px 0;      /* chừa vùng mây đè + đỉnh banner (rộng/căn giữa: .l-inner) */
 }
 
 /* ---- Hero composition: tiêu đề brush dọc + 3 ảnh ---- */
@@ -53,7 +53,8 @@
 .concept__headline {
   position: absolute;
   top: 40px;
-  right: 6px;
+  left: 6px;
+  right: auto;
   z-index: 2;
   display: flex;
   flex-direction: row-reverse;      /* main bên phải, sub bên trái */
@@ -177,12 +178,14 @@
    PC (≥1024px)
    =========================================================== */
 @media (min-width: 1024px) {
-  /* trồi lên lấp vùng đáy hero đang tan dần → cross-fade mượt giữa 2 ảnh */
-  .concept { margin-top: -38vh; padding: 0 0 140px; }
+  .concept {
+    padding: 0 0 140px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 220px);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 220px);
+  }
   .concept__bg { aspect-ratio: 1441 / 1040; }   /* tỉ lệ banner PC (Figma) */
   .concept__inner {
-    max-width: 1240px;
-    padding: calc(38vh + 240px) 40px 0;  /* chừa vùng hero đè + đỉnh banner */
+    padding: 300px 40px 0;  /* chừa vùng trời của general-banner trước khi tới nội dung */
   }
 
   .concept__hero { height: 760px; }

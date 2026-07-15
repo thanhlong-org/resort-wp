@@ -51,6 +51,29 @@
     });
   }
 
+  /* ---- Ép tải font brush (Yuji Syuku) cho đúng các glyph đang dùng ----
+     Google Fonts tách Yuji Syuku thành rất nhiều unicode-range subset và tải
+     lười/không ổn định → logo + tiêu đề brush hay rớt về Noto Serif JP (明朝).
+     Gom glyph của mọi phần tử đang set font brush rồi gọi document.fonts.load
+     để tải đúng subset, sau đó reveal lại để layout chữ dọc chuẩn. */
+  function ensureBrushFont() {
+    if (!document.fonts || !document.fonts.load) return;
+    var chars = '';
+    $('*').each(function () {
+      var ff = getComputedStyle(this).fontFamily || '';
+      if (ff.indexOf('Yuji Syuku') === -1) return;
+      for (var i = 0; i < this.childNodes.length; i++) {
+        if (this.childNodes[i].nodeType === 3) chars += this.childNodes[i].nodeValue;
+      }
+    });
+    chars = chars.replace(/\s/g, '');
+    if (!chars) return;
+    var uniq = Array.from(new Set(chars.split(''))).join('');
+    document.fonts.load('1em "Yuji Syuku"', uniq)
+      .then(function () { reveal(); })
+      .catch(function () {});
+  }
+
   /* ---- Scroll-trigger: thêm class khi phần tử vào viewport ---- */
   function reveal() {
     var winBottom = $(window).scrollTop() + $(window).height();
@@ -240,6 +263,7 @@
     bindLang();
     bindModals();
     splitTitleChars();
+    ensureBrushFont();
     initHouseMarquee();
     initStrip();
     initLearnSlider();

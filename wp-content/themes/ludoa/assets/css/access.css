@@ -32,9 +32,6 @@
 .access__inner {
   position: relative;
   z-index: 1;
-  width: 100%;
-  max-width: 350px;
-  margin: 0 auto;
   padding: 0 20px;
   text-align: center;
 }
@@ -97,8 +94,8 @@
   width: 100%;
   aspect-ratio: 588 / 408;
   object-fit: cover;
-  border: 0;
   border-radius: 2px;
+  border: 0;
 }
 
 /* buttons */
@@ -109,7 +106,7 @@
   gap: 26px;
   margin: 34px 0 70px;
 }
-.access__btns .btn-bracket span { font-size: 18px; font-weight: 400; } /* Figma SP: 18px (PC 20px) */
+.access__btns .btn-bracket span { font-size: 18px; font-weight: 400; min-width: 190px;} /* Figma SP: 18px (PC 20px) */
 
 /* 主要な交通機関 */
 .access__transit-head { margin-bottom: 40px; }
@@ -184,7 +181,7 @@
     gap: 90px;
     margin: 40px 0 140px;
   }
-  .access__btns .btn-bracket span { font-size: 20px; }       /* Figma PC: 20px */
+  .access__btns .btn-bracket span { font-size: 20px; min-width:unset;}       /* Figma PC: 20px */
 
   .access__transit-head { margin-bottom: 60px; font-size: 20px; } /* Figma PC: 20px */
   .access__item { font-size: 18px; }               /* Figma PC: 18px */

@@ -11,9 +11,6 @@
 
 /* ---- headline + intro ---- */
 .house__head {
-  width: 100%;
-  max-width: 350px;
-  margin: 0 auto;
   padding: 0 20px;
   text-align: center;
 }
@@ -33,21 +30,14 @@
   background: var(--color-gray);
 }
 .house__eyebrow span {
-  font-family: var(--font-serif);
+  font-family: var(--font-brush);   /* Figma: eyebrow brush (Yuji Syuku) giống title, KHÔNG phải 明朝 */
   font-size: 15px;
   letter-spacing: 0.16em;
   color: var(--color-white);
 }
-.house__title {
-  display: flex;
-  flex-direction: row-reverse;      /* 癒しの (phải) / ドームハウス (trái) */
-  justify-content: center;
-  gap: 4px;
-}
+/* cấu trúc + brush: .v-title (common.css); 癒しの (phải) / ドームハウス (trái) */
+.house__title { align-items: flex-start; }   /* căn ĐỈNH 2 cột (Figma), tránh cột ngắn bị canh giữa */
 .house__title span {
-  writing-mode: vertical-rl;
-  font-family: var(--font-brush);
-  font-weight: 400;
   font-size: 40px;
   letter-spacing: 0.06em;
   line-height: 1.12;
@@ -151,12 +141,11 @@
 @media (min-width: 1024px) {
   .house { padding: 130px 0 130px; }
   .house__head { max-width: 640px; }
-  .house__headline { gap: 30px; margin-bottom: 44px; }
+  .house__headline { gap: 30px; margin-bottom: 120px; }
   .house__eyebrow { gap: 14px; }
   .house__eyebrow::before,
   .house__eyebrow::after { width: 26px; }
   .house__eyebrow span { font-size: 20px; letter-spacing: 0.18em; }
-  .house__title { gap: 8px; }
   .house__title span { font-size: 56px; }
   .house__intro { font-size: 18px; line-height: 2.2; text-align: left; display: inline-block; }
 

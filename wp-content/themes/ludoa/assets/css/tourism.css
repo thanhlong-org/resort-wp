@@ -32,9 +32,6 @@
 .tourism__inner {
   position: relative;
   z-index: 1;
-  width: 100%;
-  max-width: 350px;
-  margin: 0 auto;
   padding: 0 20px;
 }
 
@@ -55,21 +52,13 @@
   background: var(--color-gray);
 }
 .tourism__eyebrow span {
-  font-family: var(--font-serif);
+  font-family: var(--font-brush);
   font-size: 15px;
   letter-spacing: 0.14em;
   color: var(--color-white);
 }
-.tourism__title {
-  display: flex;
-  flex-direction: row-reverse;      /* 阿蘇の (phải) / 観光名所 (trái) */
-  justify-content: center;
-  gap: 4px;
-}
+/* cấu trúc + brush: .v-title (common.css); 阿蘇の (phải) / 観光名所 (trái) */
 .tourism__title span {
-  writing-mode: vertical-rl;
-  font-family: var(--font-brush);
-  font-weight: 400;
   font-size: 36px;
   letter-spacing: 0.06em;
   line-height: 1.12;
@@ -103,7 +92,7 @@
 }
 .tsp__cap {
   position: absolute;
-  left: 12px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -148,14 +137,13 @@
    =========================================================== */
 @media (min-width: 1024px) {
   .tourism { padding: 120px 0 160px; }
-  .tourism__inner { max-width: 1240px; padding: 0; }
+  .tourism__inner { padding: 0; }
 
   .tourism__headline { gap: 28px; margin-bottom: 120px; }
   .tourism__eyebrow { gap: 14px; }
   .tourism__eyebrow::before,
   .tourism__eyebrow::after { width: 26px; }
   .tourism__eyebrow span { font-size: 20px; letter-spacing: 0.18em; }
-  .tourism__title { gap: 8px; }
   .tourism__title span { font-size: 50px; }
 
   .tourism__list { gap: 200px; }

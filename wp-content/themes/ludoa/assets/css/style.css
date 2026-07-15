@@ -29,7 +29,7 @@ body {
   color: var(--color-white);
   background: var(--color-bg);
   line-height: 1.7;
-  overflow-x: hidden;
+  overflow-x: clip;   /* clip thay hidden: chặn tràn ngang mà KHÔNG tạo scroll-container → position:sticky của .fv mới hoạt động đúng theo viewport */
 }
 body.fixed { overflow: hidden; }
 
@@ -181,7 +181,7 @@ body.fixed .lang {
     "btns    btns"
     "brand   visual";
   align-content: start;
-  column-gap: 30px;   /* Figma: brand ↔ ảnh = 30px */
+  column-gap: 10px;   /* Figma: brand ↔ ảnh = 10px */
   row-gap: 0;
 }
 
@@ -201,7 +201,6 @@ body.fixed .lang {
 .menu__top-logo {
   grid-area: toplogo;
   justify-self: start;
-  align-items: flex-start;
   font-size: 20px;
   margin-bottom: 56px;
 }
@@ -265,6 +264,12 @@ body.fixed .lang {
   letter-spacing: 0.0444em;
 }
 
+
+.menu__btns .btn-bracket span {
+  min-width: 200px;
+  text-align: center;
+}
+
 /* brand / địa chỉ (SP: căn giữa) */
 .menu__brand {
   grid-area: brand;
@@ -304,11 +309,20 @@ body.fixed .lang {
 /* ===========================================================
    FV / Hero
    =========================================================== */
-.fv {
+/* Stage bao banner + Concept: giới hạn phạm vi "ghim" của banner (nhả ra khi Concept
+   trôi hết) và cô lập stacking (isolation) để z-index của banner KHÔNG đè lên các
+   section sau (onsen, veg...). */
+.fv-stage {
   position: relative;
-  z-index: 2;                 /* mây (hero) đè lên section Concept phía dưới */
+  isolation: isolate;
+}
+
+.fv {
+  position: sticky;           /* GHIM banner tại chỗ; Concept (z-index cao hơn) trượt LÊN phủ dần lên trên */
+  top: 0;
+  z-index: 1;                 /* dưới Concept → bị Concept phủ khi cuộn */
   width: 100%;
-  height: calc(var(--vh, 1vh) * 120); /* cao hơn 1 màn → cuộn xuống mới hết banner, rồi tới concept */
+  height: calc(var(--vh, 1vh) * 100); /* đúng 1 màn → ghim full viewport */
   min-height: 672px;
   overflow: hidden;
 }
@@ -316,10 +330,6 @@ body.fixed .lang {
   position: absolute;
   inset: 0;
   z-index: 0;
-  /* đáy hero tan dần → cross-fade sang Concept. Vùng fade = đúng phần concept đè lên (140px mobile)
-     nên không hở dải nền tối giữa banner và general-banner. */
-  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 140px), rgba(0, 0, 0, 0.4) calc(100% - 45px), transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 calc(100% - 140px), rgba(0, 0, 0, 0.4) calc(100% - 45px), transparent 100%);
 }
 .fv__bg-img {
   width: 100%;
@@ -443,7 +453,7 @@ body.fixed .lang {
   :root { --header-h: 88px; }
   .sp-only { display: none; }
 
-  .header { padding: 28px 40px; }
+  .header { padding: 40px; }
   .header__logo { font-size: 34px; }   /* 健康の森 ở header PC */
   .header__right { gap: 28px; }
   .lang__toggle { font-weight: 200; font-size: 15px; }  /* Figma PC: ExtraLight 15px */
@@ -463,12 +473,6 @@ body.fixed .lang {
     font-weight: 700;
   }
   .fv__scroll-text { font-size: 13px; } /* Figma PC: 13px */
-
-  /* PC: concept đè lên hero 38vh → vùng fade của mask phải khớp 38vh (không hở nền tối) */
-  .fv__bg {
-    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - var(--vh, 1vh) * 38), rgba(0, 0, 0, 0.4) calc(100% - var(--vh, 1vh) * 12), transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 calc(100% - var(--vh, 1vh) * 38), rgba(0, 0, 0, 0.4) calc(100% - var(--vh, 1vh) * 12), transparent 100%);
-  }
 
   /* scroll ở giữa hero (Figma: ~47%, line dài xuống) */
   .fv__scroll {
@@ -542,8 +546,8 @@ body.fixed .lang {
     text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
   }
 
-  /* list giữa (rộng 181, gap 40, không gạch/mũi tên) */
-  .menu__nav { width: 181px; margin-right: 169px; align-self: start; }
+  /* list giữa (rộng 200, gap 40, không gạch/mũi tên) */
+  .menu__nav { width: 200px; margin-right: 169px; align-self: start; }
   .menu__label {
     display: block;
     font-family: var(--font-serif);
@@ -574,7 +578,7 @@ body.fixed .lang {
   }
   .menu__tagline { font-size: 18px; }                    /* Figma PC: 18px */
   .menu__brand-logo { font-size: 32px; margin: 12px auto 0; }
-  .menu__address { font-size: 16px; text-align: center; } /* Figma PC: 16px */
+  .menu__address { font-size: 16px; } /* Figma PC: 16px */
 
   .menu__btns {
     align-self: start;

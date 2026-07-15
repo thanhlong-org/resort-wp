@@ -32,9 +32,6 @@
 .veg__inner {
   position: relative;
   z-index: 1;
-  width: 100%;
-  max-width: 350px;
-  margin: 0 auto;
   padding: 60px 20px 0;
 }
 
@@ -64,16 +61,8 @@
   letter-spacing: 0.18em;
   color: var(--color-white);
 }
-.veg__title {
-  display: flex;
-  flex-direction: row-reverse;      /* 自社栽培 (phải) / 野菜料理 (trái) */
-  justify-content: center;
-  gap: 4px;
-}
+/* cấu trúc + brush: .v-title (common.css); 自社栽培 (phải) / 野菜料理 (trái) */
 .veg__title span {
-  writing-mode: vertical-rl;
-  font-family: var(--font-brush);
-  font-weight: 400;
   font-size: 34px;
   letter-spacing: 0.08em;
   line-height: 1.1;
@@ -119,19 +108,18 @@
   .veg { padding: 0 0 140px; }
   .veg__bg { aspect-ratio: 1441 / 1081; }
 
-  .veg__inner { max-width: 1240px; padding: 120px 40px 0; }
+  .veg__inner { padding: 120px 40px 0; }
 
   .veg__headline { gap: 32px; margin-bottom: 0; }
   .veg__eyebrow { gap: 14px; }
   .veg__eyebrow::before,
   .veg__eyebrow::after { width: 26px; }
   .veg__eyebrow span { font-size: 20px; }
-  .veg__title { gap: 8px; }
   .veg__title span { font-size: 56px; }
 
   .veg__content {
     max-width: 1160px;
-    margin: 60px auto 0;
+    margin: 120px auto 0;
     min-height: 960px;
   }
   .veg__photos { position: static; height: auto; }

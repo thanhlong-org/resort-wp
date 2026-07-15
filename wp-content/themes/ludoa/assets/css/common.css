@@ -2,6 +2,44 @@
    common.css — thành phần tái sử dụng (logo, nút...)
    =========================================================== */
 
+/* ----- Container chung của section: rộng full + căn giữa + max-width -----
+   Dùng kèm class riêng của section: <div class="l-inner onsen__inner">.
+   Phần padding / position / z-index / max-width ngoại lệ để trong xxx__inner. */
+.l-inner {
+  width: 100%;
+  margin: 0 auto;
+}
+@media (min-width: 1024px) {
+  .l-inner { max-width: 1240px; }   /* PC mặc định; access(1000)/footer(1346) tự override */
+}
+
+/* ----- Tiêu đề brush dọc (2 cột, đọc phải→trái) -----
+   Dùng kèm class riêng: <h2 class="v-title onsen__title">.
+   Phần font-size / letter-spacing / line-height / color để trong xxx__title span. */
+.v-title {
+  display: flex;
+  flex-direction: row-reverse;   /* cột đầu (đọc trước) nằm bên phải */
+  justify-content: center;
+  gap: 4px;
+}
+.v-title span {
+  writing-mode: vertical-rl;
+  font-family: var(--font-brush);
+  font-weight: 400;
+}
+@media (min-width: 1024px) {
+  .v-title { gap: 8px; }
+}
+
+/* ----- Hiển thị theo breakpoint: SP ≤767px, PC ≥768px -----
+   Dùng cho ngắt dòng theo màn hình: <br class="u-pc"> (chỉ PC), <br class="u-sp"> (chỉ SP). */
+.u-pc { display: none; }
+.u-sp { display: revert; }
+@media (min-width: 768px) {
+  .u-pc { display: revert; }
+  .u-sp { display: none; }
+}
+
 /* ----- Logo (text thuần: 大自然阿蘇 / 健康の森) ----- */
 .logo {
   display: inline-flex;
