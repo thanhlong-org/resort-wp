@@ -212,7 +212,7 @@
       "form.thanks_title": "Thank You",
       "form.thanks_text": "Thank you for your inquiry.<br />We will review your message and our staff will get back to you shortly.",
       "form.close": "Close",
-      "brand.logo": "<span class=\"logo__top\">The Great Nature of Aso</span><span class=\"logo__main\">A Sanctuary for Wellness</span>",
+      "brand.logo": "<span class=\"logo__top\">The Great Nature of Aso</span><span class=\"logo__main\">A Sanctuary for<br class=\"u-sp\" />Wellness</span>",
       "brand.logo_aria": "The Great Nature of Aso — A Sanctuary for Wellness"
     },
     "zh": {

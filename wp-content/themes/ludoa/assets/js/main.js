@@ -29,6 +29,10 @@
   ].join(', ');
 
   function splitTitleChars() {
+    // Không tách ký tự nếu là tiếng Anh
+    if ($('html').attr('lang') && $('html').attr('lang').indexOf('en') === 0) {
+      return;
+    }
     $(CHAR_TITLES).each(function () {
       var $t = $(this);
       if ($t.data('split')) return;

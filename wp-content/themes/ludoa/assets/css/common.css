@@ -66,6 +66,10 @@
   padding-left: 0.06em;
 }
 
+html[lang^="en"] .logo__main {
+  text-align: center;
+}
+
 /* ----- Nút có ngoặc 2 bên: | text | ----- */
 .btn-bracket {
   display: inline-flex;
