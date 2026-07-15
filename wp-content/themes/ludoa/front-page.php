@@ -33,9 +33,6 @@ $img = get_template_directory_uri() . '/assets/images';
         <span class="fv__scroll-line"></span>
       </div>
 
-      <a class="fv__reserve" href="<?php echo esc_url( ludoa_reserve_url() ); ?>" target="_blank" rel="noopener">
-        <span class="fv__reserve-text" data-i18n="fv.reserve">ご予約はこちら</span>
-      </a>
     </section>
 
     <!-- ===== Concept ===== -->
@@ -319,7 +316,6 @@ $img = get_template_directory_uri() . '/assets/images';
             </div>
             <figure class="tsp__photo">
               <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/tourism-img-01.jpg" alt="エメラルドベルベット" />
-              <figcaption class="tsp__cap" data-i18n="tourism.t1_cap"><span>エメラルド</span><span>ベルベット</span></figcaption>
             </figure>
           </article>
 
@@ -330,7 +326,6 @@ $img = get_template_directory_uri() . '/assets/images';
             </div>
             <figure class="tsp__photo">
               <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/tourism-img-02.jpg" alt="岐阜のモネの池" />
-              <figcaption class="tsp__cap" data-i18n="tourism.t2_cap"><span>岐阜の</span><span>モネの池”</span></figcaption>
             </figure>
           </article>
 
@@ -341,7 +336,6 @@ $img = get_template_directory_uri() . '/assets/images';
             </div>
             <figure class="tsp__photo">
               <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/tourism-img-03.jpg" alt="異世界への入り口" />
-              <figcaption class="tsp__cap" data-i18n="tourism.t3_cap"><span>異世界への</span><span>入り口</span></figcaption>
             </figure>
           </article>
 
@@ -352,7 +346,6 @@ $img = get_template_directory_uri() . '/assets/images';
             </div>
             <figure class="tsp__photo">
               <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/tourism-img-04.jpg" alt="大草原のエネルギー" />
-              <figcaption class="tsp__cap" data-i18n="tourism.t4_cap"><span>大草原の</span><span>エネルギー</span></figcaption>
             </figure>
           </article>
         </div>
@@ -421,10 +414,6 @@ $img = get_template_directory_uri() . '/assets/images';
 
     <!-- ===== アクセス (access) ===== -->
     <section class="access" id="access">
-      <div class="access__bg">
-        <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/map-banner.jpg" alt="" />
-      </div>
-
       <div class="l-inner access__inner">
         <p class="access__eyebrow fadeUpTrigger" data-i18n="access.eyebrow"><span>アクセス</span></p>
 
@@ -698,6 +687,10 @@ $img = get_template_directory_uri() . '/assets/images';
       </div>
     </div>
   </div>
+
+  <a class="fv__reserve" href="<?php echo esc_url( ludoa_reserve_url() ); ?>" target="_blank" rel="noopener">
+    <span class="fv__reserve-text" data-i18n="fv.reserve">ご予約はこちら</span>
+  </a>
 
 <?php
 get_footer();

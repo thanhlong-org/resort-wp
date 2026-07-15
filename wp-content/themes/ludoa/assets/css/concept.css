@@ -5,7 +5,7 @@
 .concept {
   position: relative;
   z-index: 2;                 /* TRÊN hero → trượt lên PHỦ dần banner đang bị ghim */
-  overflow: hidden;
+  overflow: clip;             /* clip thay hidden: vẫn cắt tràn nhưng KHÔNG tạo scroll-container → .concept__bg sticky ghim theo viewport */
   background: var(--color-bg);
   padding: 0 0 90px;
   /* mép trên tan mềm: khi Concept trồi lên đè banner, cạnh dẫn đầu blend mượt (không thành lằn cứng) */
@@ -13,35 +13,36 @@
   mask-image: linear-gradient(to bottom, transparent 0, #000 110px);
 }
 
-/* nền resort — giữ đúng tỉ lệ ảnh, neo ở đỉnh section */
+/* nền resort — GHIM theo viewport (sticky) để nội dung trượt phủ lên trên đến hết section */
 .concept__bg {
-  position: absolute;
+  position: sticky;
   top: 0; left: 0;
   width: 100%;
-  aspect-ratio: 390 / 1302;   /* tỉ lệ banner SP (Figma) */
+  height: calc(var(--vh, 1vh) * 100);  /* đúng 1 màn → ghim full viewport khi cuộn trong section */
   z-index: 0;
 }
 .concept__bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center bottom; /* ưu tiên khoe núi + lều, cắt bớt trời */
+  object-position: center 35%; /* lấy dải núi/trời tối (giữa-trên) → giai đoạn 1 phủ tối như mẫu; chỉnh 25–50% để kéo khung nhìn lên/xuống */
 }
 .concept__bg::after {
   content: "";
   position: absolute;
   inset: 0;
   bottom: -1px;
-  /* trong suốt ở trên (nối liền mây hero) → tối dần xuống */
+  /* trong suốt ở mép trên (blend mượt với mây FV) → tối ĐẬM SỚM để phủ tối rõ khi trồi lên */
   background: linear-gradient(180deg,
     rgba(18, 19, 18, 0) 0%,
-    rgba(18, 19, 18, 0.55) 55%,
-    rgba(18, 19, 18, 1) 92%);
+    rgba(18, 19, 18, 0.65) 30%,
+    rgba(18, 19, 18, 1) 75%);
 }
 
 .concept__inner {
   position: relative;
   z-index: 1;
+  margin-top: calc(var(--vh, 1vh) * -100); /* kéo lên phủ lên nền sticky (bù 100vh nền chiếm trong flow) → nội dung trượt trên nền */
   padding: 200px 20px 0;      /* chừa vùng mây đè + đỉnh banner (rộng/căn giữa: .l-inner) */
 }
 
@@ -96,8 +97,8 @@
   box-shadow: -10px 14px 44px rgba(0, 0, 0, 0.6);
 }
 .concept__photo--1 { width: 41%; aspect-ratio: 143 / 218; top: 0;    right: 0; }
-.concept__photo--2 { width: 47%; aspect-ratio: 173 / 122; top: 40%;  left: 0; z-index: 1; }
-.concept__photo--3 { width: 72%; aspect-ratio: 268 / 151; top: 52%;  left: 24%; z-index: 1; }
+.concept__photo--2 { width: 47%; aspect-ratio: 173 / 122; top: 60%;  left: 0; z-index: 1; }
+.concept__photo--3 { width: 72%; aspect-ratio: 268 / 151; top: 75%;  left: 24%; z-index: 1; }
 
 /* ---- Lead: tiêu đề + body ---- */
 .concept__lead { margin-top: 40px; }
@@ -183,8 +184,8 @@
     -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 220px);
     mask-image: linear-gradient(to bottom, transparent 0, #000 220px);
   }
-  .concept__bg { aspect-ratio: 1441 / 1040; }   /* tỉ lệ banner PC (Figma) */
   .concept__inner {
+    /* margin-top -100vh giữ nguyên (kế thừa từ base) → nội dung trượt phủ lên nền sticky */
     padding: 300px 40px 0;  /* chừa vùng trời của general-banner trước khi tới nội dung */
   }
 

@@ -9,26 +9,6 @@
   overflow: hidden;
 }
 
-/* nền mây mờ ở trên */
-.access__bg {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  aspect-ratio: 1434 / 956;
-  z-index: 0;
-}
-.access__bg img { width: 100%; height: 100%; object-fit: cover; }
-.access__bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg,
-    rgba(18, 19, 18, 1) 0%,
-    rgba(18, 19, 18, 0.7) 46%,
-    rgba(18, 19, 18, 0.7) 70%,
-    rgba(18, 19, 18, 1) 100%);
-}
-
 .access__inner {
   position: relative;
   z-index: 1;
@@ -165,7 +145,6 @@
   .access { padding: 90px 0 0; }
   .access__strip { margin-top: 120px; }
   .access__strip img { height: 302px; margin-right: 40px; }
-  .access__bg { aspect-ratio: 1440 / 956; }
   .access__inner { max-width: 1000px; }
 
   .access__eyebrow { margin-bottom: 70px; }

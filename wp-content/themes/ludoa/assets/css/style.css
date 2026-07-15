@@ -413,20 +413,25 @@ body.fixed .lang {
   100% { transform: translateY(100%); }
 }
 
-/* Reservation button (SP: dưới giữa) */
+/* Reservation button (SP: dưới giữa, fixed trên màn hình) */
 .fv__reserve {
-  position: absolute;
+  position: fixed;
   left: 50%;
-  bottom: calc(var(--vh, 1vh) * 20 + 36px); /* neo theo đáy màn đầu (hero cao 120vh) */
+  bottom: 30px; /* Cố định gần sát đáy màn hình để có trải nghiệm tốt, không che nội dung chính */
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 110; /* Hiển thị trên các thành phần khác khi scroll, dưới header (120) */
   display: inline-flex;
   align-items: center;
   gap: 18px;
   padding: 8px 4px;
   color: var(--color-white);
-  background: rgba(255, 255, 255, 0.10);
-  backdrop-filter: blur(2.6px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+.fv__reserve.is-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(20px);
 }
 .fv__reserve::before,
 .fv__reserve::after {
@@ -494,6 +499,9 @@ body.fixed .lang {
     background: none;
     backdrop-filter: none;
   }
+  .fv__reserve.is-out {
+    transform: translateY(20px);
+  }
   .fv__reserve::before,
   .fv__reserve::after {
     width: 26px;
@@ -547,7 +555,7 @@ body.fixed .lang {
   }
 
   /* list giữa (rộng 200, gap 40, không gạch/mũi tên) */
-  .menu__nav { width: 200px; margin-right: 169px; align-self: start; }
+  .menu__nav { width: 230px; margin-right: 150px; align-self: start; }
   .menu__label {
     display: block;
     font-family: var(--font-serif);
@@ -563,7 +571,7 @@ body.fixed .lang {
   .menu__list a {
     display: block;
     padding: 0;
-    font-size: 16px;                  /* Figma: 16px */
+    font-size: 18px;                  /* Figma: 18px */
     letter-spacing: 0.04em;
   }
   .menu__list a::after { display: none; }
@@ -577,7 +585,7 @@ body.fixed .lang {
     width: 314px;
   }
   .menu__tagline { font-size: 18px; }                    /* Figma PC: 18px */
-  .menu__brand-logo { font-size: 32px; margin: 12px auto 0; }
+  .menu__brand-logo { font-size: 32px; margin: 12px auto; }
   .menu__address { font-size: 16px; } /* Figma PC: 16px */
 
   .menu__btns {

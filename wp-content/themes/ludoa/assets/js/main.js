@@ -108,6 +108,17 @@
         $self.addClass('is-on');
       }
     });
+
+    // Ẩn nút đặt phòng khi cuộn tới footer
+    var $reserveBtn = $('.fv__reserve');
+    var $footer = $('.footer');
+    if ($reserveBtn.length && $footer.length) {
+      if (winBottom >= $footer.offset().top) {
+        $reserveBtn.addClass('is-out');
+      } else {
+        $reserveBtn.removeClass('is-out');
+      }
+    }
   }
 
   /* ---- Drawer / hamburger ---- */

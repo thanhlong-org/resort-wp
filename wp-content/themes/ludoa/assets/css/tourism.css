@@ -90,28 +90,6 @@
   object-fit: cover;
   border-radius: 2px;
 }
-.tsp__cap {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: row-reverse;      /* cột đầu bên phải */
-  align-items: flex-start;
-  gap: 4px;
-}
-/* cột thứ 2 (bên trái) lệch xuống 1 chút cho so le */
-.tsp__cap span:nth-child(2) { margin-top: 18px; }
-.tsp__cap span {
-  writing-mode: vertical-rl;
-  font-family: var(--font-serif);
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.02em;
-  color: var(--color-white);
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
-}
-
 /* text */
 .tsp__title {
   font-family: var(--font-serif);
@@ -158,14 +136,5 @@
 
   .tsp__photo { width: 524px; flex-shrink: 0; }
   .tsp__photo img { height: 393px; }
-  /* nhãn dọc so le: card lẻ → góc dưới-trái, card chẵn → góc dưới-phải (theo Figma) */
-  .tsp__cap {
-    top: auto;
-    bottom: -60px;              /* tràn nhẹ xuống dưới mép ảnh */
-    left: 20px;
-    right: auto;
-    transform: none;
-  }
-  .tsp:nth-child(even) .tsp__cap { left: auto; right: 20px; }
-  .tsp__cap span { font-size: 25px; gap: 6px; }
+
 }

@@ -57,7 +57,6 @@
   font-family: var(--font-serif);
   font-size: 14px;
   line-height: 2.2;                 /* Figma SP: lh 2.2 */
-  letter-spacing: 0.03em;
   color: var(--color-gray);
 }
 

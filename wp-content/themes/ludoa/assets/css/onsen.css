@@ -223,7 +223,7 @@
   color: var(--color-white);
   white-space: nowrap;
 }
-.kiln__ph--amethyst { right: 0; top: 0;   width: 82%; }
+.kiln__ph--amethyst { right: 25px; top: 0;   width: 82%; }
 .kiln__ph--gem      { left: 0;   top: 22%; width: 67%; z-index: 1; }
 .kiln__ph--salt     { left: 15%; top: 75%; width: 78%; }
 .kiln__ph--amethyst figcaption { writing-mode: vertical-rl; top: 0; left: 100%; margin-left: 6px; }
