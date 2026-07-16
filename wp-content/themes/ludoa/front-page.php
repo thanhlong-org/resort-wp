@@ -525,7 +525,7 @@ $img = get_template_directory_uri() . '/assets/images';
             <label class="cform__label" data-i18n="form.message">ご質問・ご要望</label>
             <textarea name="ludoa_message" data-i18n-placeholder="form.message_ph" placeholder="食事制限やアレルギー、送迎に関するご相談などはこちらにご記入ください。"></textarea>
           </div>
-          <p class="cform__privacy" data-i18n="form.privacy">ご入力いただきました情報は、当社の個人情報保護方針に基づき厳重に管理いたします。<br />当社の<a href="https://asofarmland.co.jp/privacy-policy" target="_blank" rel="noopener">個人情報保護方針</a>をご確認いただき、同意いただいた上で送信ください。</p>
+          <p class="cform__privacy" data-i18n="form.privacy">ご入力いただきました情報は、当社の個人情報保護方針に基づき厳重に管理いたします。<br />当社の<a href="#" data-modal="privacy">個人情報保護方針</a>をご確認いただき、同意いただいた上で送信ください。</p>
           <label class="cform__agree"><input type="checkbox" name="ludoa_agree" required /><span data-i18n="form.agree">同意する<em>*</em></span></label>
           <button type="submit" class="btn-bracket cform__submit"><span data-i18n="form.submit">送信する</span></button>
         </form>
@@ -678,6 +678,69 @@ $img = get_template_directory_uri() . '/assets/images';
                 <div class="price__card"><p class="price__card-h" data-i18n="price.f19_h">マグマクレイスパ</p><p class="price__card-b" data-i18n="price.f19_b">マグマ由来の泥（クレイ）を使ったスパ施設</p></div>
               </div>
             </div>
+          </section>
+
+          <div class="price__close">
+            <a class="btn-bracket" href="#" data-modal-close><span data-i18n="price.close">閉じる</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Modal: プライバシーポリシー ===== -->
+  <div class="modal" id="modal-privacy" aria-hidden="true">
+    <div class="modal__box modal__box--privacy">
+      <button class="modal__close" type="button" data-modal-close data-i18n-aria-label="modal.close" aria-label="閉じる"></button>
+      <div class="modal__scroll">
+        <div class="privacy">
+          <p class="modal__title"><span></span></p>
+
+          <p class="privacy__lead" data-i18n="privacy.lead">株式会社阿蘇ファームランド（以下、当社）は、個人情報を保護することが社会的責務であるとともに、社会の信頼を得て企業活動を推進するために不可欠な要件であると認識しております。当社は、お客様の個人情報の適切な管理・利用に十分配慮し、次の取り組みを実施します。</p>
+
+          <section class="privacy__sec">
+            <h3 class="privacy__title" data-i18n="privacy.h1">個人情報の管理</h3>
+            <p class="privacy__body" data-i18n="privacy.b1">当社は、お客様の個人情報の適切な管理・利用に十分配慮し、次の取り組みを実施します。</p>
+          </section>
+
+          <section class="privacy__sec">
+            <h3 class="privacy__title" data-i18n="privacy.h2">利用目的と収集範囲</h3>
+            <p class="privacy__body" data-i18n="privacy.b2">当社は、お客様からお名前・ご住所・電話番号・メールアドレスなどの個人情報をご提供いただく場合は、あらかじめ利用目的やお問い合せの窓口などをお知らせし、適切な範囲内でお客様の個人情報を収集させていただきます。</p>
+          </section>
+
+          <section class="privacy__sec">
+            <h3 class="privacy__title" data-i18n="privacy.h3">個人情報の利用</h3>
+            <p class="privacy__body" data-i18n="privacy.b3">お客様から、個人情報を収集させていただく場合は、その目的を明確にお知らせするものとし、次にあげる目的のために利用させていただきます。<br />お客様からのお問合せへの回答のため。<br />・商品のご注文の受付やそれに伴うご連絡のため。<br />・商品の配達やそれに伴うご連絡のため。<br />・保守サービスのご提供のため。<br />・商品やサービスをご案内するダイレクトメールや電子メールを送付するため。<br />・当社グループのマーケティング及びサービス向上、商品開発のための統計調査のため。<br />・各種キャンペーン等のお知らせをお客様にお届けするため。<br />・ポイントカードなど会員サービスへの登録の為。</p>
+          </section>
+
+          <section class="privacy__sec">
+            <h3 class="privacy__title" data-i18n="privacy.h4">第三者への提供・開示の禁止用</h3>
+            <p class="privacy__body" data-i18n="privacy.b4">当社は、お客様から同意いただいている場合や法令に基づき開示を請求された場合など正当な理由がある場合を除き、お客様の個人情報を第三者に提供・開示いたしません。</p>
+          </section>
+
+          <section class="privacy__sec">
+            <h3 class="privacy__title" data-i18n="privacy.h5">業務委託先の監督</h3>
+            <p class="privacy__body" data-i18n="privacy.b5">当社は、お客様から同意いただいた利用目的を達成するために、当社より業務委託先に対してお客様の個人情報を開示する場合には、当社と同様の水準で個人情報の厳重な管理を徹底するよう契約により義務付け、これを実施させるなど、適切な監督を行います。</p>
+          </section>
+
+          <section class="privacy__sec">
+            <h3 class="privacy__title" data-i18n="privacy.h6">情報セキュリティの確保・向上</h3>
+            <p class="privacy__body" data-i18n="privacy.b6">当社は、お客様の個人情報の漏洩・紛失・改ざんなどを防止するため、継続して情報セキュリティの確保・向上に努めます。</p>
+          </section>
+
+          <section class="privacy__sec">
+            <h3 class="privacy__title" data-i18n="privacy.h7">教育・啓発</h3>
+            <p class="privacy__body" data-i18n="privacy.b7">当社は、お客様より収集させて頂いた個人情報を次のいずれかに該当する場合を除き、第三者に提供・開示等は一切致しません。</p>
+          </section>
+
+          <section class="privacy__sec">
+            <h3 class="privacy__title" data-i18n="privacy.h8">個人情報の開示・訂正などへの対応</h3>
+            <p class="privacy__body" data-i18n="privacy.b8">当社は、お客様より収集させて頂いた個人情報を次のいずれかに該当する場合を除き、第三者に提供・開示等は一切致しません。<br />・法令等により開示が求められた場合。<br />・お客様からのお問合わせに対し、その内容が当社の協力会社から直接回答するのが適当と当社が判断した場合。<br />・適切な保護処置を講じた上で、当社の協力会社に提供・共同利用する場合。<br />・お客様の事前の同意を得た場合。<br />・お客様及び一般市民の生命、健康、財産等に重大な損害が発生する事を防止する為に必要な場合。<br />・公的機関より法律に基づく権限による開示請求があった場合。<br />弊社は、お客様がご自身の個人情報の開示や訂正などをご希望される場合、お申し出いただいたお客様がご本人であることを確認させていただいた上で、合理的な期間及び範囲で対応させていただきます。</p>
+          </section>
+
+          <section class="privacy__sec">
+            <h3 class="privacy__title" data-i18n="privacy.h9">継続的な見直しと改善</h3>
+            <p class="privacy__body" data-i18n="privacy.b9">当社は、個人情報保護に関連する法令、その他の規範を遵守するとともに、社会環境の変化に応じて、個人情報保護の取り組みを継続的に見直し、改善します。</p>
           </section>
 
           <div class="price__close">

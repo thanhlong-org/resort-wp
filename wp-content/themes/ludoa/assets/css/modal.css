@@ -35,7 +35,8 @@ body.modal-open { overflow: hidden; }
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
     url(../images/bg-modal.jpg) center/cover no-repeat;
 }
-.modal__box--price {
+.modal__box--price,
+.modal__box--privacy {
   max-width: 1186px;
   background: linear-gradient(rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.82)),
     url(../images/bg-modal-big.jpg) center/cover no-repeat;
@@ -55,7 +56,8 @@ body.modal-open { overflow: hidden; }
   border-radius: 20px;
 }
 .modal__box--form .modal__scroll { padding: 32px; }
-.modal__box--price .modal__scroll { padding: 56px 20px; }
+.modal__box--price .modal__scroll,
+.modal__box--privacy .modal__scroll { padding: 56px 20px; }
 
 /* nút X */
 .modal__close {
@@ -367,11 +369,66 @@ body.modal-open { overflow: hidden; }
 .price__close .btn-bracket span { font-size: 18px; font-weight: 400; } /* Figma SP: 18px (PC 20px) */
 
 /* ===========================================================
+   プライバシーポリシー — Figma PC node 3371:126
+   =========================================================== */
+.privacy .modal__title { gap: 5px; margin-bottom: 0; }   /* Figma: 2 gạch "─ ─", gap 5px */
+.privacy .modal__title::before,
+.privacy .modal__title::after { width: 12px; }           /* Figma: dash 12px */
+
+.privacy__lead {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 13px;                 /* SP; PC = 16px (Figma) */
+  line-height: 1.9;
+  color: var(--color-white);       /* Figma: #FFFFFF */
+  margin-top: 31px;                /* Figma: gạch → lead 31px */
+}
+
+.privacy__sec { margin-top: 47px; }                    /* Figma: giữa các mục 47px */
+.privacy__lead + .privacy__sec { margin-top: 67px; }   /* Figma: lead → mục đầu 67px */
+
+/* tiêu đề mục: marker chữ nhật vàng + chữ đậm trắng */
+.privacy__title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 16px;                 /* SP; PC = 20px (Figma) */
+  color: var(--color-white);       /* Figma: #FFFFFF */
+  margin-bottom: 10px;
+}
+.privacy__title::before {
+  content: "";
+  flex: none;
+  width: 19px;
+  height: 13px;
+  background: #BDA054;             /* Figma: #BDA054, ~19.28×12.76 */
+  clip-path: polygon(22% 0, 100% 0, 78% 100%, 0 100%); /* hình bình hành nghiêng phải (CSS thuần) */
+}
+
+.privacy__body {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 13px;                 /* SP; PC = 16px (Figma) */
+  line-height: 1.9;
+  color: var(--color-white);       /* Figma: #FFFFFF */
+}
+
+/* ===========================================================
    PC (≥1024px)
    =========================================================== */
 @media (min-width: 1024px) {
   .modal__box--form .modal__scroll { padding: 32px; }  /* Figma: padding 32px */
   .modal__box--price .modal__scroll { padding: 70px 60px; }
+  .modal__box--privacy .modal__scroll { padding: 70px 0; }  /* Figma: box padding 70px 0, nội dung tự canh giữa */
+
+  /* プライバシー — Figma PC */
+  .privacy { max-width: 897px; margin: 0 auto; }   /* Figma: nội dung rộng 897px canh giữa trong box 1186 */
+  .privacy__lead,
+  .privacy__body { font-size: 16px; }
+  .privacy__title { font-size: 20px; }
+  .privacy .price__close { margin-top: 90px; }      /* Figma: mục cuối → 閉じる 90px */
   .modal__title span { font-size: 25px; }                       /* Figma PC: 25px */
   .modal__box--price .modal__title span { font-size: 25px; }    /* Figma PC: 25px (w700) */
 
