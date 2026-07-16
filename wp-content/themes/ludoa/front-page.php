@@ -278,7 +278,7 @@ $img = get_template_directory_uri() . '/assets/images';
                 <figure><img src="<?php echo esc_url( $img ); ?>/learn-img-03.jpg" alt="瞑想" /><figcaption><span data-i18n="learn.s3">瞑想</span></figcaption></figure>
               </div>
               <div class="learn__slide">
-                <figure><img src="<?php echo esc_url( $img ); ?>/learn-img-03.jpg" alt="体力年齢測定" /><figcaption><span data-i18n="learn.s4">体力年齢測定</span></figcaption></figure>
+                <figure><img src="<?php echo esc_url( $img ); ?>/learn-img-04.jpg" alt="体力年齢測定" /><figcaption><span data-i18n="learn.s4">体力年齢測定</span></figcaption></figure>
               </div>
             </div>
 
