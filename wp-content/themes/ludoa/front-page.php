@@ -218,20 +218,20 @@ $img = get_template_directory_uri() . '/assets/images';
 
           <div class="house__layer house__layer--jp js-house-layer">
             <div class="house__unit">
-              <span class="hm-jp" style="left:293px;top:142px;font-size:25px">心身をほどく、</span>
-              <span class="hm-jp" style="left:253px;top:142px;font-size:25px">450の癒しのかたち</span>
-              <span class="hm-jp hm-jp--light" style="left:691px;top:234px;font-size:17px">静けさに眠る</span>
-              <span class="hm-jp hm-jp--tight" style="left:640px;top:409px;font-size:28px">眠りを整え、</span>
-              <span class="hm-jp hm-jp--tight" style="left:594px;top:409px;font-size:28px">深く休む</span>
-              <span class="hm-jp hm-jp--light" style="left:130px;top:381px;font-size:17px">心ほどく滞在</span>
-              <span class="hm-jp" style="left:895px;top:97px;font-size:20px">癒しと安らぎが満ちる、</span>
-              <span class="hm-jp" style="left:855px;top:97px;font-size:20px">独立した休息空間</span>
-              <span class="hm-jp hm-jp--light" style="left:1220px;top:339px;font-size:17px">癒しに泊まる</span>
-              <span class="hm-jp" style="left:1432px;top:454px;font-size:25px">喧騒を離れ、</span>
-              <span class="hm-jp" style="left:1392px;top:454px;font-size:25px">眠りの本質へ</span>
-              <span class="hm-jp" style="left:1756px;top:22px;font-size:35px">自然、静けさ、</span>
-              <span class="hm-jp" style="left:1703px;top:22px;font-size:35px">眠りが重なる場所</span>
-              <span class="hm-jp hm-jp--light" style="left:1781px;top:606px;font-size:17px">自然に還る休息</span>
+              <span class="hm-jp" style="left:293px;top:142px;font-size:25px" data-i18n="house.mq1">心身をほどく、</span>
+              <span class="hm-jp" style="left:253px;top:142px;font-size:25px" data-i18n="house.mq2">450の癒しのかたち</span>
+              <span class="hm-jp hm-jp--light" style="left:691px;top:234px;font-size:17px" data-i18n="house.mq3">静けさに眠る</span>
+              <span class="hm-jp hm-jp--tight" style="left:640px;top:409px;font-size:28px" data-i18n="house.mq4">眠りを整え、</span>
+              <span class="hm-jp hm-jp--tight" style="left:594px;top:409px;font-size:28px" data-i18n="house.mq5">深く休む</span>
+              <span class="hm-jp hm-jp--light" style="left:130px;top:381px;font-size:17px" data-i18n="house.mq6">心ほどく滞在</span>
+              <span class="hm-jp" style="left:895px;top:97px;font-size:20px" data-i18n="house.mq7">癒しと安らぎが満ちる、</span>
+              <span class="hm-jp" style="left:855px;top:97px;font-size:20px" data-i18n="house.mq8">独立した休息空間</span>
+              <span class="hm-jp hm-jp--light" style="left:1220px;top:339px;font-size:17px" data-i18n="house.mq9">癒しに泊まる</span>
+              <span class="hm-jp" style="left:1432px;top:454px;font-size:25px" data-i18n="house.mq10">喧騒を離れ、</span>
+              <span class="hm-jp" style="left:1392px;top:454px;font-size:25px" data-i18n="house.mq11">眠りの本質へ</span>
+              <span class="hm-jp" style="left:1756px;top:22px;font-size:35px" data-i18n="house.mq12">自然、静けさ、</span>
+              <span class="hm-jp" style="left:1703px;top:22px;font-size:35px" data-i18n="house.mq13">眠りが重なる場所</span>
+              <span class="hm-jp hm-jp--light" style="left:1781px;top:606px;font-size:17px" data-i18n="house.mq14">自然に還る休息</span>
             </div>
           </div>
 
@@ -278,7 +278,7 @@ $img = get_template_directory_uri() . '/assets/images';
                 <figure><img src="<?php echo esc_url( $img ); ?>/learn-img-03.jpg" alt="瞑想" /><figcaption><span data-i18n="learn.s3">瞑想</span></figcaption></figure>
               </div>
               <div class="learn__slide">
-                <figure><img src="<?php echo esc_url( $img ); ?>/learn-img-03.jpg" alt="体力年齢測定" /><figcaption><span data-i18n="learn.s4">体力年齢測定</span></figcaption></figure>
+                <figure><img src="<?php echo esc_url( $img ); ?>/learn-img-04.jpg" alt="体力年齢測定" /><figcaption><span data-i18n="learn.s4">体力年齢測定</span></figcaption></figure>
               </div>
             </div>
 
