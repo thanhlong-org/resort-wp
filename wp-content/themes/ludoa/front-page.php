@@ -694,7 +694,7 @@ $img = get_template_directory_uri() . '/assets/images';
       <button class="modal__close" type="button" data-modal-close data-i18n-aria-label="modal.close" aria-label="閉じる"></button>
       <div class="modal__scroll">
         <div class="privacy">
-          <p class="modal__title"><span></span></p>
+          <p class="modal__title"><span data-i18n="privacy.title">プライバシーポリシー</span></p>
 
           <p class="privacy__lead" data-i18n="privacy.lead">株式会社阿蘇ファームランド（以下、当社）は、個人情報を保護することが社会的責務であるとともに、社会の信頼を得て企業活動を推進するために不可欠な要件であると認識しております。当社は、お客様の個人情報の適切な管理・利用に十分配慮し、次の取り組みを実施します。</p>
 

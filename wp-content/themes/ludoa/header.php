@@ -69,6 +69,7 @@
           <li><a href="#tourism" data-i18n="nav.tourism">阿蘇の観光名所</a></li>
           <li><a href="#price" data-i18n="nav.price">料金プラン</a></li>
           <li><a href="#access" data-i18n="nav.access">アクセス</a></li>
+          <li><a href="#" data-modal="privacy" data-i18n="nav.privacy">プライバシーポリシー</a></li>
         </ul>
       </div>
 

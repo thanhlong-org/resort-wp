@@ -26,6 +26,7 @@
         <a href="#tourism" data-i18n="nav.tourism">阿蘇の観光名所</a>
         <a href="#price" data-i18n="nav.price">料金プラン</a>
         <a href="#access" data-i18n="nav.access">アクセス</a>
+        <a href="#" data-modal="privacy" data-i18n="nav.privacy">プライバシーポリシー</a>
       </nav>
 
       <div class="footer__btns">
