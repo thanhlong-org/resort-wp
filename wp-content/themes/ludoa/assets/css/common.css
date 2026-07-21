@@ -52,7 +52,7 @@
 .logo__top {
   font-family: var(--font-brush); /* Yuji Syuku */
   font-weight: 400;
-  font-size: 0.30em;              /* tỉ lệ theo cỡ 健康の森 */
+  font-size: 0.40em;              /* tỉ lệ theo cỡ 健康の森 */
   letter-spacing: 0.16em;
   padding-left: 0.16em;           /* bù letter-spacing để vẫn cân giữa */
   margin-bottom: 0.14em;
