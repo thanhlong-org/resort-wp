@@ -121,6 +121,68 @@
   color: var(--color-gray);
 }
 
+/* ---- 露天風呂 (introduce-img-08) ---- */
+.onsen__roten {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.onsen__roten-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 335px;
+  margin-bottom: 24px;
+}
+.onsen__roten-line {
+  width: 32px;
+  height: 0.5px;
+  background: rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+}
+.onsen__roten-title {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  color: var(--color-gray);
+}
+.onsen__roten-content {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+}
+.onsen__roten-photo {
+  width: 316px;
+  max-width: 100%;
+  margin: 0;
+}
+.onsen__roten-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1px;
+  box-shadow: 8px 4px 84px 3px rgba(0, 0, 0, 0.9);
+}
+.onsen__roten-body {
+  display: flex;
+  flex-direction: row-reverse;      /* cột đầu nằm phải, đọc phải→trái */
+  gap: 7px;
+}
+.onsen__roten-body p {
+  writing-mode: vertical-rl;
+  font-family: var(--font-serif);
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: var(--color-gray);
+}
+
 /* ---- その他の温泉施設 ---- */
 .onsen__other {
   position: relative;
@@ -168,7 +230,6 @@
   font-family: var(--font-serif);
   font-weight: 300;
   font-size: 16px;
-  letter-spacing: 0.04em;
   color: var(--color-white);
 }
 /* SP: so le trái/phải + thứ tự 大自然石庭 → フラワースパ → 宝石窯 */
@@ -179,56 +240,87 @@
 /* ---- 健康温熱窯十三種 ---- */
 .kiln {
   display: flex;
-  flex-direction: column;          /* SP: text trên, ảnh dưới */
-  margin-top: 90px;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+}
+.kiln__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 335px;
+  margin-bottom: 18px;
+}
+.kiln__header-line {
+  width: 32px;
+  height: 0.5px;
+  background: rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
 }
 .kiln__title {
   display: block;
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: 25px;
-  letter-spacing: 0.03em;
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
   color: var(--color-gray);
-  padding-bottom: 18px;
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.5);
-  margin-bottom: 22px;
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
-.kiln__body {
+.kiln__desc {
+  width: 100%;
+  max-width: 335px;
+  margin-bottom: 36px;
+}
+.kiln__desc p {
   font-family: var(--font-serif);
   font-weight: 400;
   font-size: 14px;
-  line-height: 2.2;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
   color: var(--color-gray);
 }
-.kiln__photos {
-  position: relative;
+.kiln__gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
   width: 100%;
-  max-width: 350px;
-  margin: 46px auto 0;
-  aspect-ratio: 350 / 745;
 }
-.kiln__ph { position: absolute; margin: 0; }
-.kiln__ph img {
+.kiln__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+}
+.kiln__item {
+  width: 316px;
+  max-width: 100%;
+  margin: 0;
+  position: relative;
+}
+.kiln__item img {
   display: block;
   width: 100%;
   height: auto;
   border-radius: 1px;
+  box-shadow: 8px 4px 84px 3px rgba(0, 0, 0, 0.9);
 }
-.kiln__ph figcaption {
-  position: absolute;
+.kiln__cap-h,
+.kiln__cap-v {
   font-family: var(--font-serif);
   font-weight: 500;
-  font-size: 16px;
+  font-size: 15px;
   letter-spacing: 0.05em;
   color: var(--color-white);
-  white-space: nowrap;
+  margin-top: 10px;
+  text-align: right;
+  display: block;
 }
-.kiln__ph--amethyst { right: 25px; top: 0;   width: 82%; }
-.kiln__ph--gem      { left: 0;   top: 22%; width: 67%; z-index: 1; }
-.kiln__ph--salt     { left: 15%; top: 75%; width: 78%; }
-.kiln__ph--amethyst figcaption { writing-mode: vertical-rl; top: 0; left: 100%; margin-left: 6px; }
-.kiln__ph--gem      figcaption { top: 100%; right: 0; margin-top: 8px; }
-.kiln__ph--salt     figcaption { writing-mode: vertical-rl; bottom: 0; left: 100%; margin-left: 6px; }
 
 /* ===========================================================
    PC (≥1024px)
@@ -286,6 +378,51 @@
   .onsen__body p { font-size: 18px; }
   .onsen__heading { font-size: 38px; letter-spacing: 0.05em; line-height: 1.35; }
 
+  /* 露天風呂 (introduce-img-08) */
+  .onsen__roten {
+    margin-top: 130px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+  .onsen__roten-header {
+    max-width: none;
+    gap: 28px;
+    margin-bottom: 48px;
+    justify-content: flex-end;
+  }
+  .onsen__roten-line {
+    flex: 1;
+    width: auto;
+    height: 0.5px;
+    background: rgba(255, 255, 255, 0.6);
+  }
+  .onsen__roten-title {
+    font-size: 38px;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .onsen__roten-content {
+    flex-direction: row;            /* Cột chữ dọc (trái) | Ảnh (phải) */
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+  }
+  .onsen__roten-photo {
+    width: 580px;
+    flex-shrink: 0;
+  }
+  .onsen__roten-body {
+    gap: 15px;
+    padding-top: 6px;
+  }
+  .onsen__roten-body p {
+    font-size: 18px;
+    line-height: 1.25;
+  }
+
   /* その他: hàng ngang 3 ảnh so le */
   .onsen__other { gap: 40px; margin-top: 120px; padding-top: 30px; }
   /* hạ line xuống ngang mép trên ảnh & rút ngắn → chọc nhẹ vào ảnh 宝石窯 (theo Figma) */
@@ -299,25 +436,145 @@
   .onsen__gitem:nth-child(2) { order: 2; align-self: flex-start; margin-top: 53px; text-align: left; }   /* 大自然石庭 */
   .onsen__gitem:nth-child(3) { order: 3; align-self: flex-start; margin-top: 0; margin-left: unset;    text-align: left; }   /* フラワースパ */
 
-  /* 健康温熱窯: ảnh trái (collage), text phải */
+  /* 健康温熱窯十三種 (Figma layout) */
   .kiln {
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: center;
-    gap: 60px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0;
     margin-top: 130px;
+    width: 100%;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .kiln__text { flex: 0 1 487px; }
-  .kiln__title { font-size: 38px; padding-bottom: 24px; margin-bottom: 30px; }
-  .kiln__body { font-size: 18px; }
-  .kiln__photos {
-    flex: 0 0 600px;
-    width: 600px;
-    max-width: 600px;
-    margin: 0;
-    aspect-ratio: 704 / 688;
+  .kiln__header {
+    max-width: none;
+    gap: 24px;
+    margin-bottom: 24px;
+    justify-content: flex-end;
   }
-  .kiln__ph--amethyst { left: 28%; right: unset; top: 0;   width: 41%; }
-  .kiln__ph--gem      { left: 0;   top: 20%; width: 33%; }
-  .kiln__ph--salt     { left: 42%; top: 60%; width: 52%; }
+  .kiln__header-line {
+    flex: 1;
+    width: auto;
+    height: 0.5px;
+    background: rgba(255, 255, 255, 0.6);
+  }
+  .kiln__title {
+    font-size: 38px;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+    white-space: nowrap;
+    color: var(--color-gray);
+  }
+  .kiln__desc {
+    max-width: 900px;
+    margin-bottom: 70px;
+  }
+  .kiln__desc p {
+    font-size: 18px;
+    line-height: 2.2;
+    letter-spacing: 0.02em;
+    color: var(--color-gray);
+  }
+  .kiln__gallery {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+    width: 100%;
+  }
+  .kiln__col {
+    gap: 60px;
+  }
+  .kiln__col--left {
+    width: 500px;
+    align-items: flex-start;
+  }
+  .kiln__col--right {
+    width: 630px;
+    align-items: flex-end;
+  }
+  /* Item 1: 宝石窯(ヒスイ) - 361px */
+  .kiln__item--hisui {
+    width: 361px;
+    margin-left: 10px;
+  }
+  .kiln__item--hisui .kiln__cap-h {
+    font-size: 18px;
+    text-align: right;
+    margin-top: 14px;
+  }
+  /* Item 2: 紫水晶窯 - 480px */
+  .kiln__item--amethyst {
+    width: 480px;
+    margin-top: 40px;
+  }
+  .kiln__item--amethyst .kiln__cap-v {
+    position: absolute;
+    top: 10px;
+    left: 100%;
+    margin-left: 16px;
+    margin-top: 0;
+    writing-mode: vertical-rl;
+    font-size: 18px;
+    letter-spacing: 0.08em;
+    text-align: left;
+    white-space: nowrap;
+  }
+  /* Item 3: 温熱窯（蒸気） - 476px */
+  .kiln__item--steam {
+    width: 476px;
+    margin-top: 30px;
+  }
+  .kiln__item--steam .kiln__cap-v {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    margin-left: 16px;
+    margin-top: 0;
+    writing-mode: vertical-rl;
+    font-size: 18px;
+    letter-spacing: 0.08em;
+    text-align: left;
+    white-space: nowrap;
+  }
+  /* Item 4: 黄土窯 - 531px */
+  .kiln__item--oudo {
+    width: 531px;
+    margin-right: 35px;
+  }
+  .kiln__item--oudo .kiln__cap-v {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    margin-left: 16px;
+    margin-top: 0;
+    writing-mode: vertical-rl;
+    font-size: 18px;
+    letter-spacing: 0.08em;
+    text-align: left;
+    white-space: nowrap;
+  }
+  /* Item 5: マイナスイオン溢れる岩塩ルーム - 500px */
+  .kiln__item--salt {
+    width: 500px;
+    margin-right: 40px;
+    margin-top: 30px;
+  }
+  .kiln__item--salt .kiln__cap-h {
+    font-size: 18px;
+    text-align: right;
+    margin-top: 14px;
+  }
+  /* Item 6: 薬草窯とハーブ窯 - 594px */
+  .kiln__item--herb {
+    width: 594px;
+    margin-top: 30px;
+  }
+  .kiln__item--herb .kiln__cap-h {
+    font-size: 18px;
+    text-align: right;
+    margin-top: 14px;
+  }
 }

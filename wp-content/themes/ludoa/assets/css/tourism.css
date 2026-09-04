@@ -117,6 +117,40 @@
   color: var(--color-white);
 }
 
+/* ---- more tour notice ---- */
+.tourism__more {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  margin-top: 50px;
+}
+.tourism__more-line {
+  position: relative;
+  flex: 1;
+  height: 0.5px;
+  background: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+}
+.tourism__more-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 100%;
+  width: 100vw;
+  height: 0.5px;
+  background: rgba(255, 255, 255, 0.6);
+}
+.tourism__more-text {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  color: var(--color-gray);
+  flex-shrink: 0;
+}
+
 /* ===========================================================
    PC (≥1024px)
    =========================================================== */
@@ -144,4 +178,17 @@
   .tsp__photo { width: 524px; flex-shrink: 0; }
   .tsp__photo img { height: 393px; }
 
+  /* more tour notice */
+  .tourism__more {
+    gap: 32px;
+    margin-top: 130px;
+    justify-content: flex-end;
+  }
+  .tourism__more-text {
+    font-size: 25px;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+    white-space: nowrap;
+    color: var(--color-gray);
+  }
 }

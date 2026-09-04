@@ -101,6 +101,112 @@
   margin: 40px auto 0;
 }
 
+/* ---- Section Heads ---- */
+.veg__section-head {
+  position: relative;
+  width: 100%;
+  max-width: 335px;
+  margin: 0 auto 28px;
+}
+.veg__section-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: var(--color-gray);
+  margin: 0;
+}
+.veg__section-line {
+  position: absolute;
+  bottom: -10px;
+  height: 0.5px;
+  background: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+}
+.veg__section-head--right .veg__section-line {
+  left: 0;
+  width: 100vw;
+}
+.veg__section-head--left .veg__section-line {
+  right: 0;
+  width: 100vw;
+}
+
+/* ---- Blog 1: 日本最大級レストラン ---- */
+.veg__restaurant {
+  margin-top: 80px;
+}
+.veg__restaurant-photos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+}
+.veg__rest-ph {
+  width: 316px;
+  max-width: 100%;
+  margin: 0;
+}
+.veg__rest-ph img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1px;
+  box-shadow: 8px 4px 84px 3px rgba(0, 0, 0, 0.9);
+}
+
+/* ---- Blog 2: 自社栽培による新鮮かつ安全な食材 ---- */
+.veg__farm {
+  margin-top: 80px;
+}
+.veg__farm-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.veg__farm-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+}
+.veg__farm-text {
+  width: 100%;
+  max-width: 335px;
+  margin: 0 auto;
+}
+.veg__farm-text p {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  color: var(--color-gray);
+}
+.veg__farm-text p + p {
+  margin-top: 1.4em;
+}
+.veg__farm-text strong {
+  font-weight: 700;
+  color: var(--color-white);
+}
+.veg__farm-ph {
+  width: 316px;
+  max-width: 100%;
+  margin: 28px auto 0;
+}
+.veg__farm-ph img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1px;
+  box-shadow: 8px 4px 84px 3px rgba(0, 0, 0, 0.9);
+}
+
 /* ===========================================================
    PC (≥1024px)
    =========================================================== */
@@ -118,21 +224,159 @@
   .veg__title span { font-size: 56px; }
 
   .veg__content {
-    max-width: 1160px;
-    margin: 120px auto 0;
-    min-height: 960px;
+    max-width: 1240px;
+    margin: 120px -20px 0;
+    min-height: 1040px;
+    position: relative;
   }
   .veg__photos { position: static; height: auto; }
-  .veg__ph--basket  { left: 22%; right: auto; top: 0;    width: 302px; }
-  .veg__ph--kaiseki { left: 0;   top: 200px;  width: 418px; }
-  .veg__ph--buffet  { position: absolute; left: 10%; top: 600px; width: 435px; margin: 0; }
+  .veg__ph--basket {
+    position: absolute;
+    left: 181px;
+    top: 0;
+    width: 462px;
+    z-index: 1;
+  }
+  .veg__ph--kaiseki {
+    position: absolute;
+    left: 0;
+    top: 367px;
+    width: 533px;
+    z-index: 2;
+  }
+  .veg__ph--buffet {
+    position: absolute;
+    left: 143px;
+    top: 724px;
+    width: 517px;
+    margin: 0;
+    z-index: 1;
+  }
 
   .veg__body {
     position: absolute;
     right: 0;
-    top: 100px;
-    width: 500px;
+    top: 179px;
+    width: 483px;
     margin: 0;
   }
-  .veg__body p { font-size: 18px; line-height: 2.2; }
+  .veg__body p {
+    font-size: 18px;
+    line-height: 2.2;
+    letter-spacing: 0.03em;
+  }
+
+  /* ---- PC Section Heads ---- */
+  .veg__section-head {
+    max-width: none;
+    width: fit-content;
+    margin-bottom: 0;
+    position: relative;
+    display: block;
+  }
+  .veg__section-head--right {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  .veg__section-head--right .veg__section-title {
+    font-size: 38px;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+  .veg__section-head--right .veg__section-line {
+    display: block;
+    position: absolute;
+    top: calc(100% + 14px);
+    bottom: auto;
+    left: 0;
+    right: auto;
+    width: 100vw;
+    height: 0.5px;
+    background: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+  }
+
+  .veg__section-head--left {
+    margin-left: 0;
+    margin-right: auto;
+    margin-bottom: 50px;
+    border-bottom: none;
+    padding-bottom: 0;
+    width: fit-content;
+    display: block;
+  }
+  .veg__section-head--left .veg__section-title {
+    font-size: 38px;
+    line-height: 1.5;
+    white-space: nowrap;
+    margin-left: -50px;
+  }
+  .veg__section-head--left .veg__section-line {
+    display: block;
+    position: absolute;
+    top: calc(100% + 14px);
+    bottom: auto;
+    right: -30px;
+    left: auto;
+    width: 100vw;
+    height: 0.5px;
+    background: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+  }
+
+  /* ---- PC Blog 1: 日本最大級レストラン ---- */
+  .veg__restaurant {
+    margin-top: 150px;
+  }
+  .veg__restaurant-photos {
+    gap: 60px;
+    margin-top: 70px;
+  }
+  .veg__rest-ph--1 {
+    width: 753px;
+    margin: 0 auto 0 0;
+  }
+  .veg__rest-ph--2 {
+    width: 828px;
+    margin: 0 0 0 auto;
+  }
+  .veg__rest-ph--3 {
+    width: 828px;
+    margin: 0 auto 0 0;
+  }
+
+  /* ---- PC Blog 2: 自社栽培による新鮮かつ安全な食材 ---- */
+  .veg__farm {
+    margin-top: 150px;
+  }
+  .veg__farm-content {
+    display: block;
+    width: 100%;
+  }
+  .veg__farm-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+  }
+  .veg__farm-text {
+    width: 501px;
+    max-width: none;
+    margin: 0;
+    flex-shrink: 0;
+  }
+  .veg__farm-text p {
+    font-size: 18px;
+    line-height: 2.2;
+    letter-spacing: 0.03em;
+  }
+  .veg__farm-ph--strawberry {
+    width: 655px;
+    flex-shrink: 0;
+    margin: 0;
+  }
+  .veg__farm-ph--harvest {
+    width: 840px;
+    margin: 60px 0 0 0;
+  }
 }

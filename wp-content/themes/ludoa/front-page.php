@@ -61,9 +61,9 @@ $img = get_template_directory_uri() . '/assets/images';
         <div class="concept__lead">
           <h3 class="concept__title fadeUpTrigger" data-i18n="concept.title">世界最高峰の<br />ウェルネス・リトリート</h3>
           <div class="concept__body fadeUpTrigger" data-i18n="concept.body">
-            <p>日々の重責から解き放たれ、ただの「自分」に<br class="u-sp" />還る場所。<br class="u-pc" />それが大自然の中に佇む、<br />世界でここだけのウェルネス・リトリートです。</p>
-            <p>よりも早く走ってきたあなたにこそ、<br />今、究極の「癒し」が必要です。</p>
-            <p>――選び抜かれた設えの中で大自然に触れ、<span class="u-sp"><br />　　</span>心を澄ますこと。</p>
+            <p>日々の重責やストレスから解き放たれ、ただの「自分」に<br class="u-sp" />還る場所。<br class="u-pc" />それが大自然の中に佇む、<br />世界でここだけのウェルネス・リトリートです。</p>
+            <p>誰よりも頑張って走ってきたあなたにこそ、<br />今、究極の「癒し」が必要です。</p>
+            <p>――癒しと健康の専門家が築き上げた施設の中で大自然に触れ、心を澄ますこと。</p>
             <p>ここで手に入るものは、<br />あなたの未来を健康的で豊かに変える、<br />一生モノの価値という名の投資です。</p>
           </div>
         </div>
@@ -98,18 +98,51 @@ $img = get_template_directory_uri() . '/assets/images';
           <div class="onsen__text fadeInTrigger">
             <div class="onsen__body staggerTrigger" data-i18n="onsen.body">
               <p>「阿蘇健康火山温泉」は</p>
-              <p>世界最大級の大自然石庭露天風呂。</p>
+              <p>種類の豊富な内湯と世界最大級の</p>
+              <p>大自然石庭露天風呂を併設しています。</p>
+              <br>
               <p>世界のカルデラから湧き上がる恵みは、</p>
               <p>心身を癒し、温め、リセットしてくれます。</p>
+              <br>
               <p>阿蘇外輪山を一望できる露天風呂は、</p>
               <p>解放感と四季折々を肌で感じれる</p>
               <p>唯一無二の温浴施設です。</p>
-              <p>また、大自然石庭露天風呂は、</p>
+              <br>
               <p>天然のトリプルミネラルを含む硫酸塩温泉で、</p>
               <p>日頃の疲れを癒し、</p>
               <p>疲労回復やストレス解放を促します。</p>
             </div>
             <h3 class="onsen__heading" data-i18n="onsen.heading">阿蘇健康<br class="u-sp" />火山温泉</h3>
+          </div>
+        </div>
+
+        <div class="onsen__roten">
+          <div class="onsen__roten-header fadeUpTrigger">
+            <div class="onsen__roten-line" aria-hidden="true"></div>
+            <h3 class="onsen__roten-title" data-i18n="onsen.roten_title">世界最大級。延べ100mの露天風呂</h3>
+          </div>
+
+          <div class="onsen__roten-content fadeInTrigger">
+            <div class="onsen__roten-body staggerTrigger" data-i18n="onsen.roten_body">
+              <p>「阿蘇健康火山温泉」は</p>
+              <p>種類の豊富な内湯と世界最大級の</p>
+              <p>大自然石庭露天風呂を併設しています。</p>
+              <br>
+              <p>世界のカルデラから湧き上がる恵みは、</p>
+              <p>心身を癒し、温め、リセットしてくれます。</p>
+              <br>
+              <p>阿蘇外輪山を一望できる露天風呂は、</p>
+              <p>解放感と四季折々を肌で感じれる</p>
+              <p>唯一無二の温浴施設です。</p>
+              <br>
+              <p>天然のトリプルミネラルを含む硫酸塩温泉で、</p>
+              <p>日頃の疲れを癒し、</p>
+              <p>疲労回復やストレス解放を促します。</p>
+            </div>
+
+            <figure class="onsen__roten-photo">
+              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-08.jpg" alt="世界最大級。延べ100mの露天風呂" />
+            </figure>
           </div>
         </div>
 
@@ -125,7 +158,7 @@ $img = get_template_directory_uri() . '/assets/images';
             <li class="onsen__gitem">
               <figure>
                 <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-03.jpg" alt="大自然石庭露天風呂" />
-                <figcaption data-i18n="onsen.g2">大自然石庭露天風呂</figcaption>
+                <figcaption data-i18n="onsen.g2">阿蘇健康火山温泉・大自然石庭露天風呂</figcaption>
               </figure>
             </li>
             <li class="onsen__gitem">
@@ -138,23 +171,60 @@ $img = get_template_directory_uri() . '/assets/images';
         </div>
 
         <div class="kiln">
-          <div class="kiln__text">
-            <h3 class="kiln__title fadeUpTrigger" data-i18n="kiln.title">健康温熱窯十三種</h3>
-            <p class="kiln__body fadeUpTrigger" data-i18n="kiln.body">薬草や鉱石の効能を体感できる13種類のドーム窯を<br class="u-sp" />備えた、<br class="u-pc" />日本最大級の健康温浴施設です。<br />他に類を見ない特別空間は、ひとつひとつの窯の中が<br class="u-sp" />丸く、<br class="u-pc" />それぞれで違う癒しを感じれます。<br />自然のエネルギーを全身に受け、<br />身体が欲する癒しを感じお選びください。<br />また、窯の外は広いスペースが設けられ、<br />横になりゆったりとした時間をお過ごし下さい。</p>
+          <!-- Header: Line mảnh + Tiêu đề ngang 38px -->
+          <div class="kiln__header fadeUpTrigger">
+            <div class="kiln__header-line" aria-hidden="true"></div>
+            <h3 class="kiln__title" data-i18n="kiln.title">健康温熱窯十三種</h3>
           </div>
-          <div class="kiln__photos">
-            <figure class="kiln__ph kiln__ph--amethyst">
-              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-05.jpg" alt="紫水晶窯" />
-              <figcaption data-i18n="kiln.c1">紫水晶窯</figcaption>
-            </figure>
-            <figure class="kiln__ph kiln__ph--gem">
-              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-06.jpg" alt="宝石窯" />
-              <figcaption data-i18n="kiln.c2">宝石窯</figcaption>
-            </figure>
-            <figure class="kiln__ph kiln__ph--salt">
-              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-07.jpg" alt="石塩窯" />
-              <figcaption data-i18n="kiln.c3">石塩窯</figcaption>
-            </figure>
+
+          <!-- Đoạn mô tả ngang -->
+          <div class="kiln__desc fadeUpTrigger">
+            <p data-i18n="kiln.body">薬草や鉱石の効能を体感できる13種類のドーム窯を備えた、ここでしか体験できない健康温浴施設です。<br />他に類を見ない特別空間は、ひとつひとつの窯の中が丸く、それぞれで違う感覚が堪能できます。<br />自然のエネルギーを全身に受け、身体が欲する癒しをご体感下さい。<br />また、窯の外は広いスペースが設けられ、横になりゆったりとした時間をお過ごし下さい。</p>
+          </div>
+
+          <!-- Gallery 6 ảnh so le chia 2 cột trên PC -->
+          <div class="kiln__gallery fadeInTrigger">
+            <!-- Cột trái (PC) -->
+            <div class="kiln__col kiln__col--left">
+              <!-- 1. 宝石窯(ヒスイ) -->
+              <figure class="kiln__item kiln__item--hisui">
+                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-06.jpg" alt="宝石窯(ヒスイ)" />
+                <figcaption class="kiln__cap-h" data-i18n="kiln.c_hisui">宝石窯(ヒスイ)</figcaption>
+              </figure>
+
+              <!-- 2. 紫水晶窯 -->
+              <figure class="kiln__item kiln__item--amethyst">
+                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-05.jpg" alt="紫水晶窯" />
+                <figcaption class="kiln__cap-v" data-i18n="kiln.c_amethyst">紫水晶窯</figcaption>
+              </figure>
+
+              <!-- 3. 温熱窯（蒸気） -->
+              <figure class="kiln__item kiln__item--steam">
+                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-11.jpg" alt="温熱窯（蒸気）" />
+                <figcaption class="kiln__cap-v" data-i18n="kiln.c_steam">温熱窯（蒸気）</figcaption>
+              </figure>
+            </div>
+
+            <!-- Cột phải (PC) -->
+            <div class="kiln__col kiln__col--right">
+              <!-- 4. 黄土窯 -->
+              <figure class="kiln__item kiln__item--oudo">
+                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-09.jpg" alt="黄土窯" />
+                <figcaption class="kiln__cap-v" data-i18n="kiln.c_oudo">黄土窯</figcaption>
+              </figure>
+
+              <!-- 5. マイナスイオン溢れる岩塩ルーム -->
+              <figure class="kiln__item kiln__item--salt">
+                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-07.jpg" alt="マイナスイオン溢れる岩塩ルーム" />
+                <figcaption class="kiln__cap-h" data-i18n="kiln.c_salt">マイナスイオン溢れる岩塩ルーム</figcaption>
+              </figure>
+
+              <!-- 6. 薬草窯とハーブ窯 -->
+              <figure class="kiln__item kiln__item--herb">
+                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-10.jpg" alt="薬草窯とハーブ窯" />
+                <figcaption class="kiln__cap-h" data-i18n="kiln.c_herb">薬草窯とハーブ窯</figcaption>
+              </figure>
+            </div>
           </div>
         </div>
       </div>
@@ -183,14 +253,60 @@ $img = get_template_directory_uri() . '/assets/images';
           </div>
 
           <div class="veg__body fadeInTrigger" data-i18n="veg.body">
-            <p><span class="u-pc">阿蘇大自然 健康の森施設内にある </span>薬膳旬菜 阿蘇きのこ亭では、「体の中から元気に」を<br />テーマに「阿蘇健康農園」や「阿蘇バイオテック」で<br />大切に育てられた新鮮な野菜やきのこの旨味を<br class="u-sp" />引き出した<br class="u-pc" />特別な創作薬膳料理や大自然の恵みが<br class="u-sp" />凝縮された<br class="u-pc" />自慢のスープをご堪能いただけます。</p>
-            <p>自社栽培の採れたて食材を使った<br />大自然農園レストラン ビッグファームでは、<br />管理栄養士監修のもとシェフが丁寧に仕上げた<br />パレットのように色鮮やかな彩り薫る<br />ヘルシーバイキングをライブキッチンの出来立ての<br />香ばしい匂いとともにお届けしています。</p>
-            <p>四季折々の厳選食材や瑞々しい旬の野菜、<br />職人技が光るお造りを最も美味しい仕立てで愉しめる<br />「セットメニュー」もご用意し、素材の持ち味を<br class="u-sp" />活かした<br class="u-pc" />多彩なメニューを通じて五感で季節の<br class="u-sp" />移ろいを<br class="u-pc" />心ゆくまでご堪能いただけます。</p>
+            <p>阿蘇大自然 健康の森施設内にある<br class="u-pc" />薬膳旬菜 阿蘇きのこ亭では、「体の中から元気に」を<br />テーマに「阿蘇健康農園」や「阿蘇バイオテック」で<br />大切に育てられた新鮮な野菜やきのこの旨味を引き出した<br />特別な創作薬膳料理や大自然の恵みが凝縮された<br />自慢のスープをご堪能いただけます。</p>
+            <p>自社栽培の採れたて食材を使った<br />大自然農園レストラン・ビッグファーム、<br />阿蘇レストランでは、<br />管理栄養士監修のもとシェフが丁寧に仕上げた<br />パレットのように色鮮やかな彩り薫る<br />ヘルシーバイキングをライブキッチンで演出、<br />香ばしい香りとともにお届けしています。</p>
+            <p>四季折々の厳選食材や瑞々しい旬の野菜、<br />職人技が光る”目でも舌でも愉しめる”<br />「セットメニュー」もご用意し、素材の持ち味を活かした<br />多彩なメニューを通じて五感で季節の移ろいを<br />心ゆくまでご堪能いただけます。</p>
           </div>
 
           <figure class="veg__ph veg__ph--buffet">
             <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-03.jpg" alt="ヘルシーバイキング" />
           </figure>
+        </div>
+
+        <!-- Blog 1: Nhà hàng quy mô 4 cơ sở -->
+        <div class="veg__restaurant">
+          <div class="veg__section-head veg__section-head--right fadeUpTrigger">
+            <h3 class="veg__section-title" data-i18n="veg.rest_title">全4店舗・総席数5600席。日本最大級レストラン</h3>
+            <div class="veg__section-line" aria-hidden="true"></div>
+          </div>
+
+          <div class="veg__restaurant-photos fadeInTrigger">
+            <figure class="veg__rest-ph veg__rest-ph--1">
+              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-04.jpg" alt="全4店舗・総席数5600席。日本最大級レストラン" />
+            </figure>
+            <figure class="veg__rest-ph veg__rest-ph--2">
+              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-05.jpg" alt="レストランからの展望" />
+            </figure>
+            <figure class="veg__rest-ph veg__rest-ph--3">
+              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-06.jpg" alt="きのこ栽培施設" />
+            </figure>
+          </div>
+        </div>
+
+        <!-- Blog 2: Nguyên liệu tự trồng an toàn -->
+        <div class="veg__farm">
+          <div class="veg__section-head veg__section-head--left fadeUpTrigger">
+            <h3 class="veg__section-title" data-i18n="veg.farm_title">自社栽培による新鮮かつ安全な食材</h3>
+            <div class="veg__section-line" aria-hidden="true"></div>
+          </div>
+
+          <div class="veg__farm-content">
+            <div class="veg__farm-row fadeInTrigger">
+              <div class="veg__farm-text" data-i18n="veg.farm_desc">
+                <p>私たち「大自然阿蘇健康の森」は敷地内の阿蘇健康農園で、<br />レストランで食材として使用される野菜や<br />ハーブ、キノコなどを育てています。</p>
+                <p>阿蘇健康農園の栽培施設は<strong>約8000㎡</strong>という大規模であり、<br />栽培されたものや、ここで加工された品は<br />園内に留まらず小売店や他のレストランにも<br />高品質の食品として提供しています。</p>
+                <p>さらに期間限定で<strong>10万鉢以上</strong>ある<strong>いちご狩り</strong>も行っていて<br />毎年多くの皆様にお楽しみいただいています。</p>
+              </div>
+
+              <figure class="veg__farm-ph veg__farm-ph--strawberry">
+                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-07.jpg" alt="いちご狩り" />
+              </figure>
+            </div>
+
+            <figure class="veg__farm-ph veg__farm-ph--harvest fadeInTrigger">
+              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-08.jpg" alt="自社栽培による新鮮な野菜" />
+            </figure>
+          </div>
         </div>
       </div>
     </section>
@@ -332,7 +448,7 @@ $img = get_template_directory_uri() . '/assets/images';
           <article class="tsp">
             <div class="tsp__text fadeUpTrigger">
               <h3 class="tsp__title" data-i18n="tourism.t3_title">上色見熊野座神社</h3>
-              <p class="tsp__body" data-i18n="tourism.t3_body">近年、SNSをきっかけに世界中から注目を集めている、<br class="u-sp" />幻想的な雰囲気の<br class="u-pc" />神社です。杉木立に囲まれた参道と<br class="u-sp" />神秘的な景観は、「まるで異世界への<br class="u-pc" />入り口のよう」と<br class="u-sp" />海外旅行者の間でも話題となっています。<br />また、蛍火の杜へを思わせる美しい世界観や、<br class="u-sp" />るろうに剣心のロケ地として<br class="u-pc" />知られており、<br class="u-sp" />日本ならではの静寂と神秘を体感できる<br class="u-sp" />人気スポットとして、<br class="u-pc" />多くの観光客が訪れています。</p>
+              <p class="tsp__body" data-i18n="tourism.t3_body">近年、SNSをきっかけに世界中から注目を集めている、<br class="u-sp" />幻想的な雰囲気の<br class="u-pc" />神社です。杉木立に囲まれた参道と<br class="u-sp" />神秘的な景観は、「まるで異世界への<br class="u-pc" />入り口のよう」と<br class="u-sp" />海外旅行者の間でも話題となっています。<br />また、蛍火の杜へを思わせる美しい世界観や、<br class="u-sp" />日本では有名なアニメーション　「るろうに剣心」実写版のロケ地として<br class="u-pc" />知られており、<br class="u-sp" />日本ならではの静寂と神秘を体感できる<br class="u-sp" />人気スポットとして、<br class="u-pc" />多くの観光客が訪れています。</p>
             </div>
             <figure class="tsp__photo">
               <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/tourism-img-03.jpg" alt="異世界への入り口" />
@@ -348,6 +464,11 @@ $img = get_template_directory_uri() . '/assets/images';
               <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/tourism-img-04.jpg" alt="大草原のエネルギー" />
             </figure>
           </article>
+        </div>
+
+        <div class="tourism__more fadeUpTrigger">
+          <div class="tourism__more-line" aria-hidden="true"></div>
+          <p class="tourism__more-text" data-i18n="tourism.more_text">この他にも多種多様な観光ツアーをご用意しております。</p>
         </div>
       </div>
     </section>
@@ -365,7 +486,7 @@ $img = get_template_directory_uri() . '/assets/images';
           <div class="plan__price fadeUpTrigger">
             <p class="plan__price-note" data-i18n="plan.price_note"><strong>お一人様3泊〜</strong> （2名1室利用時）</p>
             <p class="plan__price-main">
-              <span class="plan__price-num">150,000</span>
+              <span class="plan__price-num">180,000</span>
               <span class="plan__price-unit">
                 <span class="plan__price-tax" data-i18n="plan.price_tax">（税込）</span>
                 <span class="plan__price-yen" data-i18n="plan.price_yen">円〜</span>

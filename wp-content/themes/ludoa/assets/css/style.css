@@ -740,6 +740,19 @@ html[lang^="en"] .onsen__body p {
   transform: none !important;
 }
 
+html[lang^="en"] .onsen__roten-body {
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+html[lang^="en"] .onsen__roten-body p {
+  writing-mode: horizontal-tb !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0.02em !important;
+  color: var(--color-gray) !important;
+  transform: none !important;
+}
+
 html[lang^="en"] .onsen__other {
   flex-direction: column !important;
   align-items: flex-start !important;
@@ -828,6 +841,10 @@ html[lang^="en"] .kiln__ph--salt figcaption {
     font-size: 32px !important;
   }
   html[lang^="en"] .onsen__body p {
+    font-size: 16px !important;
+    line-height: 1.8 !important;
+  }
+  html[lang^="en"] .onsen__roten-body p {
     font-size: 16px !important;
     line-height: 1.8 !important;
   }
