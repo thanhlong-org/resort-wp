@@ -176,7 +176,6 @@
 }
 .veg__farm-text {
   width: 100%;
-  max-width: 335px;
   margin: 0 auto;
 }
 .veg__farm-text p {
@@ -357,16 +356,13 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 40px;
   }
   .veg__farm-text {
-    width: 501px;
     max-width: none;
     margin: 0;
-    flex-shrink: 0;
   }
   .veg__farm-text p {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 2.2;
     letter-spacing: 0.03em;
   }
@@ -379,4 +375,8 @@
     width: 840px;
     margin: 60px 0 0 0;
   }
+}
+
+@media (min-width: 1440px) {
+  .veg__inner { padding: 120px 0 0; }
 }
