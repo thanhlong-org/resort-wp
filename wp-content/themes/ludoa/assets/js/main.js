@@ -245,20 +245,16 @@
     }
   }
 
-  /* ---- Dải ảnh lò xông (kiln) — nhân bản các track để cuộn liền mạch đa tầng ---- */
+  /* ---- Dải ảnh lò xông (kiln) — nhân bản canvas unit để cuộn liền mạch ---- */
   function initKilnStrip() {
-    $('.js-kiln-layer').each(function () {
-      var $layer = $(this);
-      if (!$layer.data('cloned')) {
-        var $track = $layer.children('.kiln__track');
-        if ($track.length) {
-          $layer.append($track.clone())
-                .append($track.clone())
-                .append($track.clone());
-          $layer.data('cloned', true);
-        }
+    var $track = $('.js-kiln-track');
+    if ($track.length && !$track.data('cloned')) {
+      var $unit = $track.children('.kiln__unit');
+      if ($unit.length) {
+        $track.append($unit.clone());
+        $track.data('cloned', true);
       }
-    });
+    }
   }
 
   /* ---- Learn slider (slick, độ rộng slide linh hoạt) ---- */
