@@ -61,6 +61,11 @@
   margin-bottom: 4px;
 }
 .plan__price-note strong { font-weight: 400; }
+.plan__price-note span {
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 4px;
+}
 .plan__price-main {
   display: flex;
   align-items: flex-end;
@@ -202,6 +207,7 @@
   .plan__brand { font-size: 18px; }
   .plan__name { font-size: 25px; line-height: 1.8; }
   .plan__price-note { text-align: center; font-size: 24px; }
+  .plan__price-note span { font-size: 20px; margin-top: 6px; }
   .plan__price-num { font-size: 80px; font-weight: 600; }   /* Figma PC: SemiBold 80px */
   .plan__price-yen { font-size: 37px; }
   .plan__price-tax { font-size: 18px; }

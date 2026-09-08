@@ -245,6 +245,18 @@
     }
   }
 
+  /* ---- Dải ảnh lò xông (kiln) — nhân bản các layer để cuộn liền mạch đa tầng ---- */
+  function initKilnStrip() {
+    $('.js-kiln-layer').each(function () {
+      var $layer = $(this);
+      if (!$layer.data('cloned')) {
+        var $unit = $layer.children('.kiln__unit');
+        $layer.append($unit.clone()).append($unit.clone()).append($unit.clone());
+        $layer.data('cloned', true);
+      }
+    });
+  }
+
   /* ---- Learn slider (slick, độ rộng slide linh hoạt) ---- */
   function initLearnSlider() {
     var $s = $('.learn__slider');
@@ -281,6 +293,7 @@
     ensureBrushFont();
     initHouseMarquee();
     initStrip();
+    initKilnStrip();
     initLearnSlider();
     reveal();
   });

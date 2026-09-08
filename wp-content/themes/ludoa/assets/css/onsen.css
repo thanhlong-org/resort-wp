@@ -283,42 +283,147 @@
   letter-spacing: 0.02em;
   color: var(--color-gray);
 }
-.kiln__gallery {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 28px;
-  width: 100%;
-}
-.kiln__col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 28px;
-  width: 100%;
-}
-.kiln__item {
-  width: 316px;
-  max-width: 100%;
-  margin: 0;
+/* ---- Dải ảnh lò xông (kiln marquee) ---- */
+.kiln__strip {
+  --k-scale: 0.45;                  /* SP: thu nhỏ cụm 1070x950 để vừa màn hình */
   position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  height: calc(950px * var(--k-scale));
+  margin-top: 40px;
+}
+.kiln__scaler {
+  position: relative;
+  width: 1070px;
+  height: 950px;
+  transform: scale(var(--k-scale));
+  transform-origin: left top;
+}
+/* Mỗi layer là 1 track chạy độc lập với tốc độ khác nhau giống house__layer */
+.kiln__layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 950px;
+  display: flex;
+  width: max-content;
+}
+.kiln__strip:hover .kiln__layer {
+  animation-play-state: paused;
+}
+.kiln__layer--1 {
+  animation: kilnLoop 54s linear infinite; /* Hàng trên: vừa phải */
+  z-index: 1;
+}
+.kiln__layer--2 {
+  animation: kilnLoop 38s linear infinite; /* Hàng giữa: lướt nhanh hơn */
+  z-index: 2;
+}
+.kiln__layer--3 {
+  animation: kilnLoop 64s linear infinite; /* Hàng dưới: chậm rãi */
+  z-index: 1;
+}
+
+@keyframes kilnLoop {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kiln__layer { animation: none; }
+}
+
+.kiln__unit {
+  position: relative;
+  flex: 0 0 auto;
+  width: 1070px;
+  height: 950px;
+}
+
+/* Các ảnh trong 1 unit (kích thước chuẩn 340x210, tỉ lệ 1.61) */
+.kiln__item {
+  position: absolute;
+  width: 340px;
+  height: 210px;
+  margin: 0;
 }
 .kiln__item img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   border-radius: 1px;
   box-shadow: 8px 4px 84px 3px rgba(0, 0, 0, 0.9);
 }
-.kiln__cap-h,
-.kiln__cap-v {
+
+/* Tọa độ 7 bức ảnh theo thiết kế Hình 1 */
+/* 1. 氷温窯 (vàng) - trên trái */
+.kiln__item--1 {
+  top: 70px;
+  left: 40px;
+}
+/* 2. 薬草窯（よもぎ） (xanh lá) - trên phải */
+.kiln__item--2 {
+  top: 20px;
+  left: 450px;
+}
+/* 3. 炭窯 (xanh lam/tháp đá) - giữa trái */
+.kiln__item--3 {
+  top: 360px;
+  left: 0;
+}
+/* 4. 宝石足湯窯 (cột hồng/tím) - giữa phải */
+.kiln__item--4 {
+  top: 240px;
+  left: 590px;
+}
+/* 5. ハーブ窯（ラベンダー） (vòm xanh cửa sổ) - giữa */
+.kiln__item--5 {
+  top: 480px;
+  left: 370px;
+}
+/* 6. 黄土窯 (đồ cam) - dưới trái */
+.kiln__item--6 {
+  top: 700px;
+  left: 30px;
+}
+/* 7. GCC鉱石窯 (sàn gạch) - dưới phải */
+.kiln__item--7 {
+  top: 700px;
+  left: 530px;
+}
+
+/* Caption: Chữ ngang */
+.kiln__cap-h {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
   font-family: var(--font-serif);
-  font-weight: 500;
-  font-size: 15px;
-  letter-spacing: 0.05em;
-  color: var(--color-white);
-  margin-top: 10px;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  color: var(--color-gray);
+  white-space: nowrap;
+  margin: 0;
   text-align: right;
+  display: block;
+}
+
+/* Caption: Chữ dọc */
+.kiln__cap-v {
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 0;
+  writing-mode: vertical-rl;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--color-gray);
+  white-space: nowrap;
+  margin: 0;
+  text-align: left;
   display: block;
 }
 
@@ -477,104 +582,15 @@
     letter-spacing: 0.02em;
     color: var(--color-gray);
   }
-  .kiln__gallery {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 50px;
-    width: 100%;
+  /* kiln strip trên PC */
+  .kiln__strip {
+    --k-scale: 1;
+    margin-top: 70px;
   }
-  .kiln__col {
-    gap: 60px;
-  }
-  .kiln__col--left {
-    width: 500px;
-    align-items: flex-start;
-  }
-  .kiln__col--right {
-    width: 630px;
-    align-items: flex-end;
-  }
-  /* Item 1: 宝石窯(ヒスイ) - 361px */
-  .kiln__item--hisui {
-    width: 361px;
-    margin-left: 10px;
-  }
-  .kiln__item--hisui .kiln__cap-h {
+  .kiln__cap-h {
     font-size: 18px;
-    text-align: right;
-    margin-top: 14px;
   }
-  /* Item 2: 紫水晶窯 - 480px */
-  .kiln__item--amethyst {
-    width: 480px;
-    margin-top: 40px;
-  }
-  .kiln__item--amethyst .kiln__cap-v {
-    position: absolute;
-    top: 10px;
-    left: 100%;
-    margin-left: 16px;
-    margin-top: 0;
-    writing-mode: vertical-rl;
-    font-size: 18px;
-    letter-spacing: 0.08em;
-    text-align: left;
-    white-space: nowrap;
-  }
-  /* Item 3: 温熱窯（蒸気） - 476px */
-  .kiln__item--steam {
-    width: 476px;
-    margin-top: 30px;
-  }
-  .kiln__item--steam .kiln__cap-v {
-    position: absolute;
-    top: 0;
-    left: 100%;
-    margin-left: 16px;
-    margin-top: 0;
-    writing-mode: vertical-rl;
-    font-size: 18px;
-    letter-spacing: 0.08em;
-    text-align: left;
-    white-space: nowrap;
-  }
-  /* Item 4: 黄土窯 - 531px */
-  .kiln__item--oudo {
-    width: 531px;
-    margin-right: 35px;
-  }
-  .kiln__item--oudo .kiln__cap-v {
-    position: absolute;
-    top: 0;
-    left: 100%;
-    margin-left: 16px;
-    margin-top: 0;
-    writing-mode: vertical-rl;
-    font-size: 18px;
-    letter-spacing: 0.08em;
-    text-align: left;
-    white-space: nowrap;
-  }
-  /* Item 5: マイナスイオン溢れる岩塩ルーム - 500px */
-  .kiln__item--salt {
-    width: 500px;
-    margin-right: 40px;
-    margin-top: 30px;
-  }
-  .kiln__item--salt .kiln__cap-h {
-    font-size: 18px;
-    text-align: right;
-    margin-top: 14px;
-  }
-  /* Item 6: 薬草窯とハーブ窯 - 594px */
-  .kiln__item--herb {
-    width: 594px;
-    margin-top: 30px;
-  }
-  .kiln__item--herb .kiln__cap-h {
-    font-size: 18px;
-    text-align: right;
-    margin-top: 14px;
+  .kiln__cap-v {
+    font-size: 16px;
   }
 }

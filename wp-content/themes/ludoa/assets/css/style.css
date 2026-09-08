@@ -780,28 +780,13 @@ html[lang^="en"] .onsen__gitem:nth-child(3) {
   margin-left: 0 !important;
 }
 
-/* Kiln Ph Figcaption */
-html[lang^="en"] .kiln__ph figcaption {
+/* Kiln Figcaption for English */
+html[lang^="en"] .kiln__cap-v {
   writing-mode: horizontal-tb !important;
+  left: auto !important;
+  right: 0 !important;
+  top: calc(100% + 8px) !important;
   white-space: nowrap !important;
-}
-html[lang^="en"] .kiln__ph--amethyst {
-  right: 0;
-}
-html[lang^="en"] .kiln__ph--amethyst figcaption {
-  top: auto !important;
-  bottom: -24px !important;
-  left: auto !important;
-  right: 0 !important; /* Dịch chuyển sang phải để tránh bị ảnh Gemstone đè mất */
-  margin-left: 0 !important;
-  letter-spacing: -0.2px;
-}
-html[lang^="en"] .kiln__ph--salt figcaption {
-  top: auto !important;
-  bottom: -24px !important;
-  left: auto !important;
-  right: 0 !important; /* Dịch chuyển sang phải cho đồng bộ */
-  margin-left: 0 !important;
 }
 
 /* --- PC overrides (min-width: 1024px) --- */
@@ -860,4 +845,27 @@ html[lang^="en"] .kiln__ph--salt figcaption {
     font-size: 22px !important;
     margin-top: 0 !important;
   }
+
+  html[lang^="en"] .veg__restaurant-text,
+  html[lang^="zh"] .veg__restaurant-text,
+  html[lang^="ko"] .veg__restaurant-text,
+  html[lang^="en"] .veg__farm-text,
+  html[lang^="zh"] .veg__farm-text,
+  html[lang^="ko"] .veg__farm-text {
+    writing-mode: horizontal-tb !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    max-width: 100% !important;
+  }
+  html[lang^="en"] .veg__restaurant-text p,
+  html[lang^="zh"] .veg__restaurant-text p,
+  html[lang^="ko"] .veg__restaurant-text p,
+  html[lang^="en"] .veg__farm-text p,
+  html[lang^="zh"] .veg__farm-text p,
+  html[lang^="ko"] .veg__farm-text p {
+    writing-mode: horizontal-tb !important;
+    font-size: 16px !important;
+    line-height: 1.8 !important;
+  }
 }
+

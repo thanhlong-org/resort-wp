@@ -61,9 +61,9 @@ $img = get_template_directory_uri() . '/assets/images';
         <div class="concept__lead">
           <h3 class="concept__title fadeUpTrigger" data-i18n="concept.title">世界最高峰の<br />ウェルネス・リトリート</h3>
           <div class="concept__body fadeUpTrigger" data-i18n="concept.body">
-            <p>日々の重責やストレスから解き放たれ、ただの「自分」に<br class="u-sp" />還る場所。<br class="u-pc" />それが大自然の中に佇む、<br />世界でここだけのウェルネス・リトリートです。</p>
+            <p>日々の重責やストレスから解き放たれ、<br />ただの「自分」に<br class="u-sp" />還る場所。<br class="u-pc" />それが大自然の中に佇む、<br />世界でここだけのウェルネス・リトリートです。</p>
             <p>誰よりも頑張って走ってきたあなたにこそ、<br />今、究極の「癒し」が必要です。</p>
-            <p>――癒しと健康の専門家が築き上げた施設の中で大自然に触れ、心を澄ますこと。</p>
+            <p>――癒しと健康の専門家が築き上げた施設の中で<br />大自然に触れ、心を澄ますこと。</p>
             <p>ここで手に入るものは、<br />あなたの未来を健康的で豊かに変える、<br />一生モノの価値という名の投資です。</p>
           </div>
         </div>
@@ -124,20 +124,19 @@ $img = get_template_directory_uri() . '/assets/images';
 
           <div class="onsen__roten-content fadeInTrigger">
             <div class="onsen__roten-body staggerTrigger" data-i18n="onsen.roten_body">
-              <p>「阿蘇健康火山温泉」は</p>
-              <p>種類の豊富な内湯と世界最大級の</p>
-              <p>大自然石庭露天風呂を併設しています。</p>
+              <p>目の前に広がるのは、</p>
+              <p>延べ100mにも及ぶ大露天風呂。</p>
               <br>
-              <p>世界のカルデラから湧き上がる恵みは、</p>
-              <p>心身を癒し、温め、リセットしてくれます。</p>
+              <p>岩々に囲まれた湯船を歩きながら、</p>
+              <p>まるで自然の中を巡るように温泉を楽しめます。</p>
               <br>
-              <p>阿蘇外輪山を一望できる露天風呂は、</p>
-              <p>解放感と四季折々を肌で感じれる</p>
-              <p>唯一無二の温浴施設です。</p>
+              <p>昼は雄大な景色を、</p>
+              <p>夜には静かな灯りが水面に映り、</p>
+              <p>幻想的な景色へと姿を変えます。</p>
               <br>
-              <p>天然のトリプルミネラルを含む硫酸塩温泉で、</p>
-              <p>日頃の疲れを癒し、</p>
-              <p>疲労回復やストレス解放を促します。</p>
+              <p>広大な空間だからこそ味わえる開放感と、</p>
+              <p>四季折々の景色に包まれる</p>
+              <p>贅沢な湯浴みをお楽しみください。</p>
             </div>
 
             <figure class="onsen__roten-photo">
@@ -152,13 +151,13 @@ $img = get_template_directory_uri() . '/assets/images';
             <li class="onsen__gitem">
               <figure>
                 <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-02.jpg" alt="宝石窯" />
-                <figcaption data-i18n="onsen.g1">宝石窯</figcaption>
+                <figcaption data-i18n="onsen.g1">薬石蒸気サウナ</figcaption>
               </figure>
             </li>
             <li class="onsen__gitem">
               <figure>
                 <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-03.jpg" alt="大自然石庭露天風呂" />
-                <figcaption data-i18n="onsen.g2">阿蘇健康火山温泉・大自然石庭露天風呂</figcaption>
+                <figcaption data-i18n="onsen.g2">鉄釜風呂</figcaption>
               </figure>
             </li>
             <li class="onsen__gitem">
@@ -182,48 +181,65 @@ $img = get_template_directory_uri() . '/assets/images';
             <p data-i18n="kiln.body">薬草や鉱石の効能を体感できる13種類のドーム窯を備えた、ここでしか体験できない健康温浴施設です。<br />他に類を見ない特別空間は、ひとつひとつの窯の中が丸く、それぞれで違う感覚が堪能できます。<br />自然のエネルギーを全身に受け、身体が欲する癒しをご体感下さい。<br />また、窯の外は広いスペースが設けられ、横になりゆったりとした時間をお過ごし下さい。</p>
           </div>
 
-          <!-- Gallery 6 ảnh so le chia 2 cột trên PC -->
-          <div class="kiln__gallery fadeInTrigger">
-            <!-- Cột trái (PC) -->
-            <div class="kiln__col kiln__col--left">
-              <!-- 1. 宝石窯(ヒスイ) -->
-              <figure class="kiln__item kiln__item--hisui">
-                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-06.jpg" alt="宝石窯(ヒスイ)" />
-                <figcaption class="kiln__cap-h" data-i18n="kiln.c_hisui">宝石窯(ヒスイ)</figcaption>
-              </figure>
+          <!-- Gallery dải ảnh trôi vô tận sang trái đa tầng (Parallax Multi-layer Marquee) -->
+          <div class="kiln__strip fadeInTrigger">
+            <div class="kiln__scaler">
+              <!-- Layer 1: Hàng trên (2 ảnh) -->
+              <div class="kiln__layer kiln__layer--1 js-kiln-layer">
+                <div class="kiln__unit">
+                  <!-- 1. 氷温窯 -->
+                  <figure class="kiln__item kiln__item--1">
+                    <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-05.jpg" alt="氷温窯" />
+                    <figcaption class="kiln__cap-h" data-i18n="kiln.c_hyoon">氷温窯</figcaption>
+                  </figure>
 
-              <!-- 2. 紫水晶窯 -->
-              <figure class="kiln__item kiln__item--amethyst">
-                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-05.jpg" alt="紫水晶窯" />
-                <figcaption class="kiln__cap-v" data-i18n="kiln.c_amethyst">紫水晶窯</figcaption>
-              </figure>
+                  <!-- 2. 薬草窯（よもぎ） -->
+                  <figure class="kiln__item kiln__item--2">
+                    <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-07.jpg" alt="薬草窯（よもぎ）" />
+                    <figcaption class="kiln__cap-v" data-i18n="kiln.c_yomogi">薬草窯（よもぎ）</figcaption>
+                  </figure>
+                </div>
+              </div>
 
-              <!-- 3. 温熱窯（蒸気） -->
-              <figure class="kiln__item kiln__item--steam">
-                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-11.jpg" alt="温熱窯（蒸気）" />
-                <figcaption class="kiln__cap-v" data-i18n="kiln.c_steam">温熱窯（蒸気）</figcaption>
-              </figure>
-            </div>
+              <!-- Layer 2: Hàng giữa (3 ảnh) -->
+              <div class="kiln__layer kiln__layer--2 js-kiln-layer">
+                <div class="kiln__unit">
+                  <!-- 3. 炭窯 -->
+                  <figure class="kiln__item kiln__item--3">
+                    <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-06.jpg" alt="炭窯" />
+                    <figcaption class="kiln__cap-v" data-i18n="kiln.c_sumi">炭窯</figcaption>
+                  </figure>
 
-            <!-- Cột phải (PC) -->
-            <div class="kiln__col kiln__col--right">
-              <!-- 4. 黄土窯 -->
-              <figure class="kiln__item kiln__item--oudo">
-                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-09.jpg" alt="黄土窯" />
-                <figcaption class="kiln__cap-v" data-i18n="kiln.c_oudo">黄土窯</figcaption>
-              </figure>
+                  <!-- 4. 宝石足湯窯 -->
+                  <figure class="kiln__item kiln__item--4">
+                    <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-09.jpg" alt="宝石足湯窯" />
+                    <figcaption class="kiln__cap-h" data-i18n="kiln.c_ashiyu">宝石足湯窯</figcaption>
+                  </figure>
 
-              <!-- 5. マイナスイオン溢れる岩塩ルーム -->
-              <figure class="kiln__item kiln__item--salt">
-                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-07.jpg" alt="マイナスイオン溢れる岩塩ルーム" />
-                <figcaption class="kiln__cap-h" data-i18n="kiln.c_salt">マイナスイオン溢れる岩塩ルーム</figcaption>
-              </figure>
+                  <!-- 5. ハーブ窯（ラベンダー） -->
+                  <figure class="kiln__item kiln__item--5">
+                    <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-10.jpg" alt="ハーブ窯（ラベンダー）" />
+                    <figcaption class="kiln__cap-v" data-i18n="kiln.c_lavender">ハーブ窯（ラベンダー）</figcaption>
+                  </figure>
+                </div>
+              </div>
 
-              <!-- 6. 薬草窯とハーブ窯 -->
-              <figure class="kiln__item kiln__item--herb">
-                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-10.jpg" alt="薬草窯とハーブ窯" />
-                <figcaption class="kiln__cap-h" data-i18n="kiln.c_herb">薬草窯とハーブ窯</figcaption>
-              </figure>
+              <!-- Layer 3: Hàng dưới (2 ảnh) -->
+              <div class="kiln__layer kiln__layer--3 js-kiln-layer">
+                <div class="kiln__unit">
+                  <!-- 6. 黄土窯 -->
+                  <figure class="kiln__item kiln__item--6">
+                    <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-11.jpg" alt="黄土窯" />
+                    <figcaption class="kiln__cap-h" data-i18n="kiln.c_oudo">黄土窯</figcaption>
+                  </figure>
+
+                  <!-- 7. GCC鉱石窯 -->
+                  <figure class="kiln__item kiln__item--7">
+                    <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-12.jpg" alt="GCC鉱石窯" />
+                    <figcaption class="kiln__cap-h" data-i18n="kiln.c_gcc">GCC鉱石窯</figcaption>
+                  </figure>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -270,16 +286,27 @@ $img = get_template_directory_uri() . '/assets/images';
             <div class="veg__section-line" aria-hidden="true"></div>
           </div>
 
-          <div class="veg__restaurant-photos fadeInTrigger">
-            <figure class="veg__rest-ph veg__rest-ph--1">
-              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-04.jpg" alt="全4店舗・総席数5600席。日本最大級レストラン" />
-            </figure>
-            <figure class="veg__rest-ph veg__rest-ph--2">
-              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-05.jpg" alt="レストランからの展望" />
-            </figure>
-            <figure class="veg__rest-ph veg__rest-ph--3">
-              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-06.jpg" alt="きのこ栽培施設" />
-            </figure>
+          <div class="veg__restaurant-grid">
+            <div class="veg__restaurant-col veg__restaurant-col--left">
+              <figure class="veg__rest-ph veg__rest-ph--1 fadeInTrigger">
+                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-04.jpg" alt="全4店舗・総席数5600席。日本最大級レストラン" />
+              </figure>
+              <figure class="veg__rest-ph veg__rest-ph--3 fadeInTrigger">
+                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-05.jpg" alt="きのこ栽培施設" />
+              </figure>
+            </div>
+
+            <div class="veg__restaurant-col veg__restaurant-col--right">
+              <div class="veg__restaurant-text fadeInTrigger" data-i18n="veg.rest_desc">
+                <p>敷地内に広がる4つのレストラン。<br />その総席数は、約５６００席にものぼります。</p>
+                <p>大人数のお客様を迎えることができる<br />圧倒的なスケールを持ちながら、<br />家族や友人とゆっくり食卓を囲む時間も大切に、<br />思い思いの食事の時間をお過ごしいただけます。</p>
+                <p>「食べる」だけではなく、<br />「集い、語らい、思い出をつくる」。</p>
+                <p>５，６００席という大きな食の空間が、<br />阿蘇で過ごす一日を豊かに彩ります。</p>
+              </div>
+              <figure class="veg__rest-ph veg__rest-ph--2 fadeInTrigger">
+                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-06.jpg" alt="レストランからの展望" />
+              </figure>
+            </div>
           </div>
         </div>
 
@@ -290,22 +317,26 @@ $img = get_template_directory_uri() . '/assets/images';
             <div class="veg__section-line" aria-hidden="true"></div>
           </div>
 
-          <div class="veg__farm-content">
-            <div class="veg__farm-row fadeInTrigger">
-              <div class="veg__farm-text" data-i18n="veg.farm_desc">
-                <p>私たち「大自然阿蘇健康の森」は敷地内の阿蘇健康農園で、<br />レストランで食材として使用される野菜や<br />ハーブ、キノコなどを育てています。</p>
-                <p>阿蘇健康農園の栽培施設は<strong>約8000㎡</strong>という大規模であり、<br />栽培されたものや、ここで加工された品は<br />園内に留まらず小売店や他のレストランにも<br />高品質の食品として提供しています。</p>
-                <p>さらに期間限定で<strong>10万鉢以上</strong>ある<strong>いちご狩り</strong>も行っていて<br />毎年多くの皆様にお楽しみいただいています。</p>
+          <div class="veg__farm-grid">
+            <div class="veg__farm-col veg__farm-col--left">
+              <div class="veg__farm-text fadeInTrigger" data-i18n="veg.farm_desc">
+                <p>私たち「大自然阿蘇健康の森」は<br />敷地内の阿蘇健康農園で、<br />レストランで食材として使用される野菜や、<br />ハーブ、キノコなどを育てています。</p>
+                <p>阿蘇健康農園の栽培施設は<br /><strong>約８０００㎡</strong>という大規模であり、<br />栽培されたものや、ここで加工された品は<br />園内に留まらず小売店や他のレストランにも、<br />高品質の食品として提供しています。</p>
+                <p>さらに期間限定で<br /><strong>１０万鉢以上</strong>ある<strong>いちご狩り</strong>も行っていて<br />毎年多くの皆様にお楽しみいただいています。</p>
               </div>
-
-              <figure class="veg__farm-ph veg__farm-ph--strawberry">
-                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-07.jpg" alt="いちご狩り" />
+              <figure class="veg__farm-ph veg__farm-ph--strawberry fadeInTrigger">
+                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-08.jpg" alt="いちご狩り" />
               </figure>
             </div>
 
-            <figure class="veg__farm-ph veg__farm-ph--harvest fadeInTrigger">
-              <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-08.jpg" alt="自社栽培による新鮮な野菜" />
-            </figure>
+            <div class="veg__farm-col veg__farm-col--right">
+              <figure class="veg__farm-ph veg__farm-ph--chef fadeInTrigger">
+                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-07.jpg" alt="自社栽培による新鮮な野菜" />
+              </figure>
+              <figure class="veg__farm-ph veg__farm-ph--mushroom fadeInTrigger">
+                <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/vegetable-img-09.jpg" alt="きのこ栽培施設" />
+              </figure>
+            </div>
           </div>
         </div>
       </div>
@@ -484,7 +515,7 @@ $img = get_template_directory_uri() . '/assets/images';
             <h3 class="plan__name" data-i18n="plan.name">世界一の温浴施設で癒しを極める<br />ウェルネス・リトリートプラン</h3>
           </div>
           <div class="plan__price fadeUpTrigger">
-            <p class="plan__price-note" data-i18n="plan.price_note"><strong>お一人様3泊〜</strong> （2名1室利用時）</p>
+            <p class="plan__price-note" data-i18n="plan.price_note"><strong>お一人様3泊〜</strong> （2名1室利用時）<br /><span>1泊60,000円</span></p>
             <p class="plan__price-main">
               <span class="plan__price-num">180,000</span>
               <span class="plan__price-unit">
