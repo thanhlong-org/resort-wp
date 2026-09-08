@@ -285,28 +285,19 @@
 }
 /* ---- Dải ảnh lò xông (kiln marquee) ---- */
 .kiln__strip {
-  --k-scale: 0.45;                  /* SP: thu nhỏ cụm 1070x950 để vừa màn hình */
   position: relative;
   width: 100vw;
   left: 50%;
   transform: translateX(-50%);
   overflow: hidden;
-  height: calc(950px * var(--k-scale));
+  height: 640px;
   margin-top: 40px;
 }
-.kiln__scaler {
-  position: relative;
-  width: 1070px;
-  height: 950px;
-  transform: scale(var(--k-scale));
-  transform-origin: left top;
-}
-/* Mỗi layer là 1 track chạy độc lập với tốc độ khác nhau giống house__layer */
+/* Mỗi layer là 1 track trôi ngang độc lập theo tốc độ khác nhau */
 .kiln__layer {
   position: absolute;
   top: 0;
   left: 0;
-  height: 950px;
   display: flex;
   width: max-content;
 }
@@ -314,15 +305,18 @@
   animation-play-state: paused;
 }
 .kiln__layer--1 {
-  animation: kilnLoop 54s linear infinite; /* Hàng trên: vừa phải */
+  top: 0;
+  animation: kilnLoop 65s linear infinite; /* Hàng trên: vừa phải */
   z-index: 1;
 }
 .kiln__layer--2 {
-  animation: kilnLoop 38s linear infinite; /* Hàng giữa: lướt nhanh hơn */
+  top: 215px;
+  animation: kilnLoop 48s linear infinite; /* Hàng giữa: lướt nhanh hơn */
   z-index: 2;
 }
 .kiln__layer--3 {
-  animation: kilnLoop 64s linear infinite; /* Hàng dưới: chậm rãi */
+  top: 430px;
+  animation: kilnLoop 75s linear infinite; /* Hàng dưới: chậm rãi */
   z-index: 1;
 }
 
@@ -334,97 +328,76 @@
   .kiln__layer { animation: none; }
 }
 
-.kiln__unit {
-  position: relative;
-  flex: 0 0 auto;
-  width: 1070px;
-  height: 950px;
+.kiln__track {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  padding-right: 40px;
+  flex-shrink: 0;
 }
 
-/* Các ảnh trong 1 unit (kích thước chuẩn 340x210, tỉ lệ 1.61) */
-.kiln__item {
-  position: absolute;
-  width: 340px;
-  height: 210px;
+/* Khối từng lò (Ảnh + Tiêu đề đi cùng nhau 100%) */
+.kiln__card {
+  position: relative;
   margin: 0;
+  flex-shrink: 0;
 }
-.kiln__item img {
+.kiln__thumb {
+  width: 250px;
+  height: 155px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  box-shadow: 8px 4px 60px 2px rgba(0, 0, 0, 0.85);
+  background-color: #1a1a1a;
+}
+.kiln__thumb img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 1px;
-  box-shadow: 8px 4px 84px 3px rgba(0, 0, 0, 0.9);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.kiln__card:hover .kiln__thumb img {
+  transform: scale(1.04);
 }
 
-/* Tọa độ 7 bức ảnh theo thiết kế Hình 1 */
-/* 1. 氷温窯 (vàng) - trên trái */
-.kiln__item--1 {
-  top: 70px;
-  left: 40px;
-}
-/* 2. 薬草窯（よもぎ） (xanh lá) - trên phải */
-.kiln__item--2 {
-  top: 20px;
-  left: 450px;
-}
-/* 3. 炭窯 (xanh lam/tháp đá) - giữa trái */
-.kiln__item--3 {
-  top: 360px;
-  left: 0;
-}
-/* 4. 宝石足湯窯 (cột hồng/tím) - giữa phải */
-.kiln__item--4 {
-  top: 240px;
-  left: 590px;
-}
-/* 5. ハーブ窯（ラベンダー） (vòm xanh cửa sổ) - giữa */
-.kiln__item--5 {
-  top: 480px;
-  left: 370px;
-}
-/* 6. 黄土窯 (đồ cam) - dưới trái */
-.kiln__item--6 {
-  top: 700px;
-  left: 30px;
-}
-/* 7. GCC鉱石窯 (sàn gạch) - dưới phải */
-.kiln__item--7 {
-  top: 700px;
-  left: 530px;
-}
-
-/* Caption: Chữ ngang */
-.kiln__cap-h {
-  position: absolute;
-  right: 0;
-  top: calc(100% + 8px);
+/* Tiêu đề lò */
+.kiln__caption {
   font-family: var(--font-serif);
   font-weight: 400;
   font-size: 16px;
   letter-spacing: 0.04em;
-  color: var(--color-gray);
+  color: #e0e0e0;
   white-space: nowrap;
   margin: 0;
-  text-align: right;
-  display: block;
 }
 
-/* Caption: Chữ dọc */
-.kiln__cap-v {
-  position: absolute;
-  left: calc(100% + 8px);
-  top: 0;
+/* Loại 1: Chữ nằm DƯỚI ảnh (ngang, canh phải) */
+.kiln__card--cap-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.kiln__card--cap-bottom .kiln__caption {
+  margin-top: 10px;
+  text-align: right;
+  line-height: 1.4;
+}
+
+/* Loại 2: Chữ nằm BÊN PHẢI ảnh (dọc) */
+.kiln__card--cap-right {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+}
+.kiln__card--cap-right .kiln__caption {
   writing-mode: vertical-rl;
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: 14px;
-  letter-spacing: 0.08em;
-  color: var(--color-gray);
-  white-space: nowrap;
-  margin: 0;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
   text-align: left;
-  display: block;
+  padding-top: 4px;
 }
 
 /* ===========================================================
@@ -584,13 +557,36 @@
   }
   /* kiln strip trên PC */
   .kiln__strip {
-    --k-scale: 1;
+    height: 870px;
     margin-top: 70px;
   }
-  .kiln__cap-h {
+  .kiln__layer--1 {
+    top: 0;
+    animation-duration: 70s;
+  }
+  .kiln__layer--2 {
+    top: 290px;
+    animation-duration: 52s;
+  }
+  .kiln__layer--3 {
+    top: 580px;
+    animation-duration: 80s;
+  }
+  .kiln__track {
+    gap: 65px;
+    padding-right: 65px;
+  }
+  .kiln__thumb {
+    width: 350px;
+    height: 216px;
+  }
+  .kiln__caption {
     font-size: 18px;
   }
-  .kiln__cap-v {
-    font-size: 16px;
+  .kiln__card--cap-bottom .kiln__caption {
+    margin-top: 12px;
+  }
+  .kiln__card--cap-right {
+    gap: 14px;
   }
 }

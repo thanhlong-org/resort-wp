@@ -183,62 +183,122 @@ $img = get_template_directory_uri() . '/assets/images';
 
           <!-- Gallery dải ảnh trôi vô tận sang trái đa tầng (Parallax Multi-layer Marquee) -->
           <div class="kiln__strip fadeInTrigger">
-            <div class="kiln__scaler">
-              <!-- Layer 1: Hàng trên (2 ảnh) -->
-              <div class="kiln__layer kiln__layer--1 js-kiln-layer">
-                <div class="kiln__unit">
-                  <!-- 1. 氷温窯 -->
-                  <figure class="kiln__item kiln__item--1">
+            <!-- Layer 1: Hàng trên (4 lò) -->
+            <div class="kiln__layer kiln__layer--1 js-kiln-layer">
+              <div class="kiln__track">
+                <!-- 1. 翡翠(ヒスイ)窯 (caption dưới) -->
+                <figure class="kiln__card kiln__card--cap-bottom">
+                  <div class="kiln__thumb">
+                    <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-14.jpg" alt="翡翠(ヒスイ)窯" />
+                  </div>
+                  <figcaption class="kiln__caption" data-i18n="kiln.c_hisui">翡翠(ヒスイ)窯</figcaption>
+                </figure>
+
+                <!-- 2. 岩塩窯 (caption phải dọc) -->
+                <figure class="kiln__card kiln__card--cap-right">
+                  <div class="kiln__thumb">
+                    <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-15.jpg" alt="岩塩窯" />
+                  </div>
+                  <figcaption class="kiln__caption" data-i18n="kiln.c_ganen">岩塩窯</figcaption>
+                </figure>
+
+                <!-- 3. 氷温窯 (caption dưới) -->
+                <figure class="kiln__card kiln__card--cap-bottom">
+                  <div class="kiln__thumb">
                     <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-05.jpg" alt="氷温窯" />
-                    <figcaption class="kiln__cap-h" data-i18n="kiln.c_hyoon">氷温窯</figcaption>
-                  </figure>
+                  </div>
+                  <figcaption class="kiln__caption" data-i18n="kiln.c_hyoon">氷温窯</figcaption>
+                </figure>
 
-                  <!-- 2. 薬草窯（よもぎ） -->
-                  <figure class="kiln__item kiln__item--2">
-                    <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-07.jpg" alt="薬草窯（よもぎ）" />
-                    <figcaption class="kiln__cap-v" data-i18n="kiln.c_yomogi">薬草窯（よもぎ）</figcaption>
-                  </figure>
-                </div>
+                <!-- 4. 薬草窯（よもぎ） (caption phải dọc) -->
+                <figure class="kiln__card kiln__card--cap-right">
+                  <div class="kiln__thumb">
+                    <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-06.jpg" alt="薬草窯（よもぎ）" />
+                  </div>
+                  <figcaption class="kiln__caption" data-i18n="kiln.c_yomogi">薬草窯（よもぎ）</figcaption>
+                </figure>
               </div>
+            </div>
 
-              <!-- Layer 2: Hàng giữa (3 ảnh) -->
-              <div class="kiln__layer kiln__layer--2 js-kiln-layer">
-                <div class="kiln__unit">
-                  <!-- 3. 炭窯 -->
-                  <figure class="kiln__item kiln__item--3">
-                    <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-06.jpg" alt="炭窯" />
-                    <figcaption class="kiln__cap-v" data-i18n="kiln.c_sumi">炭窯</figcaption>
-                  </figure>
+            <!-- Layer 2: Hàng giữa (5 lò) -->
+            <div class="kiln__layer kiln__layer--2 js-kiln-layer">
+              <div class="kiln__track">
+                <!-- 5. 薬草窯（けいひ） (caption phải dọc) -->
+                <figure class="kiln__card kiln__card--cap-right">
+                  <div class="kiln__thumb">
+                    <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-10.jpg" alt="薬草窯（けいひ）" />
+                  </div>
+                  <figcaption class="kiln__caption" data-i18n="kiln.c_keihi">薬草窯（けいひ）</figcaption>
+                </figure>
 
-                  <!-- 4. 宝石足湯窯 -->
-                  <figure class="kiln__item kiln__item--4">
+                <!-- 6. 紫水晶窯 (caption phải dọc) -->
+                <figure class="kiln__card kiln__card--cap-right">
+                  <div class="kiln__thumb">
+                    <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-13.jpg" alt="紫水晶窯" />
+                  </div>
+                  <figcaption class="kiln__caption" data-i18n="kiln.c_amethyst">紫水晶窯</figcaption>
+                </figure>
+
+                <!-- 7. 炭窯 (caption phải dọc) -->
+                <figure class="kiln__card kiln__card--cap-right">
+                  <div class="kiln__thumb">
+                    <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-07.jpg" alt="炭窯" />
+                  </div>
+                  <figcaption class="kiln__caption" data-i18n="kiln.c_sumi">炭窯</figcaption>
+                </figure>
+
+                <!-- 8. 宝石足湯窯 (caption dưới) -->
+                <figure class="kiln__card kiln__card--cap-bottom">
+                  <div class="kiln__thumb">
                     <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-09.jpg" alt="宝石足湯窯" />
-                    <figcaption class="kiln__cap-h" data-i18n="kiln.c_ashiyu">宝石足湯窯</figcaption>
-                  </figure>
+                  </div>
+                  <figcaption class="kiln__caption" data-i18n="kiln.c_ashiyu">宝石足湯窯</figcaption>
+                </figure>
 
-                  <!-- 5. ハーブ窯（ラベンダー） -->
-                  <figure class="kiln__item kiln__item--5">
-                    <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-10.jpg" alt="ハーブ窯（ラベンダー）" />
-                    <figcaption class="kiln__cap-v" data-i18n="kiln.c_lavender">ハーブ窯（ラベンダー）</figcaption>
-                  </figure>
-                </div>
+                <!-- 9. ハーブ窯（ラベンダー） (caption phải dọc) -->
+                <figure class="kiln__card kiln__card--cap-right">
+                  <div class="kiln__thumb">
+                    <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-16.jpg" alt="ハーブ窯（ラベンダー）" />
+                  </div>
+                  <figcaption class="kiln__caption" data-i18n="kiln.c_lavender">ハーブ窯（ラベンダー）</figcaption>
+                </figure>
               </div>
+            </div>
 
-              <!-- Layer 3: Hàng dưới (2 ảnh) -->
-              <div class="kiln__layer kiln__layer--3 js-kiln-layer">
-                <div class="kiln__unit">
-                  <!-- 6. 黄土窯 -->
-                  <figure class="kiln__item kiln__item--6">
+            <!-- Layer 3: Hàng dưới (4 lò) -->
+            <div class="kiln__layer kiln__layer--3 js-kiln-layer">
+              <div class="kiln__track">
+                <!-- 10. 温熱窯（蒸気） (caption phải dọc) -->
+                <figure class="kiln__card kiln__card--cap-right">
+                  <div class="kiln__thumb">
+                    <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-18.jpg" alt="温熱窯（蒸気）" />
+                  </div>
+                  <figcaption class="kiln__caption" data-i18n="kiln.c_jouki">温熱窯（蒸気）</figcaption>
+                </figure>
+
+                <!-- 11. 薬草窯(はっか) (caption dưới) -->
+                <figure class="kiln__card kiln__card--cap-bottom">
+                  <div class="kiln__thumb">
+                    <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-17.jpg" alt="薬草窯(はっか)" />
+                  </div>
+                  <figcaption class="kiln__caption" data-i18n="kiln.c_hakka">薬草窯(はっか)</figcaption>
+                </figure>
+
+                <!-- 12. 黄土窯 (caption dưới) -->
+                <figure class="kiln__card kiln__card--cap-bottom">
+                  <div class="kiln__thumb">
                     <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-11.jpg" alt="黄土窯" />
-                    <figcaption class="kiln__cap-h" data-i18n="kiln.c_oudo">黄土窯</figcaption>
-                  </figure>
+                  </div>
+                  <figcaption class="kiln__caption" data-i18n="kiln.c_oudo">黄土窯</figcaption>
+                </figure>
 
-                  <!-- 7. GCC鉱石窯 -->
-                  <figure class="kiln__item kiln__item--7">
+                <!-- 13. GCC鉱石窯 (caption dưới) -->
+                <figure class="kiln__card kiln__card--cap-bottom">
+                  <div class="kiln__thumb">
                     <img class="blurImageTrigger" src="<?php echo esc_url( $img ); ?>/introduce-img-12.jpg" alt="GCC鉱石窯" />
-                    <figcaption class="kiln__cap-h" data-i18n="kiln.c_gcc">GCC鉱石窯</figcaption>
-                  </figure>
-                </div>
+                  </div>
+                  <figcaption class="kiln__caption" data-i18n="kiln.c_gcc">GCC鉱石窯</figcaption>
+                </figure>
               </div>
             </div>
           </div>

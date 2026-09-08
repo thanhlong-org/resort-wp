@@ -245,14 +245,18 @@
     }
   }
 
-  /* ---- Dải ảnh lò xông (kiln) — nhân bản các layer để cuộn liền mạch đa tầng ---- */
+  /* ---- Dải ảnh lò xông (kiln) — nhân bản các track để cuộn liền mạch đa tầng ---- */
   function initKilnStrip() {
     $('.js-kiln-layer').each(function () {
       var $layer = $(this);
       if (!$layer.data('cloned')) {
-        var $unit = $layer.children('.kiln__unit');
-        $layer.append($unit.clone()).append($unit.clone()).append($unit.clone());
-        $layer.data('cloned', true);
+        var $track = $layer.children('.kiln__track');
+        if ($track.length) {
+          $layer.append($track.clone())
+                .append($track.clone())
+                .append($track.clone());
+          $layer.data('cloned', true);
+        }
       }
     });
   }
