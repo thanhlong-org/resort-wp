@@ -306,9 +306,6 @@
   width: max-content;
   animation: kilnLoop 55s linear infinite;
 }
-.kiln__strip:hover .kiln__track {
-  animation-play-state: paused;
-}
 @keyframes kilnLoop {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
