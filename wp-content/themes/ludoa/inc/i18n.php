@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /** Bump to force a rewrite-rules flush after rule changes. */
-define( 'LUDOA_REWRITE_VER', '2' );
+define( 'LUDOA_REWRITE_VER', '3' );
 
 /**
  * Language registry. Internal code => config.
@@ -238,11 +238,16 @@ function ludoa_query_vars( $vars ) {
 add_filter( 'query_vars', 'ludoa_query_vars' );
 
 /**
- * Rewrite rules for language URLs and the custom sitemap.
+ * Rewrite rules for language URLs, the custom sitemap and robots.txt.
  */
 function ludoa_rewrites() {
 	add_rewrite_rule( '^(en|zh-tw|ko)/?$', 'index.php?ludoa_lang=$matches[1]', 'top' );
 	add_rewrite_rule( '^sitemap\.xml$', 'index.php?ludoa_sitemap=1', 'top' );
+
+	// Core registers its robots.txt rule only when verbose page rules are
+	// off; with a %postname%-style permalink structure it is dropped and
+	// /robots.txt 404s. Register it here so do_robots() always runs.
+	add_rewrite_rule( '^robots\.txt$', 'index.php?robots=1', 'top' );
 
 	if ( get_option( 'ludoa_rewrite_ver' ) !== LUDOA_REWRITE_VER ) {
 		flush_rewrite_rules();
