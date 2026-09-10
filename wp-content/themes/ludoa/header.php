@@ -18,7 +18,7 @@
 
   <!-- ===================== Header ===================== -->
   <header class="header" id="header">
-    <a class="header__logo logo" href="#top" data-i18n="brand.logo" data-i18n-aria-label="brand.logo_aria" aria-label="大自然阿蘇 健康の森">
+    <a class="header__logo logo" href="<?php echo esc_url( ludoa_lp_href() ); ?>" data-i18n="brand.logo" data-i18n-aria-label="brand.logo_aria" aria-label="大自然阿蘇 健康の森">
       <span class="logo__top">大自然<span class="logo__accent">阿蘇</span></span>
       <span class="logo__main">健康の森</span>
     </a>
@@ -48,7 +48,7 @@
   <!-- ===================== Menu (toggle) ===================== -->
   <nav class="menu" id="g-nav" aria-hidden="true">
     <div class="menu__panel">
-      <a class="menu__top-logo logo" href="#top" data-i18n="brand.logo" data-i18n-aria-label="brand.logo_aria" aria-label="健康の森">
+      <a class="menu__top-logo logo" href="<?php echo esc_url( ludoa_lp_href() ); ?>" data-i18n="brand.logo" data-i18n-aria-label="brand.logo_aria" aria-label="健康の森">
         <span class="logo__top">大自然<span class="logo__accent">阿蘇</span></span>
         <span class="logo__main">健康の森</span>
       </a>
@@ -61,20 +61,20 @@
       <div class="menu__nav">
         <p class="menu__label" data-i18n="menu.contents_label">Contents</p>
         <ul class="menu__list">
-          <li><a href="#about" data-i18n="nav.about">大自然阿蘇 健康の森とは</a></li>
-          <li><a href="#onsen" data-i18n="nav.onsen">温浴施設</a></li>
-          <li><a href="#dining" data-i18n="nav.dining">お食事</a></li>
-          <li><a href="#stay" data-i18n="nav.stay">宿泊施設</a></li>
-          <li><a href="#experience" data-i18n="nav.experience">体験/その他健康施設</a></li>
-          <li><a href="#tourism" data-i18n="nav.tourism">阿蘇の観光名所</a></li>
-          <li><a href="#price" data-i18n="nav.price">料金プラン</a></li>
-          <li><a href="#access" data-i18n="nav.access">アクセス</a></li>
-          <li><a href="#" data-modal="privacy" data-i18n="nav.privacy">プライバシーポリシー</a></li>
+          <li><a href="<?php echo esc_url( ludoa_lp_href( 'about' ) ); ?>" data-i18n="nav.about">大自然阿蘇 健康の森とは</a></li>
+          <li><a href="<?php echo esc_url( ludoa_lp_href( 'onsen' ) ); ?>" data-i18n="nav.onsen">温浴施設</a></li>
+          <li><a href="<?php echo esc_url( ludoa_lp_href( 'dining' ) ); ?>" data-i18n="nav.dining">お食事</a></li>
+          <li><a href="<?php echo esc_url( ludoa_lp_href( 'stay' ) ); ?>" data-i18n="nav.stay">宿泊施設</a></li>
+          <li><a href="<?php echo esc_url( ludoa_lp_href( 'experience' ) ); ?>" data-i18n="nav.experience">体験/その他健康施設</a></li>
+          <li><a href="<?php echo esc_url( ludoa_lp_href( 'tourism' ) ); ?>" data-i18n="nav.tourism">阿蘇の観光名所</a></li>
+          <li><a href="<?php echo esc_url( ludoa_lp_href( 'price' ) ); ?>" data-i18n="nav.price">料金プラン</a></li>
+          <li><a href="<?php echo esc_url( ludoa_lp_href( 'access' ) ); ?>" data-i18n="nav.access">アクセス</a></li>
+          <li><a <?php echo ludoa_modal_attrs( 'privacy' ); // phpcs:ignore WordPress.Security.EscapeOutput ?> data-i18n="nav.privacy">プライバシーポリシー</a></li>
         </ul>
       </div>
 
       <div class="menu__btns">
-        <a class="btn-bracket" href="#" data-modal="contact"><span data-i18n="cta.contact">お問い合わせはこちら</span></a>
+        <a class="btn-bracket" <?php echo ludoa_modal_attrs( 'contact' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>><span data-i18n="cta.contact">お問い合わせはこちら</span></a>
         <a class="btn-bracket" href="<?php echo esc_url( ludoa_reserve_url() ); ?>" target="_blank" rel="noopener"><span data-i18n="cta.reserve">今すぐ予約する</span></a>
       </div>
 

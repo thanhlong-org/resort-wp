@@ -207,6 +207,10 @@
     });
 
     // Submit handled by contact.js (AJAX to WordPress admin-ajax).
+
+    // Deep link: /#contact, /#privacy (dùng cho link từ trang 404 về LP).
+    var deep = (location.hash || '').replace('#', '');
+    if (deep && $('#modal-' + deep).length) openModal(deep);
   }
 
   // Expose so contact.js can close the modal after a successful send.

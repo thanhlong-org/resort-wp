@@ -1,0 +1,102 @@
+/* ===========================================================
+   notfound.css — trang 404
+   =========================================================== */
+.nf {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(var(--vh, 1vh) * 100);
+  padding: calc(var(--header-h) + 56px) 24px 72px;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* ----- Nền ảnh + lớp phủ tối để chữ luôn đọc được ----- */
+.nf__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.nf__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.04);
+}
+.nf__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 19, 18, 0.72) 0%, rgba(18, 19, 18, 0.86) 100%);
+}
+
+.nf__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+}
+
+/* ----- Số 404: chữ viền, cỡ theo viewport ----- */
+.nf__code {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(88px, 26vw, 200px);
+  line-height: 1;
+  letter-spacing: 0.06em;
+  padding-left: 0.06em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-gray-dark);
+}
+
+.nf__eyebrow {
+  margin-top: 8px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  padding-left: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-green);
+}
+
+.nf__title {
+  margin-top: 24px;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+}
+
+.nf__lead {
+  margin-top: 20px;
+  font-family: var(--font-serif);
+  font-size: 14px;
+  line-height: 2;
+  letter-spacing: 0.08em;
+  color: var(--color-gray);
+}
+
+.nf__btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin-top: 44px;
+}
+.nf__btns .btn-bracket span { font-size: 14px; }
+
+@media (min-width: 768px) {
+  .nf { padding: calc(var(--header-h) + 80px) 40px 96px; }
+  .nf__code { -webkit-text-stroke-width: 2px; }
+  .nf__title { font-size: 30px; }
+  .nf__lead { font-size: 16px; }
+  .nf__btns {
+    flex-direction: row;
+    justify-content: center;
+    gap: 48px;
+    margin-top: 56px;
+  }
+  .nf__btns .btn-bracket span { font-size: 16px; }
+}

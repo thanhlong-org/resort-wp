@@ -35,13 +35,38 @@ function ludoa_is_lp() {
  * @return string
  */
 function ludoa_document_title( $title ) {
+	$code = ludoa_lang();
+	$meta = ludoa_meta( $code );
+
+	// 404: "<not found> | <brand>", translated like the rest of the page.
+	if ( is_404() ) {
+		$dict  = ludoa_dict( $code );
+		$label = isset( $dict['nf.title'] ) ? wp_strip_all_tags( $dict['nf.title'] ) : 'ページが見つかりません';
+		$brand = $meta['title'] ? preg_split( '/[|｜]/u', $meta['title'] )[0] : get_bloginfo( 'name' );
+		return $label . ' | ' . trim( $brand );
+	}
+
 	if ( ! ludoa_is_lp() ) {
 		return $title;
 	}
-	$meta = ludoa_meta( ludoa_lang() );
 	return $meta['title'] ? $meta['title'] : $title;
 }
 add_filter( 'pre_get_document_title', 'ludoa_document_title' );
+
+/**
+ * Keep error pages out of the index.
+ *
+ * @param array $robots Robots directives.
+ * @return array
+ */
+function ludoa_robots_404( $robots ) {
+	if ( is_404() ) {
+		$robots['noindex'] = true;
+		$robots['follow']  = true;
+	}
+	return $robots;
+}
+add_filter( 'wp_robots', 'ludoa_robots_404' );
 
 /**
  * Head tags: description, canonical, hreflang, Open Graph.

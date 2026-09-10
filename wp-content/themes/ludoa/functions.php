@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'LUDOA_VERSION', '2.1.1' );
+define( 'LUDOA_VERSION', '2.2.0' );
 
 // i18n routing + server-side translation, SEO head/sitemap, contact backend.
 require get_template_directory() . '/inc/i18n.php';
@@ -75,6 +75,12 @@ function ludoa_assets() {
 		$handle = 'ludoa-' . $name;
 		wp_enqueue_style( $handle, "$css/$name.css", $prev, $ver ? $ver : LUDOA_VERSION );
 		$prev = array( $handle );
+	}
+
+	// 404 only.
+	if ( is_404() ) {
+		wp_enqueue_style( 'ludoa-notfound', "$css/notfound.css", $prev, LUDOA_VERSION );
+		$prev = array( 'ludoa-notfound' );
 	}
 
 	// Main stylesheet (theme header only).

@@ -77,7 +77,45 @@ function ludoa_lang() {
 			}
 		}
 	}
-	return 'ja';
+
+	// No query var: URLs under a language path that don't match a rewrite
+	// rule (404s) still belong to that language.
+	$code = ludoa_lang_from_path();
+	return $code ? $code : 'ja';
+}
+
+/**
+ * Language code from the first path segment of the request ('' if none).
+ *
+ * @return string
+ */
+function ludoa_lang_from_path() {
+	if ( is_admin() || ! isset( $_SERVER['REQUEST_URI'] ) ) {
+		return '';
+	}
+
+	$path = wp_parse_url( wp_unslash( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+	if ( ! $path ) {
+		return '';
+	}
+
+	// Strip the WP install path when the site lives in a subdirectory.
+	$home = wp_parse_url( home_url( '/' ), PHP_URL_PATH );
+	if ( $home && '/' !== $home && 0 === strpos( $path, $home ) ) {
+		$path = substr( $path, strlen( $home ) );
+	}
+
+	$segment = strtolower( strtok( ltrim( $path, '/' ), '/' ) );
+	if ( ! $segment ) {
+		return '';
+	}
+
+	foreach ( ludoa_languages() as $code => $cfg ) {
+		if ( $cfg['slug'] && $segment === $cfg['slug'] ) {
+			return $code;
+		}
+	}
+	return '';
 }
 
 /**
@@ -90,6 +128,36 @@ function ludoa_lang_url( $code ) {
 	$langs = ludoa_languages();
 	$slug  = isset( $langs[ $code ] ) ? $langs[ $code ]['slug'] : '';
 	return home_url( $slug ? "/{$slug}/" : '/' );
+}
+
+/**
+ * Link to a section of the LP: a bare anchor on the LP itself, an
+ * absolute URL to the current language's LP anywhere else (404 …).
+ *
+ * @param string $hash Section id without '#'.
+ * @return string
+ */
+function ludoa_lp_href( $hash = '' ) {
+	$hash = $hash ? '#' . ltrim( $hash, '#' ) : '';
+	if ( ludoa_is_lp() ) {
+		return $hash ? $hash : '#top';
+	}
+	return ludoa_lang_url( ludoa_lang() ) . $hash;
+}
+
+/**
+ * Anchor attributes for a modal trigger (contact / privacy). Off the LP
+ * the modal markup doesn't exist, so link to the LP with the modal id as
+ * hash — main.js opens it on load.
+ *
+ * @param string $id Modal id ('contact' | 'privacy').
+ * @return string Escaped attribute string.
+ */
+function ludoa_modal_attrs( $id ) {
+	if ( ludoa_is_lp() ) {
+		return 'href="#" data-modal="' . esc_attr( $id ) . '"';
+	}
+	return 'href="' . esc_url( ludoa_lang_url( ludoa_lang() ) . '#' . $id ) . '"';
 }
 
 /**
