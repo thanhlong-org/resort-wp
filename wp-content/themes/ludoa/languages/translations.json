@@ -2,19 +2,19 @@
   "meta": {
     "ja": {
       "title": "大自然阿蘇 健康の森｜世界最高峰のウェルネスリゾート",
-      "desc": "大自然阿蘇 健康の森 — 世界最高峰のウェルネスリゾート。"
+      "desc": "大自然阿蘇 健康の森 — 世界最高峰のウェルネスリゾート。心と体を解き放つ、五感で味わう極上の休日をお届けします。"
     },
     "en": {
       "title": "Oaso Shizen Kenko no Mori | A World-Class Wellness Resort",
-      "desc": "Oaso Shizen Kenko no Mori — a world-class wellness resort in the great nature of Aso."
+      "desc": "Oaso Shizen Kenko no Mori — a world-class wellness resort in the great nature of Aso. An escape that frees your mind and body, awakening all five senses."
     },
     "zh": {
       "title": "大自然阿蘇 健康之森｜世界頂級的養生度假勝地",
-      "desc": "大自然阿蘇 健康之森 — 坐落於阿蘇大自然中的世界頂級養生度假勝地。"
+      "desc": "大自然阿蘇 健康之森 — 坐落於阿蘇大自然中的世界頂級養生度假勝地。解放身心，以五感細品的極致假期。"
     },
     "ko": {
       "title": "오아소 자연 건강의 숲 | 세계 최고의 웰니스 리조트",
-      "desc": "오아소 자연 건강의 숲 — 아소의 대자연 속에 자리한 세계 최고 수준의 웰니스 리조트."
+      "desc": "오아소 자연 건강의 숲 — 아소의 대자연 속에 자리한 세계 최고 수준의 웰니스 리조트. 몸과 마음을 해방하는, 오감으로 즐기는 최상의 휴일을 선사합니다."
     }
   },
   "dict": {
@@ -230,7 +230,6 @@
       "form.thanks_title": "Thank You",
       "form.thanks_text": "Thank you for your inquiry.<br />We will review your message and our staff will get back to you shortly.",
       "form.close": "Close",
-      "brand.logo": "<span class=\"logo__top\">The Great Nature of Aso</span><span class=\"logo__main\">A Sanctuary for<br class=\"u-sp\" />Wellness</span>",
       "brand.logo_aria": "The Great Nature of Aso — A Sanctuary for Wellness",
       "privacy.title": "Privacy Policy",
       "privacy.lead": "Aso Farm Land Co., Ltd. (hereinafter \"the Company\") recognizes that protecting personal information is both a social responsibility and an essential requirement for conducting business with the trust of society. The Company gives careful consideration to the appropriate management and use of customers' personal information and implements the following initiatives.",
@@ -482,7 +481,6 @@
       "form.thanks_title": "送出完成",
       "form.thanks_text": "感謝您的來信。<br />我們將於確認內容後，由專人與您聯繫。",
       "form.close": "關閉",
-      "brand.logo": "<span class=\"logo__top\">大自然<span class=\"logo__accent\">阿蘇</span></span><span class=\"logo__main\">健康之森</span>",
       "brand.logo_aria": "大自然阿蘇 健康之森",
       "privacy.title": "隱私權政策",
       "privacy.lead": "阿蘇農場樂園股份有限公司（以下簡稱本公司）深知，保護個人資料不僅是企業的社會責任，更是獲得社會信賴、推動企業活動不可或缺的要件。本公司將充分留意顧客個人資料的妥善管理與運用，並實施以下措施。",
@@ -720,7 +718,6 @@
       "form.thanks_title": "전송 완료",
       "form.thanks_text": "문의해 주셔서 감사합니다.<br />내용 확인 후 담당자가 연락드리겠습니다.",
       "form.close": "닫기",
-      "brand.logo": "<span class=\"logo__top\">오아소 자연</span><span class=\"logo__main\">건강의 숲</span>",
       "brand.logo_aria": "오아소 자연 건강의 숲",
       "privacy.title": "개인정보 처리방침",
       "privacy.lead": "주식회사 아소팜랜드(이하, 당사)는 개인정보 보호가 사회적 책무인 동시에, 사회의 신뢰를 얻어 기업 활동을 추진하기 위해 필수적인 요건이라고 인식하고 있습니다. 당사는 고객의 개인정보의 적절한 관리·이용에 충분히 배려하여, 다음과 같은 노력을 실시합니다.",
