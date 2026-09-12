@@ -286,19 +286,19 @@
 }
 /* ---- Dải ảnh lò xông (kiln marquee) - Bố cục Canvas so le nghệ thuật 13 lò ---- */
 .kiln__strip {
-  --k-scale: 0.44;                  /* Mobile: scale toàn canvas 2350x1280 vừa màn hình */
+  --k-scale: 0.41;                  /* Mobile: scale canvas 2350x1520 vừa vặn màn hình */
   position: relative;
   width: 100vw;
   left: 50%;
   transform: translateX(-50%);
   overflow: hidden;
-  height: calc(1280px * var(--k-scale));
+  height: calc(1520px * var(--k-scale));
   margin-top: 40px;
 }
 .kiln__scaler {
   position: relative;
   width: 2350px;
-  height: 1280px;
+  height: 1520px;
   transform: scale(var(--k-scale));
   transform-origin: left top;
 }
@@ -319,7 +319,7 @@
   position: relative;
   flex: 0 0 auto;
   width: 2350px;
-  height: 1280px;
+  height: 1520px;
 }
 
 /* Từng khối lò độc lập (Ảnh + Tiêu đề đi cùng nhau 100%) */
@@ -349,7 +349,7 @@
 .kiln__caption {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: calc(16px / var(--k-scale));
+  font-size: calc(13px / var(--k-scale)); /* Mobile: tương đương 13px giúp chữ dọc gọn gàng */
   letter-spacing: 0.04em;
   color: #e0e0e0;
   white-space: nowrap;
@@ -360,7 +360,7 @@
 .kiln__card--cap-bottom .kiln__caption {
   display: block;
   width: 100%;
-  margin-top: calc(10px / var(--k-scale));
+  margin-top: calc(8px / var(--k-scale));
   text-align: right;
   line-height: 1.4;
 }
@@ -371,15 +371,34 @@
   left: calc(100% + calc(12px / var(--k-scale)));
   top: 0;
   writing-mode: vertical-rl;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
   line-height: 1.4;
   text-align: left;
   padding-top: calc(2px / var(--k-scale));
   z-index: 5;
 }
 
+/* Tối ưu hóa cho Tiếng Anh: chữ Latinh chuyển sang nằm dưới ảnh, ngắt dòng tự nhiên */
+html[lang="en"] .kiln__card--cap-right .kiln__caption,
+:lang(en) .kiln__card--cap-right .kiln__caption {
+  position: static;
+  writing-mode: horizontal-tb;
+  display: block;
+  width: 100%;
+  margin-top: calc(8px / var(--k-scale));
+  text-align: right;
+  white-space: normal;
+  line-height: 1.25;
+  padding-top: 0;
+}
+html[lang="en"] .kiln__caption,
+:lang(en) .kiln__caption {
+  white-space: normal;
+  letter-spacing: 0.02em;
+}
+
 /* ===========================================================
-   Tọa độ, kích thước & tỉ lệ so le của từng lò theo bản vẽ chuẩn
+   Tọa độ, kích thước & tỉ lệ so le của từng lò theo Phương án 2 (Canvas 1520px)
    =========================================================== */
 /* Cột 1 (So le tự nhiên, không thẳng tắp): */
 /* 1. 翡翠(ヒスイ)窯 - ảnh đứng dọc, thụt vào trong */
@@ -387,11 +406,11 @@
 .kiln__card--hisui .kiln__thumb { width: 318px; height: 434px; }
 
 /* 2. 薬草窯（けいひ） - ảnh ngang, nhô ra ngoài */
-.kiln__card--keihi    { left: 0px;    top: 533px; width: 423px; }
+.kiln__card--keihi    { left: 0px;    top: 570px; width: 423px; }
 .kiln__card--keihi .kiln__thumb { width: 423px; height: 275px; }
 
 /* 3. 温熱窯（蒸気） - ảnh ngang rộng, lệch so le */
-.kiln__card--jouki    { left: 20px;   top: 909px; width: 426px; }
+.kiln__card--jouki    { left: 20px;   top: 990px; width: 426px; }
 .kiln__card--jouki .kiln__thumb { width: 426px; height: 281px; }
 
 /* Cột 2: */
@@ -400,11 +419,11 @@
 .kiln__card--ganen .kiln__thumb { width: 469px; height: 318px; }
 
 /* 5. 紫水晶窯 - ảnh ngang */
-.kiln__card--amethyst { left: 547px;  top: 397px; width: 420px; }
+.kiln__card--amethyst { left: 547px;  top: 440px; width: 420px; }
 .kiln__card--amethyst .kiln__thumb { width: 420px; height: 275px; }
 
 /* 6. 薬草窯(はっか) - ảnh ngang rộng */
-.kiln__card--hakka    { left: 535px;  top: 753px; width: 500px; }
+.kiln__card--hakka    { left: 535px;  top: 850px; width: 500px; }
 .kiln__card--hakka .kiln__thumb { width: 500px; height: 275px; }
 
 /* Cột 3: */
@@ -413,28 +432,28 @@
 .kiln__card--hyoon .kiln__thumb { width: 443px; height: 278px; }
 
 /* 8. 炭窯 - ảnh gần vuông/dọc vòm gạch xanh */
-.kiln__card--sumi     { left: 1051px; top: 478px; width: 391px; }
+.kiln__card--sumi     { left: 1051px; top: 520px; width: 391px; }
 .kiln__card--sumi .kiln__thumb { width: 391px; height: 300px; }
 
 /* 9. 黄土窯 - ảnh ngang */
-.kiln__card--oudo     { left: 1086px; top: 961px; width: 446px; }
+.kiln__card--oudo     { left: 1086px; top: 1050px; width: 446px; }
 .kiln__card--oudo .kiln__thumb { width: 446px; height: 275px; }
 
-/* Cột 4 (so le dích dắc): */
+/* Cột 4 (Dãn khoảng cách trục Y triệt để - không chạm chữ, không cắt mép): */
 /* 10. 薬草窯（よもぎ） - ảnh ngang trên */
 .kiln__card--yomogi   { left: 1578px; top: 6px;   width: 449px; }
 .kiln__card--yomogi .kiln__thumb { width: 449px; height: 275px; }
 
-/* 11. 宝石足湯窯 - ảnh ngang lệch phải */
-.kiln__card--ashiyu   { left: 1743px; top: 307px; width: 443px; }
+/* 11. 宝石足湯窯 - ảnh ngang lệch phải (cách đáy yomogi 89px) */
+.kiln__card--ashiyu   { left: 1743px; top: 370px; width: 443px; }
 .kiln__card--ashiyu .kiln__thumb { width: 443px; height: 292px; }
 
-/* 12. ハーブ窯（ラベンダー） - ảnh ngang lệch trái */
-.kiln__card--lavender { left: 1482px; top: 643px; width: 452px; }
+/* 12. ハーブ窯（ラベンダー） - ảnh ngang lệch trái (cách caption ashiyu 60px) */
+.kiln__card--lavender { left: 1482px; top: 760px; width: 452px; }
 .kiln__card--lavender .kiln__thumb { width: 452px; height: 275px; }
 
-/* 13. GCC鉱石窯 - ảnh ngang lệch phải */
-.kiln__card--gcc      { left: 1693px; top: 961px; width: 443px; }
+/* 13. GCC鉱石窯 - ảnh ngang lệch phải (cách chữ dọc lavender 80px, cách đáy canvas 45px) */
+.kiln__card--gcc      { left: 1693px; top: 1160px; width: 443px; }
 .kiln__card--gcc .kiln__thumb { width: 443px; height: 275px; }
 
 /* ===========================================================
@@ -596,7 +615,7 @@
   .kiln__strip {
     --k-scale: 0.72;
     margin-top: 70px;
-    height: calc(1280px * var(--k-scale));
+    height: calc(1520px * var(--k-scale));
   }
   .kiln__caption {
     font-size: calc(18px / var(--k-scale));
@@ -609,7 +628,7 @@
 @media (min-width: 1440px) {
   .kiln__strip {
     --k-scale: 0.85;
-    height: calc(1280px * var(--k-scale));
+    height: calc(1520px * var(--k-scale));
   }
   .kiln__caption {
     font-size: calc(18px / var(--k-scale));
@@ -619,7 +638,7 @@
 @media (min-width: 1920px) {
   .kiln__strip {
     --k-scale: 1;
-    height: 1280px;
+    height: 1520px;
   }
   .kiln__caption {
     font-size: 18px;
