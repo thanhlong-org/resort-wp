@@ -7,6 +7,7 @@
   overflow: hidden;
   background: var(--color-bg);
   padding: 0 0 90px;
+  margin-top: -2px;
 }
 
 /* nền ruộng rau + gradient */
@@ -281,7 +282,7 @@
     position: absolute;
     right: 0;
     top: 179px;
-    width: 483px;
+    width: 510px;
     margin: 0;
   }
   .veg__body p {
