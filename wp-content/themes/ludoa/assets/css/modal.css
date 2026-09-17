@@ -336,6 +336,21 @@ body.modal-open { overflow: hidden; }
   color: var(--color-white);          /* Figma: #fff */
 }
 
+/* Lưu ý (注意事項) */
+.price__notice {
+  width: 100%;
+}
+.price__notice-title {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--color-white);
+  margin-bottom: 4px;
+}
+.price__notice + .price__notes {
+  margin-top: -12px;
+}
+
 /* facility cards */
 .price__cards {
   display: grid;
@@ -439,6 +454,8 @@ body.modal-open { overflow: hidden; }
   .price__table th, .price__table td { font-size: 18px; padding: 15px; }  /* Figma: 18px (header xác nhận từ ảnh; thân bảng đồng nhất) */
   .price__table thead th { font-weight: 400; }  /* Figma: header w400 (không đậm) */
   .price__notes li { font-size: 14px; }                         /* Figma PC: 14px */
+  .price__notice-title { font-size: 15px; margin-bottom: 6px; }
+  .price__notice + .price__notes { margin-top: -16px; }
   .price__close .btn-bracket span { font-size: 20px; }          /* Figma PC: 20px */
   .price__area--5 .price__cards { grid-template-columns: repeat(5, 1fr); }
   .price__area--4 .price__cards { grid-template-columns: repeat(4, 1fr); }

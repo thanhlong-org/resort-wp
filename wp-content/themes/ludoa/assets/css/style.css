@@ -63,9 +63,8 @@ body.fixed .lang {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* Logo & nút .btn-bracket nằm ở common.css (tái sử dụng) */
 .header__logo {
-  font-size: 18px;            /* = cỡ 健康の森 ở header (SP) */
+  font-size: clamp(18px, 4.5vw, 25px);
   text-decoration: none;
 }
 
@@ -359,7 +358,7 @@ body.fixed .lang {
   padding: 0 20px;
 }
 .fv__title {
-  font-size: 42px;            /* = cỡ 健康の森 ở hero (SP) */
+  font-size: clamp(22px, 6.8vw, 36px);            /* = cỡ hero title (SP: 1 dòng ngang vừa vặn màn hình) */
   margin: 0 auto;
 }
 .fv__sub {
@@ -465,7 +464,7 @@ body.fixed .lang {
   .sp-only { display: none; }
 
   .header { padding: 40px; }
-  .header__logo { font-size: 34px; }   /* 健康の森 ở header PC */
+  .header__logo { font-size: 25px; }   /* 大自然阿蘇 健康の森 ở header PC: 25px */
   .header__right { gap: 28px; }
   .lang__toggle { font-weight: 200; font-size: 15px; }  /* Figma PC: ExtraLight 15px */
   .lang__caret { font-size: 13px; }    /* Figma PC: 13px */
@@ -481,7 +480,7 @@ body.fixed .lang {
   .fv__inner {
     padding-top: 0;                    /* căn giữa màn hình (bỏ canh ~27% từ trên của Figma) */
   }
-  .fv__title { font-size: 78px; }      /* 健康の森 ở hero PC */
+  .fv__title { font-size: 60px; }      /* 大自然阿蘇 健康の森 ở hero banner PC: 60px */
   .fv__sub {
     margin-top: 26px;
     font-size: 26px;                   /* Figma PC: Bold 26px */

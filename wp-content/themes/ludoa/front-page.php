@@ -22,8 +22,7 @@ $img = get_template_directory_uri() . '/assets/images';
 
       <div class="fv__inner">
         <h1 class="fv__title logo fadeUpTrigger" data-i18n="brand.logo">
-          <span class="logo__top">大自然<span class="logo__accent">阿蘇</span></span>
-          <span class="logo__main">健康の森</span>
+          <span class="logo__prefix">大自然<span class="logo__accent">阿蘇</span></span> <span class="logo__main">健康の森</span>
         </h1>
         <p class="fv__sub fadeUpTrigger" data-i18n="fv.sub">世界最高峰の<br class="u-sp" />ウェルネスリゾート</p>
       </div>
@@ -795,9 +794,9 @@ $img = get_template_directory_uri() . '/assets/images';
                 <table class="price__table">
                   <thead><tr><th data-i18n="price.th_type">区分</th><th data-i18n="price.th_1">1名利用時</th><th data-i18n="price.th_2">2名利用時</th><th data-i18n="price.th_3">3名利用時</th><th data-i18n="price.th_4">4名利用時</th></tr></thead>
                   <tbody>
-                    <tr><th data-i18n="price.row_adult">大人</th><td>80,000</td><td>50,000</td><td>49,000</td><td>48,000</td></tr>
-                    <tr><th data-i18n="price.row_elem">小学生</th><td>–</td><td>35,000</td><td>34,000</td><td>33,000</td></tr>
-                    <tr><th data-i18n="price.row_child">幼児（4〜6歳）</th><td>–</td><td>25,000</td><td>24,000</td><td>23,000</td></tr>
+                    <tr><th data-i18n="price.row_adult">大人</th><td>80,000</td><td>60,000</td><td>59,000</td><td>58,000</td></tr>
+                    <tr><th data-i18n="price.row_elem">小学生</th><td>–</td><td>42,000</td><td>41,000</td><td>40,000</td></tr>
+                    <tr><th data-i18n="price.row_child">幼児（4〜6歳）</th><td>–</td><td>30,000</td><td>29,000</td><td>28,000</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -808,9 +807,9 @@ $img = get_template_directory_uri() . '/assets/images';
                 <table class="price__table">
                   <thead><tr><th data-i18n="price.th_type">区分</th><th data-i18n="price.th_1">1名利用時</th><th data-i18n="price.th_2">2名利用時</th><th data-i18n="price.th_3">3名利用時</th><th data-i18n="price.th_4">4名利用時</th></tr></thead>
                   <tbody>
-                    <tr><th data-i18n="price.row_adult">大人</th><td>85,000</td><td>55,000</td><td>54,000</td><td>53,000</td></tr>
-                    <tr><th data-i18n="price.row_elem">小学生</th><td>–</td><td>38,500</td><td>37,500</td><td>36,500</td></tr>
-                    <tr><th data-i18n="price.row_child">幼児（4〜6歳）</th><td>–</td><td>27,500</td><td>26,500</td><td>25,500</td></tr>
+                    <tr><th data-i18n="price.row_adult">大人</th><td>85,000</td><td>65,000</td><td>64,000</td><td>63,000</td></tr>
+                    <tr><th data-i18n="price.row_elem">小学生</th><td>–</td><td>45,500</td><td>44,500</td><td>43,500</td></tr>
+                    <tr><th data-i18n="price.row_child">幼児（4〜6歳）</th><td>–</td><td>32,500</td><td>31,500</td><td>30,500</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -836,6 +835,16 @@ $img = get_template_directory_uri() . '/assets/images';
                 </table>
               </div>
             </div>
+            <div class="price__notice">
+              <p class="price__notice-title" data-i18n="price.notice_title">注意事項</p>
+              <ul class="price__notes">
+                <li data-i18n="price.notice_1">※動きやすい服装、スニーカー、ソックス等をご持参ください。</li>
+                <li data-i18n="price.notice_2">※アレルギー除去食等をご要望の場合は予約時にお知らせください。</li>
+                <li data-i18n="price.notice_3">※常用しているお薬およびサプリメント等、必要に応じてご持参ください。</li>
+                <li data-i18n="price.notice_4">※ご滞在中にご体調を崩されたり、ご気分が悪くなった場合は無理をなさらず医療機関にかかる、もしくはご帰宅されることをお願いいたします。</li>
+              </ul>
+            </div>
+
             <ul class="price__notes">
               <li data-i18n="price.meal_note1">※朝食・夕食はビックファームレストランでのご提供、ご昼食についてはビックファームレストラン又は他のレストランがご利用できます。</li>
               <li data-i18n="price.meal_note2">※Aコースについては事前（宿泊のご予約時）のご予約になります。</li>
@@ -853,6 +862,7 @@ $img = get_template_directory_uri() . '/assets/images';
                 <div class="price__card"><p class="price__card-h" data-i18n="price.f3_h">幼児チャレンジ館</p><p class="price__card-b" data-i18n="price.f3_b">小さなお子様向けの遊び・体験施設</p></div>
                 <div class="price__card"><p class="price__card-h" data-i18n="price.f4_h">ふれあい動物王国</p><p class="price__card-b" data-i18n="price.f4_b">動物たちとふれあいながら過ごせるエリア</p></div>
                 <div class="price__card"><p class="price__card-h" data-i18n="price.f5_h">ビックファーム</p><p class="price__card-b" data-i18n="price.f5_b">全450棟のドーム型宿泊施設</p></div>
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f20_h">いちご狩り</p><p class="price__card-b" data-i18n="price.f20_b">九州最大級の農園、3～4種のいちごが食べ放題<br />※（12月～翌年5月）</p></div>
               </div>
             </div>
 
@@ -863,6 +873,7 @@ $img = get_template_directory_uri() . '/assets/images';
                 <div class="price__card"><p class="price__card-h" data-i18n="price.f7_h">健康トレーニング館</p><p class="price__card-b" data-i18n="price.f7_b">運動器具を使ったトレーニングができる施設</p></div>
                 <div class="price__card"><p class="price__card-h" data-i18n="price.f8_h">健康リフレッシュ館</p><p class="price__card-b" data-i18n="price.f8_b">軽い運動やストレッチで心身をリフレッシュできる施設</p></div>
                 <div class="price__card"><p class="price__card-h" data-i18n="price.f9_h">手のひら発汗測定</p><p class="price__card-b" data-i18n="price.f9_b">手のひらの発汗量から自律神経の状態をチェック</p></div>
+                <div class="price__card"><p class="price__card-h" data-i18n="price.f21_h">健康パビリオン</p><p class="price__card-b" data-i18n="price.f21_b">ご自身の健康状態を把握出来る測定施設</p></div>
               </div>
             </div>
 

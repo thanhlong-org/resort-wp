@@ -33,7 +33,7 @@ function ludoa_languages() {
 			'hreflang'  => 'ja',
 			'html_lang' => 'ja',
 			'og_locale' => 'ja_JP',
-			'label'     => 'JP',
+			'label'     => 'LANG',
 			'name'      => '日本語',
 		),
 		'en' => array(

@@ -11,8 +11,7 @@
       <div class="footer__brand">
         <p class="footer__tag" data-i18n="brand.tagline">大自然ウェルネス・リトリート</p>
         <span class="logo footer__logo" data-i18n="brand.logo">
-          <span class="logo__top">大自然<span class="logo__accent">阿蘇</span></span>
-          <span class="logo__main">健康の森</span>
+          <span class="logo__prefix">大自然<span class="logo__accent">阿蘇</span></span> <span class="logo__main">健康の森</span>
         </span>
         <p class="footer__addr" data-i18n="brand.address">〒869-1404<br>熊本県阿蘇郡南阿蘇村河陽5582-37</p>
       </div>

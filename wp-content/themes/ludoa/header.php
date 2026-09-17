@@ -19,8 +19,7 @@
   <!-- ===================== Header ===================== -->
   <header class="header" id="header">
     <a class="header__logo logo" href="<?php echo esc_url( ludoa_lp_href() ); ?>" data-i18n="brand.logo" data-i18n-aria-label="brand.logo_aria" aria-label="大自然阿蘇 健康の森">
-      <span class="logo__top">大自然<span class="logo__accent">阿蘇</span></span>
-      <span class="logo__main">健康の森</span>
+      <span class="logo__prefix">大自然<span class="logo__accent">阿蘇</span></span> <span class="logo__main">健康の森</span>
     </a>
 
     <div class="header__right">
@@ -48,9 +47,8 @@
   <!-- ===================== Menu (toggle) ===================== -->
   <nav class="menu" id="g-nav" aria-hidden="true">
     <div class="menu__panel">
-      <a class="menu__top-logo logo" href="<?php echo esc_url( ludoa_lp_href() ); ?>" data-i18n="brand.logo" data-i18n-aria-label="brand.logo_aria" aria-label="健康の森">
-        <span class="logo__top">大自然<span class="logo__accent">阿蘇</span></span>
-        <span class="logo__main">健康の森</span>
+      <a class="menu__top-logo logo" href="<?php echo esc_url( ludoa_lp_href() ); ?>" data-i18n="brand.logo" data-i18n-aria-label="brand.logo_aria" aria-label="大自然阿蘇 健康の森">
+        <span class="logo__prefix">大自然<span class="logo__accent">阿蘇</span></span> <span class="logo__main">健康の森</span>
       </a>
 
       <figure class="menu__visual">
@@ -81,8 +79,7 @@
       <div class="menu__brand">
         <p class="menu__tagline" data-i18n="brand.tagline">大自然ウェルネス・リトリート</p>
         <span class="logo menu__brand-logo" data-i18n="brand.logo">
-          <span class="logo__top">大自然<span class="logo__accent">阿蘇</span></span>
-          <span class="logo__main">健康の森</span>
+          <span class="logo__prefix">大自然<span class="logo__accent">阿蘇</span></span> <span class="logo__main">健康の森</span>
         </span>
         <p class="menu__address" data-i18n="brand.address">〒869-1404<br />熊本県阿蘇郡南阿蘇村河陽5582-37</p>
       </div>

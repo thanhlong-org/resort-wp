@@ -40,34 +40,39 @@
   .u-sp { display: none; }
 }
 
-/* ----- Logo (text thuần: 大自然阿蘇 / 健康の森) ----- */
+/* ----- Logo (text thuần: 大自然阿蘇 健康の森 — hiển thị 1 hàng ngang chuẩn) ----- */
 .logo {
   display: inline-flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.35em;
+  font-family: var(--font-serif);
+  font-weight: 500;
   line-height: 1;
   color: var(--color-white);
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+  white-space: nowrap;
 }
+.logo__prefix,
 .logo__top {
-  font-family: var(--font-brush); /* Yuji Syuku */
-  font-weight: 400;
-  font-size: 0.40em;              /* tỉ lệ theo cỡ 健康の森 */
-  letter-spacing: 0.16em;
-  padding-left: 0.16em;           /* bù letter-spacing để vẫn cân giữa */
-  margin-bottom: 0.14em;
+  font-family: inherit;
+  font-size: 1em;
+  letter-spacing: 0.04em;
+  margin: 0;
+  padding: 0;
 }
 .logo__accent { color: var(--color-green); }
 .logo__main {
-  font-family: var(--font-brush);
-  font-weight: 400;
+  font-family: inherit;
   font-size: 1em;
-  letter-spacing: 0.06em;
-  padding-left: 0.06em;
+  letter-spacing: 0.04em;
+  margin: 0;
+  padding: 0;
 }
 
-html[lang^="en"] .logo__main {
-  text-align: center;
+html[lang^="en"] .logo {
+  gap: 0.25em;
 }
 
 /* ----- Nút có ngoặc 2 bên: | text | ----- */

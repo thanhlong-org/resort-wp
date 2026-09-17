@@ -106,7 +106,7 @@
 
   .footer__brand { align-self: center; }
   .footer__tag { font-size: 18px; }
-  .footer__logo { font-size: 40px; }
+  .footer__logo { font-size: 25px; }
   .footer__addr { font-size: 16px; text-align: left;}
 
   /* buttons top-right (row) — trải đều theo bề rộng nav */
