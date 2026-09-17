@@ -188,9 +188,9 @@
 .plan__cta .btn-bracket span { font-size: 20px; font-weight: 400; }
 
 /* ===========================================================
-   PC (≥1024px)
+   PC / Tablet (≥768px)
    =========================================================== */
-@media (min-width: 1024px) {
+@media (min-width: 767px) {
   .plan { padding: 110px 0 120px; }
   .plan__inner { padding: 0 100px; }
 

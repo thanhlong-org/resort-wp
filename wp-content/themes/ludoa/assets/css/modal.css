@@ -431,9 +431,9 @@ body.modal-open { overflow: hidden; }
 }
 
 /* ===========================================================
-   PC (≥1024px)
+   PC / Tablet (≥768px)
    =========================================================== */
-@media (min-width: 1024px) {
+@media (min-width: 767px) {
   .modal__box--form .modal__scroll { padding: 32px; }  /* Figma: padding 32px */
   .modal__box--price .modal__scroll { padding: 70px 60px; }
   .modal__box--privacy .modal__scroll { padding: 70px 0; }  /* Figma: box padding 70px 0, nội dung tự canh giữa */

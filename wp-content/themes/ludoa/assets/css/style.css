@@ -26,6 +26,7 @@
 html {
   scroll-behavior: smooth;
   background: var(--color-bg);
+  overflow-x: clip;
 }
 body {
   font-family: var(--font-serif);
@@ -456,10 +457,10 @@ body.fixed .lang {
 }
 
 /* ===========================================================
-   PC (thiết kế gốc Figma 1440px) — áp dụng từ 1024px trở lên.
-   Dưới 1024px = thiết kế SP (390px) đúng tuyệt đối.
+   PC / Tablet — áp dụng từ 768px trở lên.
+   Dưới 768px = thiết kế SP (390px) đúng tuyệt đối.
    =========================================================== */
-@media (min-width: 1024px) {
+@media (min-width: 767px) {
   :root { --header-h: 88px; }
   .sp-only { display: none; }
 
@@ -792,8 +793,8 @@ html[lang^="en"] .kiln__cap-v {
   white-space: nowrap !important;
 }
 
-/* --- PC overrides (min-width: 1024px) --- */
-@media (min-width: 1024px) {
+/* --- PC / Tablet overrides (min-width: 768px) --- */
+@media (min-width: 767px) {
   html[lang^="en"] .concept__hero {
     height: 940px !important;
   }

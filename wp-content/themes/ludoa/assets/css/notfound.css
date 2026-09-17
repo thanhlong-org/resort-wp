@@ -87,7 +87,7 @@
 }
 .nf__btns .btn-bracket span { font-size: 14px; }
 
-@media (min-width: 768px) {
+@media (min-width: 767px) {
   .nf { padding: calc(var(--header-h) + 80px) 40px 96px; }
   .nf__code { -webkit-text-stroke-width: 2px; }
   .nf__title { font-size: 30px; }

@@ -232,10 +232,72 @@
 .veg__farm-ph--strawberry { order: 3; }
 .veg__farm-ph--mushroom { order: 4; }
 
+/* Fix Lỗi 23 & 24 trên màn hình mobile lớn / tablet nhỏ (481px - 767px): Khắc phục tách rời ảnh và khoảng đen */
+@media (min-width: 481px) and (max-width: 767px) {
+  /* Lỗi 23: Gom rổ nấm và bàn tiệc vào khung cân đối, gối nhẹ lên nhau, không bị văng ra 2 góc mép */
+  .veg__content {
+    max-width: 580px;
+    margin: 0 auto;
+  }
+  .veg__photos {
+    position: relative;
+    max-width: 520px;
+    height: 440px;
+    margin: 0 auto;
+  }
+  .veg__ph--basket {
+    right: 20px;
+    top: 0;
+    width: 250px;
+  }
+  .veg__ph--kaiseki {
+    left: 20px;
+    top: 150px;
+    width: 320px;
+  }
+  .veg__body {
+    max-width: 520px;
+    margin: 30px auto 0;
+  }
+  .veg__ph--buffet {
+    max-width: 480px;
+    width: 100%;
+    margin: 40px auto 0;
+  }
+
+  /* Lỗi 24: Khung blog ẩm thực & nông trại mở rộng lên 560px, ảnh bung to 100% không bị co rúm 345px */
+  .veg__section-head {
+    max-width: 560px;
+    margin: 0 auto 32px;
+  }
+  .veg__restaurant-grid,
+  .veg__farm-grid {
+    max-width: 560px;
+    margin: 0 auto;
+    gap: 32px;
+  }
+  .veg__rest-ph,
+  .veg__farm-ph {
+    max-width: 100%;
+    width: 100%;
+  }
+  .veg__restaurant-text,
+  .veg__farm-text {
+    max-width: 100%;
+    width: 100%;
+    padding: 12px 8px;
+  }
+  .veg__restaurant-text p,
+  .veg__farm-text p {
+    font-size: 15px;
+    line-height: 2;
+  }
+}
+
 /* ===========================================================
-   PC (≥1024px)
+   PC / Tablet (≥768px)
    =========================================================== */
-@media (min-width: 1024px) {
+@media (min-width: 767px) {
   .veg { padding: 0 0 140px; }
   .veg__bg { aspect-ratio: 1441 / 1081; }
 

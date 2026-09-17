@@ -133,12 +133,9 @@
 }
 
 /* ===========================================================
-   Tablet / PC
+   PC / Tablet (≥768px)
    =========================================================== */
-@media (min-width: 768px) {
-  .house__view { --u-scale: 0.72; }
-}
-@media (min-width: 1024px) {
+@media (min-width: 767px) {
   .house { padding: 130px 0 130px; }
   .house__head { max-width: 640px; }
   .house__headline { gap: 30px; margin-bottom: 120px; }
@@ -150,4 +147,7 @@
   .house__intro { font-size: 18px; line-height: 2.2; text-align: left; display: inline-block; }
 
   .house__view { --u-scale: 1; margin-top: 80px; }
+}
+@media (min-width: 767px) and (max-width: 1024px) {
+  .house__view { --u-scale: 0.72; }
 }

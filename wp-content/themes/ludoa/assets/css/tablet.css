@@ -1,0 +1,677 @@
+/* ===========================================================
+   tablet.css — Responsive chuyên biệt cho Tablet (768px – 1024px)
+   Áp dụng cấu trúc giống PC, thu nhỏ ảnh và font-size vừa vặn.
+   ĐẶC BIỆT: Tuyệt đối KHÔNG ảnh hưởng tới < 768px và >= 1025px.
+   =========================================================== */
+
+@media (min-width: 767px) and (max-width: 1024px) {
+
+  /* ----- Container chung ----- */
+  .l-inner {
+    max-width: 100% !important;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+    box-sizing: border-box !important;
+  }
+  .v-title { gap: 6px !important; }
+
+  /* ----- Header & Menu ----- */
+  .header {
+    padding: 24px 32px !important;
+  }
+  .header__logo {
+    font-size: 20px !important;
+  }
+  .header__right {
+    gap: 20px !important;
+  }
+  .menu__panel {
+    padding: 40px 32px 60px !important;
+    column-gap: 24px !important;
+  }
+  .menu__visual {
+    width: 180px !important;
+  }
+  .menu__list a {
+    font-size: 15px !important;
+    padding: 12px 2px !important;
+  }
+
+  /* ----- 1. Hero banner (FV) — Mục 20 ----- */
+  .fv__inner {
+    top: calc(var(--vh, 1vh) * 44) !important;
+    padding: 0 24px !important;
+  }
+  .fv__title {
+    font-size: clamp(30px, 4.4vw, 44px) !important;
+  }
+  .fv__sub {
+    font-size: 18px !important;
+    margin-top: 16px !important;
+    letter-spacing: 0.1em !important;
+  }
+  .fv__scroll {
+    top: calc(var(--vh, 1vh) * 64) !important;
+    bottom: auto !important;
+  }
+  .fv__scroll-line {
+    height: 140px !important;
+  }
+  .fv__reserve {
+    right: 18px !important;
+    top: calc(var(--vh, 1vh) * 36) !important;
+    gap: 12px !important;
+    padding: 4px 8px !important;
+  }
+  .fv__reserve span {
+    font-size: 14px !important;
+  }
+  .fv__reserve::before,
+  .fv__reserve::after {
+    width: 18px !important;
+  }
+
+  /* ----- 2. Concept — Mục 21 ----- */
+  .concept {
+    padding: 0 0 100px !important;
+  }
+  .concept__inner {
+    padding: 220px 32px 0 !important;
+  }
+  .concept__hero {
+    height: 640px !important;
+  }
+  .concept__headline {
+    top: -40px !important;
+    right: 46% !important;
+    gap: 16px !important;
+  }
+  .concept__headline-main {
+    gap: 8px !important;
+  }
+  .concept__headline-main span {
+    font-size: 34px !important;
+  }
+  .concept__headline-sub {
+    gap: 6px !important;
+    margin-top: 48px !important;
+  }
+  .concept__headline-sub span {
+    font-size: 15px !important;
+  }
+  .concept__photo--1 {
+    width: 220px !important;
+    aspect-ratio: 277 / 156 !important;
+    top: 4% !important;
+    left: 2% !important;
+    right: auto !important;
+  }
+  .concept__photo--2 {
+    width: 230px !important;
+    aspect-ratio: 302 / 247 !important;
+    top: -10% !important;
+    right: 2% !important;
+    left: auto !important;
+  }
+  .concept__photo--3 {
+    width: 300px !important;
+    aspect-ratio: 398 / 224 !important;
+    top: 44% !important;
+    left: 56% !important;
+    right: auto !important;
+  }
+  .concept__lead {
+    max-width: 440px !important;
+    margin-top: -140px !important;
+  }
+  .concept__title {
+    font-size: 24px !important;
+    padding: 8px 0 8px 18px !important;
+    margin-bottom: 24px !important;
+  }
+  .concept__body p {
+    font-size: 15px !important;
+    line-height: 2.1 !important;
+  }
+  .concept__map {
+    width: 380px !important;
+    max-width: 48% !important;
+    margin: -160px 0 0 auto !important;
+  }
+  .concept__map-label {
+    font-size: 16px !important;
+  }
+
+  /* ----- 3. Onsen — Mục 21, 22 ----- */
+  .onsen {
+    padding: 90px 0 90px !important;
+  }
+  .onsen__inner {
+    padding: 0 32px !important;
+  }
+  .onsen__headline {
+    gap: 24px !important;
+    margin-bottom: 60px !important;
+  }
+  .onsen__eyebrow span {
+    font-size: 18px !important;
+  }
+  .onsen__title span {
+    font-size: 46px !important;
+  }
+  .onsen__main {
+    gap: 32px !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+  }
+  .onsen__photo {
+    width: clamp(280px, 40vw, 360px) !important;
+    flex-shrink: 0 !important;
+  }
+  .onsen__body {
+    gap: 12px !important;
+    margin-top: 30px !important;
+    padding-top: 30px !important;
+  }
+  .onsen__body::before {
+    left: -60px !important;
+    right: -15px !important;
+  }
+  .onsen__body p {
+    font-size: 15px !important;
+    line-height: 1.35 !important;
+  }
+  .onsen__heading {
+    font-size: 30px !important;
+  }
+
+  .onsen__roten {
+    margin-top: 90px !important;
+  }
+  .onsen__roten-title {
+    font-size: 28px !important;
+  }
+  .onsen__roten-content {
+    gap: 32px !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+  }
+  .onsen__roten-photo {
+    width: clamp(300px, 42vw, 380px) !important;
+    flex-shrink: 0 !important;
+  }
+  .onsen__roten-body {
+    gap: 12px !important;
+  }
+  .onsen__roten-body p {
+    font-size: 15px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* その他の温泉施設 — Hàng ngang 3 ảnh đều nhau */
+  .onsen__other {
+    gap: 24px !important;
+    margin-top: 90px !important;
+    padding-top: 24px !important;
+  }
+  .onsen__other::before {
+    top: 42px !important;
+    width: 80px !important;
+  }
+  .onsen__other-label {
+    font-size: 20px !important;
+    margin-top: 36px !important;
+  }
+  .onsen__gallery {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+  .onsen__gitem {
+    flex: 1 !important;
+    width: auto !important;
+    max-width: calc((100% - 32px) / 3) !important;
+    margin-left: 0 !important;
+    text-align: left !important;
+  }
+  .onsen__gitem:nth-child(1) {
+    order: 1 !important;
+    margin-top: 10px !important;
+  }
+  .onsen__gitem:nth-child(2) {
+    order: 2 !important;
+    margin-top: 36px !important;
+  }
+  .onsen__gitem:nth-child(3) {
+    order: 3 !important;
+    margin-top: 0 !important;
+  }
+  .onsen__gitem figcaption {
+    font-size: 15px !important;
+  }
+
+  /* 健康温熱窯十三種 */
+  .kiln {
+    margin-top: 90px !important;
+  }
+  .kiln__title {
+    font-size: 28px !important;
+  }
+  .kiln__desc {
+    margin-bottom: 40px !important;
+  }
+  .kiln__desc p {
+    font-size: 15px !important;
+    line-height: 2 !important;
+  }
+  .kiln__strip {
+    --k-scale: 0.54 !important;
+    margin-top: 40px !important;
+    height: calc(1520px * var(--k-scale)) !important;
+  }
+  .kiln__caption {
+    font-size: calc(16px / var(--k-scale)) !important;
+  }
+
+  /* ----- 4. Veg (Ẩm thực) — Mục 23, 24 ----- */
+  .veg {
+    padding: 0 0 100px !important;
+  }
+  .veg__inner {
+    padding: 80px 32px 0 !important;
+  }
+  .veg__eyebrow span {
+    font-size: 17px !important;
+  }
+  .veg__title span {
+    font-size: 44px !important;
+  }
+  .veg__content {
+    max-width: 860px !important;
+    margin: 60px auto 0 !important;
+    min-height: 700px !important;
+    position: relative !important;
+  }
+  .veg__photos {
+    position: static !important;
+    height: auto !important;
+  }
+  .veg__ph--basket {
+    position: absolute !important;
+    left: clamp(16px, 3vw, 32px) !important;
+    top: 0 !important;
+    width: clamp(190px, 24vw, 240px) !important;
+    z-index: 1 !important;
+  }
+  .veg__ph--kaiseki {
+    position: absolute !important;
+    left: 0 !important;
+    top: 190px !important;
+    width: clamp(230px, 29vw, 290px) !important;
+    z-index: 2 !important;
+  }
+  .veg__ph--buffet {
+    position: absolute !important;
+    left: clamp(12px, 2.5vw, 24px) !important;
+    top: 410px !important;
+    width: clamp(210px, 26vw, 260px) !important;
+    margin: 0 !important;
+    z-index: 1 !important;
+  }
+  .veg__body {
+    position: absolute !important;
+    right: 0 !important;
+    left: auto !important;
+    top: 80px !important;
+    width: calc(100% - clamp(255px, 32vw, 320px)) !important;
+    max-width: 480px !important;
+    margin: 0 !important;
+  }
+  .veg__body p {
+    font-size: clamp(13.5px, 1.5vw, 15px) !important;
+    line-height: 2.1 !important;
+    letter-spacing: 0.02em !important;
+    word-break: break-word !important;
+  }
+  /* Tiêu đề mục Blog 1 & 2 */
+  .veg__section-head {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .veg__section-head--right {
+    margin: 80px 0 0 0 !important;
+  }
+  .veg__section-head--left {
+    margin: 80px 0 0 0 !important;
+  }
+  .veg__section-head--right .veg__section-title,
+  .veg__section-head--left .veg__section-title {
+    font-size: clamp(20px, 2.5vw, 24px) !important;
+    line-height: 1.5 !important;
+    white-space: normal !important;
+    margin-left: 0 !important;
+  }
+  .veg__section-head--right .veg__section-line,
+  .veg__section-head--left .veg__section-line {
+    position: static !important;
+    width: 100% !important;
+    margin-top: 14px !important;
+  }
+
+  /* Grid 2 cột: Chia đều 50% - 50%, ảnh to rõ nét chuẩn cấu trúc PC */
+  .veg__restaurant-grid,
+  .veg__farm-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: stretch !important;
+    gap: 28px !important;
+    margin-top: 44px !important;
+    width: 100% !important;
+  }
+  .veg__restaurant-col--left,
+  .veg__restaurant-col--right,
+  .veg__farm-col--left,
+  .veg__farm-col--right {
+    width: calc(50% - 14px) !important;
+    max-width: none !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    gap: 24px !important;
+  }
+
+  /* TẤT CẢ các ảnh trong Veg lấp đầy 100% chiều rộng cột (rộng ~340px trên 768px, ~470px trên 1024px) */
+  .veg__rest-ph,
+  .veg__farm-ph,
+  .veg__rest-ph--1,
+  .veg__rest-ph--2,
+  .veg__rest-ph--3,
+  .veg__farm-ph--strawberry,
+  .veg__farm-ph--chef,
+  .veg__farm-ph--mushroom {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .veg__rest-ph img,
+  .veg__farm-ph img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    border-radius: 4px !important;
+    box-shadow: -6px 10px 30px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  /* Khối văn bản chữ dọc: Căn giữa cột, khoảng cách hàng và cỡ chữ hài hòa */
+  .veg__restaurant-text,
+  .veg__farm-text {
+    display: flex !important;
+    flex-direction: row-reverse !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    gap: 24px !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 auto 30px !important;
+    padding: 0 !important;
+  }
+  .veg__restaurant-text p,
+  .veg__farm-text p {
+    writing-mode: vertical-rl !important;
+    font-size: 14px !important;
+    line-height: 1.85 !important;
+    letter-spacing: 0.04em !important;
+    color: var(--color-white) !important;
+    margin: 0 !important;
+  }
+  .veg__rest-ph--2,
+  .veg__farm-ph--strawberry {
+    margin-top: auto !important;
+  }
+
+  /* ----- 5. House ----- */
+  .house {
+    padding: 90px 0 90px !important;
+  }
+  .house__inner {
+    padding: 0 32px !important;
+  }
+  .house__eyebrow span {
+    font-size: 17px !important;
+  }
+  .house__title span {
+    font-size: 44px !important;
+  }
+  .house__intro {
+    font-size: 15px !important;
+    line-height: 2 !important;
+  }
+  .house__view {
+    --u-scale: 0.72 !important;
+    margin-top: 50px !important;
+  }
+
+  /* ----- 6. Learn ----- */
+  .learn {
+    padding: 90px 0 90px !important;
+  }
+  .learn__inner {
+    padding: 0 32px !important;
+  }
+  .learn__eyebrow span {
+    font-size: 17px !important;
+  }
+  .learn__title span {
+    font-size: 42px !important;
+  }
+  .learn__lower {
+    gap: 32px !important;
+  }
+  .learn__lead {
+    flex: 0 0 240px !important;
+  }
+  .learn__label {
+    font-size: 20px !important;
+    margin-bottom: 16px !important;
+    padding-left: 14px !important;
+  }
+  .learn__desc {
+    font-size: 15px !important;
+    line-height: 2 !important;
+  }
+  .learn__slide img {
+    height: 220px !important;
+  }
+  .learn__slide figcaption span {
+    font-size: 16px !important;
+  }
+
+  /* ----- 7. Tourism ----- */
+  .tourism {
+    padding: 90px 0 100px !important;
+  }
+  .tourism__inner {
+    padding: 0 32px !important;
+  }
+  .tourism__eyebrow span {
+    font-size: 17px !important;
+  }
+  .tourism__title span {
+    font-size: 42px !important;
+  }
+  .tourism__list {
+    gap: 80px !important;
+  }
+  .tsp {
+    flex-direction: row !important;
+    gap: 32px !important;
+  }
+  .tsp__photo {
+    width: clamp(280px, 38vw, 340px) !important;
+    flex-shrink: 0 !important;
+  }
+  .tsp__photo img {
+    height: 270px !important;
+  }
+  .tsp__title {
+    font-size: 20px !important;
+    padding-left: 14px !important;
+    margin-bottom: 18px !important;
+  }
+  .tsp__body {
+    font-size: 15px !important;
+    line-height: 2 !important;
+  }
+  .tourism__more-text {
+    font-size: 20px !important;
+  }
+
+  /* ----- 8. Plan ----- */
+  .plan {
+    padding: 80px 0 90px !important;
+  }
+  .plan__inner {
+    padding: 0 32px !important;
+  }
+  .plan__eyebrow span {
+    font-size: 22px !important;
+  }
+  .plan__price-num {
+    font-size: 56px !important;
+  }
+  .plan__price-yen {
+    font-size: 28px !important;
+  }
+  .plan__name {
+    font-size: 20px !important;
+  }
+  .plan__cards {
+    gap: 16px !important;
+  }
+  .plan__card {
+    padding: 24px 16px !important;
+    min-height: 320px !important;
+  }
+  .plan__card-title {
+    font-size: 18px !important;
+  }
+  .plan__list li {
+    font-size: 15px !important;
+  }
+  .plan__fee-sub {
+    font-size: 14px !important;
+  }
+
+  /* ----- 9. Access ----- */
+  .access {
+    padding: 80px 0 0 !important;
+  }
+  .access__inner {
+    padding: 0 32px !important;
+    max-width: 100% !important;
+  }
+  .access__strip {
+    margin-top: 70px !important;
+  }
+  .access__strip img {
+    height: 220px !important;
+    margin-right: 24px !important;
+  }
+  .access__btns {
+    gap: 36px !important;
+    margin: 30px 0 80px !important;
+  }
+  .access__btns .btn-bracket span {
+    font-size: 16px !important;
+    min-width: 160px !important;
+  }
+  .access__groups {
+    gap: 28px !important;
+  }
+  .access__item {
+    font-size: 15px !important;
+  }
+
+  /* ----- 10. Footer ----- */
+  .footer {
+    padding: 70px 0 30px !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .footer__inner {
+    display: grid !important;
+    grid-template-columns: minmax(220px, 260px) 1fr !important;
+    grid-template-areas:
+      "brand btns"
+      "brand nav" !important;
+    column-gap: 20px !important;
+    row-gap: 24px !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    max-width: 100% !important;
+    padding: 0 20px !important;
+  }
+  .footer__brand {
+    grid-area: brand !important;
+    align-self: center !important;
+    max-width: 260px !important;
+  }
+  .footer__tag {
+    font-size: 14px !important;
+  }
+  .footer__logo {
+    font-size: 20px !important;
+  }
+  .footer__addr {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+    text-align: left !important;
+  }
+  .footer__btns {
+    grid-area: btns !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-self: end !important;
+    justify-content: flex-end !important;
+    gap: 12px !important;
+  }
+  .footer__btns .btn-bracket span {
+    font-size: 13px !important;
+    min-width: 130px !important;
+    padding: 0 6px !important;
+  }
+  .footer__nav {
+    grid-area: nav !important;
+    justify-self: end !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, auto) !important;
+    column-gap: 12px !important;
+    row-gap: 10px !important;
+  }
+  .footer__nav a {
+    font-size: 12px !important;
+    font-weight: 200 !important;
+    white-space: nowrap !important;
+  }
+  .footer__copy {
+    margin-top: 40px !important;
+    font-size: 13px !important;
+  }
+
+  /* ----- 11. Modal ----- */
+  .modal__box--price .modal__scroll {
+    padding: 50px 32px !important;
+  }
+  .modal__box--privacy .modal__scroll {
+    padding: 50px 24px !important;
+  }
+  .price__table th,
+  .price__table td {
+    font-size: 15px !important;
+    padding: 12px 8px !important;
+  }
+}

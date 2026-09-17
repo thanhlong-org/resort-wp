@@ -9,8 +9,8 @@
   width: 100%;
   margin: 0 auto;
 }
-@media (min-width: 1024px) {
-  .l-inner { max-width: 1240px; }   /* PC mặc định; access(1000)/footer(1346) tự override */
+@media (min-width: 767px) {
+  .l-inner { max-width: 1240px; }   /* PC/Tablet: max-width 1240px */
 }
 
 /* ----- Tiêu đề brush dọc (2 cột, đọc phải→trái) -----
@@ -27,7 +27,7 @@
   font-family: var(--font-brush);
   font-weight: 400;
 }
-@media (min-width: 1024px) {
+@media (min-width: 767px) {
   .v-title { gap: 8px; }
 }
 
@@ -35,7 +35,7 @@
    Dùng cho ngắt dòng theo màn hình: <br class="u-pc"> (chỉ PC), <br class="u-sp"> (chỉ SP). */
 .u-pc { display: none; }
 .u-sp { display: revert; }
-@media (min-width: 768px) {
+@media (min-width: 767px) {
   .u-pc { display: revert; }
   .u-sp { display: none; }
 }

@@ -238,6 +238,47 @@
 .onsen__gitem:nth-child(2) { order: 1; align-self: flex-end; text-align: right; } /* 大自然石庭露天風呂 */
 .onsen__gitem:nth-child(3) { order: 2; text-align: left; margin-left: -40px; } /* フラワースパ */
 
+/* Fix Lỗi 22 trên màn hình mobile lớn / tablet nhỏ (481px - 767px): Dàn 3 ảnh đều đặn, không khoảng đen */
+@media (min-width: 481px) and (max-width: 767px) {
+  .onsen__other {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-top: 60px;
+    padding-top: 24px;
+  }
+  .onsen__other::before {
+    width: 100%;
+  }
+  .onsen__other-label {
+    writing-mode: horizontal-tb;
+    font-size: 20px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    width: 100%;
+  }
+  .onsen__gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+  }
+  .onsen__gitem {
+    width: 100% !important;
+    max-width: 100% !important;
+    align-self: auto !important;
+    margin-left: 0 !important;
+    text-align: center !important;
+  }
+  .onsen__gitem:nth-child(1) { order: 1; align-self: auto !important; }
+  .onsen__gitem:nth-child(2) { order: 2; align-self: auto !important; text-align: center !important; }
+  .onsen__gitem:nth-child(3) { order: 3; align-self: auto !important; text-align: center !important; margin-left: 0 !important; }
+  .onsen__gitem figcaption {
+    font-size: 13px;
+    margin-top: 10px;
+  }
+}
+
 /* ---- 健康温熱窯十三種 ---- */
 .kiln {
   display: flex;
@@ -457,9 +498,9 @@ html[lang="en"] .kiln__caption,
 .kiln__card--gcc .kiln__thumb { width: 443px; height: 275px; }
 
 /* ===========================================================
-   PC (≥1024px)
+   PC / Tablet (≥768px)
    =========================================================== */
-@media (min-width: 1024px) {
+@media (min-width: 767px) {
   .onsen { padding: 130px 0 120px; }
   .onsen__inner { padding: 0; }
 

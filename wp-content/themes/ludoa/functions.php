@@ -9,7 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'LUDOA_VERSION', '2.3.0' );
+if ( ! defined( 'LUDOA_VERSION' ) ) {
+	define( 'LUDOA_VERSION', '2.5.4' );
+}
 
 // i18n routing + server-side translation, SEO head/sitemap, contact backend.
 require get_template_directory() . '/inc/i18n.php';
@@ -68,6 +70,7 @@ function ludoa_assets() {
 		'access'    => null,
 		'footer'    => null,
 		'modal'     => null,
+		'tablet'    => null,
 	);
 
 	$prev = array( 'ludoa-fonts', 'slick' );

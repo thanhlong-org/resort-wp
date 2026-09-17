@@ -139,9 +139,9 @@
 }
 
 /* ===========================================================
-   PC (≥1024px)
+   PC / Tablet (≥768px)
    =========================================================== */
-@media (min-width: 1024px) {
+@media (min-width: 767px) {
   .access { padding: 90px 0 0; }
   .access__strip { margin-top: 120px; }
   .access__strip img { height: 302px; margin-right: 40px; }

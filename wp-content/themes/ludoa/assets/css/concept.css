@@ -100,6 +100,27 @@
 .concept__photo--2 { width: 47%; aspect-ratio: 173 / 122; top: 60%;  left: 0; z-index: 1; }
 .concept__photo--3 { width: 72%; aspect-ratio: 268 / 151; top: 75%;  left: 24%; z-index: 1; }
 
+@media (min-width: 481px) and (max-width: 767px) {
+  .concept__hero {
+    max-width: 580px;
+    height: 480px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .concept__photo--1 {
+    width: 220px;
+  }
+  .concept__photo--2 {
+    width: 240px;
+    top: 50%;
+  }
+  .concept__photo--3 {
+    width: 290px;
+    top: 60%;
+    left: 42%;
+  }
+}
+
 /* ---- Lead: tiêu đề + body ---- */
 .concept__lead { margin-top: 40px; }
 .concept__title {
@@ -176,9 +197,9 @@
 .concept__map-label span:nth-child(2) { margin-top: 14px; }
 
 /* ===========================================================
-   PC (≥1024px)
+   PC / Tablet (≥768px)
    =========================================================== */
-@media (min-width: 1024px) {
+@media (min-width: 767px) {
   .concept {
     padding: 0 0 140px;
     -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 220px);
