@@ -607,8 +607,8 @@ $img = get_template_directory_uri() . '/assets/images';
             </ul>
           </div>
         </div>
-        <br/>
-        <div class="price__notice">
+
+        <div class="plan__notice price__notice fadeUpTrigger">
           <p class="price__notice-title" data-i18n="price.notice_title">注意事項</p>
           <ul class="price__notes">
             <li data-i18n="price.notice_1">※動きやすい服装、スニーカー、ソックス等をご持参ください。</li>

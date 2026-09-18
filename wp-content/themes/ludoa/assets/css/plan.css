@@ -184,6 +184,10 @@
 }
 
 /* cta */
+/* 注意事項 dưới cards (kiểu chữ dùng chung .price__notice/.price__notes từ modal.css) */
+.plan__notice { margin-top: 28px; }
+.plan__notice .price__notes { margin-top: 6px; }
+
 .plan__cta { display: flex; justify-content: center; margin-top: 44px; }
 .plan__cta .btn-bracket span { font-size: 20px; font-weight: 400; }
 
@@ -221,5 +225,7 @@
   .plan__fee-sub { font-size: 16px; letter-spacing: -0.4px; }                       /* Figma PC: 16px */
 
   .plan__cards { flex-direction: row; gap: 26px; }
+  .plan__notice { margin-top: 40px; }
+  .plan__notice .price__notes { margin-top: 8px; }
   .plan__card { flex: 1; min-height: 351px; padding: 36px 31px; }
 }
