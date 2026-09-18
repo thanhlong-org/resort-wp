@@ -159,14 +159,23 @@ body.fixed .lang {
 .menu {
   position: fixed;
   inset: 0;
-  z-index: 100;
+  z-index: 115;
   background: var(--color-bg);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease, visibility 0.5s ease;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .menu.panel-active { opacity: 1; visibility: visible; }
+
+/* Ẩn hoàn toàn nút Reserve ghim trên màn hình khi menu mở */
+body.fixed .fv__reserve {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(20px) !important;
+}
 
 /* Đóng menu = bấm lại chính nút hamburger (đã morph thành X) ở header */
 
@@ -175,7 +184,7 @@ body.fixed .lang {
   min-height: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 56px 40px 90px;
+  padding: 50px 24px 80px;
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-areas:
@@ -184,8 +193,9 @@ body.fixed .lang {
     "btns    btns"
     "brand   visual";
   align-content: start;
-  column-gap: 10px;   /* Figma: brand ↔ ảnh = 10px */
+  column-gap: 14px;   /* Figma: brand ↔ ảnh */
   row-gap: 0;
+  box-sizing: border-box;
 }
 
 /* fade-in nội dung khi mở */
@@ -265,10 +275,6 @@ body.fixed .lang {
   font-weight: 700;
   font-size: 18px;
   letter-spacing: 0.0444em;
-}
-
-
-.menu__btns .btn-bracket span {
   min-width: 200px;
   text-align: center;
 }
@@ -286,8 +292,9 @@ body.fixed .lang {
   color: var(--color-white);
 }
 .menu__brand-logo {
-  font-size: 32px;                            /* logo 155px ~ 32px */
+  font-size: clamp(22px, 5.5vw, 32px);
   margin: 12px auto;
+  line-height: 1.35;
 }
 .menu__address {
   font-family: var(--font-serif);
@@ -525,20 +532,22 @@ body.fixed .lang {
     letter-spacing: 0.13em;
   }
 
-  /* ----- Menu PC: [ảnh 129px list] 169px [brand / nút] ----- */
+  /* ----- Menu PC: [ảnh] [list] [brand / nút] ----- */
 
   .menu__panel {
-    max-width: none;
-    padding: 150px 60px 90px 103px;
-    grid-template-columns: auto auto auto;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: clamp(90px, 12vh, 130px) clamp(30px, 4vw, 70px) 70px;
+    grid-template-columns: minmax(260px, 386px) auto minmax(260px, 320px);
     grid-template-rows: auto 1fr;
     grid-template-areas:
       "visual nav brand"
       "visual nav btns";
-    justify-content: start;
+    justify-content: center;
     align-content: start;
-    column-gap: 0;
+    column-gap: clamp(32px, 4.5vw, 80px);
     row-gap: 0;
+    box-sizing: border-box;
   }
   .menu__panel > * { transition-delay: 0s; }  /* PC: hiện gọn */
 
@@ -546,10 +555,11 @@ body.fixed .lang {
 
   /* ảnh trái (Figma 386×578) + caption dọc đè lên ảnh */
   .menu__visual {
-    width: 386px;
+    width: 100%;
+    max-width: 386px;
     aspect-ratio: 386 / 578;
     align-self: start;
-    margin-right: 129px;
+    margin-right: 0;
   }
   .menu__visual-text {
     display: block;
@@ -558,7 +568,7 @@ body.fixed .lang {
     transform: translate(-50%, -50%);
     writing-mode: vertical-rl;
     font-family: var(--font-serif);
-    font-size: 24px;
+    font-size: clamp(18px, 1.8vw, 24px);
     letter-spacing: 0.14em;
     line-height: 1.9;
     white-space: nowrap;
@@ -566,8 +576,13 @@ body.fixed .lang {
     text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
   }
 
-  /* list giữa (rộng 200, gap 40, không gạch/mũi tên) */
-  .menu__nav { width: 250px; margin-right: 150px; align-self: start; }
+  /* list giữa (rộng ~250, gap linh hoạt, không gạch/mũi tên) */
+  .menu__nav {
+    width: 100%;
+    max-width: 280px;
+    margin-right: 0;
+    align-self: start;
+  }
   .menu__label {
     display: block;
     font-family: var(--font-serif);
@@ -575,16 +590,17 @@ body.fixed .lang {
     font-size: 12px;
     line-height: 1.5;
     color: var(--color-white);
-    margin-bottom: 54px;
+    margin-bottom: clamp(28px, 3.8vh, 54px);
   }
   .menu__list { border-top: none; }
   .menu__list li { border-bottom: none; }
-  .menu__list li + li { margin-top: 40px; }   /* gap 40px */
+  .menu__list li + li { margin-top: clamp(22px, 3vh, 40px); }   /* gap linh hoạt */
   .menu__list a {
     display: block;
     padding: 0;
-    font-size: 18px;                  /* Figma: 18px */
+    font-size: clamp(16px, 1.25vw, 18px);
     letter-spacing: 0.04em;
+    white-space: nowrap;
   }
   .menu__list a::after { display: none; }
 
@@ -593,21 +609,25 @@ body.fixed .lang {
     align-self: start;
     text-align: center;
     border-left: 0.5px solid #2C2C2C;
-    padding: 0 0 50px 60px;
-    width: 314px;
+    padding: 0 0 36px clamp(20px, 2.5vw, 50px);
+    width: 100%;
+    max-width: 320px;
+    box-sizing: border-box;
   }
-  .menu__tagline { font-size: 18px; }                    /* Figma PC: 18px */
-  .menu__brand-logo { font-size: 32px; margin: 12px auto; }
-  .menu__address { font-size: 16px; } /* Figma PC: 16px */
+  .menu__tagline { font-size: clamp(15px, 1.25vw, 18px); }                    /* Figma PC: 18px */
+  .menu__brand-logo { font-size: clamp(24px, 2.2vw, 32px); margin: 12px auto; }
+  .menu__address { font-size: clamp(13px, 1.1vw, 16px); } /* Figma PC: 16px */
 
   .menu__btns {
     align-self: start;
     align-items: center;
-    gap: 44px;                        /* Figma: 44px */
+    gap: clamp(24px, 3.5vh, 44px);                        /* Figma: 44px */
     margin: 0;
     border-left: 0.5px solid #2C2C2C;
-    padding: 50px 0 0 60px;
-    width: 314px;
+    padding: 36px 0 0 clamp(20px, 2.5vw, 50px);
+    width: 100%;
+    max-width: 320px;
+    box-sizing: border-box;
   }
 }
 
@@ -893,3 +913,111 @@ html[lang^="en"] .kiln__cap-v {
   html[lang^="en"] .concept__photo--3 { width: 50% !important; top: 430px !important; left: 50% !important; }
 }
 
+/* ===========================================================
+   Menu (Hamburger) — English & Responsive Overrides
+   =========================================================== */
+html[lang^="en"] .menu__visual-text {
+  writing-mode: horizontal-tb !important;
+  white-space: normal !important;
+  font-family: var(--font-serif) !important;
+  font-size: clamp(13px, 1.15vw, 16px) !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1.6 !important;
+  text-align: center !important;
+  width: 88% !important;
+  top: 50% !important;
+  left: 50% !important;
+  bottom: auto !important;
+  right: auto !important;
+  transform: translate(-50%, -50%) !important;
+  background: rgba(0, 0, 0, 0.55) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  padding: 16px 14px !important;
+  border-radius: 4px !important;
+  box-sizing: border-box !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8) !important;
+}
+
+html[lang^="en"] .menu__brand-logo {
+  font-size: clamp(20px, 1.8vw, 24px) !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  line-height: 1.35 !important;
+  margin: 10px auto !important;
+  display: block !important;
+}
+
+html[lang^="en"] .menu__tagline {
+  font-size: clamp(13px, 1.1vw, 15px) !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1.45 !important;
+}
+
+html[lang^="en"] .menu__address {
+  font-size: clamp(12px, 0.95vw, 13.5px) !important;
+  line-height: 1.65 !important;
+  word-break: normal !important;
+}
+
+html[lang^="en"] .menu__btns .btn-bracket span {
+  font-size: clamp(14px, 1.15vw, 16px) !important;
+  letter-spacing: 0.04em !important;
+  min-width: 170px !important;
+  white-space: nowrap !important;
+  padding: 0 4px !important;
+}
+
+/* SP (< 768px): Tối ưu hóa Tiếng Anh cho mobile */
+@media (max-width: 767px) {
+  html[lang^="en"] body {
+    overflow-x: hidden !important;
+  }
+  html[lang^="en"] .header {
+    padding: 24px 16px !important;
+  }
+  html[lang^="en"] .header__logo {
+    font-size: clamp(13px, 3.8vw, 16px) !important;
+    max-width: calc(100% - 105px) !important;
+    line-height: 1.2 !important;
+    white-space: normal !important;
+  }
+  html[lang^="en"] .header__right {
+    gap: 12px !important;
+  }
+  html[lang^="en"] .fv__title {
+    font-size: clamp(18px, 5.2vw, 24px) !important;
+    white-space: normal !important;
+    max-width: 92% !important;
+    margin: 0 auto !important;
+    line-height: 1.25 !important;
+  }
+  html[lang^="en"] .menu__panel {
+    padding: 44px 16px 80px !important;
+    column-gap: 12px !important;
+  }
+  html[lang^="en"] .menu__visual {
+    width: 88px !important;
+    aspect-ratio: 88 / 135 !important;
+  }
+  html[lang^="en"] .menu__brand-logo {
+    font-size: clamp(17px, 4.5vw, 20px) !important;
+  }
+  html[lang^="en"] .menu__tagline {
+    font-size: 12px !important;
+  }
+  html[lang^="en"] .menu__address {
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+  }
+  html[lang^="en"] .menu__btns {
+    margin: 48px 0 60px !important;
+    gap: 22px !important;
+  }
+  html[lang^="en"] .menu__btns .btn-bracket span {
+    font-size: 15px !important;
+    min-width: 160px !important;
+  }
+}

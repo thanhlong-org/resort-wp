@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'LUDOA_VERSION' ) ) {
-	define( 'LUDOA_VERSION', '2.5.5' );
+	define( 'LUDOA_VERSION', '2.6.1' );
 }
 
 // i18n routing + server-side translation, SEO head/sitemap, contact backend.
