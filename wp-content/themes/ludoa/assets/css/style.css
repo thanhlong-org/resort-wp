@@ -643,7 +643,7 @@ html[lang^="en"] .v-title span {
 
 /* --- Hero & Concept Title --- */
 html[lang^="en"] .concept__hero {
-  height: 820px !important;
+  height: 830px !important;
 }
 html[lang^="en"] .concept__headline {
   left: 0 !important;
@@ -675,10 +675,14 @@ html[lang^="en"] .concept__headline-sub span {
   font-size: 14px !important;
   line-height: 1.5 !important;
 }
-/* Dịch chuyển 3 ảnh Concept xuống dưới tiêu đề ngang */
-html[lang^="en"] .concept__photo--1 { top: 250px !important; }
-html[lang^="en"] .concept__photo--2 { top: 72% !important; }
-html[lang^="en"] .concept__photo--3 { top: 84% !important; }
+/* 3 ảnh Concept: EN headline nằm ngang nên ảnh xuống dưới tiêu đề và
+   to hơn JP (JP ảnh nhỏ vì phải nhường chỗ cho headline dọc) — AUN #1-3, #12, #15 */
+html[lang^="en"] .concept__photo--1 { width: 56% !important; max-width: 240px !important; top: 240px !important; right: 0 !important; left: auto !important; }
+html[lang^="en"] .concept__photo--2 { width: 60% !important; max-width: 300px !important; top: 520px !important; left: 0 !important; right: auto !important; }
+html[lang^="en"] .concept__photo--3 { width: 75% !important; max-width: 420px !important; top: 670px !important; left: 25% !important; right: auto !important; }
+@media (min-width: 481px) and (max-width: 766px) {
+  html[lang^="en"] .concept__hero { height: 920px !important; }
+}
 
 /* Concept Map Label */
 html[lang^="en"] .concept__map-label {
@@ -796,7 +800,7 @@ html[lang^="en"] .kiln__cap-v {
 /* --- PC / Tablet overrides (min-width: 768px) --- */
 @media (min-width: 767px) {
   html[lang^="en"] .concept__hero {
-    height: 940px !important;
+    height: 800px !important;
   }
   html[lang^="en"] .concept__headline {
     top: -100px !important;
@@ -805,9 +809,10 @@ html[lang^="en"] .kiln__cap-v {
     transform: translateX(-50%) !important;
     max-width: 800px !important;
   }
-  html[lang^="en"] .concept__photo--1 { top: 220px !important; left: 4% !important; right: auto !important; }
-  html[lang^="en"] .concept__photo--2 { top: 120px !important; right: 0% !important; left: auto !important; }
-  html[lang^="en"] .concept__photo--3 { top: 580px !important; left: 60% !important; right: auto !important; }
+  /* Tablet: ảnh theo % bề rộng hero (tablet.css set px cố định → override bằng specificity) */
+  html[lang^="en"] .concept__photo--1 { width: 44% !important; max-width: none !important; aspect-ratio: 277 / 156 !important; top: 180px !important; left: 0 !important; right: auto !important; }
+  html[lang^="en"] .concept__photo--2 { width: 38% !important; max-width: none !important; aspect-ratio: 302 / 247 !important; top: 140px !important; right: 0 !important; left: auto !important; }
+  html[lang^="en"] .concept__photo--3 { width: 54% !important; max-width: none !important; aspect-ratio: 398 / 224 !important; top: 440px !important; left: 46% !important; right: auto !important; }
 
   html[lang^="en"] .concept__map-label {
     left: 0 !important;
@@ -871,5 +876,14 @@ html[lang^="en"] .kiln__cap-v {
     font-size: 16px !important;
     line-height: 1.8 !important;
   }
+}
+/* --- PC overrides (min-width: 1025px) — ngoài vùng tablet.css --- */
+@media (min-width: 1025px) {
+  html[lang^="en"] .concept__hero {
+    height: 820px !important;
+  }
+  html[lang^="en"] .concept__photo--1 { width: 40% !important; top: 150px !important; left: 0 !important; }
+  html[lang^="en"] .concept__photo--2 { width: 36% !important; top: 110px !important; right: 0 !important; }
+  html[lang^="en"] .concept__photo--3 { width: 50% !important; top: 430px !important; left: 50% !important; }
 }
 
