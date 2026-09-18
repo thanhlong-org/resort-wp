@@ -607,6 +607,16 @@ $img = get_template_directory_uri() . '/assets/images';
             </ul>
           </div>
         </div>
+        <br/>
+        <div class="price__notice">
+          <p class="price__notice-title" data-i18n="price.notice_title">注意事項</p>
+          <ul class="price__notes">
+            <li data-i18n="price.notice_1">※動きやすい服装、スニーカー、ソックス等をご持参ください。</li>
+            <li data-i18n="price.notice_2">※アレルギー除去食等をご要望の場合は予約時にお知らせください。</li>
+            <li data-i18n="price.notice_3">※常用しているお薬およびサプリメント等、必要に応じてご持参ください。</li>
+            <li data-i18n="price.notice_4">※ご滞在中にご体調を崩されたり、ご気分が悪くなった場合は無理をなさらず医療機関にかかる、もしくはご帰宅されることをお願いいたします。</li>
+          </ul>
+        </div>
 
         <div class="plan__cta fadeUpTrigger">
           <a class="btn-bracket" href="#" data-modal="price"><span data-i18n="plan.cta">料金を確認する</span></a>
@@ -835,7 +845,7 @@ $img = get_template_directory_uri() . '/assets/images';
                 </table>
               </div>
             </div>
-            <div class="price__notice">
+            <!-- <div class="price__notice">
               <p class="price__notice-title" data-i18n="price.notice_title">注意事項</p>
               <ul class="price__notes">
                 <li data-i18n="price.notice_1">※動きやすい服装、スニーカー、ソックス等をご持参ください。</li>
@@ -843,7 +853,7 @@ $img = get_template_directory_uri() . '/assets/images';
                 <li data-i18n="price.notice_3">※常用しているお薬およびサプリメント等、必要に応じてご持参ください。</li>
                 <li data-i18n="price.notice_4">※ご滞在中にご体調を崩されたり、ご気分が悪くなった場合は無理をなさらず医療機関にかかる、もしくはご帰宅されることをお願いいたします。</li>
               </ul>
-            </div>
+            </div> -->
 
             <ul class="price__notes">
               <li data-i18n="price.meal_note1">※朝食・夕食はビックファームレストランでのご提供、ご昼食についてはビックファームレストラン又は他のレストランがご利用できます。</li>
