@@ -194,3 +194,10 @@
     color: var(--color-gray);
   }
 }
+
+/* Ẩn toàn bộ ngắt dòng cưỡng bức trong danh sách du lịch trên màn hình ≤ 1024px để chữ tự động dàn đều tự nhiên */
+@media (max-width: 1024px) {
+  .tourism__list .tsp__body br {
+    display: none;
+  }
+}
