@@ -12,7 +12,10 @@
 /* nền banner mờ ở trên */
 .tourism__bg {
   position: absolute;
-  inset: 0; /* phủ toàn bộ section */
+  /* thu 2px trên/dưới: mép clip-path anti-alias để lộ 1px ảnh fixed thành
+     "đường kẻ" ở ranh giới section trên màn 2x (AUN #16 @1024, #21 @768);
+     nền solid của .tourism che mép này. Gradient 0-6% / 97-100% đã solid. */
+  inset: 2px 0;
   z-index: 0;
   /* cửa sổ clip: ảnh fixed bên trong chỉ hiện trong vùng này */
   clip-path: inset(0);
